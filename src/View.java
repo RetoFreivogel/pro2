@@ -1,33 +1,28 @@
-import java.applet.Applet;
 import java.awt.BorderLayout;
+import javax.swing.JFrame;
 import javax.swing.JMenuBar;
+import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JLabel;
 import javax.swing.JSplitPane;
-import java.awt.Canvas;
 import java.awt.Color;
-import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.Component;
 import javax.swing.JSeparator;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
-
-public class View extends Applet{
+public class View extends JPanel{
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -376,10 +371,16 @@ public class View extends Applet{
 		panel_4.setBackground(Color.WHITE);
 		splitPane.setRightComponent(panel_4);
 	}
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		JFrame frame = new JFrame();
+		frame.setUndecorated(true);
+		frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("TopView");
+		frame.getContentPane().add(new View());
+		frame.setSize(800, 600);
+		//frame.pack();
+		frame.setVisible(true);
 	}
-
 }
