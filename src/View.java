@@ -19,6 +19,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class View extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -225,7 +226,7 @@ public class View extends JPanel{
 		panel_1.add(btnBearbeiten, gbc_btnBearbeiten);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "PID Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Regler", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_2.anchor = GridBagConstraints.NORTH;
@@ -235,49 +236,54 @@ public class View extends JPanel{
 		panel.add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] {0, 0, 0};
-		gbl_panel_2.rowHeights = new int[] {0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JLabel lblRegler = new JLabel("Definiert durch: ");
 		GridBagConstraints gbc_lblRegler = new GridBagConstraints();
+		gbc_lblRegler.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRegler.fill = GridBagConstraints.BOTH;
 		gbc_lblRegler.gridx = 0;
-		gbc_lblRegler.gridy = 0;
+		gbc_lblRegler.gridy = 1;
 		panel_2.add(lblRegler, gbc_lblRegler);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Phasengangmethode", "Manuell"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Phasengangmethode", "Ziegler", "Chien", "Tsumme", "Oppelt", "Rosenberg", "Manuell"}));
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+		gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox_1.weightx = 1.0;
 		gbc_comboBox_1.anchor = GridBagConstraints.WEST;
 		gbc_comboBox_1.fill = GridBagConstraints.VERTICAL;
 		gbc_comboBox_1.gridx = 1;
-		gbc_comboBox_1.gridy = 0;
+		gbc_comboBox_1.gridy = 1;
 		panel_2.add(comboBox_1, gbc_comboBox_1);
 		
-		JLabel lblberschwingen = new JLabel("\u00DCberschwingen");
+		JLabel lblberschwingen = new JLabel("Phasenrand");
 		GridBagConstraints gbc_lblberschwingen = new GridBagConstraints();
+		gbc_lblberschwingen.insets = new Insets(0, 0, 5, 5);
 		gbc_lblberschwingen.fill = GridBagConstraints.BOTH;
 		gbc_lblberschwingen.gridx = 0;
-		gbc_lblberschwingen.gridy = 1;
+		gbc_lblberschwingen.gridy = 2;
 		panel_2.add(lblberschwingen, gbc_lblberschwingen);
 		
 		textField_4 = new JTextField();
-		textField_4.setText("10%");
+		textField_4.setText("20\u00B0");
 		textField_4.setColumns(10);
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
+		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_4.fill = GridBagConstraints.BOTH;
 		gbc_textField_4.gridx = 1;
-		gbc_textField_4.gridy = 1;
+		gbc_textField_4.gridy = 2;
 		panel_2.add(textField_4, gbc_textField_4);
 		
 		JLabel lblP = new JLabel("P");
 		GridBagConstraints gbc_lblP = new GridBagConstraints();
+		gbc_lblP.insets = new Insets(0, 0, 5, 5);
 		gbc_lblP.fill = GridBagConstraints.BOTH;
 		gbc_lblP.gridx = 0;
-		gbc_lblP.gridy = 2;
+		gbc_lblP.gridy = 3;
 		panel_2.add(lblP, gbc_lblP);
 		
 		textField_5 = new JTextField();
@@ -285,16 +291,18 @@ public class View extends JPanel{
 		textField_5.setEditable(false);
 		textField_5.setColumns(10);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_5.fill = GridBagConstraints.BOTH;
 		gbc_textField_5.gridx = 1;
-		gbc_textField_5.gridy = 2;
+		gbc_textField_5.gridy = 3;
 		panel_2.add(textField_5, gbc_textField_5);
 		
 		JLabel lblI = new JLabel("I");
 		GridBagConstraints gbc_lblI = new GridBagConstraints();
+		gbc_lblI.insets = new Insets(0, 0, 5, 5);
 		gbc_lblI.fill = GridBagConstraints.BOTH;
 		gbc_lblI.gridx = 0;
-		gbc_lblI.gridy = 3;
+		gbc_lblI.gridy = 4;
 		panel_2.add(lblI, gbc_lblI);
 		
 		textField_6 = new JTextField();
@@ -302,16 +310,18 @@ public class View extends JPanel{
 		textField_6.setText("1");
 		textField_6.setColumns(10);
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
+		gbc_textField_6.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_6.fill = GridBagConstraints.BOTH;
 		gbc_textField_6.gridx = 1;
-		gbc_textField_6.gridy = 3;
+		gbc_textField_6.gridy = 4;
 		panel_2.add(textField_6, gbc_textField_6);
 		
 		JLabel lblD = new JLabel("D");
 		GridBagConstraints gbc_lblD = new GridBagConstraints();
+		gbc_lblD.insets = new Insets(0, 0, 5, 5);
 		gbc_lblD.fill = GridBagConstraints.BOTH;
 		gbc_lblD.gridx = 0;
-		gbc_lblD.gridy = 4;
+		gbc_lblD.gridy = 5;
 		panel_2.add(lblD, gbc_lblD);
 		
 		textField_7 = new JTextField();
@@ -319,10 +329,28 @@ public class View extends JPanel{
 		textField_7.setText("5");
 		textField_7.setColumns(10);
 		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
+		gbc_textField_7.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_7.fill = GridBagConstraints.BOTH;
 		gbc_textField_7.gridx = 1;
-		gbc_textField_7.gridy = 4;
+		gbc_textField_7.gridy = 5;
 		panel_2.add(textField_7, gbc_textField_7);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"P", "PI", "PD", "PID"}));
+		comboBox_3.setSelectedIndex(3);
+		GridBagConstraints gbc_comboBox_3 = new GridBagConstraints();
+		gbc_comboBox_3.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_3.gridx = 1;
+		gbc_comboBox_3.gridy = 0;
+		panel_2.add(comboBox_3, gbc_comboBox_3);
+		
+		JLabel lblNewLabel = new JLabel("Topologie");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		panel_2.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Analyse", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -350,6 +378,7 @@ public class View extends JPanel{
 		panel_5.add(comboBox_2, gbc_comboBox_2);
 		
 		textField_8 = new JTextField();
+		textField_8.setEditable(false);
 		textField_8.setText("0");
 		GridBagConstraints gbc_textField_8 = new GridBagConstraints();
 		gbc_textField_8.fill = GridBagConstraints.BOTH;
