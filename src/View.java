@@ -385,6 +385,9 @@ public class View extends JPanel{
 		JPanel panel_12 = new JPanel();
 		panel_12.setBackground(Color.WHITE);
 		panel_8.add(panel_12, BorderLayout.CENTER);
+		
+		JLabel lblStatus = new JLabel("Status");
+		add(lblStatus, BorderLayout.SOUTH);
 	}
 	
 	public static void main(String[] args) {
