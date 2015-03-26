@@ -1,36 +1,14 @@
 package prototype;
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JRootPane;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JLabel;
-import javax.swing.JSplitPane;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
+
+import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-
-import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.JCheckBox;
-import java.awt.Component;
-import javax.swing.UIManager;
 
 public class View extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -138,8 +116,8 @@ public class View extends JPanel{
 		JLabel label = new JLabel("Definiert durch: ");
 		panel_2.add(label);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"KTuTg", "Frequenzgang"}));
+		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.setModel(new DefaultComboBoxModel<>(new String[] {"KTuTg", "Frequenzgang"}));
 		panel_2.add(comboBox);
 		
 		JLabel label_1 = new JLabel("Ks");
@@ -174,16 +152,16 @@ public class View extends JPanel{
 		JLabel label_6 = new JLabel("Topologie");
 		panel_3.add(label_6);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"PI", "PID"}));
+		JComboBox<String> comboBox_2 = new JComboBox<>();
+		comboBox_2.setModel(new DefaultComboBoxModel<>(new String[] {"PI", "PID"}));
 		comboBox_2.setSelectedIndex(1);
 		panel_3.add(comboBox_2);
 		
 		JLabel label_4 = new JLabel("Definiert durch: ");
 		panel_3.add(label_4);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Manuell", "Phasengang", "Ziegler", "Chien", "Oppelt", "Rosenberg", "Tsumme"}));
+		JComboBox<String> comboBox_1 = new JComboBox<>();
+		comboBox_1.setModel(new DefaultComboBoxModel<>(new String[] {"Manuell", "Phasengang", "Ziegler", "Chien", "Oppelt", "Rosenberg", "Tsumme"}));
 		comboBox_1.setSelectedIndex(1);
 		panel_3.add(comboBox_1);
 		
@@ -383,12 +361,14 @@ public class View extends JPanel{
 		gbc_chckbxNewCheckBox_1.gridy = 2;
 		panel_10.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 		
-		JPanel panel_12 = new JPanel();
+		JPanel panel_12 = MatlabCall.makePanel();
 		panel_12.setBackground(Color.WHITE);
 		panel_8.add(panel_12, BorderLayout.CENTER);
 		
 		JLabel lblStatus = new JLabel("Status");
 		add(lblStatus, BorderLayout.SOUTH);
+		
+		
 	}
 	
 	public static void main(String[] args) {
