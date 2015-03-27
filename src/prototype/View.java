@@ -361,7 +361,7 @@ public class View extends JPanel{
 		gbc_chckbxNewCheckBox_1.gridy = 2;
 		panel_10.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 		
-		JPanel panel_12 = MatlabCall.makePanel();
+		JPanel panel_12 = MatlabStep.makePanel();
 		panel_12.setBackground(Color.WHITE);
 		panel_8.add(panel_12, BorderLayout.CENTER);
 		

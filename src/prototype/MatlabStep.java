@@ -11,9 +11,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class MatlabCall {
-	public static JPanel makePanel() {
-		
+public class MatlabStep {
+	public static double[] calcStep(String poly){
 		// Create a proxy, which we will use to control MATLAB
 		MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder()
 				.setHidden(true).build();
@@ -24,7 +23,7 @@ public class MatlabCall {
 		try {
 			MatlabProxy proxy = factory.getProxy();
 			output = (double[]) proxy
-					.returningEval("step([1],[1 1 2])", 1)[0];
+					.returningEval("step("+poly+")", 1)[0];
 					proxy.exit();
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block
@@ -33,11 +32,13 @@ public class MatlabCall {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return output;
+	}
+	
+	public static JPanel makePanel() {
+		
+		double[] output = calcStep("[1],[1 1 2]");
 
-		
-		
-		
-		// create a dataset...
 		XYSeries ser1 = new XYSeries("Test");
 		for (int i = 0; i < output.length; i++) {
 			ser1.add((double)i, output[i]);
