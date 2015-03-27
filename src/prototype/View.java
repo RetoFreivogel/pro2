@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 
+import util.Chart;
+import util.Matlab;
+
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -360,8 +363,11 @@ public class View extends JPanel{
 		gbc_chckbxNewCheckBox_1.gridx = 1;
 		gbc_chckbxNewCheckBox_1.gridy = 2;
 		panel_10.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+
 		
-		JPanel panel_12 = MatlabStep.makePanel();
+		double[] output = Matlab.calcStep("[1],[1 1 2]");
+		Matlab.closeProxy();
+		JPanel panel_12 = Chart.makePanel(output);
 		panel_12.setBackground(Color.WHITE);
 		panel_8.add(panel_12, BorderLayout.CENTER);
 		
