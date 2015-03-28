@@ -44,4 +44,14 @@ public class Regler extends RegelGlied{
 		setChanged();
 		notifyObservers();
 	}
+	
+	public boolean equals(Object other){
+		if(this == other)return true;
+		if(!(other instanceof Regler))return false;
+		Regler regler = (Regler)other;
+		
+		return 	this.Kr == regler.getKr() &&
+				this.Tn == regler.getTn() &&
+				this.Tv == regler.getTv();
+	}
 }
