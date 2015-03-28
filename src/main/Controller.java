@@ -1,6 +1,6 @@
 package main;
 
-public class Controller {
+public class Controller{
 	private Model model;
 	private View view;
 
@@ -16,4 +16,12 @@ public class Controller {
 	public void setView(View view) {
 		this.view = view;
 	}
+	
+	public void handleCommand(Command command){
+		try{ 
+			command.execute(model);
+		}catch(Exception e){
+			view.setStatus(e.getMessage());
+		}
+	}	
 }

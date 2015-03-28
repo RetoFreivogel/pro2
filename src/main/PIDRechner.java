@@ -11,7 +11,7 @@ public class PIDRechner extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public void init() {
-		setSize(800, 600);
+		setSize(400, 300);
 		Model model = new Model();
 		Controller controller = new Controller(model);
 		View view = new View(controller, model);
@@ -23,6 +23,7 @@ public class PIDRechner extends JFrame{
 	public static void main(String args[]) {
 		PIDRechner rechner = new PIDRechner();
 		rechner.addWindowListener(new WindowAdapter() {
+			@SuppressWarnings("unused")
 			public void windowClosing(WindowEvent e) {
 				System.exit(1);
 			}
