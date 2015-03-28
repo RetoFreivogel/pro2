@@ -1,5 +1,5 @@
 package main;
 
-public abstract class ReglerDim {	
-	public abstract Regler calc(RegelStrecke regelstrecke);
+public interface ReglerDim{	
+	public abstract Regler calc(ImmutableRegelStrecke regelstrecke);
 }

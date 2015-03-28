@@ -1,45 +1,25 @@
 package main;
 
-public class ManuellDim extends ReglerDim {
-	private double Kr, Tn, Tv;
+interface ImmutableManuellDim extends ReglerDim{
+	public ImmutableRegler getRegler();
+}
 
-	public ManuellDim(double kr, double tn, double tv) {
-		this.Kr = kr;
-		this.Tn = tn;
-		this.Tv = tv;
+public class ManuellDim implements ImmutableManuellDim{
+	Regler regler;
+
+	public ManuellDim(ImmutableRegler regler) {
+		this.regler = new Regler(regler);
+	}
+	
+	public ManuellDim(ImmutableManuellDim dim) {
+		this.regler = new Regler(dim.getRegler());
 	}
 
-	public ManuellDim(Regler regler) {
-		this.Kr = regler.getKr();
-		this.Tn = regler.getTn();
-		this.Tv = regler.getTv();
+	public Regler calc(ImmutableRegelStrecke regelstrecke) {
+		return regler;
 	}
 
-	public Regler calc(RegelStrecke regelstrecke) {
-		return new Regler(Kr, Tn, Tv);
-	}
-
-	public double getKr() {
-		return Kr;
-	}
-
-	public void setKr(double kr) {
-		Kr = kr;
-	}
-
-	public double getTn() {
-		return Tn;
-	}
-
-	public void setTn(double tn) {
-		Tn = tn;
-	}
-
-	public double getTv() {
-		return Tv;
-	}
-
-	public void setTv(double tv) {
-		Tv = tv;
+	public ImmutableRegler getRegler() {
+		return regler;
 	}
 }

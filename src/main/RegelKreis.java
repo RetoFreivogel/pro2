@@ -1,6 +1,12 @@
 package main;
 
-public class RegelKreis extends RegelGlied {
+interface ImmutableRegelKreis extends ImmutableRegelGlied{
+	public ImmutableRegler getRegler();
+	public ReglerDim getDim();
+	public ImmutableRegelStrecke getRegelstrecke();
+}
+
+public class RegelKreis extends RegelGlied implements ImmutableRegelKreis{
 	private Regler regler;
 	private RegelStrecke regelstrecke;
 	private ReglerDim dim;
@@ -21,30 +27,31 @@ public class RegelKreis extends RegelGlied {
 		regler = dim.calc(regelstrecke);
 	}
 	
-	public ReglerDim getDim() {
-		return dim;
-	}
-
 	public void setDim(ReglerDim dim) {
 		this.dim = dim;
 		auto_dim();
-	}
-	
-	public Regler getRegler() {
-		return regler;
 	}
 	
 	public void setRegler(Regler regler) {
 		dim = new ManuellDim(regler);
 		auto_dim();
 	}
-
-	public RegelStrecke getRegelstrecke() {
-		return regelstrecke;
-	}
-
+	
 	public void setRegelstrecke(RegelStrecke regelstrecke) {
 		this.regelstrecke = regelstrecke;
 		auto_dim();
+	}
+
+	
+	public ImmutableRegler getRegler() {
+		return regler;
+	}
+
+	public ReglerDim getDim() {
+		return dim;
+	}
+	
+	public ImmutableRegelStrecke getRegelstrecke() {
+		return regelstrecke;
 	}
 }
