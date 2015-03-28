@@ -1,5 +1,7 @@
 package main;
 
-public interface ReglerDim{	
-	public abstract Regler calc(ImmutableRegelStrecke regelstrecke);
+import java.util.Observable;
+
+public abstract class ReglerDim extends Observable{	
+	public abstract Regler calc(RegelStrecke regelstrecke);
 }

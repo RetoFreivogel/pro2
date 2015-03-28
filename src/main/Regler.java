@@ -1,12 +1,6 @@
 package main;
 
-interface ImmutableRegler extends ImmutableRegelGlied{
-	public double getKr();
-	public double getTn();
-	public double getTv();
-}
-
-public class Regler extends RegelGlied implements ImmutableRegler{
+public class Regler extends RegelGlied{
 	private double Kr, Tn, Tv;
 
 	public Regler(double kr, double tn, double tv){
@@ -15,7 +9,7 @@ public class Regler extends RegelGlied implements ImmutableRegler{
 		this.Tv = tv;
 	}
 	
-	public Regler(ImmutableRegler regler){
+	public Regler(Regler regler){
 		this.Kr = regler.getKr();
 		this.Tn = regler.getTn();
 		this.Tv = regler.getTv();
@@ -35,13 +29,19 @@ public class Regler extends RegelGlied implements ImmutableRegler{
 	
 	public void setKr(double kr) {
 		Kr = kr;
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setTn(double tn) {
 		Tn = tn;
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setTv(double tv) {
 		Tv = tv;
+		setChanged();
+		notifyObservers();
 	}
 }

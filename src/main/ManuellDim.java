@@ -1,25 +1,22 @@
 package main;
 
-interface ImmutableManuellDim extends ReglerDim{
-	public ImmutableRegler getRegler();
-}
 
-public class ManuellDim implements ImmutableManuellDim{
+public class ManuellDim extends ReglerDim{
 	Regler regler;
 
-	public ManuellDim(ImmutableRegler regler) {
-		this.regler = new Regler(regler);
+	public ManuellDim(Regler regler) {
+		this.regler = regler;
 	}
 	
-	public ManuellDim(ImmutableManuellDim dim) {
-		this.regler = new Regler(dim.getRegler());
+	public ManuellDim(ManuellDim dim) {
+		this.regler = dim.getRegler();
 	}
 
-	public Regler calc(ImmutableRegelStrecke regelstrecke) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		return regler;
 	}
 
-	public ImmutableRegler getRegler() {
+	public Regler getRegler() {
 		return regler;
 	}
 }

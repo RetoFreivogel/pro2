@@ -1,12 +1,6 @@
 package main;
 
-interface ImmutableRegelStrecke extends ImmutableRegelGlied{
-	public double getKs();
-	public double getTu();
-	public double getTg();
-}
-
-public class RegelStrecke extends RegelGlied implements ImmutableRegelStrecke{
+public class RegelStrecke extends RegelGlied{
 	private double Ks, Tu, Tg;
 
 	public RegelStrecke(double ks, double tu, double tg){
@@ -15,7 +9,7 @@ public class RegelStrecke extends RegelGlied implements ImmutableRegelStrecke{
 		this.Tg = tg;
 	}
 	
-	public RegelStrecke(ImmutableRegelStrecke regelstrecke){
+	public RegelStrecke(RegelStrecke regelstrecke){
 		this.Ks = regelstrecke.getKs();
 		this.Tu = regelstrecke.getTu();
 		this.Tg = regelstrecke.getTg();
@@ -23,14 +17,20 @@ public class RegelStrecke extends RegelGlied implements ImmutableRegelStrecke{
 	
 	public void setKs(double ks) {
 		Ks = ks;
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setTu(double tu) {
 		Tu = tu;
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setTg(double tg) {
 		Tg = tg;
+		setChanged();
+		notifyObservers();
 	}
 
 	public double getKs() {

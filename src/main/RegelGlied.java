@@ -1,17 +1,10 @@
 package main;
 
-import javax.swing.JFrame;
+import java.util.Observable;
 
-import util.Chart;
 import util.Matlab;
 
-interface ImmutableRegelGlied{
-	public double[] schrittantwort();
-	public double[] getPolyZaehler();
-	public double[] getPolyNenner();
-}
-
-public class RegelGlied implements ImmutableRegelGlied{
+public class RegelGlied extends Observable{
 	private double[] zaehler;
 	private double[] nenner;
 	
@@ -51,21 +44,21 @@ public class RegelGlied implements ImmutableRegelGlied{
 	
 	public void setPolyZaehler(double[] polyZaehler) {
 		zaehler = polyZaehler;
+		setChanged();
+		notifyObservers();
+	}
+	
+	protected void silentSetPolyZaehler(double[] polyZaehler) {
+		zaehler = polyZaehler;
 	}
 
 	public void setPolyNenner(double[] polyNenner) {
 		nenner = polyNenner;
+		setChanged();
+		notifyObservers();
 	}
 	
-	public static void main(String[] argv) {
-		double[] z = { 1.0 };
-		double[] n = { 1.0, 1.0, 1.0, 0.9};
-		RegelGlied rg = new RegelGlied(z, n);
-		double[] schritt = rg.schrittantwort();
-
-		JFrame frame = Chart.makeFrame(schritt);
-		frame.pack();
-		frame.setVisible(true);
-		Matlab.closeProxy();
-	}
+	protected void silentSetPolyNenner(double[] polyNenner) {
+		nenner = polyNenner;
+	}	
 }
