@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 import com.sun.glass.events.WindowEvent;
 
-public class PIDRechner extends JFrame{
+public class PIDRechner extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,4 +34,3 @@ public class PIDRechner extends JFrame{
 	}
 
 }
-

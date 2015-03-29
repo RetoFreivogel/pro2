@@ -1,20 +1,20 @@
 package main;
 
-public class RegelStrecke extends RegelGlied{
+public class RegelStrecke extends RegelGlied {
 	private double Ks, Tu, Tg;
 
-	public RegelStrecke(double ks, double tu, double tg){
+	public RegelStrecke(double ks, double tu, double tg) {
 		this.Ks = ks;
 		this.Tu = tu;
 		this.Tg = tg;
 	}
-	
-	public RegelStrecke(RegelStrecke regelstrecke){
+
+	public RegelStrecke(RegelStrecke regelstrecke) {
 		this.Ks = regelstrecke.getKs();
 		this.Tu = regelstrecke.getTu();
 		this.Tg = regelstrecke.getTg();
 	}
-	
+
 	public void setKs(double ks) {
 		Ks = ks;
 		setChanged();
@@ -43,5 +43,5 @@ public class RegelStrecke extends RegelGlied{
 
 	public double getTg() {
 		return Tg;
-	}	
+	}
 }

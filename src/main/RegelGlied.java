@@ -4,10 +4,10 @@ import java.util.Observable;
 
 import util.Matlab;
 
-public class RegelGlied extends Observable{
+public class RegelGlied extends Observable {
 	private double[] zaehler;
 	private double[] nenner;
-	
+
 	public RegelGlied(double[] zaehler, double[] nenner) {
 		this.zaehler = zaehler;
 		this.nenner = nenner;
@@ -41,13 +41,13 @@ public class RegelGlied extends Observable{
 	public double[] getPolyNenner() {
 		return nenner;
 	}
-	
+
 	public void setPolyZaehler(double[] polyZaehler) {
 		zaehler = polyZaehler;
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	protected void silentSetPolyZaehler(double[] polyZaehler) {
 		zaehler = polyZaehler;
 	}
@@ -57,8 +57,8 @@ public class RegelGlied extends Observable{
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	protected void silentSetPolyNenner(double[] polyNenner) {
 		nenner = polyNenner;
-	}	
+	}
 }

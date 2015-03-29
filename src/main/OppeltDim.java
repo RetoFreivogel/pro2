@@ -2,7 +2,7 @@ package main;
 
 public class OppeltDim extends ReglerDim {
 
-	public Regler calc(RegelStrecke regelstrecke ) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();

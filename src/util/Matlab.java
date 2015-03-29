@@ -25,7 +25,7 @@ public class Matlab {
 		}
 		return proxy;
 	}
-	
+
 	public static void closeProxy() {
 		if (proxy != null) {
 			try {
@@ -77,8 +77,8 @@ public class Matlab {
 		}
 		return output;
 	}
-	
-	public void finalize(){
+
+	public void finalize() {
 		try {
 			proxy.exit();
 		} catch (MatlabInvocationException e) {

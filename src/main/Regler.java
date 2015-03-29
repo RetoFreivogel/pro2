@@ -1,20 +1,20 @@
 package main;
 
-public class Regler extends RegelGlied{
+public class Regler extends RegelGlied {
 	private double Kr, Tn, Tv;
 
-	public Regler(double kr, double tn, double tv){
+	public Regler(double kr, double tn, double tv) {
 		this.Kr = kr;
 		this.Tn = tn;
 		this.Tv = tv;
 	}
-	
-	public Regler(Regler regler){
+
+	public Regler(Regler regler) {
 		this.Kr = regler.getKr();
 		this.Tn = regler.getTn();
 		this.Tv = regler.getTv();
 	}
-	
+
 	public double getKr() {
 		return Kr;
 	}
@@ -26,7 +26,7 @@ public class Regler extends RegelGlied{
 	public double getTv() {
 		return Tv;
 	}
-	
+
 	public void setKr(double kr) {
 		Kr = kr;
 		setChanged();
@@ -44,14 +44,15 @@ public class Regler extends RegelGlied{
 		setChanged();
 		notifyObservers();
 	}
-	
-	public boolean equals(Object other){
-		if(this == other)return true;
-		if(!(other instanceof Regler))return false;
-		Regler regler = (Regler)other;
-		
-		return 	this.Kr == regler.getKr() &&
-				this.Tn == regler.getTn() &&
-				this.Tv == regler.getTv();
+
+	public boolean equals(Object other) {
+		if (this == other)
+			return true;
+		if (!(other instanceof Regler))
+			return false;
+		Regler regler = (Regler) other;
+
+		return this.Kr == regler.getKr() && this.Tn == regler.getTn()
+				&& this.Tv == regler.getTv();
 	}
 }
