@@ -30,6 +30,7 @@ public class RegelKreis extends RegelGlied implements Observer{
 		regler.deleteObserver(this);
 		regler = dim.calc(regelstrecke);
 		regler.addObserver(this);
+		setChanged();
 		notifyObservers();
 	}
 	
