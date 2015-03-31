@@ -1,10 +1,7 @@
 package main;
 
-import java.awt.event.WindowAdapter;
-
 import javax.swing.JFrame;
-
-import com.sun.glass.events.WindowEvent;
+import javax.swing.SwingUtilities;
 
 public class PIDRechner extends JFrame {
 
@@ -21,16 +18,16 @@ public class PIDRechner extends JFrame {
 	}
 
 	public static void main(String args[]) {
-		PIDRechner rechner = new PIDRechner();
-		rechner.addWindowListener(new WindowAdapter() {
-			@SuppressWarnings("unused")
-			public void windowClosing(WindowEvent e) {
-				System.exit(1);
+
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				PIDRechner rechner = new PIDRechner();
+				rechner.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				rechner.init();
+				rechner.setVisible(true);
+				rechner.setTitle("MVCFramework");
 			}
 		});
-		rechner.init();
-		rechner.setVisible(true);
-		rechner.setTitle("MVCFramework");
 	}
-
 }
