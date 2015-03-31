@@ -19,9 +19,9 @@ public class Controller {
 
 	public void handleCommand(Command command) {
 		try {
-			command.execute(model);
+			command.execute(this.model);
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			this.view.setStatus(e.getMessage());
 		}
 	}
 }

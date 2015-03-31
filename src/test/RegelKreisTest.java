@@ -8,7 +8,7 @@ import org.junit.Test;
 public class RegelKreisTest {
 
 	@Test
-	public void makeOppeltKreis() {
+	public static void makeOppeltKreis() {
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 0.1, 0.5);
 		OppeltDim dim = new OppeltDim();
 		RegelKreis regelkreis = new RegelKreis(dim, regelstrecke);
@@ -18,7 +18,7 @@ public class RegelKreisTest {
 	}
 
 	@Test
-	public void modifyInternalRegler() {
+	public static void modifyInternalRegler() {
 		// modification of internal regler must change dim to a ManuellDim
 
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 0.1, 0.5);

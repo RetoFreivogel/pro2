@@ -133,26 +133,26 @@ public class View extends JPanel {
 		JLabel label_1 = new JLabel("Ks");
 		panel_2.add(label_1);
 
-		textField = new JTextField();
-		textField.setText("1");
-		textField.setColumns(10);
-		panel_2.add(textField);
+		this.textField = new JTextField();
+		this.textField.setText("1");
+		this.textField.setColumns(10);
+		panel_2.add(this.textField);
 
 		JLabel label_2 = new JLabel("Tg");
 		panel_2.add(label_2);
 
-		textField_1 = new JTextField();
-		textField_1.setText("1");
-		textField_1.setColumns(10);
-		panel_2.add(textField_1);
+		this.textField_1 = new JTextField();
+		this.textField_1.setText("1");
+		this.textField_1.setColumns(10);
+		panel_2.add(this.textField_1);
 
 		JLabel label_3 = new JLabel("Tu");
 		panel_2.add(label_3);
 
-		textField_2 = new JTextField();
-		textField_2.setText("5");
-		textField_2.setColumns(10);
-		panel_2.add(textField_2);
+		this.textField_2 = new JTextField();
+		this.textField_2.setText("5");
+		this.textField_2.setColumns(10);
+		panel_2.add(this.textField_2);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
@@ -183,10 +183,10 @@ public class View extends JPanel {
 		JLabel label_5 = new JLabel("Phasenrand");
 		panel_3.add(label_5);
 
-		textField_4 = new JTextField();
-		textField_4.setText("20\u00B0");
-		textField_4.setColumns(10);
-		panel_3.add(textField_4);
+		this.textField_4 = new JTextField();
+		this.textField_4.setText("20\u00B0");
+		this.textField_4.setColumns(10);
+		panel_3.add(this.textField_4);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
@@ -204,11 +204,11 @@ public class View extends JPanel {
 		JLabel lblN = new JLabel("Ordnung");
 		panel_5.add(lblN);
 
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setText("3");
-		panel_5.add(textField_3);
-		textField_3.setColumns(10);
+		this.textField_3 = new JTextField();
+		this.textField_3.setEditable(false);
+		this.textField_3.setText("3");
+		panel_5.add(this.textField_3);
+		this.textField_3.setColumns(10);
 
 		JLabel lblTn = new JLabel("Zeitkonstanten");
 		panel_5.add(lblTn);
@@ -225,38 +225,38 @@ public class View extends JPanel {
 		JLabel lblKr = new JLabel("Kr");
 		panel_6.add(lblKr);
 
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setText("50");
-		panel_6.add(textField_5);
-		textField_5.setColumns(10);
+		this.textField_5 = new JTextField();
+		this.textField_5.setEditable(false);
+		this.textField_5.setText("50");
+		panel_6.add(this.textField_5);
+		this.textField_5.setColumns(10);
 
 		JLabel lblTn_1 = new JLabel("Tn");
 		panel_6.add(lblTn_1);
 
-		textField_7 = new JTextField();
-		textField_7.setEditable(false);
-		textField_7.setText("1");
-		panel_6.add(textField_7);
-		textField_7.setColumns(10);
+		this.textField_7 = new JTextField();
+		this.textField_7.setEditable(false);
+		this.textField_7.setText("1");
+		panel_6.add(this.textField_7);
+		this.textField_7.setColumns(10);
 
 		JLabel lblTv = new JLabel("Tv");
 		panel_6.add(lblTv);
 
-		textField_8 = new JTextField();
-		textField_8.setEditable(false);
-		textField_8.setText("1");
-		panel_6.add(textField_8);
-		textField_8.setColumns(10);
+		this.textField_8 = new JTextField();
+		this.textField_8.setEditable(false);
+		this.textField_8.setText("1");
+		panel_6.add(this.textField_8);
+		this.textField_8.setColumns(10);
 
 		JLabel lblTp = new JLabel("Tp");
 		panel_6.add(lblTp);
 
-		textField_9 = new JTextField();
-		textField_9.setEditable(false);
-		textField_9.setText("10");
-		panel_6.add(textField_9);
-		textField_9.setColumns(10);
+		this.textField_9 = new JTextField();
+		this.textField_9.setEditable(false);
+		this.textField_9.setText("10");
+		panel_6.add(this.textField_9);
+		this.textField_9.setColumns(10);
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
@@ -267,65 +267,65 @@ public class View extends JPanel {
 		JLabel lblYmax = new JLabel("Ymax");
 		panel_7.add(lblYmax);
 
-		textField_6 = new JTextField();
-		textField_6.setEditable(false);
-		textField_6.setText("1.25");
-		panel_7.add(textField_6);
-		textField_6.setColumns(10);
+		this.textField_6 = new JTextField();
+		this.textField_6.setEditable(false);
+		this.textField_6.setText("1.25");
+		panel_7.add(this.textField_6);
+		this.textField_6.setColumns(10);
 
 		JLabel lblTan = new JLabel("Tan");
 		panel_7.add(lblTan);
 
-		textField_14 = new JTextField();
-		textField_14.setEditable(false);
-		textField_14.setText("0.75");
-		panel_7.add(textField_14);
-		textField_14.setColumns(10);
+		this.textField_14 = new JTextField();
+		this.textField_14.setEditable(false);
+		this.textField_14.setText("0.75");
+		panel_7.add(this.textField_14);
+		this.textField_14.setColumns(10);
 
 		JLabel lblTaus = new JLabel("Taus");
 		panel_7.add(lblTaus);
 
-		textField_15 = new JTextField();
-		textField_15.setEditable(false);
-		textField_15.setText("1.25");
-		panel_7.add(textField_15);
-		textField_15.setColumns(10);
+		this.textField_15 = new JTextField();
+		this.textField_15.setEditable(false);
+		this.textField_15.setText("1.25");
+		panel_7.add(this.textField_15);
+		this.textField_15.setColumns(10);
 
 		JLabel lblSetDt = new JLabel("S |e(t)| dt");
 		panel_7.add(lblSetDt);
 
-		textField_10 = new JTextField();
-		textField_10.setEditable(false);
-		textField_10.setText("1");
-		panel_7.add(textField_10);
-		textField_10.setColumns(10);
+		this.textField_10 = new JTextField();
+		this.textField_10.setEditable(false);
+		this.textField_10.setText("1");
+		panel_7.add(this.textField_10);
+		this.textField_10.setColumns(10);
 
 		JLabel lblSEtDt = new JLabel("S e(t)^2 dt");
 		panel_7.add(lblSEtDt);
 
-		textField_11 = new JTextField();
-		textField_11.setEditable(false);
-		textField_11.setText("2");
-		panel_7.add(textField_11);
-		textField_11.setColumns(10);
+		this.textField_11 = new JTextField();
+		this.textField_11.setEditable(false);
+		this.textField_11.setText("2");
+		panel_7.add(this.textField_11);
+		this.textField_11.setColumns(10);
 
 		JLabel lblSettDt = new JLabel("S |e(t)|*t dt");
 		panel_7.add(lblSettDt);
 
-		textField_12 = new JTextField();
-		textField_12.setEditable(false);
-		textField_12.setText("2");
-		panel_7.add(textField_12);
-		textField_12.setColumns(10);
+		this.textField_12 = new JTextField();
+		this.textField_12.setEditable(false);
+		this.textField_12.setText("2");
+		panel_7.add(this.textField_12);
+		this.textField_12.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("S e(t)^2*t dt");
 		panel_7.add(lblNewLabel);
 
-		textField_13 = new JTextField();
-		textField_13.setEditable(false);
-		textField_13.setText("4");
-		panel_7.add(textField_13);
-		textField_13.setColumns(10);
+		this.textField_13 = new JTextField();
+		this.textField_13.setEditable(false);
+		this.textField_13.setText("4");
+		panel_7.add(this.textField_13);
+		this.textField_13.setColumns(10);
 
 		JPanel panel_8 = new JPanel();
 		panel_8.setBackground(Color.WHITE);

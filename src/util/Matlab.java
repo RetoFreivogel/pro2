@@ -41,13 +41,13 @@ public class Matlab {
 	public static double[] calcSani(RegelStrecke rs) {
 		double[] output = {};
 
-		MatlabProxy proxy = getProxy();
+		MatlabProxy matlabProxy = getProxy();
 
 		String saniArgs = "" + rs.getTu() + "," + rs.getTg();
 
 		try {
-			output = (double[]) proxy.returningEval(
-					"p2_sani(" + saniArgs + ")", 2)[1];
+			output = (double[]) matlabProxy.returningEval("p2_sani(" + saniArgs
+					+ ")", 2)[1];
 
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block
@@ -65,8 +65,9 @@ public class Matlab {
 		// Display 'hello world' just like when using the demo
 		double[] output = {};
 		try {
-			MatlabProxy proxy = factory.getProxy();
-			output = (double[]) proxy.returningEval("step(" + poly + ")", 1)[0];
+			MatlabProxy matlabProxy = factory.getProxy();
+			output = (double[]) matlabProxy.returningEval("step(" + poly + ")",
+					1)[0];
 
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block
@@ -76,12 +77,5 @@ public class Matlab {
 			e.printStackTrace();
 		}
 		return output;
-	}
-
-	public void finalize() {
-		try {
-			proxy.exit();
-		} catch (MatlabInvocationException e) {
-		}
 	}
 }

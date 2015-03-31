@@ -16,43 +16,67 @@ public class Regler extends RegelGlied {
 	}
 
 	public double getKr() {
-		return Kr;
+		return this.Kr;
 	}
 
 	public double getTn() {
-		return Tn;
+		return this.Tn;
 	}
 
 	public double getTv() {
-		return Tv;
+		return this.Tv;
 	}
 
 	public void setKr(double kr) {
-		Kr = kr;
+		this.Kr = kr;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTn(double tn) {
-		Tn = tn;
+		this.Tn = tn;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTv(double tv) {
-		Tv = tv;
+		this.Tv = tv;
 		setChanged();
 		notifyObservers();
 	}
 
-	public boolean equals(Object other) {
-		if (this == other)
-			return true;
-		if (!(other instanceof Regler))
-			return false;
-		Regler regler = (Regler) other;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(this.Kr);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(this.Tn);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(this.Tv);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
 
-		return this.Kr == regler.getKr() && this.Tn == regler.getTn()
-				&& this.Tv == regler.getTv();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Regler other = (Regler) obj;
+		if (Double.doubleToLongBits(this.Kr) != Double
+				.doubleToLongBits(other.Kr))
+			return false;
+		if (Double.doubleToLongBits(this.Tn) != Double
+				.doubleToLongBits(other.Tn))
+			return false;
+		if (Double.doubleToLongBits(this.Tv) != Double
+				.doubleToLongBits(other.Tv))
+			return false;
+		return true;
 	}
 }

@@ -20,12 +20,12 @@ public class RegelGlied extends Observable {
 
 	public double[] schrittantwort() {
 		String polyString = "[";
-		for (int i = 0; i < zaehler.length; i++) {
-			polyString += zaehler[i] + " ";
+		for (int i = 0; i < this.zaehler.length; i++) {
+			polyString += this.zaehler[i] + " ";
 		}
 		polyString += "],[";
-		for (int i = 0; i < nenner.length; i++) {
-			polyString += nenner[i] + " ";
+		for (int i = 0; i < this.nenner.length; i++) {
+			polyString += this.nenner[i] + " ";
 		}
 		polyString += "]";
 
@@ -35,30 +35,30 @@ public class RegelGlied extends Observable {
 	}
 
 	public double[] getPolyZaehler() {
-		return zaehler;
+		return this.zaehler;
 	}
 
 	public double[] getPolyNenner() {
-		return nenner;
+		return this.nenner;
 	}
 
 	public void setPolyZaehler(double[] polyZaehler) {
-		zaehler = polyZaehler;
+		this.zaehler = polyZaehler;
 		setChanged();
 		notifyObservers();
 	}
 
 	protected void silentSetPolyZaehler(double[] polyZaehler) {
-		zaehler = polyZaehler;
+		this.zaehler = polyZaehler;
 	}
 
 	public void setPolyNenner(double[] polyNenner) {
-		nenner = polyNenner;
+		this.nenner = polyNenner;
 		setChanged();
 		notifyObservers();
 	}
 
 	protected void silentSetPolyNenner(double[] polyNenner) {
-		nenner = polyNenner;
+		this.nenner = polyNenner;
 	}
 }

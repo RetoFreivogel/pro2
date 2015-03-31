@@ -15,11 +15,12 @@ public class ManuellDim extends ReglerDim {
 		this.regler = dim.getRegler();
 	}
 
+	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
-		return regler;
+		return this.regler;
 	}
 
 	public Regler getRegler() {
-		return regler;
+		return this.regler;
 	}
 }

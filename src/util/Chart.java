@@ -15,7 +15,7 @@ public class Chart {
 	public static JFreeChart makeChart(double[] data) {
 		XYSeries ser1 = new XYSeries("Test");
 		for (int i = 0; i < data.length; i++) {
-			ser1.add((double) i, data[i]);
+			ser1.add(i, data[i]);
 		}
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(ser1);

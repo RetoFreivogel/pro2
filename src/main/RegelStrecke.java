@@ -16,32 +16,32 @@ public class RegelStrecke extends RegelGlied {
 	}
 
 	public void setKs(double ks) {
-		Ks = ks;
+		this.Ks = ks;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTu(double tu) {
-		Tu = tu;
+		this.Tu = tu;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTg(double tg) {
-		Tg = tg;
+		this.Tg = tg;
 		setChanged();
 		notifyObservers();
 	}
 
 	public double getKs() {
-		return Ks;
+		return this.Ks;
 	}
 
 	public double getTu() {
-		return Tu;
+		return this.Tu;
 	}
 
 	public double getTg() {
-		return Tg;
+		return this.Tg;
 	}
 }

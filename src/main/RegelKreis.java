@@ -27,9 +27,9 @@ public class RegelKreis extends RegelGlied implements Observer {
 	}
 
 	public void auto_dim() {
-		regler.deleteObserver(this);
-		regler = dim.calc(regelstrecke);
-		regler.addObserver(this);
+		this.regler.deleteObserver(this);
+		this.regler = this.dim.calc(this.regelstrecke);
+		this.regler.addObserver(this);
 		setChanged();
 		notifyObservers();
 	}
@@ -53,21 +53,21 @@ public class RegelKreis extends RegelGlied implements Observer {
 	}
 
 	public Regler getRegler() {
-		return regler;
+		return this.regler;
 	}
 
 	public ReglerDim getDim() {
-		return dim;
+		return this.dim;
 	}
 
 	public RegelStrecke getRegelstrecke() {
-		return regelstrecke;
+		return this.regelstrecke;
 	}
 
 	@Override
 	public void update(Observable obs, Object arg) {
-		if (obs == regler) {
-			setRegler(regler);
+		if (obs == this.regler) {
+			setRegler(this.regler);
 		} else {
 			auto_dim();
 		}

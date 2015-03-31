@@ -9,7 +9,7 @@ import main.*;
 public class ReglerTest {
 
 	@Test
-	public void copyConstructorMakesAnEqualRegler() {
+	public static void copyConstructorMakesAnEqualRegler() {
 		Regler regler = new Regler(1.0, 0.5, 0.0);
 		Regler reglercopy = new Regler(regler);
 		assertFalse(regler == reglercopy);
