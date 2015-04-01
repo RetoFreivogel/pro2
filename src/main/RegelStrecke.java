@@ -1,7 +1,7 @@
 package main;
 
-public class RegelStrecke extends RegelGlied {
-	private double Ks, Tu, Tg;
+public final class RegelStrecke extends TranferFunction {
+	private final double Ks, Tu, Tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		this.Ks = ks;
@@ -15,24 +15,6 @@ public class RegelStrecke extends RegelGlied {
 		this.Tg = regelstrecke.getTg();
 	}
 
-	public void setKs(double ks) {
-		this.Ks = ks;
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setTu(double tu) {
-		this.Tu = tu;
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setTg(double tg) {
-		this.Tg = tg;
-		setChanged();
-		notifyObservers();
-	}
-
 	public double getKs() {
 		return this.Ks;
 	}
@@ -43,5 +25,15 @@ public class RegelStrecke extends RegelGlied {
 
 	public double getTg() {
 		return this.Tg;
+	}
+	
+	@Override
+	protected double[] getPolyZaehler() {
+		throw new UnsupportedOperationException("Not Implemented");
+	}
+
+	@Override
+	protected double[] getPolyNenner() {
+		throw new UnsupportedOperationException("Not Implemented");
 	}
 }

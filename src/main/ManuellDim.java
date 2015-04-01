@@ -1,7 +1,7 @@
 package main;
 
-public class ManuellDim extends ReglerDim {
-	Regler regler;
+public final class ManuellDim extends ReglerDim {
+	private final Regler regler;
 
 	public ManuellDim(double kr, double tn, double tv) {
 		this.regler = new Regler(kr, tn, tv);
@@ -11,8 +11,9 @@ public class ManuellDim extends ReglerDim {
 		this.regler = regler;
 	}
 
-	public ManuellDim(ManuellDim dim) {
-		this.regler = dim.getRegler();
+	@Override
+	public ReglerDim makeCopy() {
+		return this;
 	}
 
 	@Override

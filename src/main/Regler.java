@@ -1,7 +1,7 @@
 package main;
 
-public class Regler extends RegelGlied {
-	private double Kr, Tn, Tv;
+public final class Regler extends TranferFunction {
+	private final double Kr, Tn, Tv;
 
 	public Regler(double kr, double tn, double tv) {
 		this.Kr = kr;
@@ -14,6 +14,10 @@ public class Regler extends RegelGlied {
 		this.Tn = regler.getTn();
 		this.Tv = regler.getTv();
 	}
+	
+	public Regler setKr(double kr){
+		return new Regler(kr, this.Tn, this.Tv);
+	}
 
 	public double getKr() {
 		return this.Kr;
@@ -25,24 +29,6 @@ public class Regler extends RegelGlied {
 
 	public double getTv() {
 		return this.Tv;
-	}
-
-	public void setKr(double kr) {
-		this.Kr = kr;
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setTn(double tn) {
-		this.Tn = tn;
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setTv(double tv) {
-		this.Tv = tv;
-		setChanged();
-		notifyObservers();
 	}
 
 	@Override
@@ -78,5 +64,15 @@ public class Regler extends RegelGlied {
 				.doubleToLongBits(other.Tv))
 			return false;
 		return true;
+	}
+	
+	@Override
+	protected double[] getPolyZaehler() {
+		throw new UnsupportedOperationException("Not Implemented");
+	}
+
+	@Override
+	protected double[] getPolyNenner() {
+		throw new UnsupportedOperationException("Not Implemented");
 	}
 }

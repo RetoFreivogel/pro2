@@ -1,10 +1,9 @@
 package main;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Vector;
 
-public class Model extends Observable implements Observer {
+public class Model extends Observable{
 	private Vector<RegelKreis> regelkreisArray;
 
 	public Model() {
@@ -12,7 +11,6 @@ public class Model extends Observable implements Observer {
 		RegelKreis regelkreis = new RegelKreis(new OppeltDim(),
 				new RegelStrecke(1.0, 0.1, 0.5));
 		this.regelkreisArray.add(regelkreis);
-		regelkreis.addObserver(this);
 	}
 
 	public RegelKreis getRegelkreis() {
@@ -21,12 +19,6 @@ public class Model extends Observable implements Observer {
 
 	public void setRegelkreis(RegelKreis regelkreis) {
 		this.regelkreisArray.set(0, regelkreis);
-		setChanged();
-		notifyObservers();
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
 		setChanged();
 		notifyObservers();
 	}

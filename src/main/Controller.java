@@ -17,11 +17,19 @@ public class Controller {
 		this.view = view;
 	}
 
-	public void handleCommand(Command command) {
+	public void setKr(String ks_text) {
 		try {
-			command.execute(this.model);
+			double ks_value = Double.parseDouble(ks_text);
+			RegelKreis alterKreis = this.model.getRegelkreis();
+			RegelStrecke alteStrecke = alterKreis.getRegelstrecke();
+			RegelStrecke neueStrecke = new RegelStrecke(ks_value,
+					alteStrecke.getTu(), alteStrecke.getTg());
+			RegelKreis neuerKreis = new RegelKreis(alterKreis.getDim(), neueStrecke);
+			this.model.setRegelkreis(neuerKreis);
 		} catch (Exception e) {
+			// TODO print better Messages
 			this.view.setStatus(e.getMessage());
 		}
 	}
+
 }
