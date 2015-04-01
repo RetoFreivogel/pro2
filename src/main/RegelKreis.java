@@ -1,28 +1,25 @@
 package main;
 
-public final class RegelKreis extends TranferFunction {
-	private final Regler regler;
-	private final RegelStrecke regelstrecke;
-	private final ReglerDim dim;
+public class RegelKreis extends TranferFunction {
+	private RegelStrecke regelstrecke;
+	private ReglerDim dim;
 
 	public RegelKreis(ReglerDim dim, RegelStrecke regelstrecke) {
-		this.dim = dim.makeCopy();
+		this.dim = dim;
 		this.regelstrecke = regelstrecke;
-		regler = this.dim.calc(regelstrecke);
 	}
 
 	public RegelKreis(Regler regler, RegelStrecke regelstrecke) {
 		dim = new ManuellDim(regler);
 		this.regelstrecke = regelstrecke;
-		this.regler = dim.calc(regelstrecke);
 	}
 
 	public Regler getRegler() {
-		return regler;
+		return dim.calc(regelstrecke);
 	}
 
 	public ReglerDim getDim() {
-		return dim.makeCopy();
+		return dim;
 	}
 
 	public RegelStrecke getRegelstrecke() {

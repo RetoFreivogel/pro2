@@ -2,8 +2,8 @@ package main;
 
 import util.Matlab;
 
-public final class RegelStrecke extends TranferFunction {
-	private final double ks, tu, tg;
+public class RegelStrecke extends TranferFunction {
+	private double ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		this.ks = ks;
@@ -27,6 +27,18 @@ public final class RegelStrecke extends TranferFunction {
 
 	public double getTg() {
 		return tg;
+	}
+	
+	public void setKs(double ks) {
+		this.ks = ks;
+	}
+
+	public void setTu(double tu) {
+		this.tu = tu;
+	}
+
+	public void setTg(double tg) {
+		this.tg = tg;
 	}
 
 	@Override

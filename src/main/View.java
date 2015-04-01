@@ -13,7 +13,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatter;
 
 import util.Chart;
-import util.Matlab;
 
 public class View extends JPanel implements Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +51,7 @@ public class View extends JPanel implements Observer, ActionListener {
 	public void update(Observable o, Object arg) {
 		double[] output = this.model.getRegelkreis().getRegelstrecke()
 				.schrittantwort();
-		remove(graph);
+		if(graph!=null)remove(graph);
 		graph = Chart.makePanel(output);
 		graph.setBackground(Color.WHITE);
 		add(graph, BorderLayout.CENTER);
