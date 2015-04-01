@@ -1,7 +1,13 @@
 package main;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import util.Matlab;
 
 public class PIDRechner extends JFrame {
 
@@ -24,6 +30,13 @@ public class PIDRechner extends JFrame {
 			public void run() {
 				PIDRechner rechner = new PIDRechner();
 				rechner.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				rechner.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosing(WindowEvent e) {
+						super.windowClosing(e);
+						Matlab.closeProxy();
+					}
+				});
 				rechner.init();
 				rechner.setVisible(true);
 				rechner.setTitle("MVCFramework");
