@@ -58,21 +58,15 @@ public class Matlab {
 
 	public static double[] calcStep(String poly) {
 		// Create a proxy, which we will use to control MATLAB
-		MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder()
-				.setHidden(true).build();
-		MatlabProxyFactory factory = new MatlabProxyFactory(options);
 
 		// Display 'hello world' just like when using the demo
 		double[] output = {};
 		try {
-			MatlabProxy matlabProxy = factory.getProxy();
+			MatlabProxy matlabProxy = getProxy();
 			output = (double[]) matlabProxy.returningEval("step(" + poly + ")",
 					1)[0];
 
 		} catch (MatlabInvocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (MatlabConnectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

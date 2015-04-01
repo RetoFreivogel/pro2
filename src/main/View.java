@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -11,6 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatter;
 
+import util.Chart;
+import util.Matlab;
+
 public class View extends JPanel implements Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
 
@@ -19,6 +23,7 @@ public class View extends JPanel implements Observer, ActionListener {
 	private JLabel statusbar;
 	private JFormattedTextField tf_Ks;
 	private JLabel lb_Kr;
+	private JPanel graph = null;
 
 	public View(Controller controller, Model model) {
 		this.controller = controller;
@@ -33,11 +38,14 @@ public class View extends JPanel implements Observer, ActionListener {
 
 		add(this.tf_Ks, BorderLayout.NORTH);
 		this.lb_Kr = new JLabel();
-		add(this.lb_Kr, BorderLayout.CENTER);
+		add(this.lb_Kr, BorderLayout.WEST);
 
-		this.tf_Ks.setText(""
-				+ this.model.getRegelkreis().getRegelstrecke().getKs());
-		this.lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
+		double[] output = Matlab.calcStep("[1],[1 1 2]");
+		this.graph = Chart.makePanel(output);
+		this.graph.setBackground(Color.WHITE);
+		add(this.graph, BorderLayout.CENTER);
+		
+		update(null, null);
 	}
 
 	public void setStatus(String message) {
@@ -46,6 +54,12 @@ public class View extends JPanel implements Observer, ActionListener {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		double[] output = this.model.getRegelkreis().getRegelstrecke().schrittantwort();
+		remove(this.graph);
+		this.graph = Chart.makePanel(output);
+		this.graph.setBackground(Color.WHITE);
+		add(this.graph, BorderLayout.CENTER);
+		
 		this.tf_Ks.setText(""
 				+ this.model.getRegelkreis().getRegelstrecke().getKs());
 		this.lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());

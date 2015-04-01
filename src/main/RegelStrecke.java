@@ -1,5 +1,7 @@
 package main;
 
+import util.Matlab;
+
 public final class RegelStrecke extends TranferFunction {
 	private final double Ks, Tu, Tg;
 
@@ -23,11 +25,11 @@ public final class RegelStrecke extends TranferFunction {
 	
 	@Override
 	protected double[] getPolyZaehler() {
-		return null;
+		return new double[]{this.Ks*this.Tu/this.Tg};
 	}
 
 	@Override
 	protected double[] getPolyNenner() {
-		return null;
+		return Matlab.calcSani(this);
 	}
 }
