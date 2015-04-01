@@ -4,7 +4,7 @@ public final class ManuellDim extends ReglerDim {
 	private final Regler regler;
 
 	public ManuellDim(double kr, double tn, double tv) {
-		this.regler = new Regler(kr, tn, tv);
+		regler = new Regler(kr, tn, tv);
 	}
 
 	public ManuellDim(Regler regler) {
@@ -18,10 +18,10 @@ public final class ManuellDim extends ReglerDim {
 
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
-		return this.regler;
+		return regler;
 	}
 
 	public Regler getRegler() {
-		return this.regler;
+		return regler;
 	}
 }

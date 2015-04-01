@@ -20,15 +20,16 @@ public class Controller {
 	public void setKr(String ks_text) {
 		try {
 			double ks_value = Double.parseDouble(ks_text);
-			RegelKreis alterKreis = this.model.getRegelkreis();
+			RegelKreis alterKreis = model.getRegelkreis();
 			RegelStrecke alteStrecke = alterKreis.getRegelstrecke();
 			RegelStrecke neueStrecke = new RegelStrecke(ks_value,
 					alteStrecke.getTu(), alteStrecke.getTg());
-			RegelKreis neuerKreis = new RegelKreis(alterKreis.getDim(), neueStrecke);
-			this.model.setRegelkreis(neuerKreis);
+			RegelKreis neuerKreis = new RegelKreis(alterKreis.getDim(),
+					neueStrecke);
+			model.setRegelkreis(neuerKreis);
 		} catch (Exception e) {
 			// TODO print better Messages
-			this.view.setStatus(e.getMessage());
+			view.setStatus(e.getMessage());
 		}
 	}
 

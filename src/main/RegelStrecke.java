@@ -3,35 +3,35 @@ package main;
 import util.Matlab;
 
 public final class RegelStrecke extends TranferFunction {
-	private final double Ks, Tu, Tg;
+	private final double ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
-		this.Ks = ks;
-		this.Tu = tu;
-		this.Tg = tg;
+		this.ks = ks;
+		this.tu = tu;
+		this.tg = tg;
 	}
-	
+
 	public RegelStrecke(RegelStrecke other) {
-		this.Ks = other.getKs();
-		this.Tu = other.getTu();
-		this.Tg = other.getTg();
+		ks = other.getKs();
+		tu = other.getTu();
+		tg = other.getTg();
 	}
 
 	public double getKs() {
-		return this.Ks;
+		return ks;
 	}
 
 	public double getTu() {
-		return this.Tu;
+		return tu;
 	}
 
 	public double getTg() {
-		return this.Tg;
+		return tg;
 	}
-	
+
 	@Override
 	protected double[] getPolyZaehler() {
-		return new double[]{this.Ks*this.Tu/this.Tg};
+		return new double[] { ks * tu / tg };
 	}
 
 	@Override
@@ -39,11 +39,11 @@ public final class RegelStrecke extends TranferFunction {
 		final int prime = 31;
 		int result = 1;
 		long temp;
-		temp = Double.doubleToLongBits(Ks);
+		temp = Double.doubleToLongBits(ks);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(Tg);
+		temp = Double.doubleToLongBits(tg);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(Tu);
+		temp = Double.doubleToLongBits(tu);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -57,11 +57,11 @@ public final class RegelStrecke extends TranferFunction {
 		if (getClass() != obj.getClass())
 			return false;
 		RegelStrecke other = (RegelStrecke) obj;
-		if (Double.doubleToLongBits(Ks) != Double.doubleToLongBits(other.Ks))
+		if (Double.doubleToLongBits(ks) != Double.doubleToLongBits(other.ks))
 			return false;
-		if (Double.doubleToLongBits(Tg) != Double.doubleToLongBits(other.Tg))
+		if (Double.doubleToLongBits(tg) != Double.doubleToLongBits(other.tg))
 			return false;
-		if (Double.doubleToLongBits(Tu) != Double.doubleToLongBits(other.Tu))
+		if (Double.doubleToLongBits(tu) != Double.doubleToLongBits(other.tu))
 			return false;
 		return true;
 	}

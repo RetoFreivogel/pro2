@@ -28,47 +28,43 @@ public class View extends JPanel implements Observer, ActionListener {
 	public View(Controller controller, Model model) {
 		this.controller = controller;
 		this.model = model;
-		this.statusbar = new JLabel("Bereit");
 
 		setLayout(new BorderLayout());
-		add(this.statusbar, BorderLayout.SOUTH);
-		this.tf_Ks = new JFormattedTextField(new DefaultFormatter());
 
-		this.tf_Ks.addActionListener(this);
+		statusbar = new JLabel("Bereit");
+		add(statusbar, BorderLayout.SOUTH);
 
-		add(this.tf_Ks, BorderLayout.NORTH);
-		this.lb_Kr = new JLabel();
-		add(this.lb_Kr, BorderLayout.WEST);
+		tf_Ks = new JFormattedTextField(new DefaultFormatter());
+		tf_Ks.addActionListener(this);
+		add(tf_Ks, BorderLayout.NORTH);
 
-		double[] output = Matlab.calcStep("[1],[1 1 2]");
-		this.graph = Chart.makePanel(output);
-		this.graph.setBackground(Color.WHITE);
-		add(this.graph, BorderLayout.CENTER);
-		
+		lb_Kr = new JLabel();
+		add(lb_Kr, BorderLayout.WEST);
+
 		update(null, null);
 	}
 
 	public void setStatus(String message) {
-		this.statusbar.setText(message);
+		statusbar.setText(message);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		double[] output = this.model.getRegelkreis().getRegelstrecke().schrittantwort();
-		remove(this.graph);
-		this.graph = Chart.makePanel(output);
-		this.graph.setBackground(Color.WHITE);
-		add(this.graph, BorderLayout.CENTER);
-		
-		this.tf_Ks.setText(""
-				+ this.model.getRegelkreis().getRegelstrecke().getKs());
-		this.lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
+		double[] output = this.model.getRegelkreis().getRegelstrecke()
+				.schrittantwort();
+		remove(graph);
+		graph = Chart.makePanel(output);
+		graph.setBackground(Color.WHITE);
+		add(graph, BorderLayout.CENTER);
+
+		tf_Ks.setText("" + model.getRegelkreis().getRegelstrecke().getKs());
+		lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.tf_Ks) {
-			this.controller.setKr(this.tf_Ks.getText());
+		if (e.getSource() == tf_Ks) {
+			controller.setKr(tf_Ks.getText());
 		}
 
 	}
