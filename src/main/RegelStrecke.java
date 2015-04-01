@@ -9,12 +9,6 @@ public final class RegelStrecke extends TranferFunction {
 		this.Tg = tg;
 	}
 
-	public RegelStrecke(RegelStrecke regelstrecke) {
-		this.Ks = regelstrecke.getKs();
-		this.Tu = regelstrecke.getTu();
-		this.Tg = regelstrecke.getTg();
-	}
-
 	public double getKs() {
 		return this.Ks;
 	}
@@ -29,11 +23,11 @@ public final class RegelStrecke extends TranferFunction {
 	
 	@Override
 	protected double[] getPolyZaehler() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return null;
 	}
 
 	@Override
 	protected double[] getPolyNenner() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return null;
 	}
 }
