@@ -28,7 +28,7 @@ public class RegelStrecke extends TranferFunction {
 	public double getTg() {
 		return tg;
 	}
-	
+
 	public void setKs(double ks) {
 		this.ks = ks;
 	}
@@ -43,7 +43,22 @@ public class RegelStrecke extends TranferFunction {
 
 	@Override
 	protected double[] getPolyZaehler() {
-		return new double[] { ks * tu / tg };
+		return new double[] { ks };
+	}
+
+	@Override
+	protected double[] getPolyNenner() {
+		double[] Tcoeff = Matlab.calcSani(this);
+		int n = Tcoeff.length;
+
+		double[] nenner = new double[n + 1];
+		nenner[n] = 1.0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				nenner[j] += nenner[j + 1] * Tcoeff[i];
+			}
+		}
+		return nenner;
 	}
 
 	@Override
@@ -78,8 +93,4 @@ public class RegelStrecke extends TranferFunction {
 		return true;
 	}
 
-	@Override
-	protected double[] getPolyNenner() {
-		return Matlab.calcSani(this);
-	}
 }

@@ -9,7 +9,7 @@ public class Model extends Observable {
 	public Model() {
 		regelkreisArray = new Vector<>(1);
 		RegelKreis regelkreis = new RegelKreis(new OppeltDim(),
-				new RegelStrecke(1.0, 0.1, 0.5));
+				new RegelStrecke(1.0, 1.71, 7.6));
 		regelkreisArray.add(regelkreis);
 	}
 
