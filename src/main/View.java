@@ -49,7 +49,7 @@ public class View extends JPanel implements Observer, ActionListener {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		double[] output = this.model.getRegelkreis().getRegelstrecke()
+		double[] output = this.model.getRegelkreis()
 				.schrittantwort();
 		if(graph!=null)remove(graph);
 		graph = Chart.makePanel(output);

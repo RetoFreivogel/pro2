@@ -1,18 +1,20 @@
 package main;
 
 public final class Regler extends TranferFunction {
-	private final double kr, tn, tv;
+	private final double kr, tn, tv, tp;
 
 	public Regler(double kr, double tn, double tv) {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
+		this.tp = 10*tv;
 	}
 
 	public Regler(Regler other) {
 		kr = other.getKr();
 		tn = other.getTn();
 		tv = other.getTv();
+		tp = other.getTp();
 	}
 
 	public double getKr() {
@@ -26,6 +28,10 @@ public final class Regler extends TranferFunction {
 	public double getTv() {
 		return tv;
 	}
+	
+	public double getTp() {
+		return tp;
+	}
 
 	@Override
 	public int hashCode() {
@@ -35,6 +41,8 @@ public final class Regler extends TranferFunction {
 		temp = Double.doubleToLongBits(kr);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(tn);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tp);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(tv);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -54,6 +62,8 @@ public final class Regler extends TranferFunction {
 			return false;
 		if (Double.doubleToLongBits(tn) != Double.doubleToLongBits(other.tn))
 			return false;
+		if (Double.doubleToLongBits(tp) != Double.doubleToLongBits(other.tp))
+			return false;
 		if (Double.doubleToLongBits(tv) != Double.doubleToLongBits(other.tv))
 			return false;
 		return true;
@@ -61,11 +71,12 @@ public final class Regler extends TranferFunction {
 
 	@Override
 	protected double[] getPolyZaehler() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return new double[]{tn*(tv+tp), tn+tp, 1};
 	}
 
 	@Override
 	protected double[] getPolyNenner() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return new double[]{tn*tp, tn, 0};
 	}
+
 }
