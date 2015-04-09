@@ -3,47 +3,35 @@ package main;
 import util.Matlab;
 
 public class RegelStrecke extends TranferFunction {
-	private double ks, tu, tg;
+	private ObservableDouble ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
-		this.ks = ks;
-		this.tu = tu;
-		this.tg = tg;
+		this.ks = new ObservableDouble(ks);
+		this.tu = new ObservableDouble(tu);
+		this.tg = new ObservableDouble(tg);
 	}
 
 	public RegelStrecke(RegelStrecke other) {
-		ks = other.getKs();
-		tu = other.getTu();
-		tg = other.getTg();
+		ks = new ObservableDouble(other.getKs());
+		ks = new ObservableDouble(other.getKs());
+		ks = new ObservableDouble(other.getKs());
 	}
 
-	public double getKs() {
+	public ObservableDouble getKs() {
 		return ks;
 	}
 
-	public double getTu() {
+	public ObservableDouble getTu() {
 		return tu;
 	}
 
-	public double getTg() {
+	public ObservableDouble getTg() {
 		return tg;
-	}
-
-	public void setKs(double ks) {
-		this.ks = ks;
-	}
-
-	public void setTu(double tu) {
-		this.tu = tu;
-	}
-
-	public void setTg(double tg) {
-		this.tg = tg;
 	}
 
 	@Override
 	protected double[] getPolyZaehler() {
-		return new double[] { ks };
+		return new double[] { ks.getValue() };
 	}
 
 	@Override
@@ -65,13 +53,9 @@ public class RegelStrecke extends TranferFunction {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(ks);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tg);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tu);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((ks == null) ? 0 : ks.hashCode());
+		result = prime * result + ((tg == null) ? 0 : tg.hashCode());
+		result = prime * result + ((tu == null) ? 0 : tu.hashCode());
 		return result;
 	}
 
@@ -84,11 +68,20 @@ public class RegelStrecke extends TranferFunction {
 		if (getClass() != obj.getClass())
 			return false;
 		RegelStrecke other = (RegelStrecke) obj;
-		if (Double.doubleToLongBits(ks) != Double.doubleToLongBits(other.ks))
+		if (ks == null) {
+			if (other.ks != null)
+				return false;
+		} else if (!ks.equals(other.ks))
 			return false;
-		if (Double.doubleToLongBits(tg) != Double.doubleToLongBits(other.tg))
+		if (tg == null) {
+			if (other.tg != null)
+				return false;
+		} else if (!tg.equals(other.tg))
 			return false;
-		if (Double.doubleToLongBits(tu) != Double.doubleToLongBits(other.tu))
+		if (tu == null) {
+			if (other.tu != null)
+				return false;
+		} else if (!tu.equals(other.tu))
 			return false;
 		return true;
 	}

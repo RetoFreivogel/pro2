@@ -1,5 +1,11 @@
 package main;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.JTextField;
+
 public class Controller {
 	private Model model;
 	private View view;
@@ -17,36 +23,52 @@ public class Controller {
 		this.view = view;
 	}
 
-	public void setKs(double ks) {
-		try{
-			model.getRegelkreis().getRegelstrecke().setKs(ks);
-			model.update();
-		}catch(Exception e){
-			view.setStatus(e.getMessage());
-			e.printStackTrace();
-		}
+	public AbstractAction getKsAction() {
+		return new SetDoubleAction("KS", model.getRegelkreis()
+				.getRegelstrecke().getKs());
 	}
-	
-	public void setTu(double tu) {
-		try{
-			model.getRegelkreis().getRegelstrecke().setTu(tu);
-			model.update();
-		}catch(Exception e){
-			view.setStatus(e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
-	public void setTg(double tg) {
-		try{
-			model.getRegelkreis().getRegelstrecke().setTg(tg);
-			model.update();
-		}catch(Exception e){
-			view.setStatus(e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
-	
-}
 
+	public AbstractAction getTuAction() {
+		return new SetDoubleAction("TU", model.getRegelkreis()
+				.getRegelstrecke().getTu());
+	}
+
+	public AbstractAction getTgAction() {
+		return new SetDoubleAction("TG", model.getRegelkreis()
+				.getRegelstrecke().getTg());
+	}
+
+	private class SetDoubleAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+
+		private final String command_string;
+		private final ObservableDouble value;
+
+		public SetDoubleAction(String name, ObservableDouble value) {
+			super(name);
+			this.value = value;
+			command_string = "SET_" + name + "_COMMAND";
+			putValue(AbstractAction.ACTION_COMMAND_KEY, command_string);
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getActionCommand() != command_string) {
+				return;
+			}
+			if (!(e.getSource() instanceof JTextField)) {
+				return;
+			}
+			JTextField textfield = (JTextField) e.getSource();
+
+			try {
+				value.setValue(Double.parseDouble(textfield.getText()));
+				textfield.setBackground(Color.WHITE);
+			} catch (Exception ex) {
+				textfield.setBackground(Color.RED);
+				view.setStatus(ex.getMessage());
+				ex.printStackTrace();
+			}
+		}
+	}
+}

@@ -27,9 +27,10 @@ public class View extends JPanel implements Observer{
 	
 	private JLabel statusbar;
 	
-	private JDoubleTextField tf_Ks;
-	private JDoubleTextField tf_Tu;
-	private JDoubleTextField tf_Tg;
+	private JTextField tf_Ks;
+	private JTextField tf_Tu;
+	private JTextField tf_Tg;
+	
 	private JTextField tf_Kr;
 	private JTextField tf_Tn;
 	private JTextField tf_Tv;
@@ -52,29 +53,14 @@ public class View extends JPanel implements Observer{
 		sidePanel = new JPanel();
 		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
 		
-		tf_Ks = new JDoubleTextField(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			void valueChanged(double value) {
-				controller.setKs(value);
-			}		
-		};
+		tf_Ks = new JTextField();
+		tf_Ks.setAction(controller.getKsAction());
 		sidePanel.add(tf_Ks);
-		tf_Tu = new JDoubleTextField(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			void valueChanged(double value) {
-				controller.setTu(value);
-			}		
-		};
+		tf_Tu = new JTextField();
+		tf_Tu.setAction(controller.getTuAction());
 		sidePanel.add(tf_Tu);
-		tf_Tg = new JDoubleTextField(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			void valueChanged(double value) {
-				controller.setTg(value);
-			}		
-		};
+		tf_Tg = new JTextField();
+		tf_Tg.setAction(controller.getTgAction());
 		sidePanel.add(tf_Tg);
 		
 		tf_Kr = new JTextField();
@@ -110,9 +96,9 @@ public class View extends JPanel implements Observer{
 		JFreeChart chart = Chart.makeChart(output);
 		graph.setChart(chart);
 
-		tf_Ks.setValue(model.getRegelkreis().getRegelstrecke().getKs());
-		tf_Tu.setValue(model.getRegelkreis().getRegelstrecke().getTu());
-		tf_Tg.setValue(model.getRegelkreis().getRegelstrecke().getTg());
+		tf_Ks.setText("" + model.getRegelkreis().getRegelstrecke().getKs().getValue());
+		tf_Tu.setText("" + model.getRegelkreis().getRegelstrecke().getTu().getValue());
+		tf_Tg.setText("" + model.getRegelkreis().getRegelstrecke().getTg().getValue());
 		
 		tf_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
 		tf_Tn.setText("" + this.model.getRegelkreis().getRegler().getTn());
