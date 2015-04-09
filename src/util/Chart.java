@@ -1,7 +1,6 @@
 package util;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -30,7 +29,7 @@ public class Chart {
 				);
 	}
 
-	public static JPanel makePanel(double[] data) {
+	public static ChartPanel makePanel(double[] data) {
 		JFreeChart chart = makeChart(data);
 		return new ChartPanel(chart);
 	}

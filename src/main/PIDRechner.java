@@ -13,7 +13,7 @@ public class PIDRechner extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public void init() {
-		setSize(400, 300);
+		setSize(800, 600);
 		Model model = new Model();
 		Controller controller = new Controller(model);
 		View view = new View(controller, model);

@@ -17,20 +17,36 @@ public class Controller {
 		this.view = view;
 	}
 
-	public void setKr(String ks_text) {
-		try {
-			double ks_value = Double.parseDouble(ks_text);
-			RegelKreis alterKreis = model.getRegelkreis();
-			RegelStrecke alteStrecke = alterKreis.getRegelstrecke();
-			RegelStrecke neueStrecke = new RegelStrecke(ks_value,
-					alteStrecke.getTu(), alteStrecke.getTg());
-			RegelKreis neuerKreis = new RegelKreis(alterKreis.getDim(),
-					neueStrecke);
-			model.setRegelkreis(neuerKreis);
-		} catch (Exception e) {
-			// TODO print better Messages
+	public void setKs(double ks) {
+		try{
+			model.getRegelkreis().getRegelstrecke().setKs(ks);
+			model.update();
+		}catch(Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
-
+	
+	public void setTu(double tu) {
+		try{
+			model.getRegelkreis().getRegelstrecke().setTu(tu);
+			model.update();
+		}catch(Exception e){
+			view.setStatus(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void setTg(double tg) {
+		try{
+			model.getRegelkreis().getRegelstrecke().setTg(tg);
+			model.update();
+		}catch(Exception e){
+			view.setStatus(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	
 }
+

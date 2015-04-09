@@ -22,4 +22,10 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void update() {
+		setChanged();
+		notifyObservers();
+	}
+
 }

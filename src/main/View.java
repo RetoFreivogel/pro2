@@ -4,42 +4,98 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
-import javax.swing.text.DefaultFormatter;
+import javax.swing.JTextField;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 
 import util.Chart;
 
-public class View extends JPanel implements Observer, ActionListener {
+public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 
 	private Controller controller;
 	private Model model;
+	
 	private JLabel statusbar;
-	private JFormattedTextField tf_Ks;
-	private JLabel lb_Kr;
-	private JPanel graph = null;
+	
+	private JDoubleTextField tf_Ks;
+	private JDoubleTextField tf_Tu;
+	private JDoubleTextField tf_Tg;
+	private JTextField tf_Kr;
+	private JTextField tf_Tn;
+	private JTextField tf_Tv;
+	
+	
+	private JPanel sidePanel;
+	private ChartPanel graph;
 
 	public View(Controller controller, Model model) {
-		this.controller = controller;
+		this.controller = controller; 
 		this.model = model;
-
+		init();
+	}
+	
+	public void init(){
 		setLayout(new BorderLayout());
 
+		//add(new JMenuBar(), BorderLayout.NORTH);
+		
+		sidePanel = new JPanel();
+		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
+		
+		tf_Ks = new JDoubleTextField(){
+			private static final long serialVersionUID = 1L;
+			@Override
+			void valueChanged(double value) {
+				controller.setKs(value);
+			}		
+		};
+		sidePanel.add(tf_Ks);
+		tf_Tu = new JDoubleTextField(){
+			private static final long serialVersionUID = 1L;
+			@Override
+			void valueChanged(double value) {
+				controller.setTu(value);
+			}		
+		};
+		sidePanel.add(tf_Tu);
+		tf_Tg = new JDoubleTextField(){
+			private static final long serialVersionUID = 1L;
+			@Override
+			void valueChanged(double value) {
+				controller.setTg(value);
+			}		
+		};
+		sidePanel.add(tf_Tg);
+		
+		tf_Kr = new JTextField();
+		tf_Kr.setColumns(15);
+		sidePanel.add(tf_Kr);
+		tf_Tn = new JTextField();
+		tf_Tn.setColumns(15);
+		sidePanel.add(tf_Tn);
+		tf_Tv = new JTextField();
+		tf_Tv.setColumns(15);
+		sidePanel.add(tf_Tv);
+		
+		add(sidePanel, BorderLayout.WEST);
+		
 		statusbar = new JLabel("Bereit");
 		add(statusbar, BorderLayout.SOUTH);
-
-		tf_Ks = new JFormattedTextField(new DefaultFormatter());
-		tf_Ks.addActionListener(this);
-		add(tf_Ks, BorderLayout.NORTH);
-
-		lb_Kr = new JLabel();
-		add(lb_Kr, BorderLayout.WEST);
-
+		
+		graph = Chart.makePanel(new double[]{0});
+		graph.setBackground(Color.WHITE);
+		add(graph, BorderLayout.CENTER);
+		
 		update(null, null);
 	}
 
@@ -51,20 +107,35 @@ public class View extends JPanel implements Observer, ActionListener {
 	public void update(Observable o, Object arg) {
 		double[] output = this.model.getRegelkreis()
 				.schrittantwort();
-		if(graph!=null)remove(graph);
-		graph = Chart.makePanel(output);
-		graph.setBackground(Color.WHITE);
-		add(graph, BorderLayout.CENTER);
+		JFreeChart chart = Chart.makeChart(output);
+		graph.setChart(chart);
 
-		tf_Ks.setText("" + model.getRegelkreis().getRegelstrecke().getKs());
-		lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == tf_Ks) {
-			controller.setKr(tf_Ks.getText());
-		}
-
+		tf_Ks.setValue(model.getRegelkreis().getRegelstrecke().getKs());
+		tf_Tu.setValue(model.getRegelkreis().getRegelstrecke().getTu());
+		tf_Tg.setValue(model.getRegelkreis().getRegelstrecke().getTg());
+		
+		tf_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
+		tf_Tn.setText("" + this.model.getRegelkreis().getRegler().getTn());
+		tf_Tv.setText("" + this.model.getRegelkreis().getRegler().getTv());
 	}
 }
+
+abstract class JDoubleTextField extends JFormattedTextField implements ActionListener{
+	private static final long serialVersionUID = 1L;
+	
+	private static DecimalFormat format = new DecimalFormat("###0.###");
+	
+	public JDoubleTextField(){
+		super(format);
+		addActionListener(this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		double value = ((Number)getValue()).doubleValue();
+		valueChanged(value);						
+	}
+	
+	abstract void valueChanged(double value);
+}
+
