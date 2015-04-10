@@ -38,7 +38,7 @@ public class View extends JPanel {
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar, BorderLayout.NORTH);
 
-		JMenu mnDatei = new JMenu("Datei");
+		JMenu mnDatei = new JMenu("Datei"); 
 		menuBar.add(mnDatei);
 
 		JMenuItem mntmNeu = new JMenuItem("Neu...");
