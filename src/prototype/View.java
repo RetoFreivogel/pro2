@@ -62,6 +62,7 @@ public class View extends JPanel {
 		JMenuItem mntmBeenden = new JMenuItem("Beenden");
 		mnDatei.add(mntmBeenden);
 
+		//Menübereich Bearbeiten mit unterpunkten
 		JMenu mnBearbeiten = new JMenu("Bearbeiten");
 		menuBar.add(mnBearbeiten);
 
@@ -89,6 +90,7 @@ public class View extends JPanel {
 		JMenuItem mntmWiederholen = new JMenuItem("Wiederholen");
 		mnBearbeiten.add(mntmWiederholen);
 
+		// Menübereich Optionen mit unterpunkten
 		JMenu mnOptionen = new JMenu("Optionen");
 		menuBar.add(mnOptionen);
 
