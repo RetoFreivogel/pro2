@@ -4,72 +4,124 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
-import javax.swing.text.DefaultFormatter;
+import javax.swing.JTextField;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 
 import util.Chart;
-import util.Matlab;
 
-public class View extends JPanel implements Observer, ActionListener {
+public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 
 	private Controller controller;
 	private Model model;
+	
 	private JLabel statusbar;
-	private JFormattedTextField tf_Ks;
-	private JLabel lb_Kr;
-	private JPanel graph = null;
+	
+	private JTextField tf_Ks;
+	private JTextField tf_Tu;
+	private JTextField tf_Tg;
+	
+	private JTextField tf_Kr;
+	private JTextField tf_Tn;
+	private JTextField tf_Tv;
+	
+	
+	private JPanel sidePanel;
+	private ChartPanel graph;
 
 	public View(Controller controller, Model model) {
-		this.controller = controller;
+		this.controller = controller; 
 		this.model = model;
-		this.statusbar = new JLabel("Bereit");
-
+		init();
+	}
+	
+	public void init(){
 		setLayout(new BorderLayout());
-		add(this.statusbar, BorderLayout.SOUTH);
-		this.tf_Ks = new JFormattedTextField(new DefaultFormatter());
 
-		this.tf_Ks.addActionListener(this);
-
-		add(this.tf_Ks, BorderLayout.NORTH);
-		this.lb_Kr = new JLabel();
-		add(this.lb_Kr, BorderLayout.WEST);
-
-		double[] output = Matlab.calcStep("[1],[1 1 2]");
-		this.graph = Chart.makePanel(output);
-		this.graph.setBackground(Color.WHITE);
-		add(this.graph, BorderLayout.CENTER);
+		//add(new JMenuBar(), BorderLayout.NORTH);
+		
+		sidePanel = new JPanel();
+		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
+		
+		tf_Ks = new JTextField();
+		tf_Ks.setAction(controller.getKsAction());
+		sidePanel.add(tf_Ks);
+		tf_Tu = new JTextField();
+		tf_Tu.setAction(controller.getTuAction());
+		sidePanel.add(tf_Tu);
+		tf_Tg = new JTextField();
+		tf_Tg.setAction(controller.getTgAction());
+		sidePanel.add(tf_Tg);
+		
+		tf_Kr = new JTextField();
+		tf_Kr.setColumns(15);
+		sidePanel.add(tf_Kr);
+		tf_Tn = new JTextField();
+		tf_Tn.setColumns(15);
+		sidePanel.add(tf_Tn);
+		tf_Tv = new JTextField();
+		tf_Tv.setColumns(15);
+		sidePanel.add(tf_Tv);
+		
+		add(sidePanel, BorderLayout.WEST);
+		
+		statusbar = new JLabel("Bereit");
+		add(statusbar, BorderLayout.SOUTH);
+		
+		graph = Chart.makePanel(new double[]{0});
+		graph.setBackground(Color.WHITE);
+		add(graph, BorderLayout.CENTER);
 		
 		update(null, null);
 	}
 
 	public void setStatus(String message) {
-		this.statusbar.setText(message);
+		statusbar.setText(message);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		double[] output = this.model.getRegelkreis().getRegelstrecke().schrittantwort();
-		remove(this.graph);
-		this.graph = Chart.makePanel(output);
-		this.graph.setBackground(Color.WHITE);
-		add(this.graph, BorderLayout.CENTER);
+		double[] output = this.model.getRegelkreis()
+				.schrittantwort();
+		JFreeChart chart = Chart.makeChart(output);
+		graph.setChart(chart);
+
+		tf_Ks.setText("" + model.getRegelkreis().getRegelstrecke().getKs().getValue());
+		tf_Tu.setText("" + model.getRegelkreis().getRegelstrecke().getTu().getValue());
+		tf_Tg.setText("" + model.getRegelkreis().getRegelstrecke().getTg().getValue());
 		
-		this.tf_Ks.setText(""
-				+ this.model.getRegelkreis().getRegelstrecke().getKs());
-		this.lb_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.tf_Ks) {
-			this.controller.setKr(this.tf_Ks.getText());
-		}
-
+		tf_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
+		tf_Tn.setText("" + this.model.getRegelkreis().getRegler().getTn());
+		tf_Tv.setText("" + this.model.getRegelkreis().getRegler().getTv());
 	}
 }
+
+abstract class JDoubleTextField extends JFormattedTextField implements ActionListener{
+	private static final long serialVersionUID = 1L;
+	
+	private static DecimalFormat format = new DecimalFormat("###0.###");
+	
+	public JDoubleTextField(){
+		super(format);
+		addActionListener(this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		double value = ((Number)getValue()).doubleValue();
+		valueChanged(value);						
+	}
+	
+	abstract void valueChanged(double value);
+}
+

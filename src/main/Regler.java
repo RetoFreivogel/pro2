@@ -1,34 +1,36 @@
 package main;
 
 public final class Regler extends TranferFunction {
-	private final double Kr, Tn, Tv;
+	private final double kr, tn, tv, tp;
 
 	public Regler(double kr, double tn, double tv) {
-		this.Kr = kr;
-		this.Tn = tn;
-		this.Tv = tv;
+		this.kr = kr;
+		this.tn = tn;
+		this.tv = tv;
+		this.tp = 10*tv;
 	}
 
-	public Regler(Regler regler) {
-		this.Kr = regler.getKr();
-		this.Tn = regler.getTn();
-		this.Tv = regler.getTv();
-	}
-	
-	public Regler setKr(double kr){
-		return new Regler(kr, this.Tn, this.Tv);
+	public Regler(Regler other) {
+		kr = other.getKr();
+		tn = other.getTn();
+		tv = other.getTv();
+		tp = other.getTp();
 	}
 
 	public double getKr() {
-		return this.Kr;
+		return kr;
 	}
 
 	public double getTn() {
-		return this.Tn;
+		return tn;
 	}
 
 	public double getTv() {
-		return this.Tv;
+		return tv;
+	}
+	
+	public double getTp() {
+		return tp;
 	}
 
 	@Override
@@ -36,11 +38,13 @@ public final class Regler extends TranferFunction {
 		final int prime = 31;
 		int result = 1;
 		long temp;
-		temp = Double.doubleToLongBits(this.Kr);
+		temp = Double.doubleToLongBits(kr);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(this.Tn);
+		temp = Double.doubleToLongBits(tn);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(this.Tv);
+		temp = Double.doubleToLongBits(tp);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tv);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -54,25 +58,25 @@ public final class Regler extends TranferFunction {
 		if (getClass() != obj.getClass())
 			return false;
 		Regler other = (Regler) obj;
-		if (Double.doubleToLongBits(this.Kr) != Double
-				.doubleToLongBits(other.Kr))
+		if (Double.doubleToLongBits(kr) != Double.doubleToLongBits(other.kr))
 			return false;
-		if (Double.doubleToLongBits(this.Tn) != Double
-				.doubleToLongBits(other.Tn))
+		if (Double.doubleToLongBits(tn) != Double.doubleToLongBits(other.tn))
 			return false;
-		if (Double.doubleToLongBits(this.Tv) != Double
-				.doubleToLongBits(other.Tv))
+		if (Double.doubleToLongBits(tp) != Double.doubleToLongBits(other.tp))
+			return false;
+		if (Double.doubleToLongBits(tv) != Double.doubleToLongBits(other.tv))
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	protected double[] getPolyZaehler() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return new double[]{tn*(tv+tp), tn+tp, 1};
 	}
 
 	@Override
 	protected double[] getPolyNenner() {
-		throw new UnsupportedOperationException("Not Implemented");
+		return new double[]{tn*tp, tn, 0};
 	}
+
 }

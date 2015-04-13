@@ -42,8 +42,10 @@ public class Matlab {
 		double[] output = {};
 
 		MatlabProxy matlabProxy = getProxy();
+		double tu = rs.getTu().getValue();
+		double tg = rs.getTg().getValue();
 
-		String saniArgs = "" + rs.getTu() + "," + rs.getTg();
+		String saniArgs = "" + tu + "," + tg;
 
 		try {
 			output = (double[]) matlabProxy.returningEval("p2_sani(" + saniArgs

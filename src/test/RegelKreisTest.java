@@ -25,10 +25,9 @@ public class RegelKreisTest {
 		OppeltDim dim = new OppeltDim();
 		RegelKreis regelkreis = new RegelKreis(dim, regelstrecke);
 		Regler regler = regelkreis.getRegler();
-		Regler reglercopy = new Regler(regler);
-		//assertTrue(dim != regelkreis.getDim());
-		//assertTrue(regelkreis.getDim() instanceof ManuellDim);
+		// assertTrue(dim != regelkreis.getDim());
+		// assertTrue(regelkreis.getDim() instanceof ManuellDim);
 		assertTrue(regler.equals(regelkreis.getRegler()));
-		//assertFalse(reglercopy.equals(regelkreis.getRegler()));
+		// assertFalse(reglercopy.equals(regelkreis.getRegler()));
 	}
 }

@@ -16,6 +16,8 @@ import javax.swing.JRootPane;
 import javax.swing.JSeparator;
 
 public class NewView extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	private  String[] datei = {"Neu...","Speichern","Speichern als...","\u00D6ffnen...","Schliessen","Beenden"};
 	private  String[] bearbeiten = {"Kopieren","Ausschneiden","Einsetzen","L\u00F6schen","R\u00FCckg\u00E4ngig","Wiederholen"};
 	private  String[] optionen = {"Simulation...","Einstellungen"};
@@ -51,6 +53,7 @@ public class NewView extends JPanel {
 				JSeparator separator = new JSeparator();
 				mnBearbeiten.add(separator);
 
+
 			}
 		}
 		// Untermenu Optionen
@@ -59,8 +62,10 @@ public class NewView extends JPanel {
 		for (int i = 0; i < this.optionen.length; i++) {
 			JMenuItem mntmNeu = new JMenuItem(this.bearbeiten[i]);
 			mnOptionen.add(mntmNeu);
-
+			
 		}
+
+
 
 		// Panel
 	}

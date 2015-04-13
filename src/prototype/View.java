@@ -397,6 +397,14 @@ public class View extends JPanel {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setUndecorated(true);
+		try {
+			UIManager.setLookAndFeel(
+			        UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("TopView");

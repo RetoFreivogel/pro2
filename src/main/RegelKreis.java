@@ -1,49 +1,58 @@
 package main;
 
-public final class RegelKreis extends TranferFunction{
-	private final Regler regler;
-	private final RegelStrecke regelstrecke;
-	private final ReglerDim dim;
+public class RegelKreis extends TranferFunction {
+	private RegelStrecke regelstrecke;
+	private ReglerDim dim;
 
 	public RegelKreis(ReglerDim dim, RegelStrecke regelstrecke) {
-		this.dim = dim.makeCopy();
+		this.dim = dim;
 		this.regelstrecke = regelstrecke;
-		this.regler = this.dim.calc(regelstrecke);
 	}
 
 	public RegelKreis(Regler regler, RegelStrecke regelstrecke) {
-		this.dim = new ManuellDim(regler);
+		dim = new ManuellDim(regler);
 		this.regelstrecke = regelstrecke;
-		this.regler = this.dim.calc(regelstrecke);
-	}
-	
-	public RegelKreis setKr(double kr){
-		return setRegler(this.regler.setKr(kr));
 	}
 
-	public RegelKreis setRegler(Regler regler){
-		return new RegelKreis(regler, this.regelstrecke);
-	}
-	
 	public Regler getRegler() {
-		return this.regler;
+		return dim.calc(regelstrecke);
 	}
 
 	public ReglerDim getDim() {
-		return this.dim.makeCopy();
+		return dim;
 	}
 
 	public RegelStrecke getRegelstrecke() {
-		return this.regelstrecke;
+		return regelstrecke;
 	}
 
 	@Override
 	protected double[] getPolyZaehler() {
-		throw new UnsupportedOperationException("Not Implemented");
+		double[] polyStrecke = regelstrecke.getPolyZaehler();
+		double[] polyRegler = dim.calc(regelstrecke).getPolyZaehler();
+		return convPoly(polyStrecke, polyRegler);
 	}
 
 	@Override
 	protected double[] getPolyNenner() {
-		throw new UnsupportedOperationException("Not Implemented");
+		double[] zaehler = getPolyZaehler();
+		double[] polyStrecke = regelstrecke.getPolyNenner();
+		double[] polyRegler = dim.calc(regelstrecke).getPolyNenner();
+		double[] nenner = convPoly(polyStrecke, polyRegler);
+		for (int i = 0; i < zaehler.length; i++) {
+			nenner[i+(nenner.length - zaehler.length)] += zaehler[i];
+		}		
+		return nenner;
+	}
+
+	private double[] convPoly(double[] P1, double[] P2) {
+		double[] P = new double[P1.length + P2.length - 1];
+
+		for (int i = 0; i < P1.length; i++) {
+			for (int j = 0; j < P2.length; j++) {
+				P[i + j] += P1[i] * P2[j];
+			}
+		}
+		return P;
 	}
 }
