@@ -2,16 +2,12 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 import org.jfree.chart.ChartPanel;
@@ -104,24 +100,5 @@ public class View extends JPanel implements Observer{
 		tf_Tn.setText("" + this.model.getRegelkreis().getRegler().getTn());
 		tf_Tv.setText("" + this.model.getRegelkreis().getRegler().getTv());
 	}
-}
-
-abstract class JDoubleTextField extends JFormattedTextField implements ActionListener{
-	private static final long serialVersionUID = 1L;
-	
-	private static DecimalFormat format = new DecimalFormat("###0.###");
-	
-	public JDoubleTextField(){
-		super(format);
-		addActionListener(this);
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		double value = ((Number)getValue()).doubleValue();
-		valueChanged(value);						
-	}
-	
-	abstract void valueChanged(double value);
 }
 

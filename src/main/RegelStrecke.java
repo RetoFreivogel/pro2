@@ -13,8 +13,8 @@ public class RegelStrecke extends TranferFunction {
 
 	public RegelStrecke(RegelStrecke other) {
 		ks = new ObservableDouble(other.getKs());
-		ks = new ObservableDouble(other.getKs());
-		ks = new ObservableDouble(other.getKs());
+		tu = new ObservableDouble(other.getTu());
+		tg = new ObservableDouble(other.getTg());
 	}
 
 	public ObservableDouble getKs() {

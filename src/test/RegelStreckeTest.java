@@ -1,6 +1,8 @@
 package test;
 
 import static org.junit.Assert.*;
+import java.util.Random;
+
 import main.RegelStrecke;
 
 import org.junit.Test;
@@ -9,13 +11,14 @@ public class RegelStreckeTest {
 
 	@Test
 	public void testCopy() {
-		RegelStrecke rs = new RegelStrecke(1.0, 1.0, 1.0);
+		Random r = new Random();
+		RegelStrecke rs = new RegelStrecke(r.nextDouble(), r.nextDouble(), r.nextDouble());
 		RegelStrecke copy_rs = new RegelStrecke(rs);
 		if(rs == copy_rs){
-			fail("Not yet implemented");
+			fail("Didn't create new instance");
 		}
 		if(!rs.equals(copy_rs)){
-			fail("Not yet implemented");
+			fail("Object wasn't equal");
 		}
 	}
 
