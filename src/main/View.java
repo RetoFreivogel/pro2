@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,7 +19,6 @@ import util.Chart;
 public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 
-	private Controller controller;
 	private Model model;
 	
 	private JLabel statusbar;
@@ -36,7 +36,8 @@ public class View extends JPanel implements Observer{
 	private ChartPanel graph;
 
 	public View(Controller controller, Model model) {
-		this.controller = controller; 
+		super();
+		controller.setView(this);
 		this.model = model;
 		init();
 	}
@@ -44,19 +45,19 @@ public class View extends JPanel implements Observer{
 	public void init(){
 		setLayout(new BorderLayout());
 
-		//add(new JMenuBar(), BorderLayout.NORTH);
+		add(new JMenuBar(), BorderLayout.NORTH);
 		
 		sidePanel = new JPanel();
 		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
 		
 		tf_Ks = new JTextField();
-		tf_Ks.setAction(controller.getKsAction());
+		tf_Ks.setAction(this.getActionMap().get("SET_KS"));
 		sidePanel.add(tf_Ks);
 		tf_Tu = new JTextField();
-		tf_Tu.setAction(controller.getTuAction());
+		tf_Tu.setAction(this.getActionMap().get("SET_TU"));
 		sidePanel.add(tf_Tu);
 		tf_Tg = new JTextField();
-		tf_Tg.setAction(controller.getTgAction());
+		tf_Tg.setAction(this.getActionMap().get("SET_TG"));
 		sidePanel.add(tf_Tg);
 		
 		tf_Kr = new JTextField();

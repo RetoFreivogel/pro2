@@ -17,7 +17,6 @@ public class PIDRechner extends JFrame {
 		Model model = new Model();
 		Controller controller = new Controller(model);
 		View view = new View(controller, model);
-		controller.setView(view);
 		model.addObserver(view);
 		add(view);
 	}
