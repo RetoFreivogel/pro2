@@ -19,18 +19,18 @@ public class View extends JPanel {
 	private JTextField tf_Tg;//Tg
 	private JTextField tf_Tu;//
 	private JTextField tf_Phrand;
-	private JTextField textField_3;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
+	private JTextField tf_Ordn;
+	private JTextField tf_Kr;
+	private JTextField tf_Ymax;
+	private JTextField tf_Tn;
+	private JTextField tf_Tv;
+	private JTextField tf_Tp;
+	private JTextField tf_1;
+	private JTextField tf_2;
+	private JTextField tf_3;
+	private JTextField tf_4;
+	private JTextField tf_Tan;
+	private JTextField tf_Taus;
 
 	public View() {
 		setLayout(new BorderLayout(0, 0));
@@ -190,152 +190,154 @@ public class View extends JPanel {
 		this.tf_Phrand.setColumns(10);
 		pn_ERegler.add(this.tf_Phrand);
 
-		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_Ausgabe = new JPanel();
+		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pn_left.add(panel_4);
-		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
+		pn_left.add(pn_Ausgabe);
+		pn_Ausgabe.setLayout(new BoxLayout(pn_Ausgabe, BoxLayout.Y_AXIS));
 
-		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_ARegelstrecke = new JPanel();
+		pn_ARegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null,
 				new Color(0, 0, 0)));
-		panel_4.add(panel_5);
-		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
+		pn_Ausgabe.add(pn_ARegelstrecke);
+		pn_ARegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
 
-		JLabel lblN = new JLabel("Ordnung");
-		panel_5.add(lblN);
+		JLabel lb_Ordn = new JLabel("Ordnung");
+		pn_ARegelstrecke.add(lb_Ordn);
 
-		this.textField_3 = new JTextField();
-		this.textField_3.setEditable(false);
-		this.textField_3.setText("3");
-		panel_5.add(this.textField_3);
-		this.textField_3.setColumns(10);
+		this.tf_Ordn = new JTextField();
+		this.tf_Ordn.setEditable(false);
+		this.tf_Ordn.setText("3");
+		pn_ARegelstrecke.add(this.tf_Ordn);
+		this.tf_Ordn.setColumns(10);
 
-		JLabel lblTn = new JLabel("Zeitkonstanten");
-		panel_5.add(lblTn);
+		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
+		pn_ARegelstrecke.add(lb_Zeitkons);
 
 		JButton btnLesen = new JButton("Lesen..");
-		panel_5.add(btnLesen);
+		pn_ARegelstrecke.add(btnLesen);
 
-		JPanel panel_6 = new JPanel();
-		panel_6.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_ARegler = new JPanel();
+		pn_ARegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.add(panel_6);
-		panel_6.setLayout(new GridLayout(0, 2, 0, 0));
+		pn_Ausgabe.add(pn_ARegler);
+		pn_ARegler.setLayout(new GridLayout(0, 2, 0, 0));
 
-		JLabel lblKr = new JLabel("Kr");
-		panel_6.add(lblKr);
+		JLabel lb_Kr = new JLabel("Kr");
+		pn_ARegler.add(lb_Kr);
 
-		this.textField_5 = new JTextField();
-		this.textField_5.setEditable(false);
-		this.textField_5.setText("50");
-		panel_6.add(this.textField_5);
-		this.textField_5.setColumns(10);
+		this.tf_Kr = new JTextField();
+		this.tf_Kr.setEditable(false);
+		this.tf_Kr.setText("50");
+		pn_ARegler.add(this.tf_Kr);
+		this.tf_Kr.setColumns(10);
 
-		JLabel lblTn_1 = new JLabel("Tn");
-		panel_6.add(lblTn_1);
+		JLabel lb_Tn = new JLabel("Tn");
+		pn_ARegler.add(lb_Tn);
 
-		this.textField_7 = new JTextField();
-		this.textField_7.setEditable(false);
-		this.textField_7.setText("1");
-		panel_6.add(this.textField_7);
-		this.textField_7.setColumns(10);
+		this.tf_Tn = new JTextField();
+		this.tf_Tn.setEditable(false);
+		this.tf_Tn.setText("1");
+		pn_ARegler.add(this.tf_Tn);
+		this.tf_Tn.setColumns(10);
 
-		JLabel lblTv = new JLabel("Tv");
-		panel_6.add(lblTv);
+		JLabel lb_Tv = new JLabel("Tv");
+		pn_ARegler.add(lb_Tv);
 
-		this.textField_8 = new JTextField();
-		this.textField_8.setEditable(false);
-		this.textField_8.setText("1");
-		panel_6.add(this.textField_8);
-		this.textField_8.setColumns(10);
+		this.tf_Tv = new JTextField();
+		this.tf_Tv.setEditable(false);
+		this.tf_Tv.setText("1");
+		pn_ARegler.add(this.tf_Tv);
+		this.tf_Tv.setColumns(10);
 
-		JLabel lblTp = new JLabel("Tp");
-		panel_6.add(lblTp);
+		JLabel lb_Tp = new JLabel("Tp");
+		pn_ARegler.add(lb_Tp);
 
-		this.textField_9 = new JTextField();
-		this.textField_9.setEditable(false);
-		this.textField_9.setText("10");
-		panel_6.add(this.textField_9);
-		this.textField_9.setColumns(10);
+		this.tf_Tp = new JTextField();
+		this.tf_Tp.setEditable(false);
+		this.tf_Tp.setText("10");
+		pn_ARegler.add(this.tf_Tp);
+		this.tf_Tp.setColumns(10);
 
-		JPanel panel_7 = new JPanel();
-		panel_7.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_AAnalyse = new JPanel();
+		pn_AAnalyse.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Analyse", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.add(panel_7);
-		panel_7.setLayout(new GridLayout(0, 2, 0, 0));
+		pn_Ausgabe.add(pn_AAnalyse);
+		pn_AAnalyse.setLayout(new GridLayout(0, 2, 0, 0));
 
-		JLabel lblYmax = new JLabel("Ymax");
-		panel_7.add(lblYmax);
+		JLabel lb_Ymax = new JLabel("Ymax");
+		pn_AAnalyse.add(lb_Ymax);
 
-		this.textField_6 = new JTextField();
-		this.textField_6.setEditable(false);
-		this.textField_6.setText("1.25");
-		panel_7.add(this.textField_6);
-		this.textField_6.setColumns(10);
+		this.tf_Ymax = new JTextField();
+		this.tf_Ymax.setEditable(false);
+		this.tf_Ymax.setText("1.25");
+		pn_AAnalyse.add(this.tf_Ymax);
+		this.tf_Ymax.setColumns(10);
 
-		JLabel lblTan = new JLabel("Tan");
-		panel_7.add(lblTan);
+		JLabel lb_Tan = new JLabel("Tan");
+		pn_AAnalyse.add(lb_Tan);
 
-		this.textField_14 = new JTextField();
-		this.textField_14.setEditable(false);
-		this.textField_14.setText("0.75");
-		panel_7.add(this.textField_14);
-		this.textField_14.setColumns(10);
+		this.tf_Tan = new JTextField();
+		this.tf_Tan.setEditable(false);
+		this.tf_Tan.setText("0.75");
+		pn_AAnalyse.add(this.tf_Tan);
+		this.tf_Tan.setColumns(10);
 
-		JLabel lblTaus = new JLabel("Taus");
-		panel_7.add(lblTaus);
+		JLabel lb_Taus = new JLabel("Taus");
+		pn_AAnalyse.add(lb_Taus);
 
-		this.textField_15 = new JTextField();
-		this.textField_15.setEditable(false);
-		this.textField_15.setText("1.25");
-		panel_7.add(this.textField_15);
-		this.textField_15.setColumns(10);
+		this.tf_Taus = new JTextField();
+		this.tf_Taus.setEditable(false);
+		this.tf_Taus.setText("1.25");
+		pn_AAnalyse.add(this.tf_Taus);
+		this.tf_Taus.setColumns(10);
 
-		JLabel lblSetDt = new JLabel("S |e(t)| dt");
-		panel_7.add(lblSetDt);
+		JLabel lb_1 = new JLabel("S |e(t)| dt");
+		pn_AAnalyse.add(lb_1);
 
-		this.textField_10 = new JTextField();
-		this.textField_10.setEditable(false);
-		this.textField_10.setText("1");
-		panel_7.add(this.textField_10);
-		this.textField_10.setColumns(10);
+		this.tf_1 = new JTextField();
+		this.tf_1.setEditable(false);
+		this.tf_1.setText("1");
+		pn_AAnalyse.add(this.tf_1);
+		this.tf_1.setColumns(10);
 
-		JLabel lblSEtDt = new JLabel("S e(t)^2 dt");
-		panel_7.add(lblSEtDt);
+		JLabel lb_2 = new JLabel("S e(t)^2 dt");
+		pn_AAnalyse.add(lb_2);
 
-		this.textField_11 = new JTextField();
-		this.textField_11.setEditable(false);
-		this.textField_11.setText("2");
-		panel_7.add(this.textField_11);
-		this.textField_11.setColumns(10);
+		this.tf_2 = new JTextField();
+		this.tf_2.setEditable(false);
+		this.tf_2.setText("2");
+		pn_AAnalyse.add(this.tf_2);
+		this.tf_2.setColumns(10);
 
-		JLabel lblSettDt = new JLabel("S |e(t)|*t dt");
-		panel_7.add(lblSettDt);
+		JLabel lb_3 = new JLabel("S |e(t)|*t dt");
+		pn_AAnalyse.add(lb_3);
 
-		this.textField_12 = new JTextField();
-		this.textField_12.setEditable(false);
-		this.textField_12.setText("2");
-		panel_7.add(this.textField_12);
-		this.textField_12.setColumns(10);
+		this.tf_3 = new JTextField();
+		this.tf_3.setEditable(false);
+		this.tf_3.setText("2");
+		pn_AAnalyse.add(this.tf_3);
+		this.tf_3.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("S e(t)^2*t dt");
-		panel_7.add(lblNewLabel);
+		JLabel lb_4 = new JLabel("S e(t)^2*t dt");
+		pn_AAnalyse.add(lb_4);
 
-		this.textField_13 = new JTextField();
-		this.textField_13.setEditable(false);
-		this.textField_13.setText("4");
-		panel_7.add(this.textField_13);
-		this.textField_13.setColumns(10);
-
-		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(Color.WHITE);
-		add(panel_8, BorderLayout.CENTER);
-		panel_8.setLayout(new BorderLayout(0, 0));
+		this.tf_4 = new JTextField();
+		this.tf_4.setEditable(false);
+		this.tf_4.setText("4");
+		pn_AAnalyse.add(this.tf_4);
+		this.tf_4.setColumns(10);
+		
+		//------Graph-----
+		
+		JPanel pn_Right = new JPanel();
+		pn_Right.setBackground(Color.WHITE);
+		add(pn_Right, BorderLayout.CENTER);
+		pn_Right.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel_10 = new JPanel();
-		panel_8.add(panel_10, BorderLayout.SOUTH);
+		pn_Right.add(panel_10, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_10 = new GridBagLayout();
 		gbl_panel_10.columnWidths = new int[] { 0, 0, 0, 0 };
 		gbl_panel_10.rowHeights = new int[] { 0, 0, 0, 0 };
@@ -351,6 +353,7 @@ public class View extends JPanel {
 		gbc_panel_11.fill = GridBagConstraints.BOTH;
 		gbc_panel_11.gridx = 0;
 		gbc_panel_11.gridy = 0;
+		panel_11.setBackground(Color.PINK);
 		panel_10.add(panel_11, gbc_panel_11);
 
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Regelkreis");
@@ -367,6 +370,7 @@ public class View extends JPanel {
 		gbc_panel_9.fill = GridBagConstraints.BOTH;
 		gbc_panel_9.gridx = 2;
 		gbc_panel_9.gridy = 0;
+		panel_9.setBackground(Color.GREEN);
 		panel_10.add(panel_9, gbc_panel_9);
 
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Regelstrecke");
@@ -375,6 +379,7 @@ public class View extends JPanel {
 		gbc_chckbxNewCheckBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_chckbxNewCheckBox.gridx = 1;
 		gbc_chckbxNewCheckBox.gridy = 1;
+		panel_10.setBackground(Color.BLUE);
 		panel_10.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
 
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Regler");
@@ -387,9 +392,9 @@ public class View extends JPanel {
 
 		double[] output = Matlab.calcStep("[1],[1 1 2]");
 		Matlab.closeProxy();
-		JPanel panel_12 = Chart.makePanel(output);
-		panel_12.setBackground(Color.WHITE);
-		panel_8.add(panel_12, BorderLayout.CENTER);
+		JPanel pn_chart = Chart.makePanel(output);
+		pn_chart.setBackground(Color.WHITE);
+		pn_Right.add(pn_chart, BorderLayout.CENTER);
 
 		JLabel lblStatus = new JLabel("Status");
 		add(lblStatus, BorderLayout.SOUTH);

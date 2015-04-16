@@ -9,6 +9,8 @@ import java.awt.Insets;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,6 +37,7 @@ public class NewView extends JPanel {
 	private JTextField tf_Tg;
 	private JTextField tf_Tu;
 	private JTextField tf_Phrand;
+	private JTextField tf_Ordn;
 	private JTextField tf_Kr;
 	private JTextField tf_Tn;
 	private JTextField tf_Tv;
@@ -93,7 +96,8 @@ public class NewView extends JPanel {
 
 
 
-		// Panel Left
+		//---------------------Panel_Left-------------------------------
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane
 				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -130,27 +134,23 @@ public class NewView extends JPanel {
 		JLabel lb_Ks = new JLabel("Ks");
 		pn_ERegelstrecke.add(lb_Ks);
 		
-		this.tf_Ks = new JTextField();	
-		this.tf_Ks.setText("1");
-		this.tf_Ks.setColumns(10);
-		pn_ERegelstrecke.add(this.tf_Ks);
+		tf_Ks = new JTextField("1",10);
+		tf_Ks.setEditable(false);
+		pn_ERegelstrecke.add(tf_Ks);
 
 		JLabel lb_Tg = new JLabel("Tg");
 		pn_ERegelstrecke.add(lb_Tg);
 
-		this.tf_Tg = new JTextField();
-		this.tf_Tg.setText("1");
-		this.tf_Tg.setColumns(10);
-		pn_ERegelstrecke.add(this.tf_Tg);
+		tf_Tg = new JTextField("1",10);
+		tf_Tg.setEditable(false);
+		pn_ERegelstrecke.add(tf_Tg);
 
 		JLabel lb_Tu = new JLabel("Tu");
 		pn_ERegelstrecke.add(lb_Tu);
 
-		this.tf_Tu = new JTextField();
-		this.tf_Tu.setText("5");
-		this.tf_Tu.setColumns(10);
-		
-		pn_ERegelstrecke.add(this.tf_Tu);
+		tf_Tu = new JTextField("5",10);
+		tf_Tu.setEditable(false);		
+		pn_ERegelstrecke.add(tf_Tu);
 		
 		//---------------------Eingabe_Regler-------------------------------
 		JPanel pn_ERegler = new JPanel();
@@ -181,11 +181,9 @@ public class NewView extends JPanel {
 		JLabel lb_Phrand = new JLabel("Phasenrand");
 		pn_ERegler.add(lb_Phrand);
 
-		this.tf_Phrand = new JTextField();
-		this.tf_Phrand.setText("20\u00B0");
-		this.tf_Phrand.setColumns(10);
-		pn_ERegler.add(this.tf_Phrand);
-		
+		tf_Phrand = new JTextField("20\u00B0",10);
+		tf_Phrand.setEditable(false);
+		pn_ERegler.add(tf_Phrand);
 		
 		//---------------------Ausgabe-------------------------------
 		JPanel pn_Ausgabe = new JPanel();
@@ -194,6 +192,7 @@ public class NewView extends JPanel {
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Ausgabe);
 		
+		
 		//---------------------Ausgabe_Regelstrecke-------------------------------
 		JPanel pn_ARegelstrecke = new JPanel();
 		pn_ARegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
@@ -201,12 +200,54 @@ public class NewView extends JPanel {
 		pn_Ausgabe.add(pn_ARegelstrecke);
 		pn_ARegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
 		
+		JLabel lb_Ordn = new JLabel("Ordnung");
+		pn_ARegelstrecke.add(lb_Ordn);
+
+		tf_Ordn = new JTextField("3",10);
+		tf_Ordn.setEditable(false);
+		pn_ARegelstrecke.add(tf_Ordn);
+
+
+		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
+		pn_ARegelstrecke.add(lb_Zeitkons);
+
+		JButton bt_Zeitkonst = new JButton("Lesen..");
+		pn_ARegelstrecke.add(bt_Zeitkonst);
+		
 		//---------------------Ausgabe_Regler-------------------------------
 		JPanel pn_ARegler = new JPanel();
 		pn_ARegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_ARegler);
 		pn_ARegler.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lb_Kr = new JLabel("Kr");
+		pn_ARegler.add(lb_Kr);
+
+		tf_Kr = new JTextField("50",10);
+		tf_Kr.setEditable(false);
+		pn_ARegler.add(tf_Kr);
+	
+		JLabel lb_Tn = new JLabel("Tn");
+		pn_ARegler.add(lb_Tn);
+
+		tf_Tn = new JTextField("1",10);
+		tf_Tn.setEditable(false);
+		pn_ARegler.add(tf_Tn);		
+
+		JLabel lb_Tv = new JLabel("Tv");
+		pn_ARegler.add(lb_Tv);
+
+		tf_Tv = new JTextField("1", 10);
+		tf_Tv.setEditable(false);
+		pn_ARegler.add(tf_Tv);	
+
+		JLabel lb_Tp = new JLabel("Tp");
+		pn_ARegler.add(lb_Tp);
+
+		tf_Tp = new JTextField("10",10);
+		tf_Tp.setEditable(false);
+		pn_ARegler.add(tf_Tp);
+				
 		
 		//---------------------Ausgabe_Analyse-------------------------------
 		JPanel pn_AAnalyse = new JPanel();
@@ -214,7 +255,97 @@ public class NewView extends JPanel {
 				"Analyse", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_AAnalyse);
 		pn_AAnalyse.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lb_Ymax = new JLabel("Ymax");
+		pn_AAnalyse.add(lb_Ymax);
 
+		tf_Ymax = new JTextField();
+		tf_Ymax.setEditable(false);
+		tf_Ymax.setText("1.25");
+		pn_AAnalyse.add(tf_Ymax);
+		tf_Ymax.setColumns(10);
+
+		JLabel lb_Tan = new JLabel("Tan");
+		pn_AAnalyse.add(lb_Tan);
+
+		tf_Tan = new JTextField();
+		tf_Tan.setEditable(false);
+		tf_Tan.setText("0.75");
+		pn_AAnalyse.add(tf_Tan);
+		tf_Tan.setColumns(10);
+
+		JLabel lb_Taus = new JLabel("Taus");
+		pn_AAnalyse.add(lb_Taus);
+
+		tf_Taus = new JTextField("1.25",10);
+		tf_Taus.setEditable(false);	
+		pn_AAnalyse.add(tf_Taus);
+
+		JLabel lb_1 = new JLabel("S |e(t)| dt");
+		pn_AAnalyse.add(lb_1);
+
+		tf_1 = new JTextField("1",10);
+		tf_1.setEditable(false);
+		pn_AAnalyse.add(tf_1);
+		
+		JLabel lb_2 = new JLabel("S e(t)^2 dt");
+		pn_AAnalyse.add(lb_2);
+
+		tf_2 = new JTextField("2",10);
+		tf_2.setEditable(false);
+		pn_AAnalyse.add(tf_2);
+
+		JLabel lb_3 = new JLabel("S |e(t)|*t dt");
+		pn_AAnalyse.add(lb_3);
+
+		tf_3 = new JTextField("2",10);
+		tf_3.setEditable(false);
+		pn_AAnalyse.add(tf_3);
+
+		JLabel lb_4 = new JLabel("S e(t)^2*t dt");
+		pn_AAnalyse.add(lb_4);
+
+		tf_4 = new JTextField("4",10);
+		tf_4.setEditable(false);
+		pn_AAnalyse.add(tf_4);
+		
+		//---------------------Panel_Right-------------------------------
+		JPanel pn_Right = new JPanel();
+		pn_Right.setBackground(Color.WHITE);
+		add(pn_Right, BorderLayout.CENTER);
+		pn_Right.setLayout(new BorderLayout(0, 0));	
+		
+		//---------------------Panel_Optionen-------------------------------
+		JPanel pn_Optionen = new JPanel();
+		pn_Right.add(pn_Optionen, BorderLayout.SOUTH);
+		
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Regelkreis");
+		chckbxNewCheckBox_2.setBackground(new Color(250, 128, 114));
+		GridBagConstraints gbc_chckbxNewCheckBox_2 = new GridBagConstraints();
+		gbc_chckbxNewCheckBox_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox_2.gridx = 1;
+		gbc_chckbxNewCheckBox_2.gridy = 0;
+		pn_Optionen.add(chckbxNewCheckBox_2, gbc_chckbxNewCheckBox_2);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Regelstrecke");
+		chckbxNewCheckBox.setBackground(new Color(154, 205, 50));
+		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
+		gbc_chckbxNewCheckBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox.gridx = 1;
+		gbc_chckbxNewCheckBox.gridy = 1;
+		pn_Optionen.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
+
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Regler");
+		chckbxNewCheckBox_1.setBackground(new Color(100, 149, 237));
+		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
+		gbc_chckbxNewCheckBox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox_1.gridx = 1;
+		gbc_chckbxNewCheckBox_1.gridy = 2;
+		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+
+		//---------------------Status Zeile-------------------------------
+		JLabel lblStatus = new JLabel("Status");
+		add(lblStatus, BorderLayout.SOUTH);
 
 	}
 	
