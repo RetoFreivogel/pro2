@@ -9,7 +9,7 @@ public class PrototypeViewTest {
 
 	@Test
 	public void testView() {
-		View view = new View();
+		//View view = new View();
 		//fail("Not yet implemented");
 	}
 
