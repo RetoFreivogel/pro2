@@ -1,3 +1,0 @@
-Um INS-Dateien hochladen zu können, werden sie mit der Endung "_ok" markiert.
-Nutzer welche diese Datei verwenden möchten, laden sich diese herunter und entfernen wieder die Endung.
-Dieses Verfahren muss wegen der automatischen Dateityp Blockade von Microsoft durchgeführt werden.
