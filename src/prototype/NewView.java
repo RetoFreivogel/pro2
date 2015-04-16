@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -112,13 +113,12 @@ public class NewView extends JPanel {
 		//---------------------Eingabe-------------------------------		
 		JPanel pn_Eingabe = new JPanel();
 		pn_Eingabe.setLayout(new BoxLayout(pn_Eingabe, BoxLayout.Y_AXIS));
-		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Eingabe);
 		//---------------------Eingabe_Regelstrecke-------------------------------
 		JPanel pn_ERegelstrecke = new JPanel();
-		pn_ERegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
-				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_ERegelstrecke.setBorder(new TitledBorder(new LineBorder(Color.GRAY),"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Eingabe.add(pn_ERegelstrecke);
 		pn_ERegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -154,7 +154,7 @@ public class NewView extends JPanel {
 		
 		//---------------------Eingabe_Regler-------------------------------
 		JPanel pn_ERegler = new JPanel();
-		pn_ERegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_ERegler.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Eingabe.add(pn_ERegler);
 		pn_ERegler.setLayout(new GridLayout(0, 2, 0, 0));
@@ -188,14 +188,14 @@ public class NewView extends JPanel {
 		//---------------------Ausgabe-------------------------------
 		JPanel pn_Ausgabe = new JPanel();
 		pn_Ausgabe.setLayout(new BoxLayout(pn_Ausgabe, BoxLayout.Y_AXIS));
-		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Ausgabe);
 		
 		
 		//---------------------Ausgabe_Regelstrecke-------------------------------
 		JPanel pn_ARegelstrecke = new JPanel();
-		pn_ARegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_ARegelstrecke.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_ARegelstrecke);
 		pn_ARegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
@@ -216,7 +216,7 @@ public class NewView extends JPanel {
 		
 		//---------------------Ausgabe_Regler-------------------------------
 		JPanel pn_ARegler = new JPanel();
-		pn_ARegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_ARegler.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_ARegler);
 		pn_ARegler.setLayout(new GridLayout(0, 2, 0, 0));
@@ -251,7 +251,7 @@ public class NewView extends JPanel {
 		
 		//---------------------Ausgabe_Analyse-------------------------------
 		JPanel pn_AAnalyse = new JPanel();
-		pn_AAnalyse.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		pn_AAnalyse.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Analyse", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_AAnalyse);
 		pn_AAnalyse.setLayout(new GridLayout(0, 2, 0, 0));
@@ -344,8 +344,11 @@ public class NewView extends JPanel {
 		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 
 		//---------------------Status Zeile-------------------------------
-		JLabel lblStatus = new JLabel("Status");
-		add(lblStatus, BorderLayout.SOUTH);
+		JPanel pn_Status = new JPanel();
+		pn_Status.setLayout(new BorderLayout());
+		JLabel lblStatus = new JLabel("Status",JLabel.LEFT);
+		pn_Status.add(lblStatus,BorderLayout.WEST);
+		add(pn_Status, BorderLayout.SOUTH);
 
 	}
 	
