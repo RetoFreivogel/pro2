@@ -75,9 +75,11 @@ public class NewView extends JPanel {
 
 		// Panel
 		JPanel panel = new  JPanel();
+		add(panel, BorderLayout.WEST);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		JPanel pn_Eingabe = new JPanel();
+		pn_Eingabe.setLayout(new BoxLayout(pn_Eingabe, BoxLayout.Y_AXIS));
 		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.add(pn_Eingabe);
@@ -94,7 +96,7 @@ public class NewView extends JPanel {
 		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
 		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] { "KTuTg",
 				"Frequenzgang" }));
-		pn_Eingabe.add(cbbx_defd_RS);
+		pn_ERegelstrecke.add(cbbx_defd_RS);
 		
 		
 		
