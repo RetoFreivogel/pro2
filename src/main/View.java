@@ -35,11 +35,9 @@ public class View extends JPanel implements Observer{
 	private JPanel sidePanel;
 	private ChartPanel graph;
 
-	public View(Controller controller, Model model) {
+	public View(Model model) {
 		super();
-		controller.setView(this);
 		this.model = model;
-		init();
 	}
 	
 	public void init(){
