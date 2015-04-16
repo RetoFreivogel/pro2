@@ -1,0 +1,24 @@
+% This file was created with JabRef 2.10.
+% Encoding: Cp1252
+
+
+@Article{,
+  Title                    = {Amplitudengang und Phasengang im Bode-Diagramm},
+  Author                   = {W. Bengfort},
+  Year                     = {2014},
+
+  Owner                    = {Denis Stampfli},
+  Timestamp                = {2015.03.03},
+  Url                      = {http://et-tutorials.de/7507/amplitudengang-und-phasengang-im-bode-diagramm/}
+}
+
+@Article{,
+  Title                    = {Frequenzgang},
+  Author                   = {Wikipedia},
+  Year                     = {2014},
+
+  Owner                    = {Denis Stampfli},
+  Timestamp                = {2015.03.03},
+  Url                      = {http://de.wikipedia.org/wiki/Frequenzgang}
+}
+

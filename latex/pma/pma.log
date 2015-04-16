@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  16 APR 2015 16:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  16 APR 2015 16:46
 entering extended mode
 **pma.tex
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.tex
@@ -695,21 +695,21 @@ File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
 \AM@templatesizebox=\box40
 )
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -763,7 +763,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \everyMPtoPDFconversion=\toks37
 )
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring ON on input line 26.
+Package hyperref Info: Link coloring ON on input line 28.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -772,9 +772,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count144
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.out)
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.out)
@@ -783,44 +783,44 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=10, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=26, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
-Package pdftex.def Info: fhnwlogo.pdf used on input line 28.
+Package pdftex.def Info: fhnwlogo.pdf used on input line 30.
 (pdftex.def)             Requested size: 220.57736pt x 34.1433pt.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 28.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 28.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 28.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 30.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 28.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 30.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 28.
+(Font)              <12> on input line 30.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 28.
+(Font)              <8> on input line 30.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 28.
+(Font)              <6> on input line 30.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Claudius/Documen
 ts/GitHub/pro2/latex/pma/fhnwlogo.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 47.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 49.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -830,45 +830,48 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
  [2
 
 ]
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_einleitung.tex
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 1.
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_einleitung.tex)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_analysedererfahrung.tex)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_reflexion.tex)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_schlusswort.tex)
+
+LaTeX Warning: Citation `frequenzgang' on page 3 undefined on input line 68.
+
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.bbl
+
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
 ) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
+ (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
+Package rerunfilecheck Info: File `pma.out' has not changed.
+(rerunfilecheck)             Checksum: 734DDE6AF370398C1321859D0F730E59;261.
 
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 
+LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Warning: File `pma.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `pma.out':
-(rerunfilecheck)             Before: 3AA75A7F1BEE39FC9C0DFCFBEEF98FA1;48
-(rerunfilecheck)             After:  734DDE6AF370398C1321859D0F730E59;261.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 18628 strings out of 493921
- 349449 string characters out of 3144866
- 406601 words of memory out of 3000000
+ 18639 strings out of 493921
+ 350010 string characters out of 3144866
+ 406617 words of memory out of 3000000
  21568 multiletter control sequences out of 15000+200000
- 51054 words of font info for 40 fonts, out of 3000000 for 9000
+ 47449 words of font info for 37 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,7n,54p,405b,341s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on pma.pdf (3 pages, 269015 bytes).
+ 55i,7n,54p,405b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
+lmssbx10.pfb>
+Output written on pma.pdf (3 pages, 252486 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 88 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
