@@ -15,9 +15,9 @@ import java.awt.GridLayout;
 
 public class View extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textField; //Ks
+	private JTextField textField_1;//Tg
+	private JTextField textField_2;//
 	private JTextField textField_4;
 	private JTextField textField_3;
 	private JTextField textField_5;
@@ -62,7 +62,7 @@ public class View extends JPanel {
 		JMenuItem mntmBeenden = new JMenuItem("Beenden");
 		mnDatei.add(mntmBeenden);
 
-		//Menübereich Bearbeiten mit unterpunkten
+		//Menï¿½bereich Bearbeiten mit unterpunkten
 		JMenu mnBearbeiten = new JMenu("Bearbeiten");
 		menuBar.add(mnBearbeiten);
 
@@ -90,7 +90,7 @@ public class View extends JPanel {
 		JMenuItem mntmWiederholen = new JMenuItem("Wiederholen");
 		mnBearbeiten.add(mntmWiederholen);
 
-		// Menübereich Optionen mit unterpunkten
+		// Menï¿½bereich Optionen mit unterpunkten
 		JMenu mnOptionen = new JMenu("Optionen");
 		menuBar.add(mnOptionen);
 

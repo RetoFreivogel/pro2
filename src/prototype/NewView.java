@@ -7,13 +7,19 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JSeparator;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 public class NewView extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -68,6 +74,57 @@ public class NewView extends JPanel {
 
 
 		// Panel
+		JPanel panel = new  JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		JPanel pn_Eingabe = new JPanel();
+		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.add(pn_Eingabe);
+		
+		JPanel pn_ERegelstrecke = new JPanel();
+		pn_ERegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_Eingabe.add(pn_ERegelstrecke);
+		pn_Eingabe.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lb_defd_RS = new JLabel("Definiert durch:");
+		pn_ERegelstrecke.add(lb_defd_RS);
+		
+		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
+		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] { "KTuTg",
+				"Frequenzgang" }));
+		pn_Eingabe.add(cbbx_defd_RS);
+		
+		
+		
+		
+		JPanel pn_ERegler = new JPanel();
+		pn_ERegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_Eingabe.add(pn_ERegler);
+		
+		JPanel pn_Ausgabe = new JPanel();
+		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.add(pn_Ausgabe);
+		
+		JPanel pn_ARegelstrecke = new JPanel();
+		pn_ARegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_Ausgabe.add(pn_ARegelstrecke);
+		
+		JPanel pn_ARegler = new JPanel();
+		pn_ARegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_Ausgabe.add(pn_ARegler);
+		
+		JPanel pn_AAnalyse = new JPanel();
+		pn_AAnalyse.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+				"Analyse", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_Ausgabe.add(pn_AAnalyse);
+		
+
 	}
 	
 	public static void main(String[] args) {
