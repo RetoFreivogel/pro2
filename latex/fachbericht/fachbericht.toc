@@ -1,0 +1,29 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einletung}{4}{section.1}
+\contentsline {section}{\numberline {2}Theoretische Grundlagen}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Schrittantwort}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}\"Ubertragungsfunktion}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Wendetangent}{4}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Dimensionierung mit Faustformeln}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Dimensionierung mit Phasengangmethode}{4}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Amplitudengang der Strecke}{4}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Phasengang der Strecke}{4}{subsubsection.2.3.2}
+\contentsline {section}{\numberline {3}Reglertyp}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Typ-PI}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Typ-PID}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}\"Ubertragungsfunktion der Regler}{4}{subsection.3.3}
+\contentsline {section}{\numberline {4}L\"osungskonzept}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Phasen- und Amplitudendiadramm}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Identifikation Tu,Tg und Ks von Diagrammen}{4}{subsection.4.2}
+\contentsline {section}{\numberline {5}Gava-Software}{4}{section.5}
+\contentsline {subsection}{\numberline {5.1}Klassendiagramm}{4}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Beschreibung der Software}{4}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Benutzerschnittstelle}{4}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Klassen}{4}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}GUI Klassen}{4}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Model Klassen}{4}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}View Klassen}{4}{subsubsection.5.4.3}
+\contentsline {subsubsection}{\numberline {5.4.4}Controller Klassen}{4}{subsubsection.5.4.4}
+\contentsline {section}{\numberline {6}Test anhand Matlabs}{4}{section.6}
+\contentsline {section}{\numberline {7}Schlusswort}{4}{section.7}
+\contentsline {section}{\numberline {8}Literaturvezeichnis}{4}{section.8}
