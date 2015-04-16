@@ -15,10 +15,10 @@ import java.awt.GridLayout;
 
 public class View extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JTextField textField; //Ks
-	private JTextField textField_1;//Tg
-	private JTextField textField_2;//
-	private JTextField textField_4;
+	private JTextField tf_Ks; //Ks
+	private JTextField tf_Tg;//Tg
+	private JTextField tf_Tu;//
+	private JTextField tf_Phrand;
 	private JTextField textField_3;
 	private JTextField textField_5;
 	private JTextField textField_6;
@@ -107,93 +107,93 @@ public class View extends JPanel {
 				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		add(scrollPane, BorderLayout.WEST);
 
-		JPanel panel = new JPanel();
-		scrollPane.setViewportView(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		JPanel pn_left = new JPanel();
+		scrollPane.setViewportView(pn_left);
+		pn_left.setLayout(new BoxLayout(pn_left, BoxLayout.Y_AXIS));
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_Eingabe = new JPanel();
+		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.add(panel_1);
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
+		pn_left.add(pn_Eingabe);
+		pn_Eingabe.setLayout(new BoxLayout(pn_Eingabe, BoxLayout.Y_AXIS));
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_ERegelstrecke = new JPanel();
+		pn_ERegelstrecke.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null,
 				new Color(0, 0, 0)));
-		panel_1.add(panel_2);
-		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
+		pn_Eingabe.add(pn_ERegelstrecke);
+		pn_ERegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel label = new JLabel("Definiert durch: ");
-		panel_2.add(label);
+		pn_ERegelstrecke.add(label);
 
 		JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setModel(new DefaultComboBoxModel<>(new String[] { "KTuTg",
 				"Frequenzgang" }));
-		panel_2.add(comboBox);
+		pn_ERegelstrecke.add(comboBox);
 
-		JLabel label_1 = new JLabel("Ks");
-		panel_2.add(label_1);
+		JLabel lb_Ks = new JLabel("Ks");
+		pn_ERegelstrecke.add(lb_Ks);
 
-		this.textField = new JTextField();
-		this.textField.setText("1");
-		this.textField.setColumns(10);
-		panel_2.add(this.textField);
+		this.tf_Ks = new JTextField();	
+		this.tf_Ks.setText("1");
+		this.tf_Ks.setColumns(10);
+		pn_ERegelstrecke.add(this.tf_Ks);
 
-		JLabel label_2 = new JLabel("Tg");
-		panel_2.add(label_2);
+		JLabel lb_Tg = new JLabel("Tg");
+		pn_ERegelstrecke.add(lb_Tg);
 
-		this.textField_1 = new JTextField();
-		this.textField_1.setText("1");
-		this.textField_1.setColumns(10);
-		panel_2.add(this.textField_1);
+		this.tf_Tg = new JTextField();
+		this.tf_Tg.setText("1");
+		this.tf_Tg.setColumns(10);
+		pn_ERegelstrecke.add(this.tf_Tg);
 
-		JLabel label_3 = new JLabel("Tu");
-		panel_2.add(label_3);
+		JLabel lb_Tu = new JLabel("Tu");
+		pn_ERegelstrecke.add(lb_Tu);
 
-		this.textField_2 = new JTextField();
-		this.textField_2.setText("5");
-		this.textField_2.setColumns(10);
-		panel_2.add(this.textField_2);
+		this.tf_Tu = new JTextField();
+		this.tf_Tu.setText("5");
+		this.tf_Tu.setColumns(10);
+		pn_ERegelstrecke.add(this.tf_Tu);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
+		JPanel pn_ERegler = new JPanel();
+		pn_ERegler.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null,
 				new Color(0, 0, 0)));
-		panel_1.add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
+		pn_Eingabe.add(pn_ERegler);
+		pn_ERegler.setLayout(new GridLayout(0, 2, 0, 0));
 
-		JLabel label_6 = new JLabel("Topologie");
-		panel_3.add(label_6);
+		JLabel lb_Topo = new JLabel("Topologie");
+		pn_ERegler.add(lb_Topo);
 
-		JComboBox<String> comboBox_2 = new JComboBox<>();
-		comboBox_2.setModel(new DefaultComboBoxModel<>(new String[] { "PI",
+		JComboBox<String> cbbx_Topo = new JComboBox<>();
+		cbbx_Topo.setModel(new DefaultComboBoxModel<>(new String[] { "PI",
 				"PID" }));
-		comboBox_2.setSelectedIndex(1);
-		panel_3.add(comboBox_2);
+		cbbx_Topo.setSelectedIndex(1);
+		pn_ERegler.add(cbbx_Topo);
 
-		JLabel label_4 = new JLabel("Definiert durch: ");
-		panel_3.add(label_4);
+		JLabel lb_defd_R = new JLabel("Definiert durch: ");
+		pn_ERegler.add(lb_defd_R);
 
-		JComboBox<String> comboBox_1 = new JComboBox<>();
-		comboBox_1.setModel(new DefaultComboBoxModel<>(new String[] {
+		JComboBox<String> cbbx_defd_R = new JComboBox<>();
+		cbbx_defd_R.setModel(new DefaultComboBoxModel<>(new String[] {
 				"Manuell", "Phasengang", "Ziegler", "Chien", "Oppelt",
 				"Rosenberg", "Tsumme" }));
-		comboBox_1.setSelectedIndex(1);
-		panel_3.add(comboBox_1);
+		cbbx_defd_R.setSelectedIndex(1);
+		pn_ERegler.add(cbbx_defd_R);
 
-		JLabel label_5 = new JLabel("Phasenrand");
-		panel_3.add(label_5);
+		JLabel lb_Phrand = new JLabel("Phasenrand");
+		pn_ERegler.add(lb_Phrand);
 
-		this.textField_4 = new JTextField();
-		this.textField_4.setText("20\u00B0");
-		this.textField_4.setColumns(10);
-		panel_3.add(this.textField_4);
+		this.tf_Phrand = new JTextField();
+		this.tf_Phrand.setText("20\u00B0");
+		this.tf_Phrand.setColumns(10);
+		pn_ERegler.add(this.tf_Phrand);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)),
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.add(panel_4);
+		pn_left.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 
 		JPanel panel_5 = new JPanel();
@@ -398,7 +398,7 @@ public class View extends JPanel {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setUndecorated(true);
+		frame.setUndecorated(false);
 		try {
 			UIManager.setLookAndFeel(
 			        UIManager.getSystemLookAndFeelClassName());
