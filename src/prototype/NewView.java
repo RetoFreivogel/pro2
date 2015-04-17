@@ -27,6 +27,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import util.Chart;
+import util.Matlab;
+
 public class NewView extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -342,7 +345,15 @@ public class NewView extends JPanel {
 		gbc_chckbxNewCheckBox_1.gridx = 1;
 		gbc_chckbxNewCheckBox_1.gridy = 2;
 		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
-
+		
+		//---------------------Graph-------------------------------
+		double[] output = Matlab.calcStep("[1],[1 1 2]");
+		Matlab.closeProxy();
+		JPanel pn_chart = Chart.makePanel(output);
+		pn_chart.setBackground(Color.WHITE);
+		pn_Right.add(pn_chart, BorderLayout.CENTER);
+		
+		
 		//---------------------Status Zeile-------------------------------
 		JPanel pn_Status = new JPanel();
 		pn_Status.setLayout(new BorderLayout());

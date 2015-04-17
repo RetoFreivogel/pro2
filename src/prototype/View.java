@@ -15,9 +15,9 @@ import java.awt.GridLayout;
 
 public class View extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JTextField tf_Ks; //Ks
-	private JTextField tf_Tg;//Tg
-	private JTextField tf_Tu;//
+	private JTextField tf_Ks; 
+	private JTextField tf_Tg;
+	private JTextField tf_Tu;
 	private JTextField tf_Phrand;
 	private JTextField tf_Ordn;
 	private JTextField tf_Kr;
