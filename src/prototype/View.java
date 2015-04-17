@@ -390,7 +390,7 @@ public class View extends JPanel {
 		gbc_chckbxNewCheckBox_1.gridy = 2;
 		panel_10.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 
-		double[] output = Matlab.calcStep("[1],[1 1 2]");
+		double[] output = Matlab.calcStep(new double[]{1},new double[]{1,1,2});
 		Matlab.closeProxy();
 		JPanel pn_chart = Chart.makePanel(output);
 		pn_chart.setBackground(Color.WHITE);
@@ -403,13 +403,12 @@ public class View extends JPanel {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setUndecorated(false);
+		frame.setUndecorated(true);
 		try {
 			UIManager.setLookAndFeel(
 			        UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException
 				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);

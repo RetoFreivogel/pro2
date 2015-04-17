@@ -45,11 +45,9 @@ public class Matlab {
 		double tu = rs.getTu().getValue();
 		double tg = rs.getTg().getValue();
 
-		String saniArgs = "" + tu + "," + tg;
-
 		try {
-			output = (double[]) matlabProxy.returningEval("p2_sani(" + saniArgs
-					+ ")", 2)[1];
+			output = (double[]) matlabProxy
+					.returningFeval("p2_sani", 2, tu, tg)[1];
 
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block
@@ -58,15 +56,14 @@ public class Matlab {
 		return output;
 	}
 
-	public static double[] calcStep(String poly) {
+	public static double[] calcStep(double[] n, double[] z) {
 		// Create a proxy, which we will use to control MATLAB
 
 		// Display 'hello world' just like when using the demo
 		double[] output = {};
 		try {
 			MatlabProxy matlabProxy = getProxy();
-			output = (double[]) matlabProxy.returningEval("step(" + poly + ")",
-					1)[0];
+			output = (double[]) matlabProxy.returningFeval("step", 1, n, z)[0];
 
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block

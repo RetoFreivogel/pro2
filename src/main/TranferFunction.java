@@ -11,18 +11,6 @@ public abstract class TranferFunction {
 		final double[] zaehler = getPolyZaehler();
 		final double[] nenner = getPolyNenner();
 
-		String polyString = "[";
-		for (int i = 0; i < zaehler.length; i++) {
-			polyString += zaehler[i] + " ";
-		}
-		polyString += "],[";
-		for (int i = 0; i < nenner.length; i++) {
-			polyString += nenner[i] + " ";
-		}
-		polyString += "]";
-
-		double[] antwort = Matlab.calcStep(polyString);
-
-		return antwort;
+		return Matlab.calcStep(zaehler, nenner);
 	}
 }
