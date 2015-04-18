@@ -347,7 +347,7 @@ public class NewView extends JPanel {
 		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 		
 		//---------------------Graph-------------------------------
-		double[] output = Matlab.calcStep("[1],[1 1 2]");
+		double[] output = Matlab.calcStep(new double[]{1},new double[]{1,1,2});
 		Matlab.closeProxy();
 		JPanel pn_chart = Chart.makePanel(output);
 		pn_chart.setBackground(Color.WHITE);
