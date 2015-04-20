@@ -18,7 +18,7 @@ public class ManuellDim extends ReglerDim {
 	}
 
 	@Override
-	public ReglerDim makeCopy() {
+	public ManuellDim makeCopy() {
 		return new ManuellDim(kr, tn, tv);
 	}
 
