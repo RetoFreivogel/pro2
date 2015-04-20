@@ -3,9 +3,9 @@ package main;
 import util.Matlab;
 
 public abstract class TranferFunction {
-	protected abstract double[] getPolyZaehler();
+	public abstract double[] getPolyZaehler();
 
-	protected abstract double[] getPolyNenner();
+	public abstract double[] getPolyNenner();
 
 	public double[] schrittantwort() {
 		final double[] zaehler = getPolyZaehler();

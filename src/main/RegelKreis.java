@@ -29,14 +29,14 @@ public class RegelKreis extends TranferFunction {
 	}
 
 	@Override
-	protected double[] getPolyZaehler() {
+	public double[] getPolyZaehler() {
 		double[] polyStrecke = regelstrecke.getPolyZaehler();
 		double[] polyRegler = dim.calc(regelstrecke).getPolyZaehler();
 		return convPoly(polyStrecke, polyRegler);
 	}
 
 	@Override
-	protected double[] getPolyNenner() {
+	public double[] getPolyNenner() {
 		double[] zaehler = getPolyZaehler();
 		double[] polyStrecke = regelstrecke.getPolyNenner();
 		double[] polyRegler = dim.calc(regelstrecke).getPolyNenner();

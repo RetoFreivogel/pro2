@@ -70,12 +70,12 @@ public final class Regler extends TranferFunction {
 	}
 
 	@Override
-	protected double[] getPolyZaehler() {
+	public double[] getPolyZaehler() {
 		return new double[]{tn*(tv+tp), tn+tp, 1};
 	}
 
 	@Override
-	protected double[] getPolyNenner() {
+	public double[] getPolyNenner() {
 		return new double[]{tn*tp, tn, 0};
 	}
 
