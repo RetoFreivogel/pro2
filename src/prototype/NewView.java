@@ -122,17 +122,6 @@ public class NewView extends JPanel {
 
 	}
 	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setUndecorated(false);
-		frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("TopView_Alex");
-		frame.getContentPane().add(new NewView());
-		frame.setSize(800, 600);
-		//frame.pack();
-		frame.setVisible(true);
 
-	}
 
 }

@@ -11,10 +11,10 @@ public class PIDRechnerTest {
 
 	@Test
 	public void testInit() {
+		Matlab.setMocked(true);
 		PIDRechner rechner = new PIDRechner();
-		//rechner.init();
-		//rechner.dispose();
-		//Matlab.closeProxy();
+		rechner.init();
+		rechner.dispose();
 		//fail("Not yet implemented");
 	}
 

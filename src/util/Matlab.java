@@ -5,8 +5,12 @@ import matlabcontrol.*;
 
 public class Matlab {
 	private static MatlabProxy proxy = null;
+	private static boolean mocked = false;
 
 	public static MatlabProxy getProxy() {
+		if(mocked){
+			return null;
+		}
 		if (proxy == null) {
 			MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder()
 					.setHidden(true).build();
@@ -26,6 +30,10 @@ public class Matlab {
 		return proxy;
 	}
 
+	public static void setMocked(boolean mocked){
+		Matlab.mocked = mocked;
+	}
+	
 	public static void closeProxy() {
 		if (proxy != null) {
 			try {
@@ -42,6 +50,10 @@ public class Matlab {
 		double[] output = {};
 
 		MatlabProxy matlabProxy = getProxy();
+		if(matlabProxy == null){
+			return new double[]{};
+		}
+		
 		double tu = rs.getTu().getValue();
 		double tg = rs.getTg().getValue();
 
@@ -61,10 +73,13 @@ public class Matlab {
 
 		// Display 'hello world' just like when using the demo
 		double[] output = {};
+		MatlabProxy matlabProxy = getProxy();
+		if(matlabProxy == null){
+			return new double[]{};
+		}
+		
 		try {
-			MatlabProxy matlabProxy = getProxy();
 			output = (double[]) matlabProxy.returningFeval("step", 1, n, z)[0];
-
 		} catch (MatlabInvocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
