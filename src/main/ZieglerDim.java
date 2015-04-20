@@ -8,7 +8,7 @@ public final class ZieglerDim extends ReglerDim {
 		double Tu = regelstrecke.getTu().getValue();
 		double Tg = regelstrecke.getTg().getValue();
 		
-		return new Regler((0.9 / Ks) * (Tg / Tu), 2 * Tu, 0.5 * Tu);
+		return new Regler((0.9 / Ks) * (Tg / Tu), 2 * Tu, 0.5 * Tu); //Tg = T1, Tu = Tt
 	}
 
 	@Override
