@@ -6,6 +6,10 @@ public class RegelStrecke extends TranferFunction {
 	private ObservableDouble ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
+		if(ks < 0)throw new IllegalArgumentException("ks can't be negative");
+		if(tu < 0)throw new IllegalArgumentException("tu can't be negative");
+		if(tg < 0)throw new IllegalArgumentException("tg can't be negative");
+		
 		this.ks = new ObservableDouble(ks);
 		this.tu = new ObservableDouble(tu);
 		this.tg = new ObservableDouble(tg);
@@ -30,12 +34,12 @@ public class RegelStrecke extends TranferFunction {
 	}
 
 	@Override
-	protected double[] getPolyZaehler() {
+	public double[] getPolyZaehler() {
 		return new double[] { ks.getValue() };
 	}
 
 	@Override
-	protected double[] getPolyNenner() {
+	public double[] getPolyNenner() {
 		double[] Tcoeff = Matlab.calcSani(this);
 		int n = Tcoeff.length;
 
@@ -53,9 +57,9 @@ public class RegelStrecke extends TranferFunction {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ks == null) ? 0 : ks.hashCode());
-		result = prime * result + ((tg == null) ? 0 : tg.hashCode());
-		result = prime * result + ((tu == null) ? 0 : tu.hashCode());
+		result = prime * result + ks.hashCode();
+		result = prime * result + tg.hashCode();
+		result = prime * result + tu.hashCode();
 		return result;
 	}
 
@@ -68,20 +72,11 @@ public class RegelStrecke extends TranferFunction {
 		if (getClass() != obj.getClass())
 			return false;
 		RegelStrecke other = (RegelStrecke) obj;
-		if (ks == null) {
-			if (other.ks != null)
-				return false;
-		} else if (!ks.equals(other.ks))
+		if (!ks.equals(other.ks))
 			return false;
-		if (tg == null) {
-			if (other.tg != null)
-				return false;
-		} else if (!tg.equals(other.tg))
+		if (!tg.equals(other.tg))
 			return false;
-		if (tu == null) {
-			if (other.tu != null)
-				return false;
-		} else if (!tu.equals(other.tu))
+		if (!tu.equals(other.tu))
 			return false;
 		return true;
 	}
