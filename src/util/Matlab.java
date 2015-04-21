@@ -51,7 +51,7 @@ public class Matlab {
 
 		MatlabProxy matlabProxy = getProxy();
 		if(matlabProxy == null){
-			return new double[]{1};
+			return new double[]{};
 		}
 		
 		double tu = rs.getTu().getValue();
