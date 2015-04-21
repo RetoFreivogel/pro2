@@ -2,7 +2,7 @@ package main;
 
 import util.Matlab;
 
-public class RegelStrecke extends TranferFunction {
+public class RegelStrecke extends ProductTransferFunction {
 	private ObservableDouble ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
@@ -34,24 +34,20 @@ public class RegelStrecke extends TranferFunction {
 	}
 
 	@Override
-	public double[] getPolyZaehler() {
-		return new double[] { ks.getValue() };
+	double[] getNennerFactors() {
+		return Matlab.calcSani(this);
 	}
 
 	@Override
-	public double[] getPolyNenner() {
-		double[] Tcoeff = Matlab.calcSani(this);
-		int n = Tcoeff.length;
-
-		double[] nenner = new double[n + 1];
-		nenner[n] = 1.0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				nenner[j] += nenner[j + 1] * Tcoeff[i];
-			}
-		}
-		return nenner;
+	double[] getZaehlerFactors() {
+		return new double[]{};
 	}
+
+	@Override
+	double getBaseFactor() {
+		return ks.getValue();
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -80,5 +76,7 @@ public class RegelStrecke extends TranferFunction {
 			return false;
 		return true;
 	}
+
+
 
 }

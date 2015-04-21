@@ -2,65 +2,41 @@ package main;
 
 import main.TranferFunction;
 
-public class ProductTransferFunction extends TranferFunction {
+public abstract class ProductTransferFunction extends TranferFunction {
 
-	double[] nennerFactors;
-	double[] zaehlerFactors;
-	double base;
-	
-
-	public ProductTransferFunction(double[] nennerFactors,
-			double[] zaehlerFactors, double base) {
-		super();
-		this.nennerFactors = nennerFactors;
-		this.zaehlerFactors = zaehlerFactors;
-		this.base = base;
-	}
+	abstract double[] getNennerFactors();
+	abstract double[] getZaehlerFactors();
+	abstract double getBaseFactor();
 
 	@Override
-	protected double[] getPolyZaehler() {
-		int n = zaehlerFactors.length;
+	public double[] getPolyZaehler() {
+		int n = getZaehlerFactors().length;
 
 		double[] zaehler = new double[n + 1];
 		zaehler[n] = 1.0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				zaehler[j] += zaehler[j + 1] * zaehlerFactors[i];
+				zaehler[j] += zaehler[j + 1] * getZaehlerFactors()[i];
 			}
 		}
 		for (int i = 0; i < zaehler.length; i++) {
-			zaehler[i] *= base;
+			zaehler[i] *= getBaseFactor();
 		}
 		return zaehler;
 	}
 
 	@Override
-	protected double[] getPolyNenner() {
-		int n = nennerFactors.length;
+	public double[] getPolyNenner() {
+		int n = getNennerFactors().length;
 
 		double[] nenner = new double[n + 1];
 		nenner[n] = 1.0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				nenner[j] += nenner[j + 1] * nennerFactors[i];
+				nenner[j] += nenner[j + 1] * getNennerFactors()[i];
 			}
 		}
 		return nenner;
 	}
 
-	public double[] getNennerFactors() {
-		return nennerFactors;
-	}
-
-	public void setNennerFactors(double[] nennerFactors) {
-		this.nennerFactors = nennerFactors;
-	}
-
-	public double[] getZaehlerFactors() {
-		return zaehlerFactors;
-	}
-
-	public void setZaehlerFactors(double[] zaehlerFactors) {
-		this.zaehlerFactors = zaehlerFactors;
-	}
 }
