@@ -14,8 +14,10 @@ public class PIDRechnerTest {
 		Matlab.setMocked(true);
 		PIDRechner rechner = new PIDRechner();
 		rechner.init();
+		
+		assertNotNull(rechner);
+		
 		rechner.dispose();
-		//fail("Not yet implemented");
 	}
 
 }

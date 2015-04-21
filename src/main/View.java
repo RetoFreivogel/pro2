@@ -2,102 +2,156 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BoxLayout;
+import javax.swing.ActionMap;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JSeparator;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 
 import util.Chart;
+import util.Matlab;
 
 public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
+	
+	private  String[] datei = {"Neu...","Speichern","Speichern als...","\u00D6ffnen...","Schliessen","Beenden"};
+	private  String[] bearbeiten = {"Kopieren","Ausschneiden","Einsetzen","L\u00F6schen","R\u00FCckg\u00E4ngig","Wiederholen"};
+	private  String[] optionen = {"Simulation...","Einstellungen"};
+	
+	private SidebarPanel sidebarPanel;
+	private JLabel lblStatus;
+	private ChartPanel pn_chart;
 
-	private Model model;
-	
-	private JLabel statusbar;
-	
-	private JTextField tf_Ks;
-	private JTextField tf_Tu;
-	private JTextField tf_Tg;
-	
-	private JTextField tf_Kr;
-	private JTextField tf_Tn;
-	private JTextField tf_Tv;
-	
-	
-	private JPanel sidePanel;
-	private ChartPanel graph;
-
-	public View(Model model) {
+	public View() {
 		super();
-		this.model = model;
+
+		this.setLayout(new BorderLayout());
+		setLayout(new BorderLayout(0,0));
+		
+		// Menuleiste
+		JMenuBar menuBar = new JMenuBar();
+		add(menuBar,BorderLayout.NORTH);
+		// Untermenu Datei
+		JMenu mnDatei = new JMenu("Datei"); 
+		menuBar.add(mnDatei);
+		JMenuItem [] mntmDatei = new JMenuItem[6];
+		for (int i = 0; i < this.datei.length; i++) {
+			 mntmDatei[i] = new JMenuItem(this.datei[i]);
+			mnDatei.add(mntmDatei[i]);
+			if (i==4) {	
+				JSeparator separator = new JSeparator();
+				mnDatei.add(separator);
+			}
+		}
+		// Untermenu Bearbeiten
+		JMenu mnBearbeiten = new JMenu("Bearbeiten"); 
+		menuBar.add(mnBearbeiten);
+		JMenuItem [] mntmBearbeiten = new JMenuItem[6];
+		for (int i = 0; i < this.bearbeiten.length; i++) {
+			mntmBearbeiten[i] = new JMenuItem(this.bearbeiten[i]);
+			mnBearbeiten.add(mntmBearbeiten[i]);
+			if (i==2||i==3) {	
+				JSeparator separator = new JSeparator();
+				mnBearbeiten.add(separator);
+
+
+			}
+		}
+		// Untermenu Optionen
+		JMenu mnOptionen = new JMenu("Optionen"); 
+		menuBar.add(mnOptionen);
+		for (int i = 0; i < this.optionen.length; i++) {
+			JMenuItem mntmNeu = new JMenuItem(this.bearbeiten[i]);
+			mnOptionen.add(mntmNeu);
+			
+		}
+
+		//---------------------Panel_Left-------------------------------
+		sidebarPanel = new SidebarPanel();
+		add(sidebarPanel, BorderLayout.WEST);
+		
+		//---------------------Panel_Right-------------------------------
+		JPanel pn_Right = new JPanel();
+		pn_Right.setBackground(Color.WHITE);
+		add(pn_Right, BorderLayout.CENTER);
+		pn_Right.setLayout(new BorderLayout(0, 0));	
+		
+		//---------------------Panel_Optionen-------------------------------
+		JPanel pn_Optionen = new JPanel();
+		pn_Right.add(pn_Optionen, BorderLayout.SOUTH);
+		
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Regelkreis");
+		chckbxNewCheckBox_2.setBackground(new Color(250, 128, 114));
+		GridBagConstraints gbc_chckbxNewCheckBox_2 = new GridBagConstraints();
+		gbc_chckbxNewCheckBox_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox_2.gridx = 1;
+		gbc_chckbxNewCheckBox_2.gridy = 0;
+		pn_Optionen.add(chckbxNewCheckBox_2, gbc_chckbxNewCheckBox_2);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Regelstrecke");
+		chckbxNewCheckBox.setBackground(new Color(154, 205, 50));
+		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
+		gbc_chckbxNewCheckBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox.gridx = 1;
+		gbc_chckbxNewCheckBox.gridy = 1;
+		pn_Optionen.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
+
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Regler");
+		chckbxNewCheckBox_1.setBackground(new Color(100, 149, 237));
+		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
+		gbc_chckbxNewCheckBox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_chckbxNewCheckBox_1.gridx = 1;
+		gbc_chckbxNewCheckBox_1.gridy = 2;
+		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+		
+		//---------------------Graph-------------------------------
+		double[] output = Matlab.calcStep(new double[]{1},new double[]{1,1,2});
+		Matlab.closeProxy();
+		pn_chart = Chart.makePanel(output);
+		pn_chart.setBackground(Color.WHITE);
+		pn_Right.add(pn_chart, BorderLayout.CENTER);
+		
+		
+		//---------------------Status Zeile-------------------------------
+		JPanel pn_Status = new JPanel();
+		pn_Status.setLayout(new BorderLayout());
+		lblStatus = new JLabel("Status",JLabel.LEFT);
+		pn_Status.add(lblStatus,BorderLayout.WEST);
+		add(pn_Status, BorderLayout.SOUTH);
 	}
 	
-	public void init(){
-		setLayout(new BorderLayout());
-
-		add(new JMenuBar(), BorderLayout.NORTH);
-		
-		sidePanel = new JPanel();
-		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
-		
-		tf_Ks = new JTextField();
-		tf_Ks.setAction(this.getActionMap().get("SET_KS"));
-		sidePanel.add(tf_Ks);
-		tf_Tu = new JTextField();
-		tf_Tu.setAction(this.getActionMap().get("SET_TU"));
-		sidePanel.add(tf_Tu);
-		tf_Tg = new JTextField();
-		tf_Tg.setAction(this.getActionMap().get("SET_TG"));
-		sidePanel.add(tf_Tg);
-		
-		tf_Kr = new JTextField();
-		tf_Kr.setColumns(15);
-		sidePanel.add(tf_Kr);
-		tf_Tn = new JTextField();
-		tf_Tn.setColumns(15);
-		sidePanel.add(tf_Tn);
-		tf_Tv = new JTextField();
-		tf_Tv.setColumns(15);
-		sidePanel.add(tf_Tv);
-		
-		add(sidePanel, BorderLayout.WEST);
-		
-		statusbar = new JLabel("Bereit");
-		add(statusbar, BorderLayout.SOUTH);
-		
-		graph = Chart.makePanel(new double[]{0});
-		graph.setBackground(Color.WHITE);
-		add(graph, BorderLayout.CENTER);
-		
-		update(null, null);
+	public void registerActions(ActionMap actionmap){
+		sidebarPanel.registerActions(actionmap);
 	}
 
 	public void setStatus(String message) {
-		statusbar.setText(message);
+		lblStatus.setText(message);
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		double[] output = this.model.getRegelkreis()
+	public void update(Model model){
+		double[] output = model.getRegelkreis()
 				.schrittantwort();
 		JFreeChart chart = Chart.makeChart(output);
-		graph.setChart(chart);
-
-		tf_Ks.setText("" + model.getRegelkreis().getRegelstrecke().getKs().getValue());
-		tf_Tu.setText("" + model.getRegelkreis().getRegelstrecke().getTu().getValue());
-		tf_Tg.setText("" + model.getRegelkreis().getRegelstrecke().getTg().getValue());
+		pn_chart.setChart(chart);
+		sidebarPanel.update(model.getRegelkreis());
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		if(!(o instanceof Model))return;
 		
-		tf_Kr.setText("" + this.model.getRegelkreis().getRegler().getKr());
-		tf_Tn.setText("" + this.model.getRegelkreis().getRegler().getTn());
-		tf_Tv.setText("" + this.model.getRegelkreis().getRegler().getTv());
+		Model model = (Model) o;
+		update(model);
 	}
 }
 

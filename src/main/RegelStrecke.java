@@ -34,17 +34,17 @@ public class RegelStrecke extends ProductTransferFunction {
 	}
 
 	@Override
-	double[] getNennerFactors() {
+	public double[] getNennerFactors() {
 		return Matlab.calcSani(this);
 	}
 
 	@Override
-	double[] getZaehlerFactors() {
+	public double[] getZaehlerFactors() {
 		return new double[]{};
 	}
 
 	@Override
-	double getBaseFactor() {
+	public double getBaseFactor() {
 		return ks.getValue();
 	}
 	

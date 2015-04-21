@@ -4,9 +4,9 @@ import main.TranferFunction;
 
 public abstract class ProductTransferFunction extends TranferFunction {
 
-	abstract double[] getNennerFactors();
-	abstract double[] getZaehlerFactors();
-	abstract double getBaseFactor();
+	public abstract double[] getNennerFactors();
+	public abstract double[] getZaehlerFactors();
+	public abstract double getBaseFactor();
 
 	@Override
 	public double[] getPolyZaehler() {

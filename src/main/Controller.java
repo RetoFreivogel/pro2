@@ -17,25 +17,19 @@ public class Controller {
 
 	public void setView(View view) {
 		this.view = view;
-		ActionMap actionmap = view.getActionMap();
+		
+		
+		ActionMap actionmap = new ActionMap();
 		actionmap.put("SET_KS", new SetDoubleAction("KS", model.getRegelkreis()
 				.getRegelstrecke().getKs()));
 		actionmap.put("SET_TU", new SetDoubleAction("TU", model.getRegelkreis()
 				.getRegelstrecke().getTu()));
 		actionmap.put("SET_TG", new SetDoubleAction("TG", model.getRegelkreis()
 				.getRegelstrecke().getTg()));
-	}
+		
+		view.registerActions(actionmap);
 
-	/*
-	 * public AbstractAction getKsAction() { return new SetDoubleAction("KS",
-	 * model.getRegelkreis() .getRegelstrecke().getKs()); }
-	 * 
-	 * public AbstractAction getTuAction() { return new SetDoubleAction("TU",
-	 * model.getRegelkreis() .getRegelstrecke().getTu()); }
-	 * 
-	 * public AbstractAction getTgAction() { return new SetDoubleAction("TG",
-	 * model.getRegelkreis() .getRegelstrecke().getTg()); }
-	 */
+	}
 
 	private class SetDoubleAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
