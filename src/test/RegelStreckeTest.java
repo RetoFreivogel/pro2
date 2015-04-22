@@ -45,7 +45,6 @@ public class RegelStreckeTest {
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);
 		RegelStrecke copy_rs = new RegelStrecke(rs);
 		assertEquals(copy_rs.getTranferFunction(), rs.getTranferFunction());
-		assertEquals(copy_rs.getTranferFunction(), rs.getTranferFunction());
 	}
 	
 	@Test

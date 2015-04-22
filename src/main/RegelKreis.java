@@ -1,12 +1,18 @@
 package main;
 
-public class RegelKreis extends TranferFunction {
+import java.util.Observable;
+import java.util.Observer;
+
+public class RegelKreis extends Observable implements RegelGlied, Observer {
 	private RegelStrecke regelstrecke;
 	private ReglerDim dim;
 
 	public RegelKreis(ReglerDim dim, RegelStrecke regelstrecke) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
+		
+		this.dim.addObserver(this);
+		this.regelstrecke.addObserver(this);
 	}
 
 	public Regler getRegler() {
@@ -18,40 +24,32 @@ public class RegelKreis extends TranferFunction {
 	}
 	
 	public void setDim(ReglerDim dim) {
+		this.dim.deleteObserver(this);
 		this.dim = dim;
+		this.dim.addObserver(this);
 	}
 
 	public RegelStrecke getRegelstrecke() {
 		return regelstrecke;
 	}
 
-	@Override
-	public double[] getPolyZaehler() {
-		double[] polyStrecke = regelstrecke.getPolyZaehler();
-		double[] polyRegler = dim.calc(regelstrecke).getPolyZaehler();
-		return convPoly(polyStrecke, polyRegler);
+	public void setRegelstrecke(RegelStrecke regelstrecke) {
+		this.regelstrecke.deleteObserver(this);
+		this.regelstrecke = regelstrecke;
+		this.regelstrecke.addObserver(this);
 	}
 
 	@Override
-	public double[] getPolyNenner() {
-		double[] zaehler = getPolyZaehler();
-		double[] polyStrecke = regelstrecke.getPolyNenner();
-		double[] polyRegler = dim.calc(regelstrecke).getPolyNenner();
-		double[] nenner = convPoly(polyStrecke, polyRegler);
-		for (int i = 0; i < zaehler.length; i++) {
-			nenner[i+(nenner.length - zaehler.length)] += zaehler[i];
-		}		
-		return nenner;
+	public TransferFunction getTranferFunction() {
+		TransferFunction tf_s = regelstrecke.getTranferFunction();
+		TransferFunction tf_r = dim.calc(regelstrecke).getTranferFunction();
+		
+		return tf_s.conv(tf_r).feedback_loop();
 	}
 
-	private double[] convPoly(double[] P1, double[] P2) {
-		double[] P = new double[P1.length + P2.length - 1];
-
-		for (int i = 0; i < P1.length; i++) {
-			for (int j = 0; j < P2.length; j++) {
-				P[i + j] += P1[i] * P2[j];
-			}
-		}
-		return P;
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		setChanged();
+		notifyObservers();
 	}
 }

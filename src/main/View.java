@@ -138,7 +138,7 @@ public class View extends JPanel implements Observer{
 	}
 
 	public void update(Model model){
-		double[] output = model.getRegelkreis()
+		double[] output = model.getRegelkreis().getTranferFunction()
 				.schrittantwort();
 		JFreeChart chart = Chart.makeChart(output);
 		pn_chart.setChart(chart);

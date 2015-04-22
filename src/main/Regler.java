@@ -1,13 +1,20 @@
 package main;
 
-public final class Regler extends TranferFunction {
+public final class Regler implements RegelGlied {
 	private final double kr, tn, tv, tp;
 
 	public Regler(double kr, double tn, double tv) {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
-		this.tp = 10*tv;
+		this.tp = 10 * tv;
+	}
+
+	public Regler(double kr, double tn, double tv, double tp) {
+		this.kr = kr;
+		this.tn = tn;
+		this.tv = tv;
+		this.tp = tp;
 	}
 
 	public Regler(Regler other) {
@@ -28,7 +35,7 @@ public final class Regler extends TranferFunction {
 	public double getTv() {
 		return tv;
 	}
-	
+
 	public double getTp() {
 		return tp;
 	}
@@ -70,13 +77,9 @@ public final class Regler extends TranferFunction {
 	}
 
 	@Override
-	public double[] getPolyZaehler() {
-		return new double[]{tn*(tv+tp), tn+tp, 1};
-	}
-
-	@Override
-	public double[] getPolyNenner() {
-		return new double[]{tn*tp, tn, 0};
+	public TransferFunction getTranferFunction() {
+		return new TransferFunction(new double[] { tn * (tv + tp), tn + tp, 1 },
+				new double[] { tn * tp, tn, 0 });
 	}
 
 }

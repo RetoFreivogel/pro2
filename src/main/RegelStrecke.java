@@ -1,9 +1,11 @@
 package main;
 
+import java.util.Observable;
+
 import util.Matlab;
 
-public final class RegelStrecke extends ProductTransferFunction {
-	private final double ks, tu, tg;
+public class RegelStrecke extends Observable implements RegelGlied {
+	private double ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		if(ks < 0)throw new IllegalArgumentException("ks can't be negative");
@@ -33,21 +35,23 @@ public final class RegelStrecke extends ProductTransferFunction {
 		return tg;
 	}
 
-	@Override
-	public double[] getNennerFactors() {
-		return Matlab.calcSani(this);
+	public void setKs(double ks) {
+		this.ks = ks;
+		setChanged();
+		notifyObservers();
 	}
 
-	@Override
-	public double[] getZaehlerFactors() {
-		return new double[]{};
+	public void setTu(double tu) {
+		this.tu = tu;
+		setChanged();
+		notifyObservers();
 	}
 
-	@Override
-	public double getBaseFactor() {
-		return ks;
+	public void setTg(double tg) {
+		this.tg = tg;
+		setChanged();
+		notifyObservers();
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -81,4 +85,19 @@ public final class RegelStrecke extends ProductTransferFunction {
 		return true;
 	}
 
+	@Override
+	public TransferFunction getTranferFunction() {
+		double[] Tcoeffs = Matlab.calcSani(this);
+		
+		int n = Tcoeffs.length;
+		double[] nenner = new double[n + 1];
+		nenner[n] = 1.0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				nenner[j] += nenner[j + 1] * Tcoeffs[i];
+			}
+		}
+			
+		return new TransferFunction(new double[]{ks}, nenner);	
+	}
 }

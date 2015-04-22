@@ -30,6 +30,7 @@ public class ManuellDimTest {
 		dim.setKr(4.0);
 		dim.setTn(5.0);
 		dim.setTv(6.0);
+		dim.setTp(60.0);
 		
 		regler_ref = new Regler(4.0, 5.0, 6.0);
 		regler = dim.calc(null);
