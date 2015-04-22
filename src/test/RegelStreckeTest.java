@@ -1,7 +1,6 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.ObservableDouble;
 import main.RegelStrecke;
 
 import org.junit.Test;
@@ -33,11 +32,10 @@ public class RegelStreckeTest {
 	public void testCopy() {
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);
 		RegelStrecke copy_rs = new RegelStrecke(rs);
-		ObservableDouble d = rs.getKs();
 
 		assertEquals(copy_rs, rs);
 		
-		d.setValue(0.5);
+		copy_rs.setKs(0.5);
 		assertNotEquals(copy_rs, rs);	
 	}
 	
@@ -46,8 +44,8 @@ public class RegelStreckeTest {
 		Matlab.setMocked(true);
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);
 		RegelStrecke copy_rs = new RegelStrecke(rs);
-		assertArrayEquals(copy_rs.getPolyNenner(), rs.getPolyNenner(), 0);
-		assertArrayEquals(copy_rs.getPolyZaehler(), rs.getPolyZaehler(), 0);
+		assertEquals(copy_rs.getTranferFunction(), rs.getTranferFunction());
+		assertEquals(copy_rs.getTranferFunction(), rs.getTranferFunction());
 	}
 	
 	@Test

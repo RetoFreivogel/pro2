@@ -20,10 +20,8 @@ public class Matlab {
 				String matlabDir = System.getProperty("user.dir") + "\\matlab";
 				proxy.eval("addpath \'" + matlabDir + "\'");
 			} catch (MatlabConnectionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (MatlabInvocationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -39,7 +37,6 @@ public class Matlab {
 			try {
 				proxy.exit();
 			} catch (MatlabInvocationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			proxy = null;
@@ -54,15 +51,14 @@ public class Matlab {
 			return new double[]{};
 		}
 		
-		double tu = rs.getTu().getValue();
-		double tg = rs.getTg().getValue();
+		double tu = rs.getTu();
+		double tg = rs.getTg();
 
 		try {
 			output = (double[]) matlabProxy
 					.returningFeval("p2_sani", 2, tu, tg)[1];
 
 		} catch (MatlabInvocationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return output;
@@ -81,7 +77,6 @@ public class Matlab {
 		try {
 			output = (double[]) matlabProxy.returningFeval("step", 1, n, z)[0];
 		} catch (MatlabInvocationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return output;
