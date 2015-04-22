@@ -1,40 +1,45 @@
 package main;
 
 public final class ChiensDim extends ReglerDim {
-
+	public static final int APERIODSTOER=1, APERIODFUEHR=2, ZWANZIGSTOER=3, ZWANZIGFUEHR=4;
+	private int j;
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs().getValue();
 		double Tu = regelstrecke.getTu().getValue();
 		double Tg = regelstrecke.getTg().getValue();
 		
-		int j;
-		//Soll prüfen:
-		//Aperiodischer Verlauf (Gutes Stoer- [0] /Fuehrungsverhalten [1]) oder
-		//20 Prozent Ueberschwingen (Gutes Stoer- [2]/Fuehrungsverhalten [3])
-		
 		switch (j) {
-		case 0:
-			new Regler((0.95 / Ks) * (Tg / Tu), 2.4 * Tu, 0.42 * Tu);
-			break;
-			
-		case 1:
-			new Regler((0.6 / Ks) * (Tg / Tu), Tg, 0.5 * Tu);
-			break;
-			
-		case 2:
-			new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
-			break;
-			
-		case 3:
-			new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tu, 0.47 * Tu);
-			break;
-
-		default: //Wenn Eingabewerte falsch
-			System.out.println();
-			break;
+		case APERIODSTOER:
+			return new Regler((0.95 / Ks) * (Tg / Tu), 2.4 * Tu, 0.42 * Tu);
+		case APERIODFUEHR:
+			return new Regler((0.6 / Ks) * (Tg / Tu), Tg, 0.5 * Tu);
+		case ZWANZIGSTOER:
+			return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
+		case ZWANZIGFUEHR:
+			return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tu, 0.47 * Tu);
+		default:
+			assert(false);
 		}
-		//return Regler(Kr, Tn, Tv); //Gibt Resultat zurueck
+	}
+
+	public ChiensDim(int j) {
+		super();
+		this.j = j;
+		if (int j = 1; j < 4; j++) {
+			j = APERIODSTOER;
+			j = APERIODFUEHR;
+			j = ZWANZIGSTOER;
+			j = ZWANZIGFUEHR;
+		}
+	}
+
+	public int getJ() {
+		return j;
+	}
+
+	public void setJ(int j) {
+		this.j = j;
 	}
 
 	@Override
