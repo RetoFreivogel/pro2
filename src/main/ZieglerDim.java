@@ -11,8 +11,4 @@ public final class ZieglerDim extends ReglerDim {
 		return new Regler((0.9 / Ks) * (Tg / Tu), 2 * Tu, 0.5 * Tu); //Tg = T1, Tu = Tt
 	}
 
-	@Override
-	public ReglerDim makeCopy() {
-		return this;
-	}
 }

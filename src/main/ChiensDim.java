@@ -2,7 +2,9 @@ package main;
 
 public final class ChiensDim extends ReglerDim {
 	public static final int APERIODSTOER=1, APERIODFUEHR=2, ZWANZIGSTOER=3, ZWANZIGFUEHR=4;
+	
 	private int j;
+	
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
@@ -43,13 +45,9 @@ public final class ChiensDim extends ReglerDim {
 		if(j<1 || j > 4){
 			throw new IllegalArgumentException("j must be between 1 and 4");
 		}
-
-		
 		this.j = j;
+		setChanged();
+		notifyObservers();
 	}
 
-	@Override
-	public ReglerDim makeCopy() {
-		return this;
-	}
 }

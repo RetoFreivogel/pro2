@@ -1,30 +1,32 @@
 package main;
 
 public class ManuellDim extends ReglerDim {
-	private double kr;
-	private double tn;
-	private double tv;
+	private double kr, tn, tv, tp;
 
 	public ManuellDim(double kr, double tn, double tv) {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
+		this.tp = tv * 10;
+	}
+	
+	public ManuellDim(double kr, double tn, double tv, double tp) {
+		this.kr = kr;
+		this.tn = tn;
+		this.tv = tv;
+		this.tp = tp;
 	}
 
 	public ManuellDim(Regler regler) {
 		kr = regler.getKr();
 		tn = regler.getTn();
 		tv = regler.getTv();
-	}
-
-	@Override
-	public ManuellDim makeCopy() {
-		return new ManuellDim(kr, tn, tv);
+		tp = regler.getTp();
 	}
 
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
-		return new Regler(kr, tn, tv);
+		return new Regler(kr, tn, tv, tp);
 	}
 
 	public double getKr() {
@@ -33,6 +35,8 @@ public class ManuellDim extends ReglerDim {
 	
 	public void setKr(double kr) {
 		this.kr = kr;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public double getTn() {
@@ -41,6 +45,8 @@ public class ManuellDim extends ReglerDim {
 	
 	public void setTn(double tn) {
 		this.tn = tn;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public double getTv() {
@@ -49,8 +55,20 @@ public class ManuellDim extends ReglerDim {
 	
 	public void setTv(double tv) {
 		this.tv = tv;
+		setChanged();
+		notifyObservers();
 	}
 
+	public double getTp() {
+		return tp;
+	}
+
+	public void setTp(double tp) {
+		this.tp = tp;
+		setChanged();
+		notifyObservers();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
