@@ -9,19 +9,16 @@ public class RegelKreis extends TranferFunction {
 		this.regelstrecke = regelstrecke;
 	}
 
-	/*
-	public RegelKreis(Regler regler, RegelStrecke regelstrecke) {
-		dim = new ManuellDim(regler);
-		this.regelstrecke = regelstrecke;
-	}
-	*/
-
 	public Regler getRegler() {
 		return dim.calc(regelstrecke);
 	}
 
 	public ReglerDim getDim() {
 		return dim;
+	}
+	
+	public void setDim(ReglerDim dim) {
+		this.dim = dim;
 	}
 
 	public RegelStrecke getRegelstrecke() {

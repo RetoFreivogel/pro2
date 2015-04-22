@@ -2,34 +2,34 @@ package main;
 
 import util.Matlab;
 
-public class RegelStrecke extends ProductTransferFunction {
-	private ObservableDouble ks, tu, tg;
+public final class RegelStrecke extends ProductTransferFunction {
+	private final double ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		if(ks < 0)throw new IllegalArgumentException("ks can't be negative");
 		if(tu < 0)throw new IllegalArgumentException("tu can't be negative");
 		if(tg < 0)throw new IllegalArgumentException("tg can't be negative");
 		
-		this.ks = new ObservableDouble(ks);
-		this.tu = new ObservableDouble(tu);
-		this.tg = new ObservableDouble(tg);
+		this.ks = ks;
+		this.tu = tu;
+		this.tg = tg;
 	}
 
 	public RegelStrecke(RegelStrecke other) {
-		ks = new ObservableDouble(other.getKs());
-		tu = new ObservableDouble(other.getTu());
-		tg = new ObservableDouble(other.getTg());
+		ks = other.getKs();
+		tu = other.getTu();
+		tg = other.getTg();
 	}
 
-	public ObservableDouble getKs() {
+	public double getKs() {
 		return ks;
 	}
 
-	public ObservableDouble getTu() {
+	public double getTu() {
 		return tu;
 	}
 
-	public ObservableDouble getTg() {
+	public double getTg() {
 		return tg;
 	}
 
@@ -45,7 +45,7 @@ public class RegelStrecke extends ProductTransferFunction {
 
 	@Override
 	public double getBaseFactor() {
-		return ks.getValue();
+		return ks;
 	}
 	
 
@@ -53,9 +53,13 @@ public class RegelStrecke extends ProductTransferFunction {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ks.hashCode();
-		result = prime * result + tg.hashCode();
-		result = prime * result + tu.hashCode();
+		long temp;
+		temp = Double.doubleToLongBits(ks);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tg);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(tu);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -68,15 +72,13 @@ public class RegelStrecke extends ProductTransferFunction {
 		if (getClass() != obj.getClass())
 			return false;
 		RegelStrecke other = (RegelStrecke) obj;
-		if (!ks.equals(other.ks))
+		if (Double.doubleToLongBits(ks) != Double.doubleToLongBits(other.ks))
 			return false;
-		if (!tg.equals(other.tg))
+		if (Double.doubleToLongBits(tg) != Double.doubleToLongBits(other.tg))
 			return false;
-		if (!tu.equals(other.tu))
+		if (Double.doubleToLongBits(tu) != Double.doubleToLongBits(other.tu))
 			return false;
 		return true;
 	}
-
-
 
 }

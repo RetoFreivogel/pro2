@@ -115,8 +115,7 @@ public class View extends JPanel implements Observer{
 		pn_Optionen.add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
 		
 		//---------------------Graph-------------------------------
-		double[] output = Matlab.calcStep(new double[]{1},new double[]{1,1,2});
-		Matlab.closeProxy();
+		double[] output = new double[]{};
 		pn_chart = Chart.makePanel(output);
 		pn_chart.setBackground(Color.WHITE);
 		pn_Right.add(pn_chart, BorderLayout.CENTER);

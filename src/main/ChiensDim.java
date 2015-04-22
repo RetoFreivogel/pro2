@@ -5,9 +5,9 @@ public final class ChiensDim extends ReglerDim {
 	private int j;
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
-		double Ks = regelstrecke.getKs().getValue();
-		double Tu = regelstrecke.getTu().getValue();
-		double Tg = regelstrecke.getTg().getValue();
+		double Ks = regelstrecke.getKs();
+		double Tu = regelstrecke.getTu();
+		double Tg = regelstrecke.getTg();
 		
 		switch (j) {
 		case APERIODSTOER:
@@ -20,18 +20,19 @@ public final class ChiensDim extends ReglerDim {
 			return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tu, 0.47 * Tu);
 		default:
 			assert(false);
+			return null;
 		}
 	}
 
 	public ChiensDim(int j) {
 		super();
-		this.j = j;
-		if (int j = 1; j < 4; j++) {
-			j = APERIODSTOER;
-			j = APERIODFUEHR;
-			j = ZWANZIGSTOER;
-			j = ZWANZIGFUEHR;
+		
+		if(j<1 || j > 4){
+			throw new IllegalArgumentException("j must be between 1 and 4");
 		}
+		
+		this.j = j;
+		
 	}
 
 	public int getJ() {
@@ -39,6 +40,11 @@ public final class ChiensDim extends ReglerDim {
 	}
 
 	public void setJ(int j) {
+		if(j<1 || j > 4){
+			throw new IllegalArgumentException("j must be between 1 and 4");
+		}
+
+		
 		this.j = j;
 	}
 

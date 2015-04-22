@@ -35,6 +35,8 @@ public class SidebarPanel extends JScrollPane{
 	private JTextField tf_E2;
 	private JTextField tf_Et;
 	private JTextField tf_E2t;
+	
+	JComboBox<String> cbbx_defd_R;
 
 	public SidebarPanel(){
 		super();
@@ -104,7 +106,7 @@ public class SidebarPanel extends JScrollPane{
 		JLabel lb_defd_R = new JLabel("Definiert durch: ");
 		pn_ERegler.add(lb_defd_R);
 
-		JComboBox<String> cbbx_defd_R = new JComboBox<>();
+		cbbx_defd_R = new JComboBox<>();
 		cbbx_defd_R.setModel(new DefaultComboBoxModel<>(new String[] {
 				"Manuell", "Phasengang", "Ziegler", "Chien", "Oppelt",
 				"Rosenberg", "Tsumme" }));
@@ -230,13 +232,15 @@ public class SidebarPanel extends JScrollPane{
 		tf_Ks.setAction(actionmap.get("SET_KS"));
 		tf_Tu.setAction(actionmap.get("SET_TU"));
 		tf_Tg.setAction(actionmap.get("SET_TG"));
+		cbbx_defd_R.setAction(actionmap.get("SELECT_DIM"));
+		
 	}
 	
 	public void update(RegelKreis regelkreis) {
 		RegelStrecke regelstrecke = regelkreis.getRegelstrecke();
-		tf_Ks.setText("" + regelstrecke.getKs().getValue());		
-		tf_Tu.setText("" + regelstrecke.getTu().getValue());		
-		tf_Tg.setText("" + regelstrecke.getTg().getValue());
+		tf_Ks.setText("" + regelstrecke.getKs());		
+		tf_Tu.setText("" + regelstrecke.getTu());		
+		tf_Tg.setText("" + regelstrecke.getTg());
 		
 		Regler regler = regelkreis.getRegler();
 		tf_Kr.setText("" + regler.getKr());
