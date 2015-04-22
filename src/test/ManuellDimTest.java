@@ -11,7 +11,7 @@ public class ManuellDimTest {
 	@Test
 	public void testGets(){
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim unmodified_dim = dim.makeCopy();
+		ManuellDim unmodified_dim = new ManuellDim(dim.calc(null));
 		
 		assertEquals(1.0, dim.getKr(), 0);
 		assertEquals(2.0, dim.getTn(), 0);
@@ -51,18 +51,18 @@ public class ManuellDimTest {
 	@Test
 	public void testMakeCopy() {
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim copy_dim = dim.makeCopy();	
+		ManuellDim copy_dim = new ManuellDim(dim.calc(null));
 		assertEquals(dim, copy_dim);
 		
-		copy_dim = dim.makeCopy();	
+		copy_dim = new ManuellDim(dim.calc(null));
 		dim.setKr(0.0);	
 		assertNotEquals(dim, copy_dim);
 		
-		copy_dim = dim.makeCopy();
+		copy_dim = new ManuellDim(dim.calc(null));
 		dim.setTn(0.0);	
 		assertNotEquals(dim, copy_dim);
 		
-		copy_dim = dim.makeCopy();
+		copy_dim = new ManuellDim(dim.calc(null));
 		dim.setTv(0.0);	
 		assertNotEquals(dim, copy_dim);
 	}
@@ -70,7 +70,7 @@ public class ManuellDimTest {
 	@Test
 	public void testHash(){
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim copy_dim = (ManuellDim) dim.makeCopy();
+		ManuellDim copy_dim = new ManuellDim(dim.calc(null));
 		
 		assertEquals(dim.hashCode(), copy_dim.hashCode());
 	}
