@@ -2,12 +2,14 @@ package main;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.text.DecimalFormat;
 
 import javax.swing.ActionMap;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,28 +21,32 @@ import javax.swing.border.TitledBorder;
 public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
-	private JTextField tf_Ks; 
-	private JTextField tf_Tg;
-	private JTextField tf_Tu;
-	private JTextField tf_Phrand;
-	private JTextField tf_Ordn;
-	private JTextField tf_Kr;
-	private JTextField tf_Tn;
-	private JTextField tf_Tv;
-	private JTextField tf_Tp;
-	private JTextField tf_Ymax;
-	private JTextField tf_Tan;
-	private JTextField tf_Taus;
-	private JTextField tf_E;
-	private JTextField tf_E2;
-	private JTextField tf_Et;
-	private JTextField tf_E2t;
+	private final Model model;
+	private final Controller controller;
+	
+	private JFormattedTextField tf_Phrand;
+	private JFormattedTextField tf_Ordn;
+	private JFormattedTextField tf_Kr;
+	private JFormattedTextField tf_Tn;
+	private JFormattedTextField tf_Tv;
+	private JFormattedTextField tf_Tp;
+	private JFormattedTextField tf_Ymax;
+	private JFormattedTextField tf_Tan;
+	private JFormattedTextField tf_Taus;
+	private JFormattedTextField tf_E;
+	private JFormattedTextField tf_E2;
+	private JFormattedTextField tf_Et;
+	private JFormattedTextField tf_E2t;
 	
 	JComboBox<String> cbbx_defd_R;
 
-	public SidebarPanel(){
+	public SidebarPanel(Model model, Controller controller){
 		super();
+		this.model = model;
+		this.controller = controller;
 
+		DecimalFormat format = new DecimalFormat("###0.###");
+		
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
@@ -55,37 +61,10 @@ public class SidebarPanel extends JScrollPane{
 				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Eingabe);
 		//---------------------Eingabe_Regelstrecke-------------------------------
-		JPanel pn_ERegelstrecke = new JPanel();
-		pn_ERegelstrecke.setBorder(new TitledBorder(new LineBorder(Color.GRAY),"Regelstrecke", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
+		//TODO
+		JPanel pn_ERegelstrecke = new RegelStreckeView(model.getRegelkreis().getRegelstrecke(), controller);
 		pn_Eingabe.add(pn_ERegelstrecke);
-		pn_ERegelstrecke.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JLabel lb_defd_RS = new JLabel("Definiert durch:");
-		pn_ERegelstrecke.add(lb_defd_RS);
-		
-		
-		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
-		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] { "KTuTg",
-				"Frequenzgang" }));
-		pn_ERegelstrecke.add(cbbx_defd_RS);
-		
-		JLabel lb_Ks = new JLabel("Ks");
-		pn_ERegelstrecke.add(lb_Ks);
-		
-		tf_Ks = new JTextField(10);
-		pn_ERegelstrecke.add(tf_Ks);
-
-		JLabel lb_Tg = new JLabel("Tg");
-		pn_ERegelstrecke.add(lb_Tg);
-
-		tf_Tg = new JTextField(10);
-		pn_ERegelstrecke.add(tf_Tg);
-
-		JLabel lb_Tu = new JLabel("Tu");
-		pn_ERegelstrecke.add(lb_Tu);
-
-		tf_Tu = new JTextField(10);
-		pn_ERegelstrecke.add(tf_Tu);
 		
 		//---------------------Eingabe_Regler-------------------------------
 		JPanel pn_ERegler = new JPanel();
@@ -116,7 +95,7 @@ public class SidebarPanel extends JScrollPane{
 		JLabel lb_Phrand = new JLabel("Phasenrand");
 		pn_ERegler.add(lb_Phrand);
 
-		tf_Phrand = new JTextField(10);
+		tf_Phrand = new JFormattedTextField(format);
 		pn_ERegler.add(tf_Phrand);
 		
 		//---------------------Ausgabe-------------------------------
@@ -137,7 +116,7 @@ public class SidebarPanel extends JScrollPane{
 		JLabel lb_Ordn = new JLabel("Ordnung");
 		pn_ARegelstrecke.add(lb_Ordn);
 
-		tf_Ordn = new JTextField(10);
+		tf_Ordn = new JFormattedTextField(format);
 		pn_ARegelstrecke.add(tf_Ordn);
 
 
@@ -153,28 +132,30 @@ public class SidebarPanel extends JScrollPane{
 				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_Ausgabe.add(pn_ARegler);
 		pn_ARegler.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		
 		JLabel lb_Kr = new JLabel("Kr");
 		pn_ARegler.add(lb_Kr);
-
-		tf_Kr = new JTextField(10);
+		tf_Kr = new JFormattedTextField(format);
+		tf_Kr.setEditable(false);
 		pn_ARegler.add(tf_Kr);
 
 		JLabel lb_Tn = new JLabel("Tn");
 		pn_ARegler.add(lb_Tn);
-
-		tf_Tn = new JTextField(10);
+		tf_Tn = new JFormattedTextField(format);
+		tf_Tn.setEditable(false);
 		pn_ARegler.add(tf_Tn);		
 
 		JLabel lb_Tv = new JLabel("Tv");
 		pn_ARegler.add(lb_Tv);
-
-		tf_Tv = new JTextField(10);
+		tf_Tv = new JFormattedTextField(format);
+		tf_Tv.setEditable(false);
 		pn_ARegler.add(tf_Tv);	
 
 		JLabel lb_Tp = new JLabel("Tp");
 		pn_ARegler.add(lb_Tp);
-
-		tf_Tp = new JTextField(10);
+		tf_Tp = new JFormattedTextField(format);
+		tf_Tp.setEditable(false);
 		pn_ARegler.add(tf_Tp);
 				
 		
@@ -187,65 +168,52 @@ public class SidebarPanel extends JScrollPane{
 		
 		JLabel lb_Ymax = new JLabel("Ymax");
 		pn_AAnalyse.add(lb_Ymax);
-
-		tf_Ymax = new JTextField(10);
+		tf_Ymax = new JFormattedTextField(format);
+		tf_Ymax.setEditable(false);
 		pn_AAnalyse.add(tf_Ymax);
 
 		JLabel lb_Tan = new JLabel("Tan");
 		pn_AAnalyse.add(lb_Tan);
-
-		tf_Tan = new JTextField(10);		
+		tf_Tan = new JFormattedTextField(format);		
+		tf_Tan.setEditable(false);
 		pn_AAnalyse.add(tf_Tan);
 
 		JLabel lb_Taus = new JLabel("Taus");
 		pn_AAnalyse.add(lb_Taus);
-
-		tf_Taus = new JTextField(10);
+		tf_Taus = new JFormattedTextField(format);
+		tf_Taus.setEditable(false);
 		pn_AAnalyse.add(tf_Taus);
 
 		JLabel lb_1 = new JLabel("S |e(t)| dt");
 		pn_AAnalyse.add(lb_1);
-
-		tf_E = new JTextField(10);
+		tf_E = new JFormattedTextField(format);
+		tf_E.setEditable(false);
 		pn_AAnalyse.add(tf_E);
 		
 		JLabel lb_2 = new JLabel("S e(t)^2 dt");
 		pn_AAnalyse.add(lb_2);
-
-		tf_E2 = new JTextField(10);
+		tf_E2 = new JFormattedTextField(format);
+		tf_E2.setEditable(false);
 		pn_AAnalyse.add(tf_E2);
 
 		JLabel lb_3 = new JLabel("S |e(t)|*t dt");
 		pn_AAnalyse.add(lb_3);
-
-		tf_Et = new JTextField(10);
+		tf_Et = new JFormattedTextField(format);
+		tf_Et.setEditable(false);
 		pn_AAnalyse.add(tf_Et);
 
 		JLabel lb_4 = new JLabel("S e(t)^2*t dt");
 		pn_AAnalyse.add(lb_4);
-
-		tf_E2t = new JTextField(10);
+		tf_E2t = new JFormattedTextField(format);
+		tf_E2t.setEditable(false);
 		pn_AAnalyse.add(tf_E2t);
-	}
-
-	public void registerActions(ActionMap actionmap){
-		tf_Ks.setAction(actionmap.get("SET_KS"));
-		tf_Tu.setAction(actionmap.get("SET_TU"));
-		tf_Tg.setAction(actionmap.get("SET_TG"));
-		cbbx_defd_R.setAction(actionmap.get("SELECT_DIM"));
-		
 	}
 	
 	public void update(RegelKreis regelkreis) {
-		RegelStrecke regelstrecke = regelkreis.getRegelstrecke();
-		tf_Ks.setText("" + regelstrecke.getKs());		
-		tf_Tu.setText("" + regelstrecke.getTu());		
-		tf_Tg.setText("" + regelstrecke.getTg());
-		
 		Regler regler = regelkreis.getRegler();
-		tf_Kr.setText("" + regler.getKr());
-		tf_Tn.setText("" + regler.getTn());
-		tf_Tv.setText("" + regler.getTv());
-		tf_Tp.setText("" + regler.getTp());
+		tf_Kr.setValue(regler.getKr());
+		tf_Tn.setValue(regler.getTn());
+		tf_Tv.setValue(regler.getTv());
+		tf_Tp.setValue(regler.getTp());
 	}
 }

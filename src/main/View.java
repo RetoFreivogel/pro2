@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ActionMap;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -19,7 +18,6 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 
 import util.Chart;
-import util.Matlab;
 
 public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
@@ -32,7 +30,7 @@ public class View extends JPanel implements Observer{
 	private JLabel lblStatus;
 	private ChartPanel pn_chart;
 
-	public View() {
+	public View(Model model, Controller controller) {
 		super();
 
 		this.setLayout(new BorderLayout());
@@ -77,7 +75,7 @@ public class View extends JPanel implements Observer{
 		}
 
 		//---------------------Panel_Left-------------------------------
-		sidebarPanel = new SidebarPanel();
+		sidebarPanel = new SidebarPanel(model, controller);
 		add(sidebarPanel, BorderLayout.WEST);
 		
 		//---------------------Panel_Right-------------------------------
@@ -127,12 +125,12 @@ public class View extends JPanel implements Observer{
 		lblStatus = new JLabel("Status",JLabel.LEFT);
 		pn_Status.add(lblStatus,BorderLayout.WEST);
 		add(pn_Status, BorderLayout.SOUTH);
+		
+		model.addObserver(this);
+
+		
 	}
 	
-	public void registerActions(ActionMap actionmap){
-		sidebarPanel.registerActions(actionmap);
-	}
-
 	public void setStatus(String message) {
 		lblStatus.setText(message);
 	}

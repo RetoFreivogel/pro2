@@ -11,7 +11,8 @@ public class Model extends Observable implements Observer{
 		regelkreisArray = new Vector<>(1);
 		RegelKreis regelkreis = new RegelKreis(new OppeltDim(),
 				new RegelStrecke(1.0, 1.71, 7.6));
-		regelkreisArray.add(regelkreis);		
+		regelkreisArray.add(regelkreis);
+		regelkreis.addObserver(this);
 	}
 
 	public RegelKreis getRegelkreis() {
