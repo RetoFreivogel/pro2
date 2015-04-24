@@ -7,7 +7,7 @@ public final class Regler implements RegelGlied {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
-		this.tp = 10 * tv;
+		this.tp = tv / 10;
 	}
 
 	public Regler(double kr, double tn, double tv, double tp) {

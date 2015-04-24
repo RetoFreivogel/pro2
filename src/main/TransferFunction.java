@@ -16,34 +16,35 @@ public class TransferFunction {
 	}
 
 	public double[] schrittantwort() {
+		double[] nen_coeff = nenner.getCoeff();
 		Complex[] poles = nenner.getRoots();
-		Complex[] residuen = nenner.getResidues();
+		Complex[] residue = nenner.getResidues();
 		
-		for(int i = 0; i < residuen.length; i++){
-			residuen[i] = zaehler.eval(poles[i]).divide(residuen[i]);
+		double nen_leading = nen_coeff[nen_coeff.length -1];
+		for(int i = 0; i < residue.length; i++){
+			residue[i] = zaehler.eval(poles[i]).divide(residue[i]).divide(nen_leading);
+		}		
+		
+		double Tsum = 0;
+		for (int i = 0; i < poles.length; i++) {
+			Tsum += poles[i].abs();
 		}
 		
-		double[] impulse = new double[4 * 1024];
-		
+		double[] impulse = new double[8 * 1024];
 		for (int i = 0; i < impulse.length; i++) {
-			double t = (double)i/(double)impulse.length * 0.01;
+			double t = (double)i/impulse.length * Tsum * 1.5;
+			
 			for (int j = 0; j < poles.length; j++) {
-				impulse[i] += residuen[j].multiply(poles[j].multiply(t).exp()).getReal();
+				impulse[i] += residue[j].multiply(poles[j].multiply(t).exp()).getReal() / Tsum;
 			}
+			
 		}
-		
-		System.out.println(impulse[0]);
-		System.out.println(impulse[1024]);
-		System.out.println(impulse[2048]);
-		System.out.println(impulse[3072]);
-		System.out.println(impulse[4095]);
-		
+				
 		for (int i = 1; i < impulse.length; i++) {
 			impulse[i] += impulse[i-1];
 		}
 		
 		return impulse;
-		//return Matlab.calcStep(z, n);
 	}
 
 	public TransferFunction conv(TransferFunction other) {

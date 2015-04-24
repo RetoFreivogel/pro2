@@ -85,21 +85,16 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		return true;
 	}
 
+	public double[] calcSani(){
+		double[] Tcoeffs = new double[]{0.408, 0.838, 1.72, 3.532};
+
+		return Tcoeffs;
+	}
+	
 	@Override
 	public TransferFunction getTranferFunction() {
-		double[] Tcoeffs = Matlab.calcSani(this);
+		double[] Tcoeffs = calcSani();
 			
-		
-		
-		/*
-		double[] Tpoly = new double[Tcoeffs.length + 1];
-		Tpoly[0] = 1.0;
-		for (int i = 0; i < Tcoeffs.length; i++) {
-			for (int j = Tcoeffs.length; j > 0; j--) {
-				Tpoly[j] = Tpoly[j-1] * Tcoeffs[i];
-			}
-		}
-		*/
 		double Tprodukt = 1.0;
 		for (int i = 0; i < Tcoeffs.length; i++) {
 			Tprodukt *= Tcoeffs[i];

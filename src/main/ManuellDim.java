@@ -7,7 +7,7 @@ public class ManuellDim extends ReglerDim {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
-		this.tp = tv * 10;
+		this.tp = tp / 10;
 	}
 	
 	public ManuellDim(double kr, double tn, double tv, double tp) {
