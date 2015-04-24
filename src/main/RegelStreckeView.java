@@ -2,10 +2,6 @@ package main;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
@@ -17,7 +13,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -81,6 +76,9 @@ public class RegelStreckeView extends JPanel implements Observer, PropertyChange
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		//TODO verify that this isnt needed
+		//if(!"value".equals(evt.getPropertyName()))return;
+		
 		if(tf_ks == evt.getSource()){
 			controller.setKs(((Number)tf_ks.getValue()).doubleValue());
 		}else if(tf_tu == evt.getSource()){

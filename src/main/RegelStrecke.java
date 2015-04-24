@@ -88,16 +88,30 @@ public class RegelStrecke extends Observable implements RegelGlied {
 	@Override
 	public TransferFunction getTranferFunction() {
 		double[] Tcoeffs = Matlab.calcSani(this);
+			
 		
-		int n = Tcoeffs.length;
-		double[] nenner = new double[n + 1];
-		nenner[n] = 1.0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				nenner[j] += nenner[j + 1] * Tcoeffs[i];
+		
+		/*
+		double[] Tpoly = new double[Tcoeffs.length + 1];
+		Tpoly[0] = 1.0;
+		for (int i = 0; i < Tcoeffs.length; i++) {
+			for (int j = Tcoeffs.length; j > 0; j--) {
+				Tpoly[j] = Tpoly[j-1] * Tcoeffs[i];
 			}
 		}
-			
-		return new TransferFunction(new double[]{ks}, nenner);	
+		*/
+		double Tprodukt = 1.0;
+		for (int i = 0; i < Tcoeffs.length; i++) {
+			Tprodukt *= Tcoeffs[i];
+		}
+		
+		for (int i = 0; i < Tcoeffs.length; i++) {
+			Tcoeffs[i] = -1 / Tcoeffs[i];
+		}
+		Polynom nenner = Polynom.fromRoots(Tcoeffs);
+		
+		nenner = nenner.mul(Tprodukt);
+		
+		return new TransferFunction(Polynom.fromCoeff(new double[]{ks}), nenner);	
 	}
 }

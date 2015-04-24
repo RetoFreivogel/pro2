@@ -44,7 +44,10 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		TransferFunction tf_s = regelstrecke.getTranferFunction();
 		TransferFunction tf_r = dim.calc(regelstrecke).getTranferFunction();
 		
-		return tf_s.conv(tf_r).feedback_loop();
+		TransferFunction tf_k = tf_s.conv(tf_r);
+		tf_k = tf_k.feedback_loop();
+		
+		return tf_k;
 	}
 
 	@Override

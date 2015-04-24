@@ -44,11 +44,11 @@ public class Matlab {
 	}
 
 	public static double[] calcSani(RegelStrecke rs) {
-		double[] output = {};
+		double[] output = new double[]{};
 
 		MatlabProxy matlabProxy = getProxy();
 		if(matlabProxy == null){
-			return new double[]{};
+			return new double[]{1, 2, 3, 4};
 		}
 		
 		double tu = rs.getTu();

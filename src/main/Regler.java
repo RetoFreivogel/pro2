@@ -78,8 +78,10 @@ public final class Regler implements RegelGlied {
 
 	@Override
 	public TransferFunction getTranferFunction() {
-		return new TransferFunction(new double[] { tn * (tv + tp), tn + tp, 1 },
-				new double[] { tn * tp, tn, 0 });
+		Polynom zaehler = Polynom.fromCoeff(new double[]{kr , kr *(tn + tp), kr * tn * (tv + tp) });		
+		Polynom nenner = Polynom.fromCoeff(new double[]{0, tn, tn*tp});
+		
+		return new TransferFunction(zaehler, nenner);
 	}
 
 }

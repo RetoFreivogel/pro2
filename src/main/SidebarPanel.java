@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.text.DecimalFormat;
 
-import javax.swing.ActionMap;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -13,7 +12,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -21,8 +19,9 @@ import javax.swing.border.TitledBorder;
 public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
-	private final Model model;
-	private final Controller controller;
+	//TODO
+	//private final Model model;
+	//private final Controller controller;
 	
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Ordn;
@@ -42,8 +41,10 @@ public class SidebarPanel extends JScrollPane{
 
 	public SidebarPanel(Model model, Controller controller){
 		super();
-		this.model = model;
-		this.controller = controller;
+		
+		//TODO
+		//this.model = model;
+		//this.controller = controller;
 
 		DecimalFormat format = new DecimalFormat("###0.###");
 		

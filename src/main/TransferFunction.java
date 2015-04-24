@@ -1,66 +1,73 @@
 package main;
 
-import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
+import java.util.Arrays;
 
-import util.Matlab;
+import org.apache.commons.math3.complex.Complex;
 
 public class TransferFunction {
 
-	private PolynomialFunction zaehler;
-	private PolynomialFunction nenner;
-
-	public TransferFunction(double[] zaehler, double[] nenner) {
-		this.zaehler = new PolynomialFunction(reverseDoubleArray(zaehler));
-		this.nenner = new PolynomialFunction(reverseDoubleArray(nenner));
-	}
-
-	public TransferFunction(PolynomialFunction zaehler, PolynomialFunction nenner) {
+	private Polynom zaehler;
+	private Polynom nenner;
+	
+	public TransferFunction(Polynom zaehler, Polynom nenner) {
 		super();
 		this.zaehler = zaehler;
 		this.nenner = nenner;
 	}
 
 	public double[] schrittantwort() {
-		double[] z = reverseDoubleArray(zaehler.getCoefficients());
-		double[] n = reverseDoubleArray(nenner.getCoefficients());
-
-		//use LaguerreSolver to get roots
-		//then calc the residuen
-		//then generate the impulse answer
+		Complex[] poles = nenner.getRoots();
+		Complex[] residuen = nenner.getResidues();
 		
-		return Matlab.calcStep(z, n);
-	}
-
-	private static double[] reverseDoubleArray(double[] array) {
-		double[] reverse = new double[array.length];
-		for (int i = 0; i < array.length; i++) {
-			reverse[array.length - 1 - i] = array[i];
+		for(int i = 0; i < residuen.length; i++){
+			residuen[i] = zaehler.eval(poles[i]).divide(residuen[i]);
 		}
-		return reverse;
+		
+		double[] impulse = new double[4 * 1024];
+		
+		for (int i = 0; i < impulse.length; i++) {
+			double t = (double)i/(double)impulse.length * 0.01;
+			for (int j = 0; j < poles.length; j++) {
+				impulse[i] += residuen[j].multiply(poles[j].multiply(t).exp()).getReal();
+			}
+		}
+		
+		System.out.println(impulse[0]);
+		System.out.println(impulse[1024]);
+		System.out.println(impulse[2048]);
+		System.out.println(impulse[3072]);
+		System.out.println(impulse[4095]);
+		
+		for (int i = 1; i < impulse.length; i++) {
+			impulse[i] += impulse[i-1];
+		}
+		
+		return impulse;
+		//return Matlab.calcStep(z, n);
 	}
 
 	public TransferFunction conv(TransferFunction other) {
-		return new TransferFunction(zaehler.multiply(other.getZaehler()),
-				nenner.multiply(other.getNenner()));
+		return new TransferFunction(zaehler.mul(other.getZaehler()),
+				nenner.mul(other.getNenner()));
 	}
 
 	public TransferFunction feedback_loop() {
 		return new TransferFunction(zaehler, nenner.add(zaehler));
 	}
 
-	public PolynomialFunction getZaehler() {
+	public Polynom getZaehler() {
 		return zaehler;
 	}
 
-	public PolynomialFunction getNenner() {
+	public Polynom getNenner() {
 		return nenner;
 	}
 
-	public void setZaehler(PolynomialFunction zaehler) {
+	public void setZaehler(Polynom zaehler) {
 		this.zaehler = zaehler;
 	}
 
-	public void setNenner(PolynomialFunction nenner) {
+	public void setNenner(Polynom nenner) {
 		this.nenner = nenner;
 	}
 
@@ -93,6 +100,12 @@ public class TransferFunction {
 		} else if (!zaehler.equals(other.zaehler))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TransferFunction [zaehler=" + zaehler + ", nenner=" + nenner
+				+ "]";
 	}
 	
 }
