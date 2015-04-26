@@ -1,10 +1,10 @@
 \documentclass{fhnwreport}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[ansinew]{inputenc}
 \usepackage{tikz}
-\usepackage{amsmath}
 \usetikzlibrary{arrows}
+\usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage[final]{pdfpages}
 \usepackage{graphicx}
@@ -17,20 +17,14 @@
 \date{%
   \textsc{10.06.2015}}
 
-%\textit{} % italics
-%\textbf{} % bold
-%\texttt{} % typewriter style
-%\textsf{} % sans-serif
-%\textsc{} % all capital letters
-
 \begin{document}
 \maketitle
 
 \vfill
-
+%\hspace{4em}
 \textsc{%
 \begin{tabbing}
-Auftraggeber: \hspace{4em} \=  Peter Niklaus \\[2ex]
+Auftraggeber:  \>  Peter Niklaus \\[2ex]
 Betreuer:  \>  Pascal Buchschacher, Anita Gertiser \\[2ex]
 Experten:  \>  Peter Niklaus, Richard Gut \\[2ex]
 Team:  \> Alexander Stocker \\ 
@@ -47,38 +41,19 @@ Studiengang: \> Elektro- und Informationstechnik
 \tableofcontents
 \newpage
 
-\section{Einleitung}
+\include{einleitung}
 
+\include{theoretischegrundlagen}
 
-\section{Theoretische Grundlagen}
+\include{reglertyp}
 
-\include{fachbericht_theoretischegrundlagen}
+\include{loesungskonzept}
 
+\include{javasoftware}
 
-\section{Reglertyp}
+\include{testMatlab}
 
-\include{fachbericht_reglertyp}
-
-
-\section{Lösungskonzept}
-
-\include{fachbericht_loesungskonzept}
-
-
-\section{Java-Software}
-
-\include{fachbericht_javasoftware}
-
-
-\section{Test anhand Matlabs}
-
-\include{fachbericht_testMatlab}
-
-
-\section{Schlusswort}
-
-\include{fachbericht_schlusswort}
-
+\include{schlusswort}
 
 \section{Literaturvezeichnis}
 
