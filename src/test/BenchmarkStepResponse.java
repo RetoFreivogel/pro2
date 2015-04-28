@@ -5,7 +5,6 @@ import main.OppeltDim;
 import main.RegelKreis;
 import main.RegelStrecke;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import util.Matlab;

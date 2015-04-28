@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Arrays;
-
 import org.apache.commons.math3.complex.Complex;
 
 public class TransferFunction {

@@ -1,8 +1,6 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.OppeltDim;
-import main.RegelKreis;
 import main.RegelStrecke;
 
 import org.junit.Test;
