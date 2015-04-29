@@ -3,7 +3,7 @@ package main;
 public final class ChiensDim extends ReglerDim {
 	public static final int APERIODSTOER=1, APERIODFUEHR=2, ZWANZIGSTOER=3, ZWANZIGFUEHR=4;
 	
-	private int j;
+	public int j;
 	
 	@Override
 	public Regler calc(RegelStrecke regelstrecke) {
