@@ -61,8 +61,6 @@ public class View extends JPanel implements Observer{
 			if (i==2||i==3) {	
 				JSeparator separator = new JSeparator();
 				mnBearbeiten.add(separator);
-
-
 			}
 		}
 		// Untermenu Optionen
@@ -70,8 +68,7 @@ public class View extends JPanel implements Observer{
 		menuBar.add(mnOptionen);
 		for (int i = 0; i < this.optionen.length; i++) {
 			JMenuItem mntmNeu = new JMenuItem(this.bearbeiten[i]);
-			mnOptionen.add(mntmNeu);
-			
+			mnOptionen.add(mntmNeu);			
 		}
 
 		//---------------------Panel_Left-------------------------------
@@ -89,6 +86,8 @@ public class View extends JPanel implements Observer{
 		pn_Right.add(pn_Optionen, BorderLayout.SOUTH);
 		
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Regelkreis");
+		chckbxNewCheckBox_2.setSelected(true);
+		chckbxNewCheckBox_2.setEnabled(false);
 		chckbxNewCheckBox_2.setBackground(new Color(250, 128, 114));
 		GridBagConstraints gbc_chckbxNewCheckBox_2 = new GridBagConstraints();
 		gbc_chckbxNewCheckBox_2.fill = GridBagConstraints.HORIZONTAL;
@@ -98,6 +97,7 @@ public class View extends JPanel implements Observer{
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Regelstrecke");
 		chckbxNewCheckBox.setBackground(new Color(154, 205, 50));
+		chckbxNewCheckBox.setEnabled(false);
 		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
 		gbc_chckbxNewCheckBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_chckbxNewCheckBox.gridx = 1;
@@ -106,6 +106,7 @@ public class View extends JPanel implements Observer{
 
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Regler");
 		chckbxNewCheckBox_1.setBackground(new Color(100, 149, 237));
+		chckbxNewCheckBox_1.setEnabled(false);
 		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
 		gbc_chckbxNewCheckBox_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_chckbxNewCheckBox_1.gridx = 1;
@@ -126,9 +127,7 @@ public class View extends JPanel implements Observer{
 		pn_Status.add(lblStatus,BorderLayout.WEST);
 		add(pn_Status, BorderLayout.SOUTH);
 		
-		model.addObserver(this);
-
-		
+		model.addObserver(this);		
 	}
 	
 	public void setStatus(String message) {
