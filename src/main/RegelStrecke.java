@@ -2,6 +2,7 @@ package main;
 
 import java.util.Observable;
 
+import org.apache.commons.math3.analysis.function.Pow;
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 
 import util.Matlab;
@@ -10,7 +11,10 @@ public class RegelStrecke extends Observable implements RegelGlied {
 	private double ks, tu, tg;
 	private double v;
 	int n;
+	private double w;
+	private double r;
 	private double [] ri = new double[50];
+	private double [] T = new double [n];
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		if(ks < 0)throw new IllegalArgumentException("ks can't be negative");
@@ -136,6 +140,15 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		
 		else{
 			n=10;
+		}
+		
+		
+		T[n]= w*tg;
+		
+		for(int i=n-1; i>-1; i++){
+			
+			T[i]=T[n]*Math.pow(r, n-1);
+			
 		}
 		
 		static final SplineInterpolator interpolator = new SplineInterpolator();
