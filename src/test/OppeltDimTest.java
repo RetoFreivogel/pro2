@@ -1,9 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.OppeltDim;
-import main.RegelStrecke;
-import main.Regler;
+import model.OppeltDim;
+import model.RegelStrecke;
+import model.Regler;
 
 import org.junit.Test;
 

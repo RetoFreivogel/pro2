@@ -1,7 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.Polynom;
+import model.Polynom;
 
 import org.apache.commons.math3.complex.Complex;
 import org.junit.Test;

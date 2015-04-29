@@ -1,9 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.ZieglerDim;
-import main.RegelStrecke;
-import main.Regler;
+import model.RegelStrecke;
+import model.Regler;
+import model.ZieglerDim;
 
 import org.junit.Test;
 

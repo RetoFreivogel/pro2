@@ -5,11 +5,10 @@ import static org.junit.Assert.*;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 
-import main.View;
-
 import org.junit.Test;
 
 import util.Matlab;
+import view.View;
 
 public class ViewTest {
 

@@ -1,7 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.PIDRechner;
+import controller.PIDRechner;
 
 import org.junit.Test;
 

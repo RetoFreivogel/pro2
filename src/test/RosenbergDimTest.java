@@ -1,9 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.RosenbergDim;
-import main.RegelStrecke;
-import main.Regler;
+import model.RegelStrecke;
+import model.Regler;
+import model.RosenbergDim;
 
 import org.junit.Test;
 

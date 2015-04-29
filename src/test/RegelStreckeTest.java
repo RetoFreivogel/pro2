@@ -1,7 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.RegelStrecke;
+import model.RegelStrecke;
 
 import org.junit.Test;
 
@@ -38,25 +38,7 @@ public class RegelStreckeTest {
 		copy_rs.setKs(0.5);
 		assertNotEquals(copy_rs, rs);	
 	}
-	
-	@Test
-	public void testCalcSani(){
-		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
-		double[] Tcoeff_ref = Matlab.calcSani(rs);
-		double[] Tcoeff = rs.calcSani();
 		
-		assertArrayEquals(Tcoeff_ref, Tcoeff, 0.001);
-	}
-	
-	@Test
-	public void testCalcSani2(){
-		RegelStrecke rs = new RegelStrecke(1.0, 2, 8);
-		double[] Tcoeff_ref = Matlab.calcSani(rs);
-		double[] Tcoeff = rs.calcSani();
-		
-		assertArrayEquals(Tcoeff_ref, Tcoeff, 0.001);
-	}
-	
 	@Test
 	public void testHash(){
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);

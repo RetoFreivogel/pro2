@@ -1,7 +1,11 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.*;
+
+import model.OppeltDim;
+import model.RegelKreis;
+import model.RegelStrecke;
+import model.Regler;
 
 import org.junit.Test;
 

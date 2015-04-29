@@ -1,8 +1,8 @@
 package test;
 
 import static org.junit.Assert.*;
-import main.ManuellDim;
-import main.Regler;
+import model.ManuellDim;
+import model.Regler;
 
 import org.junit.Test;
 

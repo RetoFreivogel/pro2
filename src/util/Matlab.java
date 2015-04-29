@@ -1,7 +1,7 @@
 package util;
 
-import main.RegelStrecke;
 import matlabcontrol.*;
+import model.RegelStrecke;
 
 public class Matlab {
 	private static MatlabProxy proxy = null;
