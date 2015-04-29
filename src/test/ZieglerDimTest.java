@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import model.RegelStrecke;
 import model.Regler;
+import model.ReglerTopologie;
 import model.ZieglerDim;
 
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class ZieglerDimTest {
 	public void testCalc() {
 		RegelStrecke rs = new RegelStrecke(0.9999, 4.082, 13.24);
 		ZieglerDim dim = new ZieglerDim();
-		Regler regler = dim.calc(rs);
+		Regler regler = dim.calc(rs, ReglerTopologie.PID);
 		Regler regler_referenz = new Regler(2.919449221, 8.164, 2.041);
 
 		assertEquals(regler.getKr(), regler_referenz.getKr(), 0.0001);

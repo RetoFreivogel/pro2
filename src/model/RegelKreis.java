@@ -6,17 +6,19 @@ import java.util.Observer;
 public class RegelKreis extends Observable implements RegelGlied, Observer {
 	private RegelStrecke regelstrecke;
 	private ReglerDim dim;
+	private ReglerTopologie topo;
 
 	public RegelKreis(ReglerDim dim, RegelStrecke regelstrecke) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
+		this.topo = ReglerTopologie.PID;
 		
 		this.dim.addObserver(this);
 		this.regelstrecke.addObserver(this);
 	}
 
 	public Regler getRegler() {
-		return dim.calc(regelstrecke);
+		return dim.calc(regelstrecke, topo);
 	}
 
 	public ReglerDim getDim() {
@@ -42,7 +44,7 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 	@Override
 	public TransferFunction getTranferFunction() {
 		TransferFunction tf_s = regelstrecke.getTranferFunction();
-		TransferFunction tf_r = dim.calc(regelstrecke).getTranferFunction();
+		TransferFunction tf_r = getRegler().getTranferFunction();
 		
 		TransferFunction tf_k = tf_s.conv(tf_r);
 		tf_k = tf_k.feedback_loop();

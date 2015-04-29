@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import model.ChiensDim;
 import model.RegelStrecke;
 import model.Regler;
+import model.ReglerTopologie;
 
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class ChiensDimTest {
 		
 		RegelStrecke rs = new RegelStrecke(0.9999, 2.862, 20.24);
 		ChiensDim dim = new ChiensDim(j);
-		Regler regler = dim.calc(rs);
+		Regler regler = dim.calc(rs, ReglerTopologie.PID);
 		
 		if(j==2){
 			Regler regler_referenz = new Regler(4.243, 20.24, 1.431);

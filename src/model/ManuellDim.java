@@ -25,7 +25,7 @@ public class ManuellDim extends ReglerDim {
 	}
 
 	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		return new Regler(kr, tn, tv, tp);
 	}
 

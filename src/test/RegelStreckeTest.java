@@ -5,8 +5,6 @@ import model.RegelStrecke;
 
 import org.junit.Test;
 
-import util.Matlab;
-
 public class RegelStreckeTest {
 
 	@Test 

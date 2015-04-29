@@ -6,7 +6,7 @@ public final class ChiensDim extends ReglerDim {
 	public int j;
 	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
