@@ -14,7 +14,7 @@ public class BenchmarkStepResponse {
 	@Test
 	public void test() {
 		OppeltDim dim = new OppeltDim();
-		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
+		RegelStrecke rs = new RegelStrecke(1.0, 1.5, 7.6);
 		RegelKreis regelkreis = new RegelKreis(dim, rs);
 				
 		Matlab.setMocked(true);
@@ -23,10 +23,10 @@ public class BenchmarkStepResponse {
 		long end = 0;
 		long total = 0;
 		
-		for(int i = 0; i < 100; i++){
+		for(int i = 0; i < 1000; i++){
 			
 			start = System.nanoTime();
-			rs.setKs(rs.getKs() + 0.01);
+			rs.setTu(rs.getTu() + 0.001);
 			regelkreis.getTranferFunction().schrittantwort();
 			end = System.nanoTime();
 			
@@ -35,12 +35,14 @@ public class BenchmarkStepResponse {
 		}
 		Matlab.setMocked(false);
 		
-		double mean_ms = (double)total/100000000;
+		double mean_ms = (double)total/1000000000;
+		System.out.println("Zeit Schrittantwort: " + mean_ms);
+
 		
 		//typical values have been:
 		//120ms - 150ms for Matlab
 		//1.7ms - 2.0ms for Mocked Residue
-		assertTrue(100 > mean_ms);
+		assertTrue(10 > mean_ms);
 	}
 
 }

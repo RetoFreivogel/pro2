@@ -14,7 +14,7 @@ public class Chart {
 	public static JFreeChart makeChart(double[] data, double maxX) {
 		XYSeries ser1 = new XYSeries("Test");
 		for (int i = 0; i < data.length; i++) {
-			double x = (double)i / maxX;
+			double x = (double)i * maxX / data.length;
 			ser1.add(x, data[i]);
 		}
 		XYSeriesCollection dataset = new XYSeriesCollection();

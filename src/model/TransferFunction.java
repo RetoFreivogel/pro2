@@ -15,12 +15,18 @@ public class TransferFunction {
 
 	public double getTend(){
 		Complex[] poles = nenner.getRoots();
+		Complex[] zeros = zaehler.getRoots();
 		
 		double Tsum = 0;
 		for (int i = 0; i < poles.length; i++) {
-			Tsum += poles[i].abs();
+			Tsum += 1 / poles[i].abs();
 		}
-		Tsum *= 3;
+		
+		for (int i = 0; i < zeros.length; i++) {
+			Tsum -= 1 / zeros[i].abs();
+		}
+		
+		Tsum *= 10;
 		return Tsum;
 	}
 
@@ -29,6 +35,7 @@ public class TransferFunction {
 	}
 	
 	public double[] schrittantwort(double Tend) {
+		
 		double[] nen_coeff = nenner.getCoeff();
 		Complex[] poles = nenner.getRoots();
 		Complex[] residue = nenner.getResidues();
@@ -38,21 +45,23 @@ public class TransferFunction {
 			residue[i] = zaehler.eval(poles[i]).divide(residue[i]).divide(nen_leading);
 		}		
 		
-		double T = Tend / (8*1024-1);
-		double[] impulse = new double[8 * 1024];
+		double T = Tend / (128-1);
+		double[] impulse = new double[128];
 		
 		for (int i = 0; i < impulse.length; i++) {
 			double t = T * (double)i;
 			
 			for (int j = 0; j < poles.length; j++) {
-				impulse[i] += residue[j].multiply(poles[j].multiply(t).exp()).getReal() * T;
+				impulse[i] += residue[j].multiply(poles[j].multiply(t).exp()).divide(poles[j]).getReal();
 			}
 			
 		}
-				
-		for (int i = 1; i < impulse.length; i++) {
-			impulse[i] += impulse[i-1];
+			
+		
+		for (int i = 0; i < impulse.length; i++) {
+			impulse[i] += 1.0;
 		}
+		
 		
 		return impulse;
 	}
