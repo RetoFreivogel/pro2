@@ -17,50 +17,48 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.Controller;
+import model.Dimensionierung;
 import model.Regler;
 
-public class ReglerView extends JPanel implements PropertyChangeListener, ActionListener {
+public class ReglerView extends JPanel implements PropertyChangeListener,
+		ActionListener {
 	private static final long serialVersionUID = 1L;
 
-	//private final Controller controller;
-	
+	private final Controller controller;
+
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Kr;
 	private JFormattedTextField tf_Tn;
 	private JFormattedTextField tf_Tv;
 	private JFormattedTextField tf_Tp;
-	JComboBox<String> cbbx_defd_R;
+	JComboBox<Dimensionierung> cbbx_defd_R;
 
 	public ReglerView(Regler regler, Controller controller) {
 		super();
-		//this.controller = controller;
+		this.controller = controller;
 
 		DecimalFormat format = new DecimalFormat("###0.###");
-		
-		setBorder(new TitledBorder(new LineBorder(Color.GRAY),
-				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
+		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regler",
+				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		JLabel lb_Topo = new JLabel("Topologie");
 		add(lb_Topo);
 		JComboBox<String> cbbx_Topo = new JComboBox<>();
 		cbbx_Topo.setModel(new DefaultComboBoxModel<>(new String[] { "PI",
 				"PID" }));
 		cbbx_Topo.setSelectedIndex(1);
-		//TODO add selection of Topology
+		// TODO add selection of Topology
 		cbbx_Topo.setEnabled(false);
 		add(cbbx_Topo);
 
 		JLabel lb_defd_R = new JLabel("Definiert durch: ");
 		add(lb_defd_R);
-		cbbx_defd_R = new JComboBox<>();
-		cbbx_defd_R.setModel(new DefaultComboBoxModel<>(new String[] {
-				"Manuell", "Phasengang", "Ziegler", "Chien", "Oppelt",
-				"Rosenberg", "Tsumme" }));
-		cbbx_defd_R.setSelectedIndex(4);
+		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
+		cbbx_defd_R.setSelectedIndex(3);
 		cbbx_defd_R.addActionListener(this);
-		//TODO add selection of Definition
-		cbbx_defd_R.setEnabled(false);
+		cbbx_defd_R.setEnabled(true);
 		add(cbbx_defd_R);
 
 		JLabel lb_Phrand = new JLabel("Phasenrand");
@@ -69,7 +67,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Action
 		tf_Phrand = new JFormattedTextField(format);
 		tf_Phrand.setVisible(false);
 		add(tf_Phrand);
-		
+
 		JLabel lb_Kr = new JLabel("Kr");
 		add(lb_Kr);
 		tf_Kr = new JFormattedTextField(format);
@@ -80,22 +78,20 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Action
 		add(lb_Tn);
 		tf_Tn = new JFormattedTextField(format);
 		tf_Tn.setEditable(false);
-		add(tf_Tn);		
+		add(tf_Tn);
 
 		JLabel lb_Tv = new JLabel("Tv");
 		add(lb_Tv);
 		tf_Tv = new JFormattedTextField(format);
 		tf_Tv.setEditable(false);
-		add(tf_Tv);	
+		add(tf_Tv);
 
 		JLabel lb_Tp = new JLabel("Tp");
 		add(lb_Tp);
 		tf_Tp = new JFormattedTextField(format);
 		tf_Tp.setEditable(false);
 		add(tf_Tp);
-		
 
-		
 		setRegler(regler);
 	}
 
@@ -112,14 +108,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Action
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		try{
-			JComboBox<?> box = (JComboBox<?>)event.getSource();
-			box.getSelectedIndex();
-		}catch(ClassCastException ex){
-			
+		if (event.getSource() == cbbx_defd_R) {
+			controller.selectDim((Dimensionierung) cbbx_defd_R
+					.getSelectedItem());
 		}
-		// TODO Auto-generated method stub
-		
 	}
 
 }

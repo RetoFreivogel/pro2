@@ -29,6 +29,9 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		this.dim.deleteObserver(this);
 		this.dim = dim;
 		this.dim.addObserver(this);
+		setChanged();
+		notifyObservers();
+
 	}
 
 	public RegelStrecke getRegelstrecke() {
@@ -39,6 +42,9 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		this.regelstrecke.deleteObserver(this);
 		this.regelstrecke = regelstrecke;
 		this.regelstrecke.addObserver(this);
+		setChanged();
+		notifyObservers();
+
 	}
 
 	@Override
