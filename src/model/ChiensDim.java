@@ -19,7 +19,7 @@ public final class ChiensDim extends ReglerDim {
 		case ZWANZIGSTOER:
 			return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
 		case ZWANZIGFUEHR:
-			return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tu, 0.47 * Tu);
+			return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tg, 0.47 * Tu);
 		default:
 			assert(false);
 			return null;
