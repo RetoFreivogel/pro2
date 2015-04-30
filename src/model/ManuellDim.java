@@ -7,7 +7,7 @@ public class ManuellDim extends ReglerDim {
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
-		this.tp = tp / 10;
+		this.tp = tp / 100;
 	}
 	
 	public ManuellDim(double kr, double tn, double tv, double tp) {
@@ -26,7 +26,16 @@ public class ManuellDim extends ReglerDim {
 
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
-		return new Regler(kr, tn, tv, tp);
+		switch(topo){
+		case P:
+			return new Regler(kr);
+		case PI:
+			return new Regler(kr, tn);
+		case PID:
+			return new Regler(kr, tn, tv, tp);
+		default:
+			throw new IllegalArgumentException("Internal Error");
+		}
 	}
 
 	public double getKr() {

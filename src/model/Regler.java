@@ -1,16 +1,38 @@
 package model;
 
 public final class Regler implements RegelGlied {
+	private final ReglerTopologie topo;
 	private final double kr, tn, tv, tp;
 
+	public Regler(double kr) {
+		this.topo = ReglerTopologie.P;
+		this.kr = kr;
+		this.tn = Double.NaN;
+		this.tv = Double.NaN;
+		this.tp = Double.NaN;
+	}
+	
+	public Regler(double kr, double tn) {
+		this.topo = ReglerTopologie.PI;
+		this.kr = kr;
+		this.tn = tn;
+		this.tv = Double.NaN;
+		this.tp = Double.NaN;
+	}
+	
 	public Regler(double kr, double tn, double tv) {
+		this.topo = ReglerTopologie.PID;
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
-		this.tp = tv / 10;
+		this.tp = tv / 100;
 	}
 
 	public Regler(double kr, double tn, double tv, double tp) {
+		if(tv < tp){
+			throw new IllegalArgumentException("tv darf nicht kleiner als tp sein!");
+		};
+		this.topo = ReglerTopologie.PID;
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
@@ -18,10 +40,15 @@ public final class Regler implements RegelGlied {
 	}
 
 	public Regler(Regler other) {
+		topo = other.getTopo();
 		kr = other.getKr();
 		tn = other.getTn();
 		tv = other.getTv();
 		tp = other.getTp();
+	}
+
+	public ReglerTopologie getTopo() {
+		return topo;
 	}
 
 	public double getKr() {
@@ -78,10 +105,27 @@ public final class Regler implements RegelGlied {
 
 	@Override
 	public TransferFunction getTranferFunction() {
-		Polynom zaehler = Polynom.fromCoeff(new double[]{kr , kr *(tn + tp), kr * tn * (tv + tp) });		
-		Polynom nenner = Polynom.fromCoeff(new double[]{0, tn, tn*tp});
+		Polynom zaehler;
+		Polynom nenner;
 		
-		return new TransferFunction(zaehler, nenner);
+		switch(topo){
+		case P:
+			zaehler = new Polynom(new double[] {kr});
+			nenner = new Polynom(new double[] {1});
+			return new TransferFunction(zaehler, nenner);
+		case PI:
+			zaehler = new Polynom(new double[] { kr, kr * (tn)});
+			nenner = new Polynom(new double[] { 0, tn});
+			return new TransferFunction(zaehler, nenner);
+		case PID:
+			zaehler = new Polynom(new double[] { kr, kr * (tn + tp),
+					kr * tn * (tv + tp) });
+			nenner = new Polynom(new double[] { 0, tn, tn * tp });
+			return new TransferFunction(zaehler, nenner);
+		default:
+			throw new IllegalArgumentException("Internal Error");
+		}
+
 	}
 
 }

@@ -6,6 +6,7 @@ import model.ManuellDim;
 import model.Model;
 import model.OppeltDim;
 import model.RegelKreis;
+import model.ReglerTopologie;
 import model.RosenbergDim;
 import model.ZieglerDim;
 import view.View;
@@ -56,6 +57,7 @@ public class Controller {
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -64,6 +66,7 @@ public class Controller {
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -72,6 +75,7 @@ public class Controller {
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -81,6 +85,7 @@ public class Controller {
 			dim.setKr(kr);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -90,6 +95,7 @@ public class Controller {
 			dim.setTn(tn);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -99,6 +105,7 @@ public class Controller {
 			dim.setTv(tv);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -108,6 +115,17 @@ public class Controller {
 			dim.setTp(tp);
 		}catch (Exception e){
 			view.setStatus(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void selectTopo(ReglerTopologie topo) {
+		try{
+			RegelKreis kreis = model.getRegelkreis();
+			kreis.setTopo(topo);
+		}catch (Exception e){
+			view.setStatus(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }

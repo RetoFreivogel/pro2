@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 import model.Model;
+import model.SchrittAntwort;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -138,10 +139,15 @@ public class View extends JPanel implements Observer{
 	}
 
 	public void update(Model model){
-		double[] output = model.getRegelkreis().getTranferFunction()
+		SchrittAntwort sw = model.getRegelkreis().getTranferFunction()
 				.schrittantwort();
-		double maxX = model.getRegelkreis().getTranferFunction().getTend();
-		JFreeChart chart = Chart.makeChart(output, maxX);
+		double maxX = sw.getTend();
+		
+		double[] x = new double[256];
+		for (int i = 0; i < x.length; i++) {
+			x[i] = sw.getY((double)i * maxX / 255);
+		}
+		JFreeChart chart = Chart.makeChart(x, maxX);
 		pn_chart.setChart(chart);
 		sidebarPanel.update(model.getRegelkreis());
 	}

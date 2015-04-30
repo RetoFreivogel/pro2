@@ -108,7 +108,7 @@ public class RegelStrecke extends Observable implements RegelGlied {
 
 		nenner = nenner.mul(Tprodukt);
 
-		return new TransferFunction(Polynom.fromCoeff(new double[] { ks }),
+		return new TransferFunction(new Polynom(new double[] { ks }),
 				nenner);
 	}
 }

@@ -4,66 +4,28 @@ import org.apache.commons.math3.complex.Complex;
 
 public class TransferFunction {
 
-	private Polynom zaehler;
-	private Polynom nenner;
-	
+	private final Polynom zaehler;
+	private final Polynom nenner;
+
 	public TransferFunction(Polynom zaehler, Polynom nenner) {
 		super();
 		this.zaehler = zaehler;
 		this.nenner = nenner;
 	}
 
-	public double getTend(){
-		Complex[] poles = nenner.getRoots();
-		Complex[] zeros = zaehler.getRoots();
-		
-		double Tsum = 0;
-		for (int i = 0; i < poles.length; i++) {
-			Tsum += 1 / poles[i].abs();
-		}
-		
-		for (int i = 0; i < zeros.length; i++) {
-			Tsum -= 1 / zeros[i].abs();
-		}
-		
-		Tsum *= 10;
-		return Tsum;
-	}
+	public SchrittAntwort schrittantwort() {
 
-	public double[] schrittantwort() {
-		return schrittantwort(getTend());
-	}
-	
-	public double[] schrittantwort(double Tend) {
-		
 		double[] nen_coeff = nenner.getCoeff();
 		Complex[] poles = nenner.getRoots();
 		Complex[] residue = nenner.getResidues();
-		
-		double nen_leading = nen_coeff[nen_coeff.length -1];
-		for(int i = 0; i < residue.length; i++){
-			residue[i] = zaehler.eval(poles[i]).divide(residue[i]).divide(nen_leading);
-		}		
-		
-		double T = Tend / (128-1);
-		double[] impulse = new double[128];
-		
-		for (int i = 0; i < impulse.length; i++) {
-			double t = T * (double)i;
-			
-			for (int j = 0; j < poles.length; j++) {
-				impulse[i] += residue[j].multiply(poles[j].multiply(t).exp()).divide(poles[j]).getReal();
-			}
-			
+
+		double nen_leading = nen_coeff[nen_coeff.length - 1];
+		for (int i = 0; i < residue.length; i++) {
+			residue[i] = zaehler.eval(poles[i]).divide(residue[i])
+					.divide(nen_leading);
 		}
-			
-		
-		for (int i = 0; i < impulse.length; i++) {
-			impulse[i] += 1.0;
-		}
-		
-		
-		return impulse;
+
+		return new SchrittAntwort(poles, residue);
 	}
 
 	public TransferFunction conv(TransferFunction other) {
@@ -83,13 +45,11 @@ public class TransferFunction {
 		return nenner;
 	}
 
-	public void setZaehler(Polynom zaehler) {
-		this.zaehler = zaehler;
-	}
-
-	public void setNenner(Polynom nenner) {
-		this.nenner = nenner;
-	}
+	/*
+	 * public void setZaehler(Polynom zaehler) { this.zaehler = zaehler; }
+	 * 
+	 * public void setNenner(Polynom nenner) { this.nenner = nenner; }
+	 */
 
 	@Override
 	public int hashCode() {
@@ -127,5 +87,5 @@ public class TransferFunction {
 		return "TransferFunction [zaehler=" + zaehler + ", nenner=" + nenner
 				+ "]";
 	}
-	
+
 }

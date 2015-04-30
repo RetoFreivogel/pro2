@@ -22,9 +22,10 @@ import controller.Controller;
 import model.Dimensionierung;
 import model.RegelKreis;
 import model.Regler;
+import model.ReglerTopologie;
 
-public class ReglerView extends JPanel implements PropertyChangeListener, Observer,
-		ActionListener {
+public class ReglerView extends JPanel implements PropertyChangeListener,
+		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private final Controller controller;
@@ -36,6 +37,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 	private JFormattedTextField tf_Tv;
 	private JFormattedTextField tf_Tp;
 	JComboBox<Dimensionierung> cbbx_defd_R;
+	JComboBox<ReglerTopologie> cbbx_Topo;
 
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
@@ -50,12 +52,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 
 		JLabel lb_Topo = new JLabel("Topologie");
 		add(lb_Topo);
-		JComboBox<String> cbbx_Topo = new JComboBox<>();
-		cbbx_Topo.setModel(new DefaultComboBoxModel<>(new String[] { "PI",
-				"PID" }));
-		cbbx_Topo.setSelectedIndex(1);
-		// TODO add selection of Topology
-		cbbx_Topo.setEnabled(false);
+		cbbx_Topo = new JComboBox<>(ReglerTopologie.values());
+		cbbx_Topo.setSelectedIndex(2);
+		cbbx_Topo.addActionListener(this);
 		add(cbbx_Topo);
 
 		JLabel lb_defd_R = new JLabel("Definiert durch: ");
@@ -63,7 +62,6 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
 		cbbx_defd_R.setSelectedIndex(3);
 		cbbx_defd_R.addActionListener(this);
-		cbbx_defd_R.setEnabled(true);
 		add(cbbx_defd_R);
 
 		JLabel lb_Phrand = new JLabel("Phasenrand");
@@ -99,20 +97,20 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 		kreis.addObserver(this);
 	}
 
-	private void enableEvents(){
+	private void enableEvents() {
 		tf_Kr.addPropertyChangeListener("value", this);
 		tf_Tn.addPropertyChangeListener("value", this);
 		tf_Tv.addPropertyChangeListener("value", this);
 		tf_Tp.addPropertyChangeListener("value", this);
 	}
-	
-	private void disableEvents(){
+
+	private void disableEvents() {
 		tf_Kr.removePropertyChangeListener("value", this);
 		tf_Tn.removePropertyChangeListener("value", this);
 		tf_Tv.removePropertyChangeListener("value", this);
-		tf_Tp.removePropertyChangeListener("value", this);		
+		tf_Tp.removePropertyChangeListener("value", this);
 	}
-	
+
 	private void manuellDim() {
 		tf_Kr.setEditable(true);
 		tf_Tn.setEditable(true);
@@ -128,7 +126,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent event) {		
+	public void propertyChange(PropertyChangeEvent event) {
 		if (event.getSource() == tf_Kr) {
 			controller.setKr(((Number) tf_Kr.getValue()).doubleValue());
 		} else if (event.getSource() == tf_Tn) {
@@ -145,12 +143,16 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 		if (event.getSource() == cbbx_defd_R) {
 			Dimensionierung dim = (Dimensionierung) cbbx_defd_R
 					.getSelectedItem();
-			controller.selectDim(dim);
-			if(dim == Dimensionierung.MANUELL){
+			if (dim == Dimensionierung.MANUELL) {
 				manuellDim();
-			}else{
+			} else {
 				autoDim();
 			}
+			controller.selectDim(dim);
+		} else if (event.getSource() == cbbx_Topo) {
+			ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
+					.getSelectedItem();
+			controller.selectTopo(topo);
 		}
 	}
 
@@ -161,7 +163,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener, Observ
 		tf_Kr.setValue(regler.getKr());
 		tf_Tn.setValue(regler.getTn());
 		tf_Tv.setValue(regler.getTv());
-		tf_Tp.setValue(regler.getTp());	
+		tf_Tp.setValue(regler.getTp());
 		enableEvents();
 	}
 

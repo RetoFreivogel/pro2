@@ -47,6 +47,16 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 
 	}
 
+	public ReglerTopologie getTopo() {
+		return topo;
+	}
+
+	public void setTopo(ReglerTopologie topo) {
+		this.topo = topo;
+		setChanged();
+		notifyObservers();
+	}
+
 	@Override
 	public TransferFunction getTranferFunction() {
 		TransferFunction tf_s = regelstrecke.getTranferFunction();

@@ -1,6 +1,7 @@
 package model;
 
 public enum ReglerTopologie {
+	P("P"),
 	PI("PI"),
 	PID("PID");
 	

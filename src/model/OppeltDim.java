@@ -7,7 +7,15 @@ public final class OppeltDim extends ReglerDim {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
-		
-		return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
+
+		switch (topo) {
+		case P:
+			return new Regler((1.0 / Ks) * (Tg / Tu));
+		case PI:
+		case PID:
+			return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
+		default:
+			throw new IllegalArgumentException();
+		}
 	}
 }

@@ -1,7 +1,9 @@
 package util;
 
 import matlabcontrol.*;
+import model.RegelGlied;
 import model.RegelStrecke;
+import model.TransferFunction;
 
 public class Matlab {
 	private static MatlabProxy proxy = null;
@@ -64,18 +66,25 @@ public class Matlab {
 		return output;
 	}
 
-	public static double[] calcStep(double[] n, double[] z) {
-		// Create a proxy, which we will use to control MATLAB
-
-		// Display 'hello world' just like when using the demo
-		double[] output = {};
+	public static double[][] calcStep(RegelGlied rg) {
+		TransferFunction tf = rg.getTranferFunction();
+		double[] z = tf.getZaehler().getCoeff();
+		double[] n = tf.getNenner().getCoeff();
+		double[][] output = new double[2][];
 		MatlabProxy matlabProxy = getProxy();
 		if(matlabProxy == null){
-			return new double[]{};
+			return output;
 		}
 		
 		try {
-			output = (double[]) matlabProxy.returningFeval("step", 1, n, z)[0];
+			matlabProxy.setVariable("n", n);
+			matlabProxy.setVariable("z", z);
+			matlabProxy.eval("n = fliplr(n);");
+			matlabProxy.eval("z = fliplr(z);");
+			matlabProxy.eval("sys = tf(z, n);");
+			matlabProxy.eval("[y, t] = step(sys);");
+			output[0] =  (double[]) matlabProxy.getVariable("y");
+			output[1] =  (double[]) matlabProxy.getVariable("t");
 		} catch (MatlabInvocationException e) {
 			e.printStackTrace();
 		}

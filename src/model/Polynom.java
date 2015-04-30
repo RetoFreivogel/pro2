@@ -8,12 +8,15 @@ import org.apache.commons.math3.complex.Complex;
 public final class Polynom {
 	private final double[] coeff;
 	
-	private Polynom(double[] coeff){
-		this.coeff = Arrays.copyOf(coeff, coeff.length);
-	}
-	
-	public static Polynom fromCoeff(double[] coeff){
-		return new Polynom(coeff);
+	public Polynom(double[] coeff){
+		int ordnung = coeff.length -1;
+		
+		//Remove trailing zeros
+		while(ordnung > 0 && coeff[ordnung] == 0.0){
+			ordnung--;
+		}
+		
+		this.coeff = Arrays.copyOf(coeff, ordnung+1);
 	}
 	
 	public static Polynom fromRoots(double[] roots){
@@ -69,7 +72,7 @@ public final class Polynom {
 		for (int i = 0; i < result.length; i++) {
 			result[i] *= scalar;
 		}
-		return Polynom.fromCoeff(result);
+		return new Polynom(result);
 	}
 	
 	public Polynom mul(Polynom other){
@@ -81,7 +84,7 @@ public final class Polynom {
 				result[i + j] += b[i] * coeff[j]; 
 			}
 		}
-		return Polynom.fromCoeff(result);
+		return new Polynom(result);
 	}
 	
 	public Polynom add(Polynom other){
@@ -96,7 +99,7 @@ public final class Polynom {
 			result[i] += coeff[i];
 		}
 		
-		return Polynom.fromCoeff(result);
+		return new Polynom(result);
 	}
 
 	@Override
