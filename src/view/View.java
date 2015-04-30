@@ -118,7 +118,7 @@ public class View extends JPanel implements Observer{
 		
 		//---------------------Graph-------------------------------
 		double[] output = new double[]{};
-		pn_chart = Chart.makePanel(output);
+		pn_chart = Chart.makePanel(output, 1.0);
 		pn_chart.setBackground(Color.WHITE);
 		pn_Right.add(pn_chart, BorderLayout.CENTER);
 		
@@ -140,7 +140,8 @@ public class View extends JPanel implements Observer{
 	public void update(Model model){
 		double[] output = model.getRegelkreis().getTranferFunction()
 				.schrittantwort();
-		JFreeChart chart = Chart.makeChart(output);
+		double maxX = model.getRegelkreis().getTranferFunction().getTend();
+		JFreeChart chart = Chart.makeChart(output, maxX);
 		pn_chart.setChart(chart);
 		sidebarPanel.update(model.getRegelkreis());
 	}

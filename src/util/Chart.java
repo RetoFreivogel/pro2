@@ -11,10 +11,11 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class Chart {
-	public static JFreeChart makeChart(double[] data) {
+	public static JFreeChart makeChart(double[] data, double maxX) {
 		XYSeries ser1 = new XYSeries("Test");
 		for (int i = 0; i < data.length; i++) {
-			ser1.add(i, data[i]);
+			double x = (double)i / maxX;
+			ser1.add(x, data[i]);
 		}
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(ser1);
@@ -23,19 +24,20 @@ public class Chart {
 		return ChartFactory.createXYLineChart("", // Title
 				"", // Xaxis
 				"", // Yaxis
-				dataset, PlotOrientation.VERTICAL, false, // legend?
+				dataset, PlotOrientation.VERTICAL,
+				false, // legend?
 				false, // tooltips?
 				false // URLs?
 				);
 	}
 
-	public static ChartPanel makePanel(double[] data) {
-		JFreeChart chart = makeChart(data);
+	public static ChartPanel makePanel(double[] data, double maxX) {
+		JFreeChart chart = makeChart(data, maxX);
 		return new ChartPanel(chart);
 	}
 
-	public static JFrame makeFrame(double[] data) {
-		JFreeChart chart = makeChart(data);
+	public static JFrame makeFrame(double[] data, double maxX) {
+		JFreeChart chart = makeChart(data, maxX);
 		return new ChartFrame("", chart);
 	}
 }
