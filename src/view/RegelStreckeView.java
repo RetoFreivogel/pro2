@@ -55,19 +55,16 @@ public class RegelStreckeView extends JPanel implements Observer,
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
 		tf_ks = new JFormattedTextField(format);
-		tf_ks.addPropertyChangeListener("value", this);
 		add(tf_ks);
 
 		JLabel lb_Tu = new JLabel("Tu");
 		add(lb_Tu);
 		tf_tu = new JFormattedTextField(format);
-		tf_tu.addPropertyChangeListener("value", this);
 		add(tf_tu);
 
 		JLabel lb_Tg = new JLabel("Tg");
 		add(lb_Tg);
 		tf_tg = new JFormattedTextField(format);
-		tf_tg.addPropertyChangeListener("value", this);
 		add(tf_tg);
 
 		JLabel lb_Ordn = new JLabel("Ordnung");
@@ -85,15 +82,31 @@ public class RegelStreckeView extends JPanel implements Observer,
 		add(bt_Zeitkonst);
 
 		regelstrecke.addObserver(this);
+		enableEvents();
 		update(null, null);
 	}
 
+	private void enableEvents(){
+		tf_ks.addPropertyChangeListener("value", this);
+		tf_tu.addPropertyChangeListener("value", this);
+		tf_tg.addPropertyChangeListener("value", this);		
+	}
+	
+	private void disableEvents(){
+		tf_ks.removePropertyChangeListener("value", this);
+		tf_tu.removePropertyChangeListener("value", this);
+		tf_tg.removePropertyChangeListener("value", this);				
+	}
+
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		disableEvents();
 		tf_ks.setValue(regelstrecke.getKs());
 		tf_tu.setValue(regelstrecke.getTu());
 		tf_tg.setValue(regelstrecke.getTg());
 		tf_Ordn.setValue(regelstrecke.getOrdnung());
+		enableEvents();
 	}
 
 	@Override

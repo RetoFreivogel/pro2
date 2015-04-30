@@ -74,4 +74,40 @@ public class Controller {
 			view.setStatus(e.getMessage());
 		}
 	}
+
+	public void setKr(double kr) {
+		try{
+			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+			dim.setKr(kr);
+		}catch (Exception e){
+			view.setStatus(e.getMessage());
+		}
+	}
+	
+	public void setTn(double tn) {
+		try{
+			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+			dim.setTn(tn);
+		}catch (Exception e){
+			view.setStatus(e.getMessage());
+		}
+	}
+	
+	public void setTv(double tv) {
+		try{
+			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+			dim.setTv(tv);
+		}catch (Exception e){
+			view.setStatus(e.getMessage());
+		}
+	}
+	
+	public void setTp(double tp) {
+		try{
+			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+			dim.setTp(tp);
+		}catch (Exception e){
+			view.setStatus(e.getMessage());
+		}
+	}
 }

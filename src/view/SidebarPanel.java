@@ -53,7 +53,7 @@ public class SidebarPanel extends JScrollPane{
 		pn_Eingabe.add(pn_ERegelstrecke);
 		
 		//---------------------Eingabe_Regler-------------------------------
-		pn_ERegler = new ReglerView(model.getRegelkreis().getRegler(), controller);
+		pn_ERegler = new ReglerView(model.getRegelkreis(), controller);
 		pn_Eingabe.add(pn_ERegler);
 		
 		//---------------------Ausgabe-------------------------------
@@ -62,18 +62,10 @@ public class SidebarPanel extends JScrollPane{
 		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Ausgabe);
-		
-		
+			
 		//---------------------Ausgabe_Regelstrecke-------------------------------
-
-		
-
 		
 		//---------------------Ausgabe_Regler-------------------------------
-		
-		
-
-				
 		
 		//---------------------Ausgabe_Analyse-------------------------------
 		JPanel pn_AAnalyse = new AnalyseView(model.getRegelkreis(), controller);
@@ -82,7 +74,5 @@ public class SidebarPanel extends JScrollPane{
 	}
 	
 	public void update(RegelKreis regelkreis) {
-		Regler regler = regelkreis.getRegler();
-		pn_ERegler.setRegler(regler);
 	}
 }

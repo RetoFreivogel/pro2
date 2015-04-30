@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -18,13 +20,15 @@ import javax.swing.border.TitledBorder;
 
 import controller.Controller;
 import model.Dimensionierung;
+import model.RegelKreis;
 import model.Regler;
 
-public class ReglerView extends JPanel implements PropertyChangeListener,
+public class ReglerView extends JPanel implements PropertyChangeListener, Observer,
 		ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private final Controller controller;
+	private final RegelKreis kreis;
 
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Kr;
@@ -33,9 +37,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private JFormattedTextField tf_Tp;
 	JComboBox<Dimensionierung> cbbx_defd_R;
 
-	public ReglerView(Regler regler, Controller controller) {
+	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
+		this.kreis = kreis;
 
 		DecimalFormat format = new DecimalFormat("###0.###");
 
@@ -71,47 +76,93 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		JLabel lb_Kr = new JLabel("Kr");
 		add(lb_Kr);
 		tf_Kr = new JFormattedTextField(format);
-		tf_Kr.setEditable(false);
 		add(tf_Kr);
 
 		JLabel lb_Tn = new JLabel("Tn");
 		add(lb_Tn);
 		tf_Tn = new JFormattedTextField(format);
-		tf_Tn.setEditable(false);
 		add(tf_Tn);
 
 		JLabel lb_Tv = new JLabel("Tv");
 		add(lb_Tv);
 		tf_Tv = new JFormattedTextField(format);
-		tf_Tv.setEditable(false);
 		add(tf_Tv);
 
 		JLabel lb_Tp = new JLabel("Tp");
 		add(lb_Tp);
 		tf_Tp = new JFormattedTextField(format);
-		tf_Tp.setEditable(false);
 		add(tf_Tp);
 
-		setRegler(regler);
+		autoDim();
+		enableEvents();
+		update(null, null);
+		kreis.addObserver(this);
 	}
 
-	public void setRegler(Regler regler) {
-		tf_Kr.setValue(regler.getKr());
-		tf_Tn.setValue(regler.getTn());
-		tf_Tv.setValue(regler.getTv());
-		tf_Tp.setValue(regler.getTp());
+	private void enableEvents(){
+		tf_Kr.addPropertyChangeListener("value", this);
+		tf_Tn.addPropertyChangeListener("value", this);
+		tf_Tv.addPropertyChangeListener("value", this);
+		tf_Tp.addPropertyChangeListener("value", this);
+	}
+	
+	private void disableEvents(){
+		tf_Kr.removePropertyChangeListener("value", this);
+		tf_Tn.removePropertyChangeListener("value", this);
+		tf_Tv.removePropertyChangeListener("value", this);
+		tf_Tp.removePropertyChangeListener("value", this);		
+	}
+	
+	private void manuellDim() {
+		tf_Kr.setEditable(true);
+		tf_Tn.setEditable(true);
+		tf_Tv.setEditable(true);
+		tf_Tp.setEditable(true);
+	}
+
+	private void autoDim() {
+		tf_Kr.setEditable(false);
+		tf_Tn.setEditable(false);
+		tf_Tv.setEditable(false);
+		tf_Tp.setEditable(false);
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent event) {
+	public void propertyChange(PropertyChangeEvent event) {		
+		if (event.getSource() == tf_Kr) {
+			controller.setKr(((Number) tf_Kr.getValue()).doubleValue());
+		} else if (event.getSource() == tf_Tn) {
+			controller.setTn(((Number) tf_Tn.getValue()).doubleValue());
+		} else if (event.getSource() == tf_Tv) {
+			controller.setTv(((Number) tf_Tv.getValue()).doubleValue());
+		} else if (event.getSource() == tf_Tp) {
+			controller.setTp(((Number) tf_Tp.getValue()).doubleValue());
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == cbbx_defd_R) {
-			controller.selectDim((Dimensionierung) cbbx_defd_R
-					.getSelectedItem());
+			Dimensionierung dim = (Dimensionierung) cbbx_defd_R
+					.getSelectedItem();
+			controller.selectDim(dim);
+			if(dim == Dimensionierung.MANUELL){
+				manuellDim();
+			}else{
+				autoDim();
+			}
 		}
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		Regler regler = kreis.getRegler();
+		disableEvents();
+		tf_Kr.setValue(regler.getKr());
+		tf_Tn.setValue(regler.getTn());
+		tf_Tv.setValue(regler.getTv());
+		tf_Tp.setValue(regler.getTp());	
+		enableEvents();
 	}
 
 }
