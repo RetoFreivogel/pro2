@@ -12,6 +12,7 @@ public class SaniApproxTest {
 
 	@Test
 	public void testCalcSani(){
+		Matlab.setMocked(false);
 		double tu = 1.71;
 		double tg = 7.6;		
 		RegelStrecke rs = new RegelStrecke(1.0, tu, tg);
@@ -24,7 +25,7 @@ public class SaniApproxTest {
 	
 	@Test
 	public void testCalcSani2(){
-		
+		Matlab.setMocked(false);		
 		double tu = 2;
 		double tg = 8;		
 		RegelStrecke rs = new RegelStrecke(1.0, tu, tg);

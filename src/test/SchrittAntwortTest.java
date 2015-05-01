@@ -17,6 +17,7 @@ public class SchrittAntwortTest {
 	
 	@Test
 	public void testPID() {
+		Matlab.setMocked(false);
 		OppeltDim dim = new OppeltDim();
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		RegelKreis kreis = new RegelKreis(dim, rs);
@@ -36,6 +37,7 @@ public class SchrittAntwortTest {
 	
 	@Test
 	public void testP() {
+		Matlab.setMocked(false);
 		OppeltDim dim = new OppeltDim();
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		RegelKreis kreis = new RegelKreis(dim, rs);

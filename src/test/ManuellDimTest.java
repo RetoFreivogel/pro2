@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import model.ManuellDim;
 import model.Regler;
+import model.ReglerTopologie;
 
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class ManuellDimTest {
 	@Test
 	public void testGets(){
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim unmodified_dim = new ManuellDim(dim.calc(null, null));
+		ManuellDim unmodified_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		
 		assertEquals(1.0, dim.getKr(), 0);
 		assertEquals(2.0, dim.getTn(), 0);
@@ -24,16 +25,16 @@ public class ManuellDimTest {
 	public void testCalc() {
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
 		Regler regler_ref = new Regler(1.0, 2.0, 3.0);
-		Regler regler = dim.calc(null, null);
+		Regler regler = dim.calc(null, ReglerTopologie.PID);
 		assertEquals(regler_ref, regler);
 		
 		dim.setKr(4.0);
 		dim.setTn(5.0);
 		dim.setTv(6.0);
-		dim.setTp(60.0);
+		dim.setTp(0.06);
 		
 		regler_ref = new Regler(4.0, 5.0, 6.0);
-		regler = dim.calc(null, null);
+		regler = dim.calc(null, ReglerTopologie.PID);
 		assertEquals(regler_ref, regler);
 		
 		ManuellDim other_dim = new ManuellDim(regler);
@@ -52,18 +53,18 @@ public class ManuellDimTest {
 	@Test
 	public void testMakeCopy() {
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim copy_dim = new ManuellDim(dim.calc(null, null));
+		ManuellDim copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		assertEquals(dim, copy_dim);
 		
-		copy_dim = new ManuellDim(dim.calc(null, null));
+		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		dim.setKr(0.0);	
 		assertNotEquals(dim, copy_dim);
 		
-		copy_dim = new ManuellDim(dim.calc(null, null));
+		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		dim.setTn(0.0);	
 		assertNotEquals(dim, copy_dim);
 		
-		copy_dim = new ManuellDim(dim.calc(null, null));
+		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		dim.setTv(0.0);	
 		assertNotEquals(dim, copy_dim);
 	}
@@ -71,7 +72,7 @@ public class ManuellDimTest {
 	@Test
 	public void testHash(){
 		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
-		ManuellDim copy_dim = new ManuellDim(dim.calc(null, null));
+		ManuellDim copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		
 		assertEquals(dim.hashCode(), copy_dim.hashCode());
 	}
