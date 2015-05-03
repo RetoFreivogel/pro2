@@ -46,38 +46,39 @@ Studiengang: \= Elektro- und Informationstechnik
 %\newpage
 
 \section{Einleitung}
-\section{Reglertyp}
-\subsection{Typ-PI}
-\subsection{Typ-PID}
-\subsection{Übertragungsfunktion der Regler}
-\section{Lösungskonzept}
-\subsection{Phasen- und Amplitudendiadramm}
-\subsection{Identifikation Tu,Tg und Ks  von Diagrammen}
-\section{Java Software}
-\subsection{Klassendiagramm}
-\subsection{Beschreibung der Software}
-\subsection{Benutzerschnittstelle}
-\subsection{Klassen}
-\subsubsection{GUI Klassen}
-\subsubsection{Model Klassen}
-\subsubsection{View Klassen}
-\subsubsection{Controller Klassen}
-\section{Test Matlabs}
-\subsection{Schrittantwort}
-\subsubsection{Übertragungsfunktion}
-\subsubsection{Wendetangent}
+Hier werden wir eine grobe Zusammenfassung unserer Probleme und die zugehörigen Lösungsansätze niederschreiben. Zu den Lösungsansätzen stellen wir zusätzlich die Ziele in den Fokus, damit die Richtung der Lösung definiert ist. Der Bericht mit der Problem-Ziel-Lösung-Strategie verfasst.
+\section{Theoretische Grundlagen}
+Die theoretischen Grundlagen beinhalten sämtliche Unterlagen, welche nötig sind um dieses Projekt fachlich zu verstehen. Besonders Wichtig sind die Zusammenhänge einer Regelung. Die Bedeutung der verschidenen Übertragungsfunktionen wird in diesem Kapitel auch erklärt.
+\subsection{Analyse der Strecke}
+In diesem Bereich werden die nötigen Werkzeuge der Regelungstechnik erklärt. Von der Streckenidentifikation über die Übertragungsfunktion der Strecke bis hin zum Frequenzgang der Strecke wird in diesem Teil des Berichtes die Analyse der Strecke erklärt. Zusätzlich werden die weiterverwendete Werte beschrieben.
+\subsection{Phasengangmethode}
+Die Dimensionierung mit der Phasengangmethode beinhaltet Werte und Graphe. Dieser Teil beschreibt, wie die Werte der Analyse weiterverwendet werden. Zudem soll der Weg im Fokus stehen, so das sich ein Leser in unsere Schritt rein versetzten kann.  
+\subsection{Übertragungsfunktionen}
+In diesem Unterkapitel wird die Handhabung der Übertragungsfunktionen genauer beschrieben. Zudem werden die Unterscheide zwischen Reglerkonform und Bodekonform erklärt. 
 \subsection{Dimensionierung mit Faustformeln}
-\subsection{Dimensionierung mit  Phasengangmethode}
-\subsubsection{Amplitudengang der Strecke}
-\subsubsection{Phasengang der Strecke}
+Diese Unterkapitel soll die andere Dimensionierungsmöglichkeiten erläutern. Faustformeln gelten als Kompromissformeln und sind lediglich zum Vergleich in diesem Projekt eingebettet. 
+\section{Lösungskonzept mit Matlab}
+Im Lösungskonzept steht alles was mit der erarbeiteten Lösung zu tun hat, jedoch keine Software beinhaltet. Dieser Teil beschreibt die vorgegebenen Funktionen, die hergeleiteten Funktionen und die neue geschriebenen Funktionen.
+\subsection{vorgegebene Matlabfunktionen}
+Vom Fachcoach sind einige Funktionen bereits mitgeliefert worden. Wir haben diese Funktionen getestet und soweit auskommentiert, dass die Übersetzung zu einem spätere Zeitpunkt einfacher fällt.
+\subsection{Herleitung}
+Diese Kapitel wird kein grosses Kapitel werden, ist jedoch wichtig für die Erarbeitung des Projekts. Einige Formeln waren fehlerhaft, desshalb mussten diese Hergeleitet werden.
+\subsection{Schreiben eigener Matlabfunktionen}
+Die ganze Berechnung der Phasengangmethode wird mit eigenen Matlabfunktionen komplettiert. Mit diesem Funktonssätzen kann die ganze dimensionierung mit Matlab berechnet werde.
+\section{Lösungskonzept mit Java}
+Dieses Kapitel beschreibt den ganzen Softwareprozess. Dieser Bereich wir schlussendlich am besten beschrieben, da es der Hauptteil des Projektes ist. 
+\subsection{Matlabfunktionen übersetzten}
+Matlabfunktionen wurden übersetzt und in einzelne Klassen übernommen. Einige Matlabfunktionen können nur mit speziellen klassen von der Apache-Library realisiert werden, desshalb wird auf diese auch näher eingegangen. Die Begründung, weshalb gewisse Klassen genommen werden, gehört zur Lösungsfindung dazu und wird berichtet.
+\subsection{Model}
+Das Model ist bestückt mit den Berechnungen und Funktionen, welche wir im Matlab verwendet haben. Zusätzlich hat das Matlab noch klassen mit den Faustformeln. Die Berechnungen werden im Model erledigt. Zusammenhänge der Klassen werden in diesem Unterkapitel erklärt.
+\subsection{View}
+Das View ist die graphische Oberfläche, welches mit dem Kunde erarbeitet wird. In diesem Kapitel schreiben wir über die Anforderungen des Kunden und die Umsetzung unserer Ideen. 
+\subsection{Controll}
+Der Controller steuert sämtliche Prozesse im Hintergrund. Er fängt Änderungen ab und meldet dies dem Model. Wir haben uns in diesem Bereich überlegt, welche Aktionen einen Benutzer auslösen kann und dementsprechende Use-Cases erstellt. In diesem Unterkapitel gehen wir auf die Use-Cases ein.
+\subsection{Testkonzept}
+Unsere Software wird beim der Programmierung fortlaufend auf Funktionalität und Logik geprüft. Dafür brauchen wir Matlab und das JUnit Framework. Der Fokus liegt nicht auf jedem Test den wir machen, sondern auf wichtigen Erkenntnisse und daraus folgende Änderungen. 
 \section{Schlusswort}
-\subsection{Schrittantwort}
-\subsubsection{Übertragungsfunktion}
-\subsubsection{Wendetangent}
-\subsection{Dimensionierung mit Faustformeln}
-\subsection{Dimensionierung mit  Phasengangmethode}
-\subsubsection{Amplitudengang der Strecke}
-\subsubsection{Phasengang der Strecke}
+Hier folgt unser Fazit. In diesem werden die Ziele zusammengefasst aufgezeigt und die Umsetzung dokumentiert sein. Ergänzend werden wir unsere Erkenntnisse, mögliche Verbesserungsvorschläge und Erweiterungen aufschreiben.
 \section{Literaturverzeichnis}
 
 
