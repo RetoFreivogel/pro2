@@ -41,12 +41,12 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	JComboBox<Dimensionierung> cbbx_defd_R;
 	JComboBox<ReglerTopologie> cbbx_Topo;
 	JComboBox<ChiensRegelung> cbbx_chiens;
+	private JLabel lb_chiens;
 
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
 		this.kreis = kreis;
-
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regler",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -62,16 +62,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		JLabel lb_defd_R = new JLabel("Definiert durch: ");
 		add(lb_defd_R);
 		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
-		cbbx_defd_R.setSelectedIndex(3);
+		cbbx_defd_R.setSelectedIndex(0);
 		cbbx_defd_R.addActionListener(this);
 		add(cbbx_defd_R);
-		
-		JLabel lb_chiens = new JLabel("Regelung");
-		add(lb_chiens);
-		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
-		cbbx_chiens.setSelectedIndex(4);
-		cbbx_chiens.addActionListener(this);
-		add(cbbx_chiens);
 
 		JLabel lb_Kr = new JLabel("Kr");
 		add(lb_Kr);
@@ -145,14 +138,29 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		if (event.getSource() == cbbx_defd_R) {
 			Dimensionierung dim = (Dimensionierung) cbbx_defd_R
 					.getSelectedItem();
-			switch(dim){
+			switch (dim) {
+			case MANUELL:
+				disablePhrand();
+				disableChiens();
+				break;
 			case PHASENGANG:
 				enablePhrand();
+				disableChiens();
+				break;
+			case ZIEGLER:
+				disablePhrand();
+				disableChiens();
 				break;
 			case OPPELT:
 				disablePhrand();
+				disableChiens();
 				break;
-			case Chiens:
+			case ROSENBERG:
+				disablePhrand();
+				disableChiens();
+				break;
+			case CHIENS:
+				disablePhrand();
 				enableChiens();
 				break;
 			}
@@ -170,49 +178,56 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	}
 
 	private void enablePhrand() {
-		if(tf_Phrand == null){
+		if (tf_Phrand == null) {
 			lb_Phrand = new JLabel("Phasenrand");
 			add(lb_Phrand);
 
 			tf_Phrand = new JFormattedTextField(format);
 			add(tf_Phrand);
+			revalidate();
+			repaint();
 		}
 	}
 
 	private void disablePhrand() {
-		if(tf_Phrand != null){
+		if (tf_Phrand != null) {
 			remove(lb_Phrand);
 			lb_Phrand = null;
-			
+
 			remove(tf_Phrand);
 			tf_Phrand = null;
 			revalidate();
 			repaint();
 		}
 	}
-	
-	private void enableChiens() {
-		if(tf_Phrand == null){
-			lb_Phrand = new JLabel("Phasenrand");
-			add(lb_Phrand);
 
-			tf_Phrand = new JFormattedTextField(format);
-			add(tf_Phrand);
+	private void enableChiens() {
+		if (cbbx_chiens == null) {
+			lb_chiens = new JLabel("Regelung: ");
+			add(lb_chiens);
+			
+			cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
+			cbbx_chiens.setSelectedIndex(0);
+			cbbx_chiens.addActionListener(this);
+			add(cbbx_chiens);
+			revalidate();
+			repaint();
 		}
 	}
 
 	private void disableChiens() {
-		if(tf_Phrand != null){
-			remove(lb_Phrand);
-			lb_Phrand = null;
-			
-			remove(tf_Phrand);
-			tf_Phrand = null;
+		if (cbbx_chiens != null) {
+			remove(lb_chiens);
+			lb_chiens = null;
+
+			remove(cbbx_chiens);
+			cbbx_chiens.removeActionListener(this);
+			cbbx_chiens = null;
 			revalidate();
 			repaint();
 		}
 	}
-	
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Regler regler = kreis.getRegler();

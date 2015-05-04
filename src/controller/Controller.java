@@ -41,7 +41,7 @@ public class Controller {
 			case ZIEGLER:
 				kreis.setDim(new ZieglerDim());				
 				break;
-			case CHIEN:
+			case CHIENS:
 				kreis.setDim(new ChiensDim(ChiensDim.APERIODFUEHR));
 				break;
 			case OPPELT:

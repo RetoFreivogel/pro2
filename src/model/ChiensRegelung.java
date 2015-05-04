@@ -1,10 +1,10 @@
 package model;
 
 public enum ChiensRegelung {
-	APERIODSTOER("Aper. Störverhalten"), 
-	APERIODFUEHR("Aper. Führungsverhalten"),
-	ZWANZIGSTOER("Per. Störverhalten"),
-	ZWANZIGFUEHR("Per. Führungsverhalten"),
+	APERIODSTOER("Aperiodisches Störverhalten"), 
+	APERIODFUEHR("Aperiodisches Führungsverhalten"),
+	ZWANZIGSTOER("Periodisches Störverhalten"),
+	ZWANZIGFUEHR("Periodisches Führungsverhalten");
 	
 	private final String text;
 	

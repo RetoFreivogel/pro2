@@ -6,7 +6,7 @@ public enum Dimensionierung {
 	ZIEGLER("Ziegler"),
 	OPPELT("Oppelt"),
 	ROSENBERG("Rosenberg"),
-	CHIEN("Chien");
+	CHIENS("Chiens");
 	
 	private final String text;
 	
