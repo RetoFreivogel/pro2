@@ -28,23 +28,6 @@ public class MDatei extends JMenu implements ActionListener {
 		}
 	}
 	
-	public void neu(){
-		
-	}
-	public void speichern(){
-		
-	}
-	public void speichernals(){
-		
-	}
-	public void oeffnen(){
-		
-	}
-	public void beenden(){
-		
-	}
-
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 	
 		

@@ -128,4 +128,32 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
+	
+	public void neu(){
+		
+	}
+	public void speichern(){
+		
+	}
+	public void speichernals(){
+		
+	}
+	public void oeffnen(){
+		
+	}
+	public void beenden(){
+		
+	}
+	public void rueckgaengig(){
+		
+	}
+	public void wiederholen(){
+		
+	}
+	public void einstellung(){
+		
+	}
+	public void simulation(){
+		
+	}
 }

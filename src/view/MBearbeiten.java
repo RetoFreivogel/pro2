@@ -22,13 +22,7 @@ public class MBearbeiten extends JMenu implements ActionListener {
 
 		}
 	}
-	public void rueckgaengig(){
-		
-	}
-	public void wiederholen(){
-		
-	}
-	@Override
+
 	public void actionPerformed(ActionEvent e) {
 	
 		

@@ -21,13 +21,7 @@ public class MOptionen extends JMenu implements ActionListener {
 		}
 		
 	}
-	public void einstellung(){
-		
-	}
-	public void simulation(){
-		
-	}
-	@Override
+
 	public void actionPerformed(ActionEvent e) {
 	
 		
