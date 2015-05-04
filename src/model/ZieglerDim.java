@@ -9,7 +9,17 @@ public final class ZieglerDim extends AbstractDim {
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 		
-		return new Regler((0.9 / Ks) * (Tg / Tu), 2 * Tu, 0.5 * Tu); //Tg = T1, Tu = Tt
+		
+		switch (topo) {
+		case P:
+			return new Regler((1 / Ks) * (Tg / Tu));
+		case PI:
+			return new Regler((0.9 / Ks) * (Tg / Tu), 3.3 * Tu);
+		case PID:
+			return new Regler((0.9 / Ks) * (Tg / Tu), 2 * Tu, 0.5 * Tu);
+		default:
+			throw new IllegalArgumentException();
+		
+		}
 	}
-
 }
