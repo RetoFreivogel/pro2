@@ -1,5 +1,13 @@
 package controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 import model.ChiensDim;
@@ -18,7 +26,8 @@ public class Controller {
 	private Model model;
 	private View view;
 	private JFrame frame;
-
+	private final JFileChooser jfcLaden = new JFileChooser(new File(".//"));
+	
 	public Controller(Model model, JFrame frame) {
 		this.model = model;
 		this.frame = frame;
@@ -137,14 +146,84 @@ public class Controller {
 		
 	}
 	public void speichern(){
-		
+		System.out.println(model);
 	}
 	public void speichernals(){
+		int returnVal = jfcLaden.showSaveDialog(frame);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			File file = jfcLaden.getSelectedFile();
+			//String txt = jtArea.getText();
+			String txt = "Ks: 1,Tu: 1.67,Tg:6";
+			if (file.exists() == true) {
+				System.out.println("haaalt");
+				String[] zeilen = txt.split("[,]+");
+				try {
+					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
+							file, false));
+					for (int i = 0; i < zeilen.length; i++) {
+						ausgabeDatei.println(zeilen[i]);
+					}
+
+					ausgabeDatei.close();
+				} catch (IOException exc) {
+					System.err.println("Dateifehler: " + exc.toString());
+
+				}
+			} else {
+				String[] zeilen = txt.split("[,]+");
+				try {
+					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
+							file, false));
+					for (int i = 0; i < zeilen.length; i++) {
+						ausgabeDatei.println(zeilen[i]);
+						
+					}
+
+					ausgabeDatei.close();
+				} catch (IOException exc) {
+					System.err.println("Dateifehler: " + exc.toString());
+
+				}
+			}
+
+		}
+		
+	
 		
 	}
+	
 	public void oeffnen(){
 		
+		int returnVal = jfcLaden.showOpenDialog(frame);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			File file = jfcLaden.getSelectedFile();
+			System.out.println(file.getAbsolutePath());
+			
+			Scanner sc;
+			String [] str = new String [3];;
+			try {
+				sc = new Scanner(file);
+				 
+					sc.skip("Ks: ");
+					str[0] = Double.toString(sc.nextDouble());
+					sc.nextLine();
+					sc.skip("Tu: ");
+					str[1] = Double.toString(sc.nextDouble());
+					sc.nextLine();
+					sc.skip("Tg: ");
+					str[2] = Double.toString(sc.nextDouble());
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(str[0]);
+			System.out.println(str[1]);
+			System.out.println(str[2]);
+		}	
+
 	}
+	
 	public void beenden(){
 		frame.dispose();
 	}

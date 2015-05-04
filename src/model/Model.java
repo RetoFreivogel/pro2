@@ -25,4 +25,9 @@ public class Model extends Observable implements Observer{
 		notifyObservers();
 	}
 
+	@Override
+	public String toString() {
+		return "regelkreisArray: " + regelkreisArray;
+	}
+
 }

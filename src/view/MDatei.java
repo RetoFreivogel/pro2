@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
@@ -16,6 +15,7 @@ public class MDatei extends JMenu implements ActionListener {
 	private  String[] datei = {"Neu...","Speichern","Speichern als...","\u00D6ffnen...","Beenden"};
 	private JMenuItem [] mntmDatei = new JMenuItem[5];
 	private Controller controller;
+
 	
 	public MDatei(Controller controller){
 		this.controller = controller;

@@ -111,4 +111,9 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		return new TransferFunction(new Polynom(new double[] { ks }),
 				nenner);
 	}
+
+	@Override
+	public String toString() {
+		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\nn: " + n;
+	}
 }
