@@ -11,18 +11,51 @@ public final class ChiensDim extends AbstractDim {
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 		
-		switch (j) {
-		case APERIODSTOER:
-			return new Regler((0.95 / Ks) * (Tg / Tu), 2.4 * Tu, 0.42 * Tu);
-		case APERIODFUEHR:
-			return new Regler((0.6 / Ks) * (Tg / Tu), Tg, 0.5 * Tu);
-		case ZWANZIGSTOER:
-			return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
-		case ZWANZIGFUEHR:
-			return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tg, 0.47 * Tu);
+		switch (topo) {
+		case P:
+			switch (j) {
+			case APERIODSTOER:
+				return new Regler((0.3 / Ks) * (Tg / Tu));
+			case APERIODFUEHR:
+				return new Regler((0.3 / Ks) * (Tg / Tu));
+			case ZWANZIGSTOER:
+				return new Regler((0.7 / Ks) * (Tg / Tu));
+			case ZWANZIGFUEHR:
+				return new Regler((0.7 / Ks) * (Tg / Tu));
+			default:
+				assert(false);
+				return null;
+			}
+		case PI:
+			switch (j) {
+			case APERIODSTOER:
+				return new Regler((0.6 / Ks) * (Tg / Tu), 4 * Tu);
+			case APERIODFUEHR:
+				return new Regler((0.35 / Ks) * (Tg / Tu), 1.2 * Tu);
+			case ZWANZIGSTOER:
+				return new Regler((0.7 / Ks) * (Tg / Tu), 2.3 * Tu);
+			case ZWANZIGFUEHR:
+				return new Regler((0.6 / Ks) * (Tg / Tu), 1.35 * Tg);
+			default:
+				assert(false);
+				return null;
+			}
+		case PID:
+			switch (j) {
+			case APERIODSTOER:
+				return new Regler((0.95 / Ks) * (Tg / Tu), 2.4 * Tu, 0.42 * Tu);
+			case APERIODFUEHR:
+				return new Regler((0.6 / Ks) * (Tg / Tu), Tg, 0.5 * Tu);
+			case ZWANZIGSTOER:
+				return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
+			case ZWANZIGFUEHR:
+				return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tg, 0.47 * Tu);
+			default:
+				assert(false);
+				return null;
+			}
 		default:
-			assert(false);
-			return null;
+			throw new IllegalArgumentException();
 		}
 	}
 
