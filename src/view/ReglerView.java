@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.Controller;
+import model.ChiensRegelung;
 import model.Dimensionierung;
 import model.RegelKreis;
 import model.Regler;
@@ -26,10 +27,12 @@ import model.ReglerTopologie;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
+	private static final DecimalFormat format = new DecimalFormat("###0.###");
 
 	private final Controller controller;
 	private final RegelKreis kreis;
 
+	JLabel lb_Phrand;
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Kr;
 	private JFormattedTextField tf_Tn;
@@ -37,13 +40,13 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private JFormattedTextField tf_Tp;
 	JComboBox<Dimensionierung> cbbx_defd_R;
 	JComboBox<ReglerTopologie> cbbx_Topo;
+	JComboBox<ChiensRegelung> cbbx_chiens;
 
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
 		this.kreis = kreis;
 
-		DecimalFormat format = new DecimalFormat("###0.###");
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regler",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -62,13 +65,13 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		cbbx_defd_R.setSelectedIndex(3);
 		cbbx_defd_R.addActionListener(this);
 		add(cbbx_defd_R);
-
-		JLabel lb_Phrand = new JLabel("Phasenrand");
-		lb_Phrand.setVisible(false);
-		add(lb_Phrand);
-		tf_Phrand = new JFormattedTextField(format);
-		tf_Phrand.setVisible(false);
-		add(tf_Phrand);
+		
+		JLabel lb_chiens = new JLabel("Regelung");
+		add(lb_chiens);
+		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
+		cbbx_chiens.setSelectedIndex(4);
+		cbbx_chiens.addActionListener(this);
+		add(cbbx_chiens);
 
 		JLabel lb_Kr = new JLabel("Kr");
 		add(lb_Kr);
@@ -142,6 +145,17 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		if (event.getSource() == cbbx_defd_R) {
 			Dimensionierung dim = (Dimensionierung) cbbx_defd_R
 					.getSelectedItem();
+			switch(dim){
+			case PHASENGANG:
+				enablePhrand();
+				break;
+			case OPPELT:
+				disablePhrand();
+				break;
+			case Chiens:
+				enableChiens();
+				break;
+			}
 			if (dim == Dimensionierung.MANUELL) {
 				manuellDim();
 			} else {
@@ -155,6 +169,50 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		}
 	}
 
+	private void enablePhrand() {
+		if(tf_Phrand == null){
+			lb_Phrand = new JLabel("Phasenrand");
+			add(lb_Phrand);
+
+			tf_Phrand = new JFormattedTextField(format);
+			add(tf_Phrand);
+		}
+	}
+
+	private void disablePhrand() {
+		if(tf_Phrand != null){
+			remove(lb_Phrand);
+			lb_Phrand = null;
+			
+			remove(tf_Phrand);
+			tf_Phrand = null;
+			revalidate();
+			repaint();
+		}
+	}
+	
+	private void enableChiens() {
+		if(tf_Phrand == null){
+			lb_Phrand = new JLabel("Phasenrand");
+			add(lb_Phrand);
+
+			tf_Phrand = new JFormattedTextField(format);
+			add(tf_Phrand);
+		}
+	}
+
+	private void disableChiens() {
+		if(tf_Phrand != null){
+			remove(lb_Phrand);
+			lb_Phrand = null;
+			
+			remove(tf_Phrand);
+			tf_Phrand = null;
+			revalidate();
+			repaint();
+		}
+	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Regler regler = kreis.getRegler();
