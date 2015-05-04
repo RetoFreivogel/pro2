@@ -12,18 +12,29 @@ public class MBearbeiten extends JMenu implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	private  String[] bearbeiten = {"R\u00FCckg\u00E4ngig","Wiederholen"};
+	private JMenuItem [] mntmBearbeiten = new JMenuItem[2];
+	private Controller controller;
 	
 	public MBearbeiten(Controller controller){
+		this.controller = controller;
 		setText("Bearbeiten");
-		JMenuItem [] mntmBearbeiten = new JMenuItem[6];
+
 		for (int i = 0; i < this.bearbeiten.length; i++) {
 			mntmBearbeiten[i] = new JMenuItem(this.bearbeiten[i]);
 			add(mntmBearbeiten[i]);
+			mntmBearbeiten[i].addActionListener(this);
 
 		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource()== mntmBearbeiten[0]) {
+			controller.rueckgaengig();
+		}
+		if (e.getSource()== mntmBearbeiten[0]) {
+			controller.wiederholen();
+		}
+		
 	
 		
 	}

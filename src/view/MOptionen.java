@@ -11,19 +11,29 @@ import controller.Controller;
 public class MOptionen extends JMenu implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	private  String[] optionen = {"Simulation...","Einstellungen"};
+	private String[] optionen = {"Simulation...","Einstellungen"};
+	private JMenuItem [] mntmOptionen = new JMenuItem[2];
+	private Controller controller;
 	
 	public  MOptionen(Controller controller){
-		setText("Bearbeiten");
+		this.controller = controller;
+		setText("Optionen");
+
 		for (int i = 0; i < this.optionen.length; i++) {
-			JMenuItem mntmNeu = new JMenuItem(this.optionen[i]);
-			add(mntmNeu);			
+			mntmOptionen[i] = new JMenuItem(this.optionen[i]);
+			add(mntmOptionen[i]);
+			mntmOptionen[i].addActionListener(this);
 		}
 		
 	}
 
 	public void actionPerformed(ActionEvent e) {
-	
+		if (e.getSource()== mntmOptionen[0]) {
+			controller.simulation();
+		}
+		if (e.getSource()== mntmOptionen[0]) {
+			controller.einstellung();
+		}
 		
 	}
 }

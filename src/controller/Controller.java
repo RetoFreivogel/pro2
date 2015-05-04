@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JFrame;
+
 import model.ChiensDim;
 import model.Dimensionierung;
 import model.ManuellDim;
@@ -15,9 +17,11 @@ import view.View;
 public class Controller {
 	private Model model;
 	private View view;
+	private JFrame frame;
 
-	public Controller(Model model) {
+	public Controller(Model model, JFrame frame) {
 		this.model = model;
+		this.frame = frame;
 	}
 
 	public void setView(View view) {
@@ -142,7 +146,7 @@ public class Controller {
 		
 	}
 	public void beenden(){
-		
+		frame.dispose();
 	}
 	public void rueckgaengig(){
 		
