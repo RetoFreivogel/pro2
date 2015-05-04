@@ -1,6 +1,6 @@
 package model;
 
-public final class RosenbergDim extends ReglerDim {
+public final class RosenbergDim extends AbstractDim {
 
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {

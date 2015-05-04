@@ -5,10 +5,10 @@ import java.util.Observer;
 
 public class RegelKreis extends Observable implements RegelGlied, Observer {
 	private RegelStrecke regelstrecke;
-	private ReglerDim dim;
+	private AbstractDim dim;
 	private ReglerTopologie topo;
 
-	public RegelKreis(ReglerDim dim, RegelStrecke regelstrecke) {
+	public RegelKreis(AbstractDim dim, RegelStrecke regelstrecke) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
 		this.topo = ReglerTopologie.PID;
@@ -21,11 +21,11 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		return dim.calc(regelstrecke, topo);
 	}
 
-	public ReglerDim getDim() {
+	public AbstractDim getDim() {
 		return dim;
 	}
 	
-	public void setDim(ReglerDim dim) {
+	public void setDim(AbstractDim dim) {
 		this.dim.deleteObserver(this);
 		this.dim = dim;
 		this.dim.addObserver(this);

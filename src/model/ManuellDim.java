@@ -1,6 +1,6 @@
 package model;
 
-public class ManuellDim extends ReglerDim {
+public class ManuellDim extends AbstractDim {
 	private double kr, tn, tv, tp;
 
 	public ManuellDim(double kr, double tn, double tv) {

@@ -1,6 +1,6 @@
 package model;
 
-public final class ChiensDim extends ReglerDim {
+public final class ChiensDim extends AbstractDim {
 	public static final int APERIODSTOER=1, APERIODFUEHR=2, ZWANZIGSTOER=3, ZWANZIGFUEHR=4;
 	
 	public int j;

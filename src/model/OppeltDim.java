@@ -1,7 +1,13 @@
 package model;
 
-public final class OppeltDim extends ReglerDim {
 
+/**
+ * 
+ * @author Reto
+ * Reglerdimensionierung nach Oppelt 
+ */
+public final class OppeltDim extends AbstractDim {
+	
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		double Ks = regelstrecke.getKs();
@@ -12,6 +18,7 @@ public final class OppeltDim extends ReglerDim {
 		case P:
 			return new Regler((1.0 / Ks) * (Tg / Tu));
 		case PI:
+			return new Regler((0.8/ Ks) * (Tg / Tu), 3 * Tu);
 		case PID:
 			return new Regler((1.2 / Ks) * (Tg / Tu), 2 * Tu, 0.42 * Tu);
 		default:

@@ -1,7 +1,7 @@
 package model;
 
 
-public final class ZieglerDim extends ReglerDim {
+public final class ZieglerDim extends AbstractDim {
 
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
