@@ -121,6 +121,7 @@ public class ManuellDim extends AbstractDim {
 		builder.append(tv);
 		builder.append("\ntp: ");
 		builder.append(tp);
+		builder.append("\n");
 		return builder.toString();
 	}
 }

@@ -89,6 +89,7 @@ public final class ChiensDim extends AbstractDim {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ChiensDim\nj: ");
 		builder.append(j);
+		builder.append("\n");
 		return builder.toString();
 	}
 

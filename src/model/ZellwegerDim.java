@@ -29,6 +29,7 @@ public class ZellwegerDim extends AbstractDim {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ZellwegerDim\nphasenrand: ");
 		builder.append(phasenrand);
+		builder.append("\n");
 		return builder.toString();
 	}
 
