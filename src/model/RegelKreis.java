@@ -73,4 +73,10 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		setChanged();
 		notifyObservers();
 	}
+
+	@Override
+	public String toString() {
+		return "regelstrecke: " + regelstrecke + "\ndim: " + dim + "\ntopo: "
+				+ topo;
+	}
 }
