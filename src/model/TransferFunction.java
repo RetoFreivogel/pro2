@@ -45,12 +45,20 @@ public class TransferFunction {
 		return nenner;
 	}
 
-	/*
-	 * public void setZaehler(Polynom zaehler) { this.zaehler = zaehler; }
-	 * 
-	 * public void setNenner(Polynom nenner) { this.nenner = nenner; }
-	 */
+	public double phaseAt(double freq){
+		Complex cfreq = new Complex(0, 2 * Math.PI * freq);
+		Complex val = zaehler.eval(cfreq).divide(nenner.eval(cfreq));
+		
+		return val.getArgument();
+	}
 
+	public double amplitudeAt(double freq){
+		Complex cfreq = new Complex(0, 2 * Math.PI * freq);
+		Complex val = zaehler.eval(cfreq).divide(nenner.eval(cfreq));
+		
+		return val.abs();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
