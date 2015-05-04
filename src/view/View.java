@@ -8,11 +8,8 @@ import java.util.Observer;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 import model.Model;
 import model.SchrittAntwort;
@@ -118,7 +115,7 @@ public class View extends JPanel implements Observer{
 	public void update(Model model){
 		SchrittAntwort sw = model.getRegelkreis().getTranferFunction()
 				.schrittantwort();
-		double maxX = sw.getTend();
+		double maxX = sw.getTaus(0.001);
 		
 		double[] x = new double[256];
 		for (int i = 0; i < x.length; i++) {

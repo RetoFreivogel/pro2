@@ -31,11 +31,11 @@ public class SchrittAntwort {
 		return y;
 	}
 
-	public double getTend() {
-		double Tend = 0;
+	public double getTaus(double delta) {
+		double taus = 0;
 		for (int i = 0; i < poles.length; i++) {
-			Tend += poles[i].abs();
+			taus += 1/poles[i].abs();
 		}
-		return Tend;
+		return taus * 5;
 	}
 }

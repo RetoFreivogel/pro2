@@ -12,7 +12,6 @@ import javax.swing.border.TitledBorder;
 import controller.Controller;
 import model.Model;
 import model.RegelKreis;
-import model.Regler;
 
 public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
