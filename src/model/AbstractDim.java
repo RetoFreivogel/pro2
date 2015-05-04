@@ -15,4 +15,11 @@ public abstract class AbstractDim extends Observable {
 	 * @return
 	 */
 	public abstract Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo);
+
+	@Override
+	public String toString() {
+		return "";
+	}
+	
+	
 }

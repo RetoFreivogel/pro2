@@ -3,6 +3,13 @@ package model;
 public final class RosenbergDim extends AbstractDim {
 
 	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("RosenbergDim\n");
+		return builder.toString();
+	}
+
+	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();

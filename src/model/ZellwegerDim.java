@@ -24,4 +24,12 @@ public class ZellwegerDim extends AbstractDim {
 		this.phasenrand = phasenrand;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ZellwegerDim\nphasenrand: ");
+		builder.append(phasenrand);
+		return builder.toString();
+	}
+
 }

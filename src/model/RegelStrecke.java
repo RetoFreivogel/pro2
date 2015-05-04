@@ -114,6 +114,6 @@ public class RegelStrecke extends Observable implements RegelGlied {
 
 	@Override
 	public String toString() {
-		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\nn: " + n;
+		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\nn: " + n + "\n";
 	}
 }

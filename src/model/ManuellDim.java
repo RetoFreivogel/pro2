@@ -109,4 +109,18 @@ public class ManuellDim extends AbstractDim {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ManuellDim\nkr: ");
+		builder.append(kr);
+		builder.append("\ntn: ");
+		builder.append(tn);
+		builder.append("\ntv: ");
+		builder.append(tv);
+		builder.append("\ntp: ");
+		builder.append(tp);
+		return builder.toString();
+	}
 }

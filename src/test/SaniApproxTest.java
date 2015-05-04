@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import util.Matlab;
@@ -26,8 +27,21 @@ public class SaniApproxTest {
 	@Test
 	public void testCalcSani2(){
 		Matlab.setMocked(false);		
+		double tu = 7;
+		double tg = 12;		
+		RegelStrecke rs = new RegelStrecke(1.0, tu, tg);
+		double[] Tcoeff_ref = Matlab.calcSani(rs);
+		double[] Tcoeff = SaniApprox.calcSani(tu, tg);
+		
+		assertArrayEquals(Tcoeff_ref, Tcoeff, 0.001);
+	}
+	
+	@Ignore
+	@Test
+	public void testCalcSani3(){
+		Matlab.setMocked(false);		
 		double tu = 2;
-		double tg = 8;		
+		double tg = 1999;		
 		RegelStrecke rs = new RegelStrecke(1.0, tu, tg);
 		double[] Tcoeff_ref = Matlab.calcSani(rs);
 		double[] Tcoeff = SaniApprox.calcSani(tu, tg);

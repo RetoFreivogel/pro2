@@ -46,14 +46,14 @@ public class TransferFunction {
 	}
 
 	public double phaseAt(double freq){
-		Complex cfreq = new Complex(0, 2 * Math.PI * freq);
+		Complex cfreq = new Complex(0, freq);
 		Complex val = zaehler.eval(cfreq).divide(nenner.eval(cfreq));
 		
 		return val.getArgument();
 	}
 
 	public double amplitudeAt(double freq){
-		Complex cfreq = new Complex(0, 2 * Math.PI * freq);
+		Complex cfreq = new Complex(0, freq);
 		Complex val = zaehler.eval(cfreq).divide(nenner.eval(cfreq));
 		
 		return val.abs();

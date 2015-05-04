@@ -12,7 +12,7 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
 		this.topo = ReglerTopologie.PID;
-		
+
 		this.dim.addObserver(this);
 		this.regelstrecke.addObserver(this);
 	}
@@ -24,14 +24,13 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 	public AbstractDim getDim() {
 		return dim;
 	}
-	
+
 	public void setDim(AbstractDim dim) {
 		this.dim.deleteObserver(this);
 		this.dim = dim;
 		this.dim.addObserver(this);
 		setChanged();
 		notifyObservers();
-
 	}
 
 	public RegelStrecke getRegelstrecke() {
@@ -61,10 +60,10 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 	public TransferFunction getTranferFunction() {
 		TransferFunction tf_s = regelstrecke.getTranferFunction();
 		TransferFunction tf_r = getRegler().getTranferFunction();
-		
+
 		TransferFunction tf_k = tf_s.conv(tf_r);
 		tf_k = tf_k.feedback_loop();
-		
+
 		return tf_k;
 	}
 
@@ -76,7 +75,12 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 
 	@Override
 	public String toString() {
-		return "regelstrecke: " + regelstrecke + "\ndim: " + dim + "\ntopo: "
-				+ topo;
+		StringBuilder builder = new StringBuilder();
+		builder.append(regelstrecke);
+		builder.append(dim);
+		builder.append("topo: ");
+		builder.append(topo);
+		builder.append('\n');
+		return builder.toString();
 	}
 }

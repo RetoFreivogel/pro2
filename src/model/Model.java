@@ -4,9 +4,9 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 
-public class Model extends Observable implements Observer{
+public class Model extends Observable implements Observer {
 	private Vector<RegelKreis> regelkreisArray;
-
+	
 	public Model() {
 		regelkreisArray = new Vector<>(1);
 		RegelKreis regelkreis = new RegelKreis(new OppeltDim(),
@@ -27,7 +27,11 @@ public class Model extends Observable implements Observer{
 
 	@Override
 	public String toString() {
-		return "regelkreisArray: " + regelkreisArray;
+		StringBuilder builder = new StringBuilder();
+		for (RegelKreis rk : regelkreisArray) {
+			builder.append(rk).append('\n');
+		}
+		return builder.toString();
 	}
 
 }

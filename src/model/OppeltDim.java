@@ -25,4 +25,11 @@ public final class OppeltDim extends AbstractDim {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("OppeltDim\n");
+		return builder.toString();
+	}
 }
