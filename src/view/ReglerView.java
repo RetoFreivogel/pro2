@@ -174,6 +174,11 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
 					.getSelectedItem();
 			controller.selectTopo(topo);
+		} else if (event.getSource() == cbbx_chiens) {
+			ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
+					.getSelectedItem();
+			controller.selectChiensRegelung(chiensReg);
+
 		}
 	}
 
@@ -205,7 +210,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		if (cbbx_chiens == null) {
 			lb_chiens = new JLabel("Regelung: ");
 			add(lb_chiens);
-			
+
 			cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
 			cbbx_chiens.setSelectedIndex(0);
 			cbbx_chiens.addActionListener(this);

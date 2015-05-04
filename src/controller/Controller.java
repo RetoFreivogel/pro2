@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JFrame;
 
 import model.ChiensDim;
+import model.ChiensRegelung;
 import model.Dimensionierung;
 import model.ManuellDim;
 import model.Model;
@@ -13,11 +14,12 @@ import model.RosenbergDim;
 import model.ZieglerDim;
 import view.View;
 
-
 public class Controller {
 	private Model model;
 	private View view;
 	private JFrame frame;
+
+	public int j;
 
 	public Controller(Model model, JFrame frame) {
 		this.model = model;
@@ -27,137 +29,165 @@ public class Controller {
 	public void setView(View view) {
 		this.view = view;
 	}
-	
-	public void selectDim(Dimensionierung dim){
+
+	public void selectDim(Dimensionierung dim) {
 		RegelKreis kreis = model.getRegelkreis();
-		
-		switch(dim){
-			case MANUELL:
-				kreis.setDim(new ManuellDim(kreis.getRegler()));
-				break;
-			case PHASENGANG:
-				view.setStatus("Phasengangmethode nicht unterstützt");
-				break;
-			case ZIEGLER:
-				kreis.setDim(new ZieglerDim());				
-				break;
-			case CHIENS:
-				kreis.setDim(new ChiensDim(ChiensDim.APERIODFUEHR));
-				break;
-			case OPPELT:
-				kreis.setDim(new OppeltDim());
-				break;
-			case ROSENBERG:
-				kreis.setDim(new RosenbergDim());
-				break;
-			default:
-				view.setStatus("Interner Fehler");
-				break;
+
+		switch (dim) {
+		case MANUELL:
+			kreis.setDim(new ManuellDim(kreis.getRegler()));
+			break;
+		case PHASENGANG:
+			view.setStatus("Phasengangmethode nicht unterstützt");
+			break;
+		case ZIEGLER:
+			kreis.setDim(new ZieglerDim());
+			break;
+		case CHIENS:
+			kreis.setDim(new ChiensDim(ChiensDim.APERIODSTOER));
+			break;
+		case OPPELT:
+			kreis.setDim(new OppeltDim());
+			break;
+		case ROSENBERG:
+			kreis.setDim(new RosenbergDim());
+			break;
+		default:
+			view.setStatus("Interner Fehler");
+			break;
 		}
 	}
-	
-	public void setKs(double ks){
-		try{
+
+	public void selectChiensRegelung(ChiensRegelung chiensReg) {
+		switch (chiensReg) {
+		case APERIODSTOER:
+			j = 0;
+			break;
+		case APERIODFUEHR:
+			j = 1;
+			break;
+		case ZWANZIGSTOER:
+			j = 2;
+			break;
+		case ZWANZIGFUEHR:
+			j = 3;
+			break;
+		}
+		ChiensDim dim = (ChiensDim)model.getRegelkreis().getDim();
+		dim.setJ(j);
+		return;
+	}
+
+	public void setKs(double ks) {
+		try {
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
-	public void setTu(double tu){
-		try{
+
+	public void setTu(double tu) {
+		try {
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
-	public void setTg(double tg){
-		try{
+
+	public void setTg(double tg) {
+		try {
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
 	public void setKr(double kr) {
-		try{
-			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+		try {
+			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setTn(double tn) {
-		try{
-			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+		try {
+			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTn(tn);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setTv(double tv) {
-		try{
-			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+		try {
+			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTv(tv);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setTp(double tp) {
-		try{
-			ManuellDim dim = (ManuellDim)model.getRegelkreis().getDim();
+		try {
+			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTp(tp);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
 	public void selectTopo(ReglerTopologie topo) {
-		try{
+		try {
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
-		}catch (Exception e){
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
-	public void neu(){
-		
+
+	public void neu() {
+
 	}
-	public void speichern(){
-		
+
+	public void speichern() {
+
 	}
-	public void speichernals(){
-		
+
+	public void speichernals() {
+
 	}
-	public void oeffnen(){
-		
+
+	public void oeffnen() {
+
 	}
-	public void beenden(){
+
+	public void beenden() {
 		frame.dispose();
 	}
-	public void rueckgaengig(){
-		
+
+	public void rueckgaengig() {
+
 	}
-	public void wiederholen(){
-		
+
+	public void wiederholen() {
+
 	}
-	public void einstellung(){
-		
+
+	public void einstellung() {
+
 	}
-	public void simulation(){
-		
+
+	public void simulation() {
+
 	}
 }

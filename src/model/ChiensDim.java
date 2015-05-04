@@ -1,16 +1,17 @@
 package model;
 
 public final class ChiensDim extends AbstractDim {
-	public static final int APERIODSTOER=1, APERIODFUEHR=2, ZWANZIGSTOER=3, ZWANZIGFUEHR=4;
-	
+	public static final int APERIODSTOER = 0, APERIODFUEHR = 1,
+			ZWANZIGSTOER = 2, ZWANZIGFUEHR = 3;
+
 	public int j;
-	
+
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
-		
+
 		switch (topo) {
 		case P:
 			switch (j) {
@@ -23,7 +24,7 @@ public final class ChiensDim extends AbstractDim {
 			case ZWANZIGFUEHR:
 				return new Regler((0.7 / Ks) * (Tg / Tu));
 			default:
-				assert(false);
+				assert (false);
 				return null;
 			}
 		case PI:
@@ -37,7 +38,7 @@ public final class ChiensDim extends AbstractDim {
 			case ZWANZIGFUEHR:
 				return new Regler((0.6 / Ks) * (Tg / Tu), 1.35 * Tg);
 			default:
-				assert(false);
+				assert (false);
 				return null;
 			}
 		case PID:
@@ -51,7 +52,7 @@ public final class ChiensDim extends AbstractDim {
 			case ZWANZIGFUEHR:
 				return new Regler((0.95 / Ks) * (Tg / Tu), 1.35 * Tg, 0.47 * Tu);
 			default:
-				assert(false);
+				assert (false);
 				return null;
 			}
 		default:
@@ -61,13 +62,13 @@ public final class ChiensDim extends AbstractDim {
 
 	public ChiensDim(int j) {
 		super();
-		
-		if(j<1 || j > 4){
-			throw new IllegalArgumentException("j must be between 1 and 4");
+
+		if (j < 0 || j > 3) {
+			throw new IllegalArgumentException("j must be between 0 and 3");
 		}
-		
+
 		this.j = j;
-		
+
 	}
 
 	public int getJ() {
@@ -75,8 +76,8 @@ public final class ChiensDim extends AbstractDim {
 	}
 
 	public void setJ(int j) {
-		if(j<1 || j > 4){
-			throw new IllegalArgumentException("j must be between 1 and 4");
+		if (j < 0 || j > 3) {
+			throw new IllegalArgumentException("j must be between 0 and 3");
 		}
 		this.j = j;
 		setChanged();
