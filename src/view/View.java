@@ -26,9 +26,6 @@ import util.Chart;
 public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 	
-	private  String[] datei = {"Neu...","Speichern","Speichern als...","\u00D6ffnen...","Schliessen","Beenden"};
-	private  String[] bearbeiten = {"Kopieren","Ausschneiden","Einsetzen","L\u00F6schen","R\u00FCckg\u00E4ngig","Wiederholen"};
-	private  String[] optionen = {"Simulation...","Einstellungen"};
 	
 	private SidebarPanel sidebarPanel;
 	private JLabel lblStatus;
@@ -44,36 +41,16 @@ public class View extends JPanel implements Observer{
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar,BorderLayout.NORTH);
 		// Untermenu Datei
-		JMenu mnDatei = new JMenu("Datei"); 
+		MDatei mnDatei = new MDatei(controller); 
 		menuBar.add(mnDatei);
-		JMenuItem [] mntmDatei = new JMenuItem[6];
-		for (int i = 0; i < this.datei.length; i++) {
-			 mntmDatei[i] = new JMenuItem(this.datei[i]);
-			mnDatei.add(mntmDatei[i]);
-			if (i==4) {	
-				JSeparator separator = new JSeparator();
-				mnDatei.add(separator);
-			}
-		}
 		// Untermenu Bearbeiten
-		JMenu mnBearbeiten = new JMenu("Bearbeiten"); 
+		MBearbeiten mnBearbeiten = new MBearbeiten(controller); 
 		menuBar.add(mnBearbeiten);
-		JMenuItem [] mntmBearbeiten = new JMenuItem[6];
-		for (int i = 0; i < this.bearbeiten.length; i++) {
-			mntmBearbeiten[i] = new JMenuItem(this.bearbeiten[i]);
-			mnBearbeiten.add(mntmBearbeiten[i]);
-			if (i==2||i==3) {	
-				JSeparator separator = new JSeparator();
-				mnBearbeiten.add(separator);
-			}
-		}
+
 		// Untermenu Optionen
-		JMenu mnOptionen = new JMenu("Optionen"); 
+		MOptionen mnOptionen = new MOptionen(controller); 
 		menuBar.add(mnOptionen);
-		for (int i = 0; i < this.optionen.length; i++) {
-			JMenuItem mntmNeu = new JMenuItem(this.bearbeiten[i]);
-			mnOptionen.add(mntmNeu);			
-		}
+
 
 		//---------------------Panel_Left-------------------------------
 		sidebarPanel = new SidebarPanel(model, controller);
