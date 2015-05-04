@@ -14,11 +14,24 @@ public class OppeltDimTest {
 	public void testCalc() {
 		RegelStrecke rs = new RegelStrecke(0.9999, 2.862, 20.24);
 		OppeltDim dim = new OppeltDim();
-		Regler regler = dim.calc(rs, ReglerTopologie.PID);
-		Regler regler_referenz = new Regler(8.487221888, 5.724, 1.20204);
+
+		Regler regler = dim.calc(rs, ReglerTopologie.P);
+		Regler regler_referenz = new Regler(7.072684907);
+
+		assertEquals(regler.getKr(), regler_referenz.getKr(), 0.0001);
+
+		regler = dim.calc(rs, ReglerTopologie.PI);
+		regler_referenz = new Regler(5.658147925, 8.586);
+
+		assertEquals(regler.getKr(), regler_referenz.getKr(), 0.0001);
+		assertEquals(regler.getTn(), regler_referenz.getTn(), 0.0001);
+
+		regler = dim.calc(rs, ReglerTopologie.PID);
+		regler_referenz = new Regler(8.487221888, 5.724, 1.20204);
 
 		assertEquals(regler.getKr(), regler_referenz.getKr(), 0.0001);
 		assertEquals(regler.getTn(), regler_referenz.getTn(), 0.0001);
 		assertEquals(regler.getTv(), regler_referenz.getTv(), 0.0001);
+
 	}
 }
