@@ -171,13 +171,35 @@ public class Controller {
 
 	public void speichern(){
 		System.out.println(model);
+		File file = jfcLaden.getSelectedFile();
+		//Hier sollte der String vom Model sein
+		String txt = "Ks: 1,Tu: 2.8,Tg: 19";
+		if (file != null && file.exists() == true) {
+			System.out.println("haaalt");
+			String[] zeilen = txt.split("[,]+");
+			try {
+				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
+						file, false));
+				for (int i = 0; i < zeilen.length; i++) {
+					ausgabeDatei.println(zeilen[i]);
+				}
+
+				ausgabeDatei.close();
+			} catch (IOException exc) {
+				System.err.println("Dateifehler: " + exc.toString());
+
+			}
+		}else
+		{
+			speichernals();
+		}
 	}
 	public void speichernals(){
 		int returnVal = jfcLaden.showSaveDialog(frame);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File file = jfcLaden.getSelectedFile();
-			//String txt = jtArea.getText();
-			String txt = "Ks: 1,Tu: 1.67,Tg:6";
+			//Hier sollte der String vom Model sein
+			String txt = "Ks: 1,Tu: 1.67,Tg: 6";
 			if (file.exists() == true) {
 				System.out.println("haaalt");
 				String[] zeilen = txt.split("[,]+");
