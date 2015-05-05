@@ -36,11 +36,5 @@ public abstract class AbstractDim extends Observable {
 	}
 	
 	public abstract Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo);
-
-	@Override
-	public String toString() {
-		return "";
-	}
-	
-	
+	public abstract AbstractDim makeCopy();	
 }

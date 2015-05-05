@@ -129,4 +129,9 @@ public class ZellwegerDim extends AbstractDim {
 		return builder.toString();
 	}
 
+	@Override
+	public AbstractDim makeCopy() {
+		return new ZellwegerDim(phasenrand);
+	}
+
 }

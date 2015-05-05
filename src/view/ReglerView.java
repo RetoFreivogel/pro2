@@ -30,7 +30,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private static final DecimalFormat format = new DecimalFormat("###0.###");
 
 	private final Controller controller;
-	private final RegelKreis kreis;
+	private RegelKreis regelkreis;
 
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Kr;
@@ -45,7 +45,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
-		this.kreis = kreis;
+		this.regelkreis = kreis;
 		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
 				ReglerTopologie.PID });
 		cbbx_Topo.setSelectedIndex(1);
@@ -170,7 +170,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		Regler regler = kreis.getRegler();
+		Regler regler = regelkreis.getRegler();
 		eventsEnabled = false;
 		try {
 			tf_Kr.setValue(regler.getKr());
@@ -180,6 +180,13 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		} finally {
 			eventsEnabled = true;
 		}
+	}
+
+	public void setReglerkreis(RegelKreis regelkreis) {
+		this.regelkreis.deleteObserver(this);
+		this.regelkreis = regelkreis;
+		this.regelkreis.addObserver(this);
+		update(null, null);
 	}
 
 }

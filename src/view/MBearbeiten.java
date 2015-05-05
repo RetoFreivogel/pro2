@@ -31,7 +31,7 @@ public class MBearbeiten extends JMenu implements ActionListener {
 		if (e.getSource()== mntmBearbeiten[0]) {
 			controller.rueckgaengig();
 		}
-		if (e.getSource()== mntmBearbeiten[0]) {
+		if (e.getSource()== mntmBearbeiten[1]) {
 			controller.wiederholen();
 		}
 		

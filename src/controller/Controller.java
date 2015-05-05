@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -27,8 +28,9 @@ public class Controller {
 	private Model model;
 	private View view;
 	private JFrame frame;
-
-	public int j;
+	
+	private Vector<Model> changes = new Vector<Model>(0, 1);
+	private Vector<Model> undone_changes = new Vector<Model>(0, 1);
 
 	private final JFileChooser jfcLaden = new JFileChooser(new File(".//"));
 	
@@ -43,7 +45,8 @@ public class Controller {
 
 	public void selectDim(Dimensionierung dim) {
 		RegelKreis kreis = model.getRegelkreis();
-
+		modelChanged();
+		
 		switch (dim) {
 		case MANUELL:
 			kreis.setDim(new ManuellDim(kreis.getRegler()));
@@ -70,6 +73,9 @@ public class Controller {
 	}
 
 	public void selectChiensRegelung(ChiensRegelung chiensReg) {
+		int j = 0;
+		modelChanged();
+		
 		switch (chiensReg) {
 		case APERIODSTOER:
 			j = 0;
@@ -91,6 +97,7 @@ public class Controller {
 
 	public void setKs(double ks) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -101,6 +108,7 @@ public class Controller {
 
 	public void setTu(double tu) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -111,6 +119,7 @@ public class Controller {
 
 	public void setTg(double tg) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -121,6 +130,7 @@ public class Controller {
 
 	public void setKr(double kr) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
 			view.setStatus("Bereit");
@@ -132,6 +142,7 @@ public class Controller {
 
 	public void setTn(double tn) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTn(tn);
 			view.setStatus("Bereit");
@@ -143,6 +154,7 @@ public class Controller {
 
 	public void setTv(double tv) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTv(tv);
 			view.setStatus("Bereit");
@@ -154,6 +166,7 @@ public class Controller {
 
 	public void setTp(double tp) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTp(tp);
 			view.setStatus("Bereit");
@@ -165,6 +178,7 @@ public class Controller {
 
 	public void selectTopo(ReglerTopologie topo) {
 		try {
+			modelChanged();
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
 			view.setStatus("Bereit");
@@ -282,16 +296,31 @@ public class Controller {
 
 	}
 	
+	private void modelChanged(){
+		undone_changes.clear();
+		changes.addElement(new Model(model));
+	}
+		
 	public void beenden(){
 		frame.dispose();
 	}
 
 	public void rueckgaengig() {
-
+		if(changes.isEmpty())return;
+		Model recall = changes.lastElement();
+		changes.removeElement(recall);
+		undone_changes.addElement(model);
+		model = recall;
+		view.setModel(model);
 	}
 
 	public void wiederholen() {
-
+		if(undone_changes.isEmpty())return;
+		Model recall = undone_changes.lastElement();
+		undone_changes.removeElement(recall);
+		changes.addElement(model);
+		model = recall;
+		view.setModel(model);
 	}
 
 	public void einstellung() {

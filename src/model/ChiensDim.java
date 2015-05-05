@@ -70,7 +70,6 @@ public final class ChiensDim extends AbstractDim {
 		}
 
 		this.j = j;
-
 	}
 	public ChiensDim(Scanner sc) {
 		super();
@@ -104,6 +103,11 @@ public final class ChiensDim extends AbstractDim {
 		builder.append(j);
 		builder.append("\n");
 		return builder.toString();
+	}
+
+	@Override
+	public AbstractDim makeCopy() {
+		return new ChiensDim(j);
 	}
 
 }

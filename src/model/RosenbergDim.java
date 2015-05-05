@@ -27,4 +27,9 @@ public final class RosenbergDim extends AbstractDim {
 		}
 	}
 
+	@Override
+	public AbstractDim makeCopy() {
+		return new RosenbergDim();
+	}
+
 }

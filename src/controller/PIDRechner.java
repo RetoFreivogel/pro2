@@ -22,7 +22,7 @@ public class PIDRechner extends JFrame {
 		View view = new View(model, controller);
 		controller.setView(view);
 		add(view);
-		view.update(model);
+		//view.update(model);
 	}
 
 	public static void main(String args[]) {

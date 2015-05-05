@@ -141,4 +141,9 @@ public class ManuellDim extends AbstractDim {
 		builder.append("\n");
 		return builder.toString();
 	}
+
+	@Override
+	public AbstractDim makeCopy() {
+		return new ManuellDim(kr, tn, tv, tp);
+	}
 }

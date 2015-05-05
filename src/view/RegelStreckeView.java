@@ -24,7 +24,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 
-	private final RegelStrecke regelstrecke;
+	private RegelStrecke regelstrecke;
 	private final Controller controller;
 
 	private JFormattedTextField tf_Ordn;
@@ -123,5 +123,12 @@ public class RegelStreckeView extends JPanel implements Observer,
 		} else if (tf_tg == evt.getSource()) {
 			controller.setTg(((Number) tf_tg.getValue()).doubleValue());
 		}
+	}
+
+	public void setRegelstrecke(RegelStrecke regelstrecke) {
+		this.regelstrecke.deleteObserver(this);
+		this.regelstrecke = regelstrecke;
+		this.regelstrecke.addObserver(this);
+		update(null, null);
 	}
 }

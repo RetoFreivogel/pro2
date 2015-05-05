@@ -27,4 +27,10 @@ public final class ZieglerDim extends AbstractDim {
 		
 		}
 	}
+
+	@Override
+	public AbstractDim makeCopy() {
+		return new ZieglerDim();
+	}
+	
 }

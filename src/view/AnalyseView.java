@@ -24,9 +24,11 @@ public class AnalyseView extends JPanel {
 	private JFormattedTextField tf_Et;
 	private JFormattedTextField tf_E2t;
 
+	//private RegelKreis regelkreis;
 	
 	public AnalyseView(RegelKreis regelkreis, Controller controller){
 		super();
+		//this.regelkreis = regelkreis;
 		
 		DecimalFormat format = new DecimalFormat("###0.###");
 		
@@ -77,6 +79,11 @@ public class AnalyseView extends JPanel {
 		tf_E2t = new JFormattedTextField(format);
 		tf_E2t.setEditable(false);
 		add(tf_E2t);
+	}
+
+
+	public void setRegelkreis(RegelKreis regelkreis) {
+		//this.regelkreis = regelkreis;
 	}
 
 }

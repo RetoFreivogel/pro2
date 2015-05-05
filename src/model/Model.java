@@ -24,6 +24,13 @@ public class Model extends Observable implements Observer {
 		regelkreisArray.add(regelkreis);
 		regelkreis.addObserver(this);
 	}
+	
+	public Model(Model other){
+		regelkreisArray = new Vector<>(1);
+		RegelKreis regelkreis = new RegelKreis(other.getRegelkreis());
+		regelkreisArray.add(regelkreis);
+		regelkreis.addObserver(this);
+	}
 
 	public RegelKreis getRegelkreis() {
 		return regelkreisArray.get(0);
