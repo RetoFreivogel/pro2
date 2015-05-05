@@ -6,9 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+
 
 import model.ChiensDim;
 import model.ChiensRegelung;
@@ -26,8 +28,9 @@ public class Controller {
 	private Model model;
 	private View view;
 	private JFrame frame;
-
-	public int j;
+	
+	private Vector<Model> changes = new Vector<Model>(0, 1);
+	private Vector<Model> undone_changes = new Vector<Model>(0, 1);
 
 	private final JFileChooser jfcLaden = new JFileChooser(new File(".//"));
 	
@@ -42,7 +45,8 @@ public class Controller {
 
 	public void selectDim(Dimensionierung dim) {
 		RegelKreis kreis = model.getRegelkreis();
-
+		modelChanged();
+		
 		switch (dim) {
 		case MANUELL:
 			kreis.setDim(new ManuellDim(kreis.getRegler()));
@@ -69,6 +73,9 @@ public class Controller {
 	}
 
 	public void selectChiensRegelung(ChiensRegelung chiensReg) {
+		int j = 0;
+		modelChanged();
+		
 		switch (chiensReg) {
 		case APERIODSTOER:
 			j = 0;
@@ -90,6 +97,7 @@ public class Controller {
 
 	public void setKs(double ks) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -100,6 +108,7 @@ public class Controller {
 
 	public void setTu(double tu) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -110,6 +119,7 @@ public class Controller {
 
 	public void setTg(double tg) {
 		try {
+			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
@@ -120,6 +130,7 @@ public class Controller {
 
 	public void setKr(double kr) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
 			view.setStatus("Bereit");
@@ -131,6 +142,7 @@ public class Controller {
 
 	public void setTn(double tn) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTn(tn);
 			view.setStatus("Bereit");
@@ -142,6 +154,7 @@ public class Controller {
 
 	public void setTv(double tv) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTv(tv);
 			view.setStatus("Bereit");
@@ -153,6 +166,7 @@ public class Controller {
 
 	public void setTp(double tp) {
 		try {
+			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTp(tp);
 			view.setStatus("Bereit");
@@ -164,6 +178,7 @@ public class Controller {
 
 	public void selectTopo(ReglerTopologie topo) {
 		try {
+			modelChanged();
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
 			view.setStatus("Bereit");
@@ -181,10 +196,9 @@ public class Controller {
 		System.out.println(model);
 		File file = jfcLaden.getSelectedFile();
 		//Hier sollte der String vom Model sein
-		String txt = "Ks: 1,Tu: 2.8,Tg: 19";
-		if (file != null && file.exists() == true) {
-			System.out.println("haaalt");
-			String[] zeilen = txt.split("[,]+");
+		String txt = model.toString();
+		if (file != null && file.exists() == true) {		
+			String[] zeilen = txt.split("[\n]+");
 			try {
 				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 						file, false));
@@ -207,10 +221,10 @@ public class Controller {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File file = jfcLaden.getSelectedFile();
 			//Hier sollte der String vom Model sein
-			String txt = "Ks: 1,Tu: 1.67,Tg: 6";
+			String txt = model.toString();
 			if (file.exists() == true) {
-				System.out.println("haaalt");
-				String[] zeilen = txt.split("[,]+");
+				System.out.println(txt);
+				String[] zeilen = txt.split("[\n]+");
 				try {
 					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 							file, false));
@@ -224,7 +238,7 @@ public class Controller {
 
 				}
 			} else {
-				String[] zeilen = txt.split("[,]+");
+				String[] zeilen = txt.split("[\n]+");
 				try {
 					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 							file, false));
@@ -254,40 +268,59 @@ public class Controller {
 			System.out.println(file.getAbsolutePath());
 			
 			Scanner sc;
+
 			String [] str = new String [3];;
 			try {
-				sc = new Scanner(file);
-				 
-					sc.skip("Ks: ");
-					str[0] = Double.toString(sc.nextDouble());
-					sc.nextLine();
-					sc.skip("Tu: ");
-					str[1] = Double.toString(sc.nextDouble());
-					sc.nextLine();
-					sc.skip("Tg: ");
-					str[2] = Double.toString(sc.nextDouble());
-
+				sc = new Scanner(file);		
+				view.setModel(new Model(sc));
+//				sc.skip("Ks: ");
+//					str[0] = Double.toString(sc.nextDouble());
+//					sc.nextLine();
+//					sc.skip("Tu: ");
+//					str[1] = Double.toString(sc.nextDouble());
+//					sc.nextLine();
+//					sc.skip("Tg: ");
+//					str[2] = Double.toString(sc.nextDouble());
+//					String string = "Öffnen"+"\n"+str[0]+"\n"+ str[1]+"\n"+str[2]+"\n"+"Fertig";
+//					str[3] = Double.toString(sc.nextDouble());
+//					str[4] = Double.toString(sc.nextDouble());
+//					str[5] = Double.toString(sc.nextDouble());
+//					str[6] = Double.toString(sc.nextDouble());
+//					str[7] = Double.toString(sc.nextDouble());
+					
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(str[0]);
-			System.out.println(str[1]);
-			System.out.println(str[2]);
 		}	
 
 	}
 	
+	private void modelChanged(){
+		undone_changes.clear();
+		changes.addElement(new Model(model));
+	}
+		
 	public void beenden(){
 		frame.dispose();
 	}
 
 	public void rueckgaengig() {
-
+		if(changes.isEmpty())return;
+		Model recall = changes.lastElement();
+		changes.removeElement(recall);
+		undone_changes.addElement(model);
+		model = recall;
+		view.setModel(model);
 	}
 
 	public void wiederholen() {
-
+		if(undone_changes.isEmpty())return;
+		Model recall = undone_changes.lastElement();
+		undone_changes.removeElement(recall);
+		changes.addElement(model);
+		model = recall;
+		view.setModel(model);
 	}
 
 	public void einstellung() {
@@ -296,5 +329,10 @@ public class Controller {
 
 	public void simulation() {
 
+	}
+	public String setString(String[] str){
+		
+		
+		return null;
 	}
 }

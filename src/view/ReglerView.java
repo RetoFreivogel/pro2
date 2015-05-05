@@ -11,18 +11,24 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.Controller;
+import model.ChiensDim;
 import model.ChiensRegelung;
 import model.Dimensionierung;
+import model.ManuellDim;
+import model.OppeltDim;
 import model.RegelKreis;
 import model.Regler;
 import model.ReglerTopologie;
+import model.RosenbergDim;
+import model.ZellwegerDim;
+import model.ZieglerDim;
+
 
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
@@ -30,13 +36,13 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private static final DecimalFormat format = new DecimalFormat("###0.###");
 
 	private final Controller controller;
-	private final RegelKreis kreis;
+	private RegelKreis regelkreis;
 
-	private JFormattedTextField tf_Phrand;
-	private JFormattedTextField tf_Kr;
-	private JFormattedTextField tf_Tn;
-	private JFormattedTextField tf_Tv;
-	private JFormattedTextField tf_Tp;
+	private JEngineeringTextField tf_Phrand;
+	private JEngineeringTextField tf_Kr;
+	private JEngineeringTextField tf_Tn;
+	private JEngineeringTextField tf_Tv;
+	private JEngineeringTextField tf_Tp;
 	private JComboBox<Dimensionierung> cbbx_defd_R;
 	private JComboBox<ReglerTopologie> cbbx_Topo;
 	private JComboBox<ChiensRegelung> cbbx_chiens;
@@ -45,28 +51,26 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
-		this.kreis = kreis;
+		this.regelkreis = kreis;
 		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
 				ReglerTopologie.PID });
 		cbbx_Topo.setSelectedIndex(1);
 		cbbx_Topo.addActionListener(this);
 
 		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
-		cbbx_defd_R.setSelectedIndex(3);
 		cbbx_defd_R.addActionListener(this);
 
-		tf_Phrand = new JFormattedTextField(format);
+		tf_Phrand = new JEngineeringTextField(format);
 		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
-		cbbx_chiens.setSelectedIndex(0);
 		cbbx_chiens.addActionListener(this);
 
-		tf_Kr = new JFormattedTextField(format);
+		tf_Kr = new JEngineeringTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
-		tf_Tn = new JFormattedTextField(format);
+		tf_Tn = new JEngineeringTextField(format);
 		tf_Tn.addPropertyChangeListener("value", this);
-		tf_Tv = new JFormattedTextField(format);
+		tf_Tv = new JEngineeringTextField(format);
 		tf_Tv.addPropertyChangeListener("value", this);
-		tf_Tp = new JFormattedTextField(format);
+		tf_Tp = new JEngineeringTextField(format);
 		tf_Tp.addPropertyChangeListener("value", this);
 
 		init();
@@ -109,15 +113,15 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		add(lb_Tn);
 		add(tf_Tn);
 
-		if (ReglerTopologie.PID == cbbx_Topo.getSelectedItem()){
+		if (ReglerTopologie.PID == cbbx_Topo.getSelectedItem()) {
 			JLabel lb_Tv = new JLabel("Tv");
 			add(lb_Tv);
 			add(tf_Tv);
 
 			JLabel lb_Tp = new JLabel("Tp");
 			add(lb_Tp);
-			add(tf_Tp);			
-		}	
+			add(tf_Tp);
+		}
 
 		if (Dimensionierung.MANUELL == cbbx_defd_R.getSelectedItem()) {
 			tf_Kr.setEditable(true);
@@ -152,27 +156,54 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == cbbx_defd_R) {
-			Dimensionierung dim = (Dimensionierung) cbbx_defd_R
-					.getSelectedItem();
-			controller.selectDim(dim);
-		} else if (event.getSource() == cbbx_Topo) {
-			ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
-					.getSelectedItem();
-			controller.selectTopo(topo);
-		} else if (event.getSource() == cbbx_chiens) {
-			ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
-					.getSelectedItem();
-			controller.selectChiensRegelung(chiensReg);
+		if (eventsEnabled) {
+			if (event.getSource() == cbbx_defd_R) {
+				Dimensionierung dim = (Dimensionierung) cbbx_defd_R
+						.getSelectedItem();
+				controller.selectDim(dim);
+			} else if (event.getSource() == cbbx_Topo) {
+				ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
+						.getSelectedItem();
+				controller.selectTopo(topo);
+			} else if (event.getSource() == cbbx_chiens) {
+				ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
+						.getSelectedItem();
+				controller.selectChiensRegelung(chiensReg);
+			}
+			init();
 		}
-		init();
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		Regler regler = kreis.getRegler();
+		Regler regler = regelkreis.getRegler();
 		eventsEnabled = false;
 		try {
+			cbbx_Topo.setSelectedItem(regelkreis.getTopo());
+
+			Dimensionierung d;
+			if (regelkreis.getDim() instanceof ChiensDim) {
+				d = Dimensionierung.CHIENS;
+			} else if (regelkreis.getDim() instanceof ManuellDim) {
+				d = Dimensionierung.MANUELL;
+			} else if (regelkreis.getDim() instanceof OppeltDim) {
+				d = Dimensionierung.OPPELT;
+			} else if (regelkreis.getDim() instanceof RosenbergDim) {
+				d = Dimensionierung.ROSENBERG;
+			} else if (regelkreis.getDim() instanceof ZellwegerDim) {
+				d = Dimensionierung.PHASENGANG;
+			} else if (regelkreis.getDim() instanceof ZieglerDim) {
+				d = Dimensionierung.ZIEGLER;
+			} else {
+				throw new RuntimeException("Internal Error");
+			}
+			cbbx_defd_R.setSelectedItem(d);
+
+			if (d == Dimensionierung.CHIENS) {
+				cbbx_chiens.setSelectedItem(((ChiensDim) regelkreis.getDim())
+						.getJ());
+			}
+
 			tf_Kr.setValue(regler.getKr());
 			tf_Tn.setValue(regler.getTn());
 			tf_Tv.setValue(regler.getTv());
@@ -180,6 +211,13 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		} finally {
 			eventsEnabled = true;
 		}
+	}
+
+	public void setReglerkreis(RegelKreis regelkreis) {
+		this.regelkreis.deleteObserver(this);
+		this.regelkreis = regelkreis;
+		this.regelkreis.addObserver(this);
+		update(null, null);
 	}
 
 }

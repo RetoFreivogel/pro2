@@ -24,13 +24,13 @@ public class RegelStreckeView extends JPanel implements Observer,
 		PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 
-	private final RegelStrecke regelstrecke;
+	private RegelStrecke regelstrecke;
 	private final Controller controller;
 
 	private JFormattedTextField tf_Ordn;
-	private final JFormattedTextField tf_ks;
-	private final JFormattedTextField tf_tg;
-	private final JFormattedTextField tf_tu;
+	private final JEngineeringTextField tf_ks;
+	private final JEngineeringTextField tf_tg;
+	private final JEngineeringTextField tf_tu;
 
 	public RegelStreckeView(RegelStrecke regelstrecke, Controller controller) {
 		super();
@@ -54,17 +54,17 @@ public class RegelStreckeView extends JPanel implements Observer,
 
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
-		tf_ks = new JFormattedTextField(format);
+		tf_ks = new JEngineeringTextField(format);
 		add(tf_ks);
 
 		JLabel lb_Tu = new JLabel("Tu");
 		add(lb_Tu);
-		tf_tu = new JFormattedTextField(format);
+		tf_tu = new JEngineeringTextField(format);
 		add(tf_tu);
 
 		JLabel lb_Tg = new JLabel("Tg");
 		add(lb_Tg);
-		tf_tg = new JFormattedTextField(format);
+		tf_tg = new JEngineeringTextField(format);
 		add(tf_tg);
 
 		JLabel lb_Ordn = new JLabel("Ordnung");
@@ -123,5 +123,12 @@ public class RegelStreckeView extends JPanel implements Observer,
 		} else if (tf_tg == evt.getSource()) {
 			controller.setTg(((Number) tf_tg.getValue()).doubleValue());
 		}
+	}
+
+	public void setRegelstrecke(RegelStrecke regelstrecke) {
+		this.regelstrecke.deleteObserver(this);
+		this.regelstrecke = regelstrecke;
+		this.regelstrecke.addObserver(this);
+		update(null, null);
 	}
 }

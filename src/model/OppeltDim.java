@@ -32,4 +32,9 @@ public final class OppeltDim extends AbstractDim {
 		builder.append("OppeltDim\n");
 		return builder.toString();
 	}
+
+	@Override
+	public AbstractDim makeCopy() {
+		return new OppeltDim();
+	}
 }

@@ -17,12 +17,13 @@ public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
 	//TODO
-	//private final Model model;
-	//private final Controller controller;
+	//private Model model;
+	//private Controller controller;
 	
 	
-	ReglerView pn_ERegler;
-	
+	private final ReglerView pn_ERegler;
+	private final RegelStreckeView pn_ERegelstrecke;
+	private final AnalyseView pn_AAnalyse;
 
 	public SidebarPanel(Model model, Controller controller){
 		super();
@@ -48,7 +49,7 @@ public class SidebarPanel extends JScrollPane{
 		//---------------------Eingabe_Regelstrecke-------------------------------
 		
 		//TODO
-		JPanel pn_ERegelstrecke = new RegelStreckeView(model.getRegelkreis().getRegelstrecke(), controller);
+		pn_ERegelstrecke = new RegelStreckeView(model.getRegelkreis().getRegelstrecke(), controller);
 		pn_Eingabe.add(pn_ERegelstrecke);
 		
 		//---------------------Eingabe_Regler-------------------------------
@@ -67,10 +68,17 @@ public class SidebarPanel extends JScrollPane{
 		//---------------------Ausgabe_Regler-------------------------------
 		
 		//---------------------Ausgabe_Analyse-------------------------------
-		JPanel pn_AAnalyse = new AnalyseView(model.getRegelkreis(), controller);
+		pn_AAnalyse = new AnalyseView(model.getRegelkreis(), controller);
 		pn_Ausgabe.add(pn_AAnalyse);
 	}
 	
 	public void update(RegelKreis regelkreis) {
+	}
+
+	public void setModel(Model model) {
+		//this.model = model;
+		pn_ERegelstrecke.setRegelstrecke(model.getRegelkreis().getRegelstrecke());
+		pn_ERegler.setReglerkreis(model.getRegelkreis());
+		pn_AAnalyse.setRegelkreis(model.getRegelkreis());
 	}
 }

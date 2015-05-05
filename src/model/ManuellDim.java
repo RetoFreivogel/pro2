@@ -1,7 +1,24 @@
 package model;
 
+import java.util.Scanner;
+
 public class ManuellDim extends AbstractDim {
 	private double kr, tn, tv, tp;
+	
+	public ManuellDim(Scanner sc) {
+		sc.skip("kr: ");
+		kr = sc.nextDouble();
+		sc.nextLine();
+		sc.skip("tn: ");
+		tn = sc.nextDouble();
+		sc.nextLine();
+		sc.skip("tv: ");
+		tv = sc.nextDouble();
+		sc.nextLine();
+		sc.skip("tp: ");
+		tp = sc.nextDouble();
+
+	}
 
 	public ManuellDim(double kr, double tn, double tv) {
 		this.kr = kr;
@@ -123,5 +140,10 @@ public class ManuellDim extends AbstractDim {
 		builder.append(tp);
 		builder.append("\n");
 		return builder.toString();
+	}
+
+	@Override
+	public AbstractDim makeCopy() {
+		return new ManuellDim(kr, tn, tv, tp);
 	}
 }

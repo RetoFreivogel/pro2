@@ -17,6 +17,14 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 		this.regelstrecke.addObserver(this);
 	}
 
+	public RegelKreis(RegelKreis other) {
+		this.dim = other.getDim().makeCopy();
+		this.regelstrecke = new RegelStrecke(other.getRegelstrecke());
+		this.topo = other.getTopo();
+		this.dim.addObserver(this);
+		this.regelstrecke.addObserver(this);
+	}
+
 	public Regler getRegler() {
 		return dim.calc(regelstrecke, topo);
 	}

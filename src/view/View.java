@@ -30,6 +30,9 @@ public class View extends JPanel implements Observer, ActionListener {
 	private SidebarPanel sidebarPanel;
 	private JLabel lblStatus;
 	private ChartPanel pn_chart;
+	
+	private Model model;
+	private Controller controller;
 
 	private JCheckBox ckbx_Graph_1;
 	/*
@@ -43,7 +46,14 @@ public class View extends JPanel implements Observer, ActionListener {
 
 	public View(Model model, Controller controller) {
 		super();
-
+		this.model = model;
+		this.controller = controller;
+		init();
+		model.addObserver(this);
+	}
+	
+	
+	private void init(){
 		this.setLayout(new BorderLayout());
 		setLayout(new BorderLayout(0, 0));
 
@@ -125,6 +135,7 @@ public class View extends JPanel implements Observer, ActionListener {
 		 * pn_legend.add(ckbx_Graph_5, gbc_ckbx_Graph_5);
 		 */
 
+
 		// ---------------------Graph-------------------------------
 		double[] output = new double[] {};
 		pn_chart = Chart.makePanel(output, 1.0);
@@ -181,7 +192,8 @@ public class View extends JPanel implements Observer, ActionListener {
 		lblStatus.setText(message);
 	}
 
-	public void update(Model model) {
+	@Override
+	public void update(Observable o, Object arg) {
 		SchrittAntwort sw = model.getRegelkreis().getTranferFunction()
 				.schrittantwort();
 		double maxX = sw.getTaus(0.001);
@@ -195,13 +207,11 @@ public class View extends JPanel implements Observer, ActionListener {
 		sidebarPanel.update(model.getRegelkreis());
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		if (!(o instanceof Model))
-			return;
-
-		Model model = (Model) o;
-		update(model);
+	public void setModel(Model model) {
+		this.model.deleteObserver(this);
+		this.model = model;
+		sidebarPanel.setModel(model);
+		this.model.addObserver(this);
+		update(null, null);
 	}
-
 }
