@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.ChiensDim;
 import model.ChiensRegelung;
@@ -28,15 +31,21 @@ public class Controller {
 	private Model model;
 	private View view;
 	private JFrame frame;
-	
+
 	private Vector<Model> changes = new Vector<Model>(0, 1);
 	private Vector<Model> undone_changes = new Vector<Model>(0, 1);
 
 	private final JFileChooser jfcLaden = new JFileChooser(new File(".//"));
-	
+	private File file;
+	private File theDirectory = new File(".//");
+
 	public Controller(Model model, JFrame frame) {
 		this.model = model;
 		this.frame = frame;
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"TEXT FILES", "txt", "text");
+		jfcLaden.setFileFilter(filter);
+
 	}
 
 	public void setView(View view) {
@@ -46,7 +55,7 @@ public class Controller {
 	public void selectDim(Dimensionierung dim) {
 		RegelKreis kreis = model.getRegelkreis();
 		modelChanged();
-		
+
 		switch (dim) {
 		case MANUELL:
 			kreis.setDim(new ManuellDim(kreis.getRegler()));
@@ -75,7 +84,7 @@ public class Controller {
 	public void selectChiensRegelung(ChiensRegelung chiensReg) {
 		int j = 0;
 		modelChanged();
-		
+
 		switch (chiensReg) {
 		case APERIODSTOER:
 			j = 0;
@@ -90,7 +99,7 @@ public class Controller {
 			j = 3;
 			break;
 		}
-		ChiensDim dim = (ChiensDim)model.getRegelkreis().getDim();
+		ChiensDim dim = (ChiensDim) model.getRegelkreis().getDim();
 		dim.setJ(j);
 		return;
 	}
@@ -182,26 +191,29 @@ public class Controller {
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
 			view.setStatus("Bereit");
-	} catch (Exception e) {
+		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
 	public void neu() {
-
+		jfcLaden.setSelectedFile(null);
+		jfcLaden.setCurrentDirectory(theDirectory);
+		view.setModel(new Model());
+		
 	}
 
-	public void speichern(){
+	public void speichern() {
 		System.out.println(model);
-		File file = jfcLaden.getSelectedFile();
-		//Hier sollte der String vom Model sein
+		file = jfcLaden.getSelectedFile();
 		String txt = model.toString();
-		if (file != null && file.exists() == true) {		
+		
+		if (file != null && file.exists() == true) {
 			String[] zeilen = txt.split("[\n]+");
 			try {
-				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
-						file, false));
+				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(file,
+						false));
 				for (int i = 0; i < zeilen.length; i++) {
 					ausgabeDatei.println(zeilen[i]);
 				}
@@ -211,17 +223,18 @@ public class Controller {
 				System.err.println("Dateifehler: " + exc.toString());
 
 			}
-		}else
-		{
+		} else {
 			speichernals();
 		}
 	}
-	public void speichernals(){
+
+	public void speichernals() {
 		int returnVal = jfcLaden.showSaveDialog(frame);
+
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = jfcLaden.getSelectedFile();
-			//Hier sollte der String vom Model sein
+			file = jfcLaden.getSelectedFile();
 			String txt = model.toString();
+
 			if (file.exists() == true) {
 				System.out.println(txt);
 				String[] zeilen = txt.split("[\n]+");
@@ -237,6 +250,7 @@ public class Controller {
 					System.err.println("Dateifehler: " + exc.toString());
 
 				}
+				
 			} else {
 				String[] zeilen = txt.split("[\n]+");
 				try {
@@ -244,7 +258,7 @@ public class Controller {
 							file, false));
 					for (int i = 0; i < zeilen.length; i++) {
 						ausgabeDatei.println(zeilen[i]);
-						
+
 					}
 
 					ausgabeDatei.close();
@@ -255,58 +269,43 @@ public class Controller {
 			}
 
 		}
-		
-	
-		
+
 	}
-	
-	public void oeffnen(){
-		
+
+	public void oeffnen() {
+
 		int returnVal = jfcLaden.showOpenDialog(frame);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = jfcLaden.getSelectedFile();
+			file = jfcLaden.getSelectedFile();
 			System.out.println(file.getAbsolutePath());
-			
+
 			Scanner sc;
 
-			String [] str = new String [3];;
 			try {
-				sc = new Scanner(file);		
+				sc = new Scanner(file);
 				view.setModel(new Model(sc));
-//				sc.skip("Ks: ");
-//					str[0] = Double.toString(sc.nextDouble());
-//					sc.nextLine();
-//					sc.skip("Tu: ");
-//					str[1] = Double.toString(sc.nextDouble());
-//					sc.nextLine();
-//					sc.skip("Tg: ");
-//					str[2] = Double.toString(sc.nextDouble());
-//					String string = "Öffnen"+"\n"+str[0]+"\n"+ str[1]+"\n"+str[2]+"\n"+"Fertig";
-//					str[3] = Double.toString(sc.nextDouble());
-//					str[4] = Double.toString(sc.nextDouble());
-//					str[5] = Double.toString(sc.nextDouble());
-//					str[6] = Double.toString(sc.nextDouble());
-//					str[7] = Double.toString(sc.nextDouble());
-					
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (IllegalArgumentException | NoSuchElementException e) {
+				JOptionPane.showMessageDialog(frame,
+						"Datei konnte nicht gelesen werden");
 			}
-		}	
+		}
 
 	}
-	
-	private void modelChanged(){
+
+	private void modelChanged() {
 		undone_changes.clear();
 		changes.addElement(new Model(model));
 	}
-		
-	public void beenden(){
+
+	public void beenden() {
 		frame.dispose();
 	}
 
 	public void rueckgaengig() {
-		if(changes.isEmpty())return;
+		if (changes.isEmpty())
+			return;
 		Model recall = changes.lastElement();
 		changes.removeElement(recall);
 		undone_changes.addElement(model);
@@ -315,7 +314,8 @@ public class Controller {
 	}
 
 	public void wiederholen() {
-		if(undone_changes.isEmpty())return;
+		if (undone_changes.isEmpty())
+			return;
 		Model recall = undone_changes.lastElement();
 		undone_changes.removeElement(recall);
 		changes.addElement(model);
@@ -330,9 +330,9 @@ public class Controller {
 	public void simulation() {
 
 	}
-	public String setString(String[] str){
-		
-		
+
+	public String setString(String[] str) {
+
 		return null;
 	}
 }

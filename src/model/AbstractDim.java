@@ -25,7 +25,7 @@ public abstract class AbstractDim extends Observable {
 			return new ManuellDim(sc);
 		case "ChiensDim":
 			return new ChiensDim(sc);
-		case "RosenbergerDim":
+		case "RosenbergDim":
 			return new RosenbergDim();
 		case "ZellwegerDim":
 			return new ZellwegerDim(sc);
