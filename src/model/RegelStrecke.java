@@ -14,6 +14,7 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		sc.nextLine();
 		sc.skip("tg: ");
 		tg = sc.nextDouble();
+		sc.nextLine();
 	}
 	
 	public RegelStrecke(double ks, double tu, double tg) {
