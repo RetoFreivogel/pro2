@@ -272,7 +272,7 @@ public class Controller {
 			String [] str = new String [3];;
 			try {
 				sc = new Scanner(file);		
-				Model model = new Model(sc);
+				view.setModel(new Model(sc));
 //				sc.skip("Ks: ");
 //					str[0] = Double.toString(sc.nextDouble());
 //					sc.nextLine();
