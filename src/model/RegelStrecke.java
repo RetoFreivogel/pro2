@@ -1,11 +1,21 @@
 package model;
 
 import java.util.Observable;
+import java.util.Scanner;
 
 public class RegelStrecke extends Observable implements RegelGlied {
 	private double ks, tu, tg;
-	int n;
-
+	public RegelStrecke(Scanner sc){
+		sc.skip("ks: ");
+		ks = sc.nextDouble();
+		sc.nextLine();
+		sc.skip("tu: ");
+		tu = sc.nextDouble();
+		sc.nextLine();
+		sc.skip("tg: ");
+		tg = sc.nextDouble();
+	}
+	
 	public RegelStrecke(double ks, double tu, double tg) {
 		if (ks < 0)
 			throw new IllegalArgumentException("ks can't be negative");
@@ -114,6 +124,6 @@ public class RegelStrecke extends Observable implements RegelGlied {
 
 	@Override
 	public String toString() {
-		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\nn: " + n + "\n";
+		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\n";
 	}
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Scanner;
+
 public final class ChiensDim extends AbstractDim {
 	public static final int APERIODSTOER = 0, APERIODFUEHR = 1,
 			ZWANZIGSTOER = 2, ZWANZIGFUEHR = 3;
@@ -68,6 +70,17 @@ public final class ChiensDim extends AbstractDim {
 		}
 
 		this.j = j;
+
+	}
+	public ChiensDim(Scanner sc) {
+		super();
+
+		if (j < 0 || j > 3) {
+			throw new IllegalArgumentException("j must be between 0 and 3");
+		}
+
+		sc.skip("j: ");
+		j = sc.nextInt();
 
 	}
 

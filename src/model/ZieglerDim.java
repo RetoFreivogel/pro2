@@ -4,6 +4,11 @@ package model;
 public final class ZieglerDim extends AbstractDim {
 
 	@Override
+	public String toString() {
+		return "ZieglerDim";
+	}
+
+	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();

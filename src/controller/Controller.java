@@ -10,6 +10,7 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+
 import model.ChiensDim;
 import model.ChiensRegelung;
 import model.Dimensionierung;
@@ -181,10 +182,9 @@ public class Controller {
 		System.out.println(model);
 		File file = jfcLaden.getSelectedFile();
 		//Hier sollte der String vom Model sein
-		String txt = "Ks: 1,Tu: 2.8,Tg: 19";
-		if (file != null && file.exists() == true) {
-			System.out.println("haaalt");
-			String[] zeilen = txt.split("[,]+");
+		String txt = model.toString();
+		if (file != null && file.exists() == true) {		
+			String[] zeilen = txt.split("[\n]+");
 			try {
 				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 						file, false));
@@ -207,10 +207,10 @@ public class Controller {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File file = jfcLaden.getSelectedFile();
 			//Hier sollte der String vom Model sein
-			String txt = "Ks: 1,Tu: 1.67,Tg: 6";
+			String txt = model.toString();
 			if (file.exists() == true) {
-				System.out.println("haaalt");
-				String[] zeilen = txt.split("[,]+");
+				System.out.println(txt);
+				String[] zeilen = txt.split("[\n]+");
 				try {
 					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 							file, false));
@@ -224,7 +224,7 @@ public class Controller {
 
 				}
 			} else {
-				String[] zeilen = txt.split("[,]+");
+				String[] zeilen = txt.split("[\n]+");
 				try {
 					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
 							file, false));
@@ -254,26 +254,30 @@ public class Controller {
 			System.out.println(file.getAbsolutePath());
 			
 			Scanner sc;
+
 			String [] str = new String [3];;
 			try {
-				sc = new Scanner(file);
-				 
-					sc.skip("Ks: ");
-					str[0] = Double.toString(sc.nextDouble());
-					sc.nextLine();
-					sc.skip("Tu: ");
-					str[1] = Double.toString(sc.nextDouble());
-					sc.nextLine();
-					sc.skip("Tg: ");
-					str[2] = Double.toString(sc.nextDouble());
-
+				sc = new Scanner(file);		
+				Model model = new Model(sc);
+//				sc.skip("Ks: ");
+//					str[0] = Double.toString(sc.nextDouble());
+//					sc.nextLine();
+//					sc.skip("Tu: ");
+//					str[1] = Double.toString(sc.nextDouble());
+//					sc.nextLine();
+//					sc.skip("Tg: ");
+//					str[2] = Double.toString(sc.nextDouble());
+//					String string = "Öffnen"+"\n"+str[0]+"\n"+ str[1]+"\n"+str[2]+"\n"+"Fertig";
+//					str[3] = Double.toString(sc.nextDouble());
+//					str[4] = Double.toString(sc.nextDouble());
+//					str[5] = Double.toString(sc.nextDouble());
+//					str[6] = Double.toString(sc.nextDouble());
+//					str[7] = Double.toString(sc.nextDouble());
+					
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(str[0]);
-			System.out.println(str[1]);
-			System.out.println(str[2]);
 		}	
 
 	}
@@ -296,5 +300,10 @@ public class Controller {
 
 	public void simulation() {
 
+	}
+	public String setString(String[] str){
+		
+		
+		return null;
 	}
 }

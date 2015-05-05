@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Scanner;
+
 import org.apache.commons.math3.complex.Complex;
 
 public class ZellwegerDim extends AbstractDim {
@@ -106,6 +108,10 @@ public class ZellwegerDim extends AbstractDim {
 		this.phasenrand = phasenrand;
 	}
 
+	public ZellwegerDim(Scanner sc) {
+		super();
+		//sc.skip("ph");
+	}
 	public double getPhasenrand() {
 		return phasenrand;
 	}
