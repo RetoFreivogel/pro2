@@ -5,7 +5,7 @@ public final class ZieglerDim extends AbstractDim {
 
 	@Override
 	public String toString() {
-		return "ZieglerDim";
+		return "ZieglerDim\n";
 	}
 
 	@Override

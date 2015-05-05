@@ -10,13 +10,13 @@ public class ManuellDim extends AbstractDim {
 		kr = sc.nextDouble();
 		sc.nextLine();
 		sc.skip("tn: ");
-		kr = sc.nextDouble();
+		tn = sc.nextDouble();
 		sc.nextLine();
 		sc.skip("tv: ");
-		kr = sc.nextDouble();
+		tv = sc.nextDouble();
 		sc.nextLine();
 		sc.skip("tp: ");
-		kr = sc.nextDouble();
+		tp = sc.nextDouble();
 
 	}
 

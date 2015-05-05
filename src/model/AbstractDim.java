@@ -31,8 +31,10 @@ public abstract class AbstractDim extends Observable {
 			return new ZellwegerDim(sc);
 		case "ZieglerDim":
 			return new ZieglerDim();
+		default:
+			throw new IllegalArgumentException("Fehlerhafte eingabe:"+str);
 		}
-		return null;
+		
 	}
 	
 	public abstract Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo);
