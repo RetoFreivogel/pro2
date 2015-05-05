@@ -237,11 +237,14 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public void update(Observable arg0, Object arg1) {
 		Regler regler = kreis.getRegler();
 		disableEvents();
-		tf_Kr.setValue(regler.getKr());
-		tf_Tn.setValue(regler.getTn());
-		tf_Tv.setValue(regler.getTv());
-		tf_Tp.setValue(regler.getTp());
-		enableEvents();
+		try {
+			tf_Kr.setValue(regler.getKr());
+			tf_Tn.setValue(regler.getTn());
+			tf_Tv.setValue(regler.getTv());
+			tf_Tp.setValue(regler.getTp());
+		} finally {
+			enableEvents();
+		}
 	}
 
 }

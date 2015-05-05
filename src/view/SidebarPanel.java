@@ -69,7 +69,6 @@ public class SidebarPanel extends JScrollPane{
 		//---------------------Ausgabe_Analyse-------------------------------
 		JPanel pn_AAnalyse = new AnalyseView(model.getRegelkreis(), controller);
 		pn_Ausgabe.add(pn_AAnalyse);
-
 	}
 	
 	public void update(RegelKreis regelkreis) {

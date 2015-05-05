@@ -91,6 +91,7 @@ public class Controller {
 	public void setKs(double ks) {
 		try {
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -100,6 +101,7 @@ public class Controller {
 	public void setTu(double tu) {
 		try {
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -109,6 +111,7 @@ public class Controller {
 	public void setTg(double tg) {
 		try {
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -119,6 +122,7 @@ public class Controller {
 		try {
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -129,6 +133,7 @@ public class Controller {
 		try {
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTn(tn);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -139,6 +144,7 @@ public class Controller {
 		try {
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTv(tv);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -149,6 +155,7 @@ public class Controller {
 		try {
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTp(tp);
+			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
@@ -159,7 +166,8 @@ public class Controller {
 		try {
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
-		} catch (Exception e) {
+			view.setStatus("Bereit");
+	} catch (Exception e) {
 			view.setStatus(e.getMessage());
 			e.printStackTrace();
 		}

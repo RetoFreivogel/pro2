@@ -38,7 +38,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		this.controller = controller;
 
 		DecimalFormat format = new DecimalFormat("###0.###");
-		
+
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regelstrecke",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
@@ -46,11 +46,11 @@ public class RegelStreckeView extends JPanel implements Observer,
 		JLabel lb_defd_RS = new JLabel("Definiert durch:");
 		add(lb_defd_RS);
 		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
-		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(
-				new String[] { "KTuTg", "frequenzgang"})); 
-		// TODO add definition through the Time coefficents	
-		cbbx_defd_RS.setEnabled(false);		
-		add(cbbx_defd_RS);	
+		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] {
+				"KTuTg", "frequenzgang" }));
+		// TODO add definition through the Time coefficents
+		cbbx_defd_RS.setEnabled(false);
+		add(cbbx_defd_RS);
 
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
@@ -77,7 +77,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
 		add(lb_Zeitkons);
 		JButton bt_Zeitkonst = new JButton("Lesen..");
-		//TODO enable reading of the Zeitkonstanten
+		// TODO enable reading of the Zeitkonstanten
 		bt_Zeitkonst.setEnabled(false);
 		add(bt_Zeitkonst);
 
@@ -86,27 +86,29 @@ public class RegelStreckeView extends JPanel implements Observer,
 		update(null, null);
 	}
 
-	private void enableEvents(){
+	private void enableEvents() {
 		tf_ks.addPropertyChangeListener("value", this);
 		tf_tu.addPropertyChangeListener("value", this);
-		tf_tg.addPropertyChangeListener("value", this);		
-	}
-	
-	private void disableEvents(){
-		tf_ks.removePropertyChangeListener("value", this);
-		tf_tu.removePropertyChangeListener("value", this);
-		tf_tg.removePropertyChangeListener("value", this);				
+		tf_tg.addPropertyChangeListener("value", this);
 	}
 
-	
+	private void disableEvents() {
+		tf_ks.removePropertyChangeListener("value", this);
+		tf_tu.removePropertyChangeListener("value", this);
+		tf_tg.removePropertyChangeListener("value", this);
+	}
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		disableEvents();
-		tf_ks.setValue(regelstrecke.getKs());
-		tf_tu.setValue(regelstrecke.getTu());
-		tf_tg.setValue(regelstrecke.getTg());
-		tf_Ordn.setValue(regelstrecke.getOrdnung());
-		enableEvents();
+		try {
+			tf_ks.setValue(regelstrecke.getKs());
+			tf_tu.setValue(regelstrecke.getTu());
+			tf_tg.setValue(regelstrecke.getTg());
+			tf_Ordn.setValue(regelstrecke.getOrdnung());
+		} finally {
+			enableEvents();
+		}
 	}
 
 	@Override
