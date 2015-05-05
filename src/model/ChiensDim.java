@@ -32,7 +32,7 @@ public final class ChiensDim extends AbstractDim {
 			case APERIODSTOER:
 				return new Regler((0.6 / Ks) * (Tg / Tu), 4 * Tu);
 			case APERIODFUEHR:
-				return new Regler((0.35 / Ks) * (Tg / Tu), 1.2 * Tu);
+				return new Regler((0.35 / Ks) * (Tg / Tu), 1.2 * Tg);
 			case ZWANZIGSTOER:
 				return new Regler((0.7 / Ks) * (Tg / Tu), 2.3 * Tu);
 			case ZWANZIGFUEHR:
