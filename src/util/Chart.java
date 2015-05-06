@@ -11,6 +11,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class Chart {
+	
 	public static JFreeChart makeChart(double[] data, double maxX) {
 		XYSeries ser1 = new XYSeries("Test");
 		for (int i = 0; i < data.length; i++) {
@@ -25,7 +26,7 @@ public class Chart {
 				"", // Xaxis
 				"", // Yaxis
 				dataset, PlotOrientation.VERTICAL,
-				false, // legend?
+				true, // legend?
 				false, // tooltips?
 				false // URLs?
 				);

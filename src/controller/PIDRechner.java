@@ -41,7 +41,7 @@ public class PIDRechner extends JFrame {
 				});
 				rechner.init();
 				rechner.setVisible(true);
-				rechner.setTitle("MVCFramework");
+				rechner.setTitle("ReglerDim_Pro");
 			}
 		});
 	}
