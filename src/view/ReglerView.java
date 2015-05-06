@@ -62,10 +62,11 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
 		cbbx_defd_R.addActionListener(this);
 
-		tf_Phrand = new JFormattedTextField(format);
 		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
 		cbbx_chiens.addActionListener(this);
 
+		tf_Phrand = new JFormattedTextField(format);
+		tf_Phrand.addPropertyChangeListener("value", this);
 		tf_Kr = new JFormattedTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
 		tf_Tn = new JFormattedTextField(format);
@@ -144,7 +145,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		if (eventsEnabled) {
-			if (event.getSource() == tf_Kr) {
+			if (event.getSource() == tf_Phrand) {
+				controller.setPhasenrand(((Number) tf_Phrand.getValue()).doubleValue());
+			} else if (event.getSource() == tf_Kr) {
 				controller.setKr(((Number) tf_Kr.getValue()).doubleValue());
 			} else if (event.getSource() == tf_Tn) {
 				controller.setTn(((Number) tf_Tn.getValue()).doubleValue());
@@ -206,6 +209,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 						.getJ());
 			}
 
+			if (d == Dimensionierung.PHASENGANG) {
+				tf_Phrand.setValue(((ZellwegerDim) regelkreis.getDim()).getPhasenrand());			
+			}
+			
 			tf_Kr.setValue(regler.getKr());
 			tf_Tn.setValue(regler.getTn());
 			tf_Tv.setValue(regler.getTv());

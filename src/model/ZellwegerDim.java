@@ -94,6 +94,8 @@ public class ZellwegerDim extends AbstractDim {
 
 	public void setPhasenrand(double phasenrand) {
 		this.phasenrand = phasenrand;
+		setChanged();
+		notifyObservers();
 	}
 
 	@Override

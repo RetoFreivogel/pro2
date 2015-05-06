@@ -11,7 +11,6 @@ import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -24,6 +23,7 @@ import model.OppeltDim;
 import model.RegelKreis;
 import model.ReglerTopologie;
 import model.RosenbergDim;
+import model.ZellwegerDim;
 import model.ZieglerDim;
 import view.View;
 
@@ -61,7 +61,7 @@ public class Controller {
 			kreis.setDim(new ManuellDim(kreis.getRegler()));
 			break;
 		case PHASENGANG:
-			view.setStatus("Phasengangmethode nicht unterstützt");
+			kreis.setDim(new ZellwegerDim(Math.PI/4));
 			break;
 		case ZIEGLER:
 			kreis.setDim(new ZieglerDim());
@@ -142,6 +142,18 @@ public class Controller {
 			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
+			view.setStatus("Bereit");
+		} catch (Exception e) {
+			view.setStatus(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void setPhasenrand(double phasenrand) {
+		try {
+			modelChanged();
+			ZellwegerDim dim = (ZellwegerDim) model.getRegelkreis().getDim();
+			dim.setPhasenrand(phasenrand);
 			view.setStatus("Bereit");
 		} catch (Exception e) {
 			view.setStatus(e.getMessage());
