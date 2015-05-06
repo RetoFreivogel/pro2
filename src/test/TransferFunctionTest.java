@@ -15,7 +15,9 @@ public class TransferFunctionTest {
 		Polynom n = new Polynom(new double[]{1, 1});
 		TransferFunction tf = new TransferFunction(z, n);
 		
+		assertEquals(0, tf.phaseAt(0), 0.001);
 		assertEquals(-Math.PI/4, tf.phaseAt(1), 0.001);
+		assertEquals(-Math.PI/2, tf.phaseAt(10000), 0.001);
 	}
 
 	@Test
@@ -25,7 +27,8 @@ public class TransferFunctionTest {
 		TransferFunction tf = new TransferFunction(z, n);
 		
 		assertEquals(1, tf.amplitudeAt(0.001), 0.001);
-		assertEquals(0.5, tf.amplitudeAt(1), 0.001);
+		assertEquals(Math.sqrt(0.5), tf.amplitudeAt(1), 0.001);
+		assertEquals(0, tf.amplitudeAt(1000), 0.001);
 	}
 
 }

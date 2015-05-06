@@ -2,42 +2,45 @@ package model;
 
 import java.util.Scanner;
 
-import org.apache.commons.math3.complex.Complex;
-
 public class ZellwegerDim extends AbstractDim {
 	private double phasenrand;
 
+	public double searchPhase(TransferFunction tf, double phase){
+		double low_freq = 0, high_freq = 1;
+		
+		while(tf.phaseAt(high_freq) >= phase){
+			low_freq = high_freq;
+			high_freq *= 2;
+		}
+		
+		double middle_freq = (low_freq + high_freq) / 2;
+		while (Math.abs(tf.phaseAt(middle_freq)-phase) >= 0.0001) {
+			middle_freq = (low_freq + high_freq) / 2;
+			if (tf.phaseAt(middle_freq) < phase) {
+				high_freq = middle_freq;
+			}else {
+				low_freq = middle_freq;
+			}
+		}
+		return middle_freq;
+	}
+	
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
 		TransferFunction tf = regelstrecke.getTranferFunction();
 		double[] T = SaniApprox.calcSani(regelstrecke.getTu(),
 				regelstrecke.getTg());
-
+		
 		// gs in array [gs,w]= get_gs(T,Ks) ist komplex
-		double wpid, wdpid, ablwpid;
-		double low_freq = 0, high_freq = 1000000, middle_freq;
-		double low2_freq = 0, high2_freq = 1000000, middle2_freq;
 		double beta, beta1, beta2;
 		double subst;
 		double tnk, tvk, tppid;
 		double krpid, tvpid, tnpid, krk;
 		double gspid, grpid, gopid;
+		
+		double wpid = searchPhase(tf, Math.PI * 3 / 4);
 
-		do {
-			middle_freq = (low_freq + high_freq) / 2;
-			if (tf.phaseAt(middle_freq) < 135) {
-				high_freq = middle_freq;
-			}
-
-			if (tf.phaseAt(middle_freq) > 135) {
-				low_freq = middle_freq;
-			}
-
-		} while (Math.abs(middle_freq + 135) >= 0.001);
-
-		wpid = middle_freq;
-
-		ablwpid = 0;
+		double ablwpid = 0;
 		for (int k = 0; k < T.length; k++) {
 			ablwpid = ablwpid - T[k]
 					/ (1 + Math.pow(wpid, 2) * Math.pow(T[k], 2));
@@ -59,30 +62,9 @@ public class ZellwegerDim extends AbstractDim {
 		tvk = beta / wpid;
 		tppid = tvk / 10;
 
-		double pggrpid = (Math.atan(w * tnk) + Math.atan(w * tvk) - Math.PI / 2 - Math
-				.atan(w * tppid)) / Math.PI * 180;
+		double wdpid = searchPhase(tf, 180-phasenrand);
 
-		pggo = pggrpid + pggs;
-
-		do {
-			middle2_freq = (low2_freq + high2_freq) / 2;
-
-			if (phaseAt(middle2_freq) < 180 - phasenrand) {
-
-				high2_freq = middle2_freq;
-			}
-
-			if (phaseAt(middle2_freq) > 180 - phasenrand) {
-
-				low2_freq = middle2_freq;
-			}
-
-		} while (Math.abs(middle2_freq + (180 - phasenrand)) >= 0.001
-				|| Math.abs(middle2_freq + (180 - phasenrand)) <= -0.001);
-
-		wdpid = middle2_freq;
-
-		gspid = Math.abs(gs(middle_freq)); // gs komplex
+		gspid = Math.abs(tf.phaseAt(wdpid)); // gs komplex
 
 		grpid = Math.sqrt(1 + Math.pow(wdpid * tnk, 2))
 				* Math.sqrt(1 + Math.pow(wdpid * tvk, 2)) / (wdpid * tnk);
