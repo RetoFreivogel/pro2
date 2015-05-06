@@ -101,6 +101,16 @@ public final class Polynom {
 		
 		return new Polynom(result);
 	}
+	
+	public Polynom differentiate(){
+		double[] result = new double[coeff.length -1];
+		
+		for (int i = 0; i < result.length; i++) {
+			result[i] = coeff[i+1] * (i+1);
+		}
+		
+		return new Polynom(result);
+	}
 
 	@Override
 	public int hashCode() {
