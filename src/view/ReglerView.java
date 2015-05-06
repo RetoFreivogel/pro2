@@ -11,6 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -33,16 +34,16 @@ import model.ZieglerDim;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
-	private static final DecimalFormat format = new DecimalFormat("###0.###");
+	private static final DecimalFormat format = new DecimalFormat("##0.000E0#");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;
 
-	private JEngineeringTextField tf_Phrand;
-	private JEngineeringTextField tf_Kr;
-	private JEngineeringTextField tf_Tn;
-	private JEngineeringTextField tf_Tv;
-	private JEngineeringTextField tf_Tp;
+	private JFormattedTextField tf_Phrand;
+	private JFormattedTextField tf_Kr;
+	private JFormattedTextField tf_Tn;
+	private JFormattedTextField tf_Tv;
+	private JFormattedTextField tf_Tp;
 	private JComboBox<Dimensionierung> cbbx_defd_R;
 	private JComboBox<ReglerTopologie> cbbx_Topo;
 	private JComboBox<ChiensRegelung> cbbx_chiens;
@@ -60,17 +61,17 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
 		cbbx_defd_R.addActionListener(this);
 
-		tf_Phrand = new JEngineeringTextField(format);
+		tf_Phrand = new JFormattedTextField(format);
 		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
 		cbbx_chiens.addActionListener(this);
 
-		tf_Kr = new JEngineeringTextField(format);
+		tf_Kr = new JFormattedTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
-		tf_Tn = new JEngineeringTextField(format);
+		tf_Tn = new JFormattedTextField(format);
 		tf_Tn.addPropertyChangeListener("value", this);
-		tf_Tv = new JEngineeringTextField(format);
+		tf_Tv = new JFormattedTextField(format);
 		tf_Tv.addPropertyChangeListener("value", this);
-		tf_Tp = new JEngineeringTextField(format);
+		tf_Tp = new JFormattedTextField(format);
 		tf_Tp.addPropertyChangeListener("value", this);
 
 		init();
