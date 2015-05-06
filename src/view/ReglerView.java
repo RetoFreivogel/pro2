@@ -34,7 +34,7 @@ import model.ZieglerDim;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
-	private static final DecimalFormat format = new DecimalFormat("##0.000E0#");
+	private static final DecimalFormat format = new DecimalFormat("##0.00E0");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;
@@ -53,6 +53,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		super();
 		this.controller = controller;
 		this.regelkreis = kreis;
+			
 		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
 				ReglerTopologie.PID });
 		cbbx_Topo.setSelectedIndex(1);
