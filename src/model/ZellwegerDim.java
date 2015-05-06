@@ -27,55 +27,51 @@ public class ZellwegerDim extends AbstractDim {
 	
 	@Override
 	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
-		TransferFunction tf = regelstrecke.getTranferFunction();
+		TransferFunction tf_strecke = regelstrecke.getTranferFunction();
 		double[] T = SaniApprox.calcSani(regelstrecke.getTu(),
 				regelstrecke.getTg());
 		
-		// gs in array [gs,w]= get_gs(T,Ks) ist komplex
-		double beta, beta1, beta2;
-		double subst;
-		double tnk, tvk, tppid;
-		double krpid, tvpid, tnpid, krk;
-		double gspid, grpid, gopid;
-		
-		double wpid = searchPhase(tf, -Math.PI * 3 / 4);
-
+		double wpid = searchPhase(tf_strecke, -Math.PI * 3 / 4);
+	
+		//Berechnung von Beta
 		double ablwpid = 0;
 		for (int k = 0; k < T.length; k++) {
 			ablwpid = ablwpid - T[k]
 					/ (1 + Math.pow(wpid, 2) * Math.pow(T[k], 2));
 		}
-
-		subst = -0.5 - ablwpid * wpid;
-		beta1 = 1 / subst + Math.sqrt(1 / Math.pow(subst, 2) - 1);
-		beta2 = 1 / subst - Math.sqrt(1 / Math.pow(subst, 2) - 1);
-
+		double subst = -0.5 - ablwpid * wpid;
+		double beta1 = 1 / subst + Math.sqrt(1 / Math.pow(subst, 2) - 1);
+		double beta2 = 1 / subst - Math.sqrt(1 / Math.pow(subst, 2) - 1);
 		if (subst < -1 || subst > 1 || Math.abs(beta1) > 1 || beta1 < 0) {
 			beta1 = 1;
 		}
-		beta = beta1;
+		double beta = beta1;
 		if (subst >= -1 && subst < 1 && Math.abs(beta2) < 1 && beta2 > 0) {
 			beta = beta2;
 		}
 
-		tnk = 1 / (beta * wpid);
-		tvk = beta / wpid;
-		tppid = tvk / 10;
-
-		double wdpid = searchPhase(tf, phasenrand-Math.PI);
-
-		gspid = Math.abs(tf.amplitudeAt(wdpid)); // gs komplex
-
-		grpid = Math.sqrt(1 + Math.pow(wdpid * tnk, 2))
+		//Berechnung von Tn, Tv und Tp
+		double tnk = 1 / (beta * wpid);
+		double tvk = beta / wpid;
+		double tppid = tvk / 10;
+		double tnpid = tnk + tvk - tppid;
+		double tvpid = (tnk * tvk) / (tnk + tvk - tppid) - tppid;
+		
+		//Berechnung Kr
+		Regler tempRegler = new Regler(1, tnpid, tvpid, tppid);
+		TransferFunction tf_regler = tempRegler.getTranferFunction();
+		TransferFunction tf_offener_kreis = tf_strecke.conv(tf_regler);
+		
+		double wdpid = searchPhase(tf_offener_kreis, phasenrand-Math.PI);
+		double gspid = Math.abs(tf_offener_kreis.amplitudeAt(wdpid)); // gs komplex
+		double grpid = Math.sqrt(1 + Math.pow(wdpid * tnk, 2))
 				* Math.sqrt(1 + Math.pow(wdpid * tvk, 2)) / (wdpid * tnk);
-		gopid = gspid * grpid;
-		krk = 1 / gopid;
+		double gopid = gspid * grpid;
+		double krk = 1 / gopid;
 
-		tnpid = tnk + tvk - tppid;
-		tvpid = (tnk * tvk) / (tnk + tvk - tppid) - tppid;
-		krpid = krk * (1 + tvk / tnk - tppid / tnk);
+		double krpid = krk * (1 + tvk / tnk - tppid / tnk);
 
-		return new Regler(tnpid, tvpid, krpid, tppid);
+		return new Regler(krpid, tnpid, tvpid, tppid);
 	}
 
 	public ZellwegerDim(double phasenrand) {

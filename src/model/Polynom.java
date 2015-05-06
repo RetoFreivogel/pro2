@@ -36,8 +36,9 @@ public final class Polynom {
 	}
 	
 	public Complex[] getRoots(){
-		LaguerreSolver solver = new LaguerreSolver();
-				
+		if(coeff.length == 1)return new Complex[]{};
+		
+		LaguerreSolver solver = new LaguerreSolver();			
 		return solver.solveAllComplex(coeff, 0.0, 1000);
 	}
 	

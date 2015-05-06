@@ -36,6 +36,6 @@ public class SchrittAntwort {
 		for (int i = 0; i < poles.length; i++) {
 			taus += 1/poles[i].abs();
 		}
-		return taus * 5;
+		return taus * 10;
 	}
 }

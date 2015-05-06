@@ -28,12 +28,11 @@ public class ZellwegerDimTest {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		ZellwegerDim dim = new ZellwegerDim(Math.PI/4);
 
-		
 		Regler r = dim.calc(rs, null);
 		
-		assertEquals(4.4444, r.getKr(), 0.001);
-		assertEquals(3.4200, r.getTn(), 0.001);
-		assertEquals(1.7182, r.getTv(), 0.001);
-		assertEquals(0.0172, r.getTp(), 0.001);
+		assertEquals(3.9447, r.getTn(), 0.04);
+		assertEquals(0.8556, r.getTv(), 0.01);
+		assertEquals(0.1598, r.getTp(), 0.002);
+		assertEquals(2.3034, r.getKr(), 0.02);
 	}
 }
