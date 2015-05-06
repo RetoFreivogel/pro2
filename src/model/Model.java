@@ -36,6 +36,10 @@ public class Model extends Observable implements Observer {
 		return regelkreisArray.get(0);
 	}
 
+	public Vector<RegelKreis> getAll(){
+		return regelkreisArray;
+	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		setChanged();

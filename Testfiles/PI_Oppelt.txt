@@ -1,0 +1,5 @@
+ks: 1.0
+tu: 12.2
+tg: 27.7
+OppeltDim
+topo: PI
