@@ -11,9 +11,6 @@ function [beta, tnk, tvk, krk, tnpid, tvpid, krpid, tppid,T] = PidReglerDim(Tu, 
 
 tic
 [n,T] = p2_sani(Tu,Tg);     %bringt Ordnung n und Zeitkonstanten in T der Strecke
-
-w=logspace(log10(1/(T(length(T))*10)),log10(10/T(1)),1000); % Variable Omegas, deckt gesamte Breite ab, Punkteverteilung logarithmisch zur besseren Auflösung
-
 [gs,w] = get_gs(T,Ks);      %liefert die Übertragungsfunktion der Strecke in gs und Vektor w
 [pg_gs] = get_pg_gs(gs);    %liefert Phasengang der Strecke
 [index]=find_index(pg_gs,-135); %liefert den index (im Array) der Kreisfrquenz an Stelle -135° des Phasengangs der Strecke

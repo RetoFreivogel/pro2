@@ -60,8 +60,9 @@ end;
 
 r=spline(Tu_Tg(n,:),ri,v);
 w=spline(ri,T_Tg(n,:),r);
-
 T(n)=w*tg;
+
+
 for i=n-1:-1:1,                 % Umspeicher, damit gleiche Reihenfolge wie bei Hudzovik
   T(i)=T(n)*r^(n-i);
 end;
