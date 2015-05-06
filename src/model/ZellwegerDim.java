@@ -14,7 +14,7 @@ public class ZellwegerDim extends AbstractDim {
 		}
 		
 		double middle_freq = (low_freq + high_freq) / 2;
-		while (Math.abs(tf.phaseAt(middle_freq)-phase) >= 0.0001) {
+		while (Math.abs(tf.phaseAt(middle_freq)-phase) >= 0.000001) {
 			middle_freq = (low_freq + high_freq) / 2;
 			if (tf.phaseAt(middle_freq) < phase) {
 				high_freq = middle_freq;
@@ -38,7 +38,7 @@ public class ZellwegerDim extends AbstractDim {
 		double krpid, tvpid, tnpid, krk;
 		double gspid, grpid, gopid;
 		
-		double wpid = searchPhase(tf, Math.PI * 3 / 4);
+		double wpid = searchPhase(tf, -Math.PI * 3 / 4);
 
 		double ablwpid = 0;
 		for (int k = 0; k < T.length; k++) {
@@ -62,9 +62,9 @@ public class ZellwegerDim extends AbstractDim {
 		tvk = beta / wpid;
 		tppid = tvk / 10;
 
-		double wdpid = searchPhase(tf, 180-phasenrand);
+		double wdpid = searchPhase(tf, phasenrand-Math.PI);
 
-		gspid = Math.abs(tf.phaseAt(wdpid)); // gs komplex
+		gspid = Math.abs(tf.amplitudeAt(wdpid)); // gs komplex
 
 		grpid = Math.sqrt(1 + Math.pow(wdpid * tnk, 2))
 				* Math.sqrt(1 + Math.pow(wdpid * tvk, 2)) / (wdpid * tnk);
