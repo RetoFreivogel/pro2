@@ -34,7 +34,7 @@ import model.ZieglerDim;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
-	private static final DecimalFormat format = new DecimalFormat("##0.00E0");
+	private static final DecimalFormat format = new DecimalFormat("##0.000");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;

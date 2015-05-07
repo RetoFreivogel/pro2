@@ -37,7 +37,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		this.regelstrecke = regelstrecke;
 		this.controller = controller;
 
-		DecimalFormat format = new DecimalFormat("##0.00E0");
+		DecimalFormat format = new DecimalFormat("##0.000");
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regelstrecke",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
