@@ -13,7 +13,7 @@ function [gs,w] = get_gs(T,Ks)
 % gs        Übertragungsfunktion der Strecke
 
 %w=linspace(1/(T(length(T))*10), 10/T(1), 10000);  % variable Omegas, deckt gesamte breite ab
-w=logspace(log10(1/(T(length(T))*10)),log10(10/T(1)),1000); % Variable Omegas, deckt gesamte Breite ab, Punkteverteilung logarithmisch zur besseren Auflösung
+w=logspace(log10(1/(T(length(T))*10)),log10(10/T(1)),10000000); % Variable Omegas, deckt gesamte Breite ab, Punkteverteilung logarithmisch zur besseren Auflösung
 
 nennerGs = (1+i*w*T(1)).*(1+i*w*T(2));    %nenner der Übertragungsfunktion der Strecke wird mit berechnet
 for k=3:length(T)
