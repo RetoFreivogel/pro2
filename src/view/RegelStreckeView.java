@@ -8,9 +8,6 @@ import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,6 +40,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
 
+		/*
 		JLabel lb_defd_RS = new JLabel("Definiert durch:");
 		add(lb_defd_RS);
 		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
@@ -51,6 +49,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		// TODO add definition through the Time coefficents
 		cbbx_defd_RS.setEnabled(false);
 		add(cbbx_defd_RS);
+		*/
 
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
@@ -74,12 +73,14 @@ public class RegelStreckeView extends JPanel implements Observer,
 		tf_Ordn.setEditable(false);
 		add(tf_Ordn);
 
+		/*
 		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
 		add(lb_Zeitkons);
 		JButton bt_Zeitkonst = new JButton("Lesen..");
 		// TODO enable reading of the Zeitkonstanten
 		bt_Zeitkonst.setEnabled(false);
 		add(bt_Zeitkonst);
+		*/
 
 		regelstrecke.addObserver(this);
 		enableEvents();
@@ -113,9 +114,6 @@ public class RegelStreckeView extends JPanel implements Observer,
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO verify that this isnt needed
-		// if(!"value".equals(evt.getPropertyName()))return;
-
 		if (tf_ks == evt.getSource()) {
 			controller.setKs(((Number) tf_ks.getValue()).doubleValue());
 		} else if (tf_tu == evt.getSource()) {
