@@ -1,0 +1,153 @@
+\documentclass[a4paper]{article}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{lmodern}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+\usepackage{multirow} 
+\usepackage[headsepline,footsepline]{scrpage2} %[headtopline,headsepline,footsepline,footbotline]
+\pagestyle{scrheadings}
+
+
+\title{%
+  \textsc{Projekt 2}\\[2ex]
+  \textsc{Protokoll}}
+\author{%
+  \textsc{Team1}}
+\date{%
+  \textsc{}}
+
+\clearscrheadfoot
+
+%\tiny
+%\scriptsize
+%\footnotesize 
+%\small 
+%\normalsize 
+%\large 
+%\Large 
+%\LARGE 
+%\huge 
+%\Huge 
+
+\begin{document}
+%Kopfzeile
+\ihead{\includegraphics[scale=1]{fhnw_ht_logo_de}}
+%\chead{Kopfzeile Mitte}
+%Datum anpassen***************************************************************
+\ohead{Protkoll vom 25.02.2015} 
+
+%Fusszeile
+\ifoot{Projekt 2}
+\cfoot{Team 1}
+\ofoot{\pagemark}
+
+%Titel
+%Datum anpassen**************************************************************
+\section*{\textbf{Protokoll zur Sitzung am 25.02.2015}}
+
+%Für normale Schriftgrösse
+\normalsize
+\begin{center}
+\begin{tabular}{|l|l l|}
+\hline
+%Datum, Zeit, Ort anpassen*************
+Datum, Zeit, Ort & \multicolumn{2}{|l|}{25.02.2015, 15:30-16:15 Uhr, FHNW Windisch, Gebäude 1, 3. Etage}\\ \hline
+Besprechungsleiter & Alexander Stocker & EIT Student / Projektleiter \\ \hline
+
+%Anzahl Anwesende bestimmt die Zahl von multirow**********
+\multirow{6}{*}{Teilnehmer} & Alexander Stocker & EIT Student / Projektleiter \\
+& Claudius Jörg & EIT Student / Projektleiter Stellvertreter \\
+& Martin Moser & EIT Student / Fachspezialist Technik \\
+& Reto Freivogel & EIT Student / Fachspezialist Java \\
+& Denis Stampfli & EIT Student / Java \\
+& Yohannes Measho & EIT Student / Technik \\ \hline
+
+%Anzahl Anwesende bestimmt die Zahl von multirow**********
+\multirow{6}{*}{Verteiler} & Alexander Stocker & \href{mailto:alexander.stocker@students.fhnw.ch}{alexander.stocker@students.fhnw.ch} \\
+& Claudius Jörg & \href{mailto:claudius.joerg@students.fhnw.ch}{claudius.joerg@students.fhnw.ch} \\
+& Martin Moser & \href{mailto:martin.moser1@students.fhnw.ch}{martin.moser1@students.fhnw.ch} \\
+& Reto Freivogel & \href{mailto:reto.freivogel@students.fhnw.ch}{reto.freivogel@students.fhnw.ch} \\
+& Denis Stampfli & \href{mailto:denis.stampfli@students.fhnw.ch}{denis.stampfli@students.fhnw.ch} \\
+& Yohannes Measho & \href{mailto:yohannes.measho@students.fhnw.ch}{yohannes.measho@students.fhnw.ch} \\ \hline
+
+Sitzungsziele & \multicolumn{2}{|l|}{Siehe Traktandenliste}\\ \hline
+
+%Anzahl Traktanden bestimmt die Zahl von multirow**********
+\multirow{4}{*}{Traktandenliste} & \multicolumn{2}{|l|}{Begrüssung}\\
+& \multicolumn{2}{|l|}{Arbeitspakete definieren}\\
+& \multicolumn{2}{|l|}{Technische Anforderungen}\\
+& \multicolumn{2}{|l|}{Softwarestruktur}\\ \hline
+
+Protokollführer & Claudius Jörg & EIT Student \\ \hline
+\end{tabular}\newline
+\end{center}
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Begrüssung}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Der Sitzungsleiter begrüsst alle Teilnehmer und stellt kurz die Traktandenliste vor.
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Arbeitspakete definieren}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+PL stellt ersten Entwurf von PSP vor. Für die Phasengangmethode steht nur das Dokument von P. Niklaus z.V.
+Vorschlag das technische zu unterteilen, weil grosses Thema. Kurze Erklärung des Projektauftrages gemäss Notizen Moser.
+Direkte Übertragung in PSP von Stocker, Grundlage für Recherchearbeit. Stocker erläutert Ablauf bis Abgabe Pflichtenheft.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Jeder schreibt ein Überblick über sein Thema um es dem Rest des Teams vorzutragen.
+
+\begin{description}
+\item[Alex] Analyse Schrittantworten
+\item[Claudius] Rechercheordner auf GI erstellen, Thema: Streckenidentifikation
+\item[Denis] Thema: Amplitudengang
+\item[Martin] Analyse Schrittantworten, Thema: Phasengang
+\item[Reto] Layout Entwurf von GUI, Analyse Schrittantworten, Thema: Phasengangmethode/Frequenzsimulation
+\item[Yohannes] Thema: Mathematische Übertragungsfunktion
+\end{description}
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Technische Anforderungen}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Technische Details wurden in einem ersten Fachinput an Moser, Measho, Freivogel und Stampfli gegeben.Reto hat mit
+MATLAB experimentiert, mit Schrittantworten, die Werte stimmen noch nicht.Nur PI und PID-Regler. Erklärung in Fachinput 2.
+Werte für Programm werden grafisch von Dokument ermittelt.
+Ziel und mathematischer Vorgang werden besprochen.\\
+Ziel: Schrittantwort simulieren von Regler.Der mathematische Weg ist das wichtigste.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Vertiefung in den einzelnen Gebieten gemäss Aufgaben in ?Arbeitspakete definieren?
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Softwarestruktur}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Moser schlägt Dropdown-Menu vor für Faustformeln. Klassendiagramm und Struktur ist zurzeit nicht möglich. Freivogel
+arbeitet laufend an GUI. Erster Entwurf ist auf Blatt. Einfaches Flussdiagramm für Pflichtenheft wünschenswert.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Thema vertagt.
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vfill
+
+\begin{tabbing}
+tab1 \= tab2 \= tab3 \= tab4 \= tab5 \= tab6 \= tab7 \= tab8 \= tab9 \= tab10 \= tab11 \= tab12 \= tab13 \= tab14 \kill
+
+\>\>\> Besprechungsleiter \>\>\>\>\>\>\>\>\>\> Protokollführer\\
+\>\>\> Alexander Stocker \>\>\>\>\>\>\>\>\>\> Claudius Jörg\\
+\>\>\> 25.02.2015 \>\>\>\>\>\>\>\>\>\> 25.02.2015\\
+\end{tabbing}
+
+\end{document}
+

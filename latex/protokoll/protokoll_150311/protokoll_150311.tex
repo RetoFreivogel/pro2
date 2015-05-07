@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{lmodern}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+\usepackage{multirow} 
+\usepackage[headsepline,footsepline]{scrpage2} %[headtopline,headsepline,footsepline,footbotline]
+\pagestyle{scrheadings}
+
+
+\title{%
+  \textsc{Projekt 2}\\[2ex]
+  \textsc{Protokoll}}
+\author{%
+  \textsc{Team1}}
+\date{%
+  \textsc{}}
+
+\clearscrheadfoot
+
+%\tiny
+%\scriptsize
+%\footnotesize 
+%\small 
+%\normalsize 
+%\large 
+%\Large 
+%\LARGE 
+%\huge 
+%\Huge 
+
+\begin{document}
+%Kopfzeile
+\ihead{\includegraphics[scale=1]{fhnw_ht_logo_de}}
+%\chead{Kopfzeile Mitte}
+%Datum anpassen***************************************************************
+\ohead{Protkoll vom 11.03.2015} 
+
+%Fusszeile
+\ifoot{Projekt 2}
+\cfoot{Team 1}
+\ofoot{\pagemark}
+
+%Titel
+%Datum anpassen**************************************************************
+\section*{\textbf{Protokoll zur Sitzung am 11.03.2015}}
+
+%Für normale Schriftgrösse
+\normalsize
+\begin{center}
+\begin{tabular}{|l|l l|}
+\hline
+%Datum, Zeit, Ort anpassen*************
+Datum, Zeit, Ort & \multicolumn{2}{|l|}{11.03.2015, 15:30-16:45 Uhr, FHNW Windisch, 6.2A08}\\ \hline
+Besprechungsleiter & Alexander Stocker & EIT Student / Projektleiter \\ \hline
+
+%Anzahl Anwesende bestimmt die Zahl von multirow**********
+\multirow{6}{*}{Teilnehmer} & Alexander Stocker & EIT Student / Projektleiter \\
+& Claudius Jörg & EIT Student / Projektleiter Stellvertreter \\
+& Martin Moser & EIT Student / Fachspezialist Technik \\
+& Reto Freivogel & EIT Student / Fachspezialist Java \\
+& Denis Stampfli & EIT Student / Java \\
+& Yohannes Measho & EIT Student / Technik \\ \hline
+
+%NICHT VERAENDERN*******************
+\multirow{6}{*}{Verteiler} & Alexander Stocker & \href{mailto:alexander.stocker@students.fhnw.ch}{alexander.stocker@students.fhnw.ch} \\
+& Claudius Jörg & \href{mailto:claudius.joerg@students.fhnw.ch}{claudius.joerg@students.fhnw.ch} \\
+& Martin Moser & \href{mailto:martin.moser1@students.fhnw.ch}{martin.moser1@students.fhnw.ch} \\
+& Reto Freivogel & \href{mailto:reto.freivogel@students.fhnw.ch}{reto.freivogel@students.fhnw.ch} \\
+& Denis Stampfli & \href{mailto:denis.stampfli@students.fhnw.ch}{denis.stampfli@students.fhnw.ch} \\
+& Yohannes Measho & \href{mailto:yohannes.measho@students.fhnw.ch}{yohannes.measho@students.fhnw.ch} \\ \hline
+
+Sitzungsziele & \multicolumn{2}{|l|}{Siehe Traktandenliste}\\ \hline
+
+%Anzahl Traktanden bestimmt die Zahl von multirow**********
+\multirow{4}{*}{Traktandenliste} & \multicolumn{2}{|l|}{Begrüssung}\\
+& \multicolumn{2}{|l|}{Administratives}\\
+& \multicolumn{2}{|l|}{Aktueller Stand}\\
+& \multicolumn{2}{|l|}{Weiteres Vorgehen / Ausblick}\\ \hline
+
+Protokollführer & Claudius Jörg & EIT Student \\ \hline
+\end{tabular}\newline
+\end{center}
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Begrüssung}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Der Sitzungsleiter begrüsst alle Teilnehmer und stellt kurz die Traktandenliste vor.
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Administratives}}%**********
+\subsubsection*{\tiny{DISKUSSION}}
+
+Sitzungseinladungen werden immer auf Groups Inside unter PM ? Einladungen hochgeladen.
+\newline
+Pflichtenheftvorlagen lädt jeder einzeln herunter und speichert diese nach der Bearbeitung dann wieder auf Groups Inside mit seinem Name anstatt der Versionsnummer.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Sitzungseinladungen immer auf Groups Inside vorhanden
+\newline
+Jeder bearbeitet sein Pflichtenheftteil und speichert es mit seinem Namen
+
+%\begin{description}
+%\item[Alex] Analyse Schrittantworten
+%\item[Claudius] Rechercheordner auf GI erstellen, Thema: Streckenidentifikation
+%\item[Denis] Thema: Amplitudengang
+%\item[Martin] Analyse Schrittantworten, Thema: Phasengang
+%\item[Reto] Layout Entwurf von GUI, Analyse Schrittantworten, Thema: Phasengangmethode/Frequenzsimulation
+%\item[Yohannes] Thema: Mathematische Übertragungsfunktion
+%\end{description}
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Aktueller Stand}}%**********
+\subsubsection*{\tiny{DISKUSSION}}
+
+Moser hat eine Übersicht erstellt wie der Vorgang berechnet wir von den Eingabewerten bis zum Resultat, jeweils über die
+Phasengangmethode mit Zwischenschritten und über die Faustformeln.
+\newline
+Im Pflichtenheft gibt es ein Titel ?Mathematische Lösung? und ?Berechnungsmethode?. Der Unterschied liegt bei der ?Math.
+Lös? in der Erklärung der math. Teilschritte. Jedoch soll der Verfasser dieses Abschnitts selber über den Sinn des Unterschie ds
+urteilen.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Jeder Verfasser eines Textes entscheidet selber über sinnvolle Titel und Struktur.
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Weiteres Vorgehen / Ausblick}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Denis soll ein Testkonzept für die Software erarbeiten und das mit Reto besprechen.
+\newline
+Erarbeiteter Vorschlag im Plenum:
+\begin{tabular}{|l|l|}
+\hline
+Eingabewerte & Graphen (Diagramm)\\
+\hline
+Ausgabewerte & Optionen\\
+\hline
+\end{tabular}
+\begin{itemize}
+\item Alte Graphen können gestrichelt im Hintergrund sein
+\item Es werden Kästchen mit Kreuzen gewählt und keine Schaltflächen
+\end{itemize}
+Pflichtenheft soll bis Freitag, 20.03.2015, fertig sein. Ohne Redaktionszeit.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Denis überlegt sich ein Testkonzept für die Software und präsentiert es zuerst Reto.
+\newline
+Jeder verfasst sein Text und ladet sein Pflichtenheft-Teil bis am 20.03.2015 auf Groups Inside
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vfill
+
+\begin{tabbing}
+tab1 \= tab2 \= tab3 \= tab4 \= tab5 \= tab6 \= tab7 \= tab8 \= tab9 \= tab10 \= tab11 \= tab12 \= tab13 \= tab14 \kill
+
+\>\>\> Besprechungsleiter \>\>\>\>\>\>\>\>\>\> Protokollführer\\
+\>\>\> Alexander Stocker \>\>\>\>\>\>\>\>\>\> Claudius Jörg\\
+\>\>\> 11.03.2015 \>\>\>\>\>\>\>\>\>\> 11.03.2015\\
+\end{tabbing}
+
+\end{document}

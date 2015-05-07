@@ -1,0 +1,181 @@
+\documentclass[a4paper]{article}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{lmodern}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+\usepackage{multirow} 
+\usepackage[headsepline,footsepline]{scrpage2} %[headtopline,headsepline,footsepline,footbotline]
+\pagestyle{scrheadings}
+
+
+\title{%
+  \textsc{Projekt 2}\\[2ex]
+  \textsc{Protokoll}}
+\author{%
+  \textsc{Team1}}
+\date{%
+  \textsc{}}
+
+\clearscrheadfoot
+
+%\tiny
+%\scriptsize
+%\footnotesize 
+%\small 
+%\normalsize 
+%\large 
+%\Large 
+%\LARGE 
+%\huge 
+%\Huge 
+
+\begin{document}
+%Kopfzeile
+\ihead{\includegraphics[scale=1]{fhnw_ht_logo_de}}
+%\chead{Kopfzeile Mitte}
+%Datum anpassen***************************************************************
+\ohead{Protkoll vom 14.04.2015} 
+
+%Fusszeile
+\ifoot{Projekt 2}
+\cfoot{Team 1}
+\ofoot{\pagemark}
+
+%Titel
+%Datum anpassen**************************************************************
+\section*{\textbf{Protokoll zur Sitzung am 15.04.2015}}
+
+%Für normale Schriftgrösse
+\normalsize
+\begin{center}
+\begin{tabular}{|l|l l|}
+\hline
+%Datum, Zeit, Ort anpassen*************
+Datum, Zeit, Ort & \multicolumn{2}{|l|}{15.04.2015, 15:30-16:10 Uhr, FHNW Windisch, Gebäude 5, Campus Bar}\\ \hline
+Besprechungsleiter & Alexander Stocker & EIT Student / Projektleiter \\ \hline
+
+%Anzahl Anwesende bestimmt die Zahl von multirow**********
+\multirow{6}{*}{Teilnehmer} & Alexander Stocker & EIT Student / Projektleiter \\
+& Claudius Jörg & EIT Student / Projektleiter Stellvertreter \\
+& Martin Moser & EIT Student / Fachspezialist Technik \\
+& Reto Freivogel & EIT Student / Fachspezialist Java \\
+& Denis Stampfli & EIT Student / Java \\
+& Yohannes Measho & EIT Student / Technik \\ \hline
+
+%NICHT VERAENDERN*******************
+\multirow{6}{*}{Verteiler} & Alexander Stocker & \href{mailto:alexander.stocker@students.fhnw.ch}{alexander.stocker@students.fhnw.ch} \\
+& Claudius Jörg & \href{mailto:claudius.joerg@students.fhnw.ch}{claudius.joerg@students.fhnw.ch} \\
+& Martin Moser & \href{mailto:martin.moser1@students.fhnw.ch}{martin.moser1@students.fhnw.ch} \\
+& Reto Freivogel & \href{mailto:reto.freivogel@students.fhnw.ch}{reto.freivogel@students.fhnw.ch} \\
+& Denis Stampfli & \href{mailto:denis.stampfli@students.fhnw.ch}{denis.stampfli@students.fhnw.ch} \\
+& Yohannes Measho & \href{mailto:yohannes.measho@students.fhnw.ch}{yohannes.measho@students.fhnw.ch} \\ \hline
+
+Sitzungsziele & \multicolumn{2}{|l|}{Siehe Traktandenliste}\\ \hline
+
+%Anzahl Traktanden bestimmt die Zahl von multirow**********
+\multirow{4}{*}{Traktandenliste} & \multicolumn{2}{|l|}{Begrüssung}\\
+& \multicolumn{2}{|l|}{Administratives}\\
+& \multicolumn{2}{|l|}{Aktueller Stand}\\
+& \multicolumn{2}{|l|}{Weiteres Vorgehen / Ausblick}\\ \hline
+
+Protokollführer & Claudius Jörg & EIT Student \\ \hline
+\end{tabular}\newline
+\end{center}
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Begrüssung}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Der Sitzungsleiter begrüsst alle Teilnehmer und stellt kurz die Traktandenliste vor.
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Administratives}}%**********
+\subsubsection*{\tiny{DISKUSSION}}
+
+Stocker spricht Reto an bezüglich Erreichbarkeit.
+\newline
+Reto wird gebeten mindesten einmal pro Tag die Projektgruppe auf neue Nachrichten zu checken.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Aktueller Stand}}%**********
+\subsubsection*{\tiny{DISKUSSION}}
+
+Moser hat Befehl Spline in Matlab erkundet. Der Befehl gibt den Funktionswert von f(x) aus einer Funktion mit 50 definierten
+Punkten.
+\newline
+Reto hat die MathClass von Prof. Gut angeschaut.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+Keine
+
+\noindent\rule{\textwidth}{0.4pt}
+\subsection*{\textbf{Weiteres Vorgehen / Ausblick}}
+\subsubsection*{\tiny{DISKUSSION}}
+
+Stocker will in drei Wochen einen grossen Teil (Details unten) von Matlab in Java übersetzt haben.
+\newline
+Folgende Punkte sind in Java zu übersetzen: Phasengangmethode aufrufen von Java in Matlab, das GUI mit Parameter für
+Reglerstrecke und Ein-/Ausgabe, Faustformeln.
+\newline
+Die Phasengangmethode wird in einer Sitzung gemeinsam besprochen und aufgeteilt übersetzt.
+
+\subsubsection*{\tiny{BESCHLUSS}}
+
+\begin{description}
+\item[Alex]
+\begin{itemize}
+\item Erstellt Sitzungseinladung vom 15.04. und 22.04.15
+\item Schreibt das GUI mit Parameter, Ein- und Ausgabe bis Sonntag, 19.04.15
+\end{itemize}
+\item[Claudius]
+\begin{itemize}
+\item Beteiligt sich an der Übersetzung der Faustformeln.
+\item Erstellt Inhaltsverzeichnis des PMA-Berichts und hilft Yohannes in Latex
+\end{itemize}
+\item[Denis] Schreibt alle Faustformeln nach einer Verständnissitzung mit Reto und Claudius bis Mittwoch, 22.04.15 (Struktur ist
+bestehend auf GitHub)
+\item[Martin]
+\begin{itemize}
+\item Schaut den Befehl Spline in der Bibliothek Math3 nach
+\item Optimiert Matlabfunktionen
+\item Bereitet Sitzung vor für alle. Thema: Phasengangmethode übersetzen. Ziel: alleverstehen sie und können sie schreiben in
+Java. Bis Mittwoch, 22.04.15
+\end{itemize}
+\item[Reto]
+\begin{itemize}
+\item Schreibt den Aufruf der Phasengangmethode in Java
+\item Erstellt To-Do Katalog für Java
+\item Wandelt Klassendiagramm in ein PNG um
+\end{itemize}
+\item[Yohannes] Erstellt Inhaltsverzeichnis für Fachbericht in Latex in Arbeit mit Claudius
+\end{description}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vfill
+
+\begin{tabbing}
+tab1 \= tab2 \= tab3 \= tab4 \= tab5 \= tab6 \= tab7 \= tab8 \= tab9 \= tab10 \= tab11 \= tab12 \= tab13 \= tab14 \kill
+
+\>\>\> Besprechungsleiter \>\>\>\>\>\>\>\>\>\> Protokollführer\\
+\>\>\> Alexander Stocker \>\>\>\>\>\>\>\>\>\> Claudius Jörg\\
+\>\>\> 15.04.2015 \>\>\>\>\>\>\>\>\>\> 15.04.2015\\
+\end{tabbing}
+
+
+%\begin{description}
+%\item[Alex] Analyse Schrittantworten
+%\item[Claudius] Rechercheordner auf GI erstellen, Thema: Streckenidentifikation
+%\item[Denis] Thema: Amplitudengang
+%\item[Martin] Analyse Schrittantworten, Thema: Phasengang
+%\item[Reto] Layout Entwurf von GUI, Analyse Schrittantworten, Thema: Phasengangmethode/Frequenzsimulation
+%\item[Yohannes] Thema: Mathematische Übertragungsfunktion
+%\end{description}
+\end{document}
