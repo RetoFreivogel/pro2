@@ -83,7 +83,7 @@ public class View extends JPanel implements Observer, ActionListener {
 		pn_legend.setBackground(null);
 		pn_Right.add(pn_legend, BorderLayout.SOUTH);
 
-		// ---------------------Status Zeile-------------------------------
+		// ---------------------Status Row-------------------------------
 		JPanel pn_Status = new JPanel();
 		pn_Status.setLayout(new BorderLayout());
 		lblStatus = new JLabel("Status", JLabel.LEFT);

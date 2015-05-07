@@ -4,8 +4,10 @@ import java.util.Observable;
 import java.util.Scanner;
 
 public class RegelStrecke extends Observable implements RegelGlied {
+
 	private double ks, tu, tg;
-	public RegelStrecke(Scanner sc){
+
+	public RegelStrecke(Scanner sc) {
 		sc.skip("ks: ");
 		ks = sc.nextDouble();
 		sc.nextLine();
@@ -16,7 +18,7 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		tg = sc.nextDouble();
 		sc.nextLine();
 	}
-	
+
 	public RegelStrecke(double ks, double tu, double tg) {
 		if (ks < 0)
 			throw new IllegalArgumentException("ks can't be negative");
@@ -98,11 +100,10 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		return true;
 	}
 
-
-	public int getOrdnung(){
+	public int getOrdnung() {
 		return SaniApprox.getOrdnung(tu, tg);
 	}
-	
+
 	@Override
 	public TransferFunction getTranferFunction() {
 		double[] Tcoeffs = SaniApprox.calcSani(tu, tg);
@@ -119,8 +120,7 @@ public class RegelStrecke extends Observable implements RegelGlied {
 
 		nenner = nenner.mul(Tprodukt);
 
-		return new TransferFunction(new Polynom(new double[] { ks }),
-				nenner);
+		return new TransferFunction(new Polynom(new double[] { ks }), nenner);
 	}
 
 	@Override

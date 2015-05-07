@@ -12,7 +12,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import model.Model;
-import model.RegelKreis;
 
 import org.jfree.chart.ChartPanel;
 
@@ -21,17 +20,24 @@ import controller.Controller;
 public class LegendPanel extends JPanel implements Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
 
+	private static final AbstractButton dbKr = null;
+
 	public JPanel pn_legend;
 	public ChartPanel pn_chart;
+	public Model model;
+	public Controller controller;
 
-	public String Kr;
-	public String Tn;
-	public String Tv;
-	public String Tp;
+	
+	public double tf_Kr = Double.parseDouble(dbKr.getText());
 
-	private Model model;
-	private Controller controller;
-	private RegelKreis regelKreis;
+	private AbstractButton dbTn;
+	public double tf_Tn = Double.parseDouble(dbTn.getText());
+
+	private AbstractButton dbTv;
+	public double tf_Tv = Double.parseDouble(dbTv.getText());
+
+	private AbstractButton dbTp;
+	public double tf_Tp = Double.parseDouble(dbTp.getText());
 
 	private JCheckBox ckbx_Graph_1;
 	private JCheckBox ckbx_Graph_2;
@@ -52,9 +58,8 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 		add(pn_legend);
 
 		ckbx_Graph_1 = new JCheckBox();
-		ckbx_Graph_1.setText("Graph 1");
-		ckbx_Graph_1.setSelected(false);
-		// checkbox.setEnabled(false);
+		ckbx_Graph_1.setText(dbKr.getText());
+		ckbx_Graph_1.setSelected(false); // checkbox.setEnabled(false);
 		ckbx_Graph_1.addActionListener(this);
 
 		GridBagConstraints gbc_ckbx_Graph_1 = new GridBagConstraints();
@@ -98,7 +103,7 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 
 		ckbx_Graph_5 = new JCheckBox();
 		ckbx_Graph_5.setText("Graph 5");
-		ckbx_Graph_5.setSelected(false); // checkbox.setEnabled(false);
+		ckbx_Graph_5.setSelected(false);
 		ckbx_Graph_5.addActionListener(this);
 
 		GridBagConstraints gbc_ckbx_Graph_5 = new GridBagConstraints();
@@ -106,6 +111,22 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 		gbc_ckbx_Graph_5.gridx = 0;
 		gbc_ckbx_Graph_5.gridy = 4;
 		pn_legend.add(ckbx_Graph_5, gbc_ckbx_Graph_5);
+
+	}
+
+	public void createCheckbox(JCheckBox checkbox) {
+
+		checkbox = new JCheckBox();
+		checkbox.setText("");
+		checkbox.setSelected(false);
+		checkbox.addActionListener(this);
+
+		GridBagConstraints gbc_checkbox = new GridBagConstraints();
+		gbc_checkbox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_checkbox.gridx = 0;
+		gbc_checkbox.gridy = 0;
+		pn_legend.add(checkbox, gbc_checkbox);
+
 	}
 
 	@Override
@@ -113,7 +134,7 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 
 		if (ckbx_Graph_1.isSelected()) {
 			ckbx_Graph_1.setBackground(Color.BLUE); // (255, 79, 79)
-			pn_legend.setVisible(false);
+
 		} else {
 
 			ckbx_Graph_1.setBackground(null);
@@ -147,7 +168,7 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+
 	}
+
 }

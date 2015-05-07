@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class RegelKreis extends Observable implements RegelGlied, Observer {
-	private RegelStrecke regelstrecke;
+	public RegelStrecke regelstrecke;
 	private AbstractDim dim;
 	private ReglerTopologie topo;
 
