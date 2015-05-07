@@ -1,5 +1,5 @@
 \section{Theoretische Grundlagen}
-Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus einem Regler und einer Regelstrecke. Beispiele einer Regelung sind Heizungen oder Geschwindigkeitsregelungen.\newline 
+Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus einem Regler und einer Regelstrecke. Beispiele einer Regelung sind Raumheizungen, Lötkolben oder Geschwindigkeitsregelungen.\newline 
 
 \begin{figure}[h]
 \centering
@@ -124,7 +124,7 @@ Es gilt also die folgende Beziehung:\newline
 
 Da der Phasengang der Strecke und somit dessen Ableitung gegeben ist, kann durch Auflösen nach $\beta$ nun auch dieser Parameter ermittelt werden. Ergibt sich ein Wert grösser als eins oder imaginär, so wird $\beta$ als eins angenommen.
 
-Die Verstärkung des Reglers wird mit Hilfe des Phasenrands bestimmt. Der Phasenrand ist die Differenz der Streckenphase zu $-180^\circ$. Bei unterschiedlichem Phasenrand ergeben sich unterschiedliche Verstärkungsfaktoren, was auch auf das Überschwingen des Reglers Einfluss hat. Die untenstehende Tabelle zeigt den Zusammenhang zwischen dem gewählten Phasenrands und dem daraus resultierenden Überschwingen der Regelung.\newline
+Die Verstärkung des Reglers wird mit Hilfe des Phasenrands bestimmt. Der Phasenrand ist die Differenz der Streckenphase zu $-180^\circ$. Bei unterschiedlichem Phasenrand ergeben sich unterschiedliche Verstärkungsfaktoren, was auch auf das Überschwingen des Reglers Einfluss hat. Tabelle \ref{phasenrand} zeigt den Zusammenhang zwischen dem gewählten Phasenrand und dem daraus resultierenden Überschwingen der Regelung.\newline
 
 
 \begin{table}[h]
@@ -143,6 +143,8 @@ $51.8^\circ$ & $-128.5^\circ$ & $16.3\%$ \\
 $76.3^\circ$ & $-103.7^\circ$ & $0\%$ \\ 
 \hline
 \end{tabular} 
+\caption{Zusammenhang Phasenrand und Überschwingen}
+\label{phasenrand}
 \renewcommand*{\arraystretch}{1}
 \end{table}
 
@@ -213,55 +215,34 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \begin{table}[h]
 \centering
 \renewcommand*{\arraystretch}{1.7}
-\begin{tabular}{|l|c|c|c|}
+\begin{tabular}{|l|l|c|c|c|}
 \hline 
-\textbf{Regler} & \textbf{$K_R$} & \textbf{$T_n$} & \textbf{$T_v$} \\ 
+\textbf{Formeltyp} & \textbf{Regler} & \textbf{$K_R$} & \textbf{$T_n$} & \textbf{$T_v$} \\ 
 \hline 
-\textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
+ & \textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
+\cline{2-5} 
+\textbf{Ziegler/Nichols}&\textbf{PI} & $\frac{0.9*T_g}{K_sT_u}$ & $3.3*T_u$ &  \\ 
+\cline{2-5} 
+&\textbf{PID} & $\frac{0.9*T_g}{K_sT_u}$ & $2*T_u$ & $0.42*T_t$ \\ 
 \hline 
-\textbf{PI} & $\frac{0.9*T_g}{K_sT_u}$ & $3.3*T_u$ &  \\ 
-\hline 
-\textbf{PID} & $\frac{0.9*T_g}{K_sT_u}$ & $2*T_u$ & $0.42*T_t$ \\ 
-\hline 
-\end{tabular} 
-\renewcommand*{\arraystretch}{1}
-\caption{Ziegler/Nichols}
-\end{table}
 
-\begin{table}[h]
-\centering
-\renewcommand*{\arraystretch}{1.7}
-\begin{tabular}{|l|c|c|c|}
+&\textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
+\cline{2-5} 
+\textbf{Oppelt} &\textbf{PI} & $\frac{0.8*T_g}{K_sT_u}$ & $3*T_u$ &  \\ 
+\cline{2-5} 
+&\textbf{PID} & $\frac{1.2*T_g}{K_sT_u}$ & $2*T_u$ & $0.42*T_t$ \\ 
 \hline 
-\textbf{Regler} & \textbf{$K_R$} & \textbf{$T_n$} & \textbf{$T_v$} \\ 
-\hline 
-\textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
-\hline 
-\textbf{PI} & $\frac{0.8*T_g}{K_sT_u}$ & $3*T_u$ &  \\ 
-\hline 
-\textbf{PID} & $\frac{1.2*T_g}{K_sT_u}$ & $2*T_u$ & $0.42*T_t$ \\ 
-\hline 
-\end{tabular} 
-\renewcommand*{\arraystretch}{1}
-\caption{Oppelt}
-\end{table}
 
-\begin{table}[h]
-\centering
-\renewcommand*{\arraystretch}{1.7}
-\begin{tabular}{|l|c|c|c|}
+&\textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
+\cline{2-5} 
+\textbf{Rosenberg} &\textbf{PI} & $\frac{0.91*T_g}{K_sT_u}$ & $3.3*T_u$ &  \\ 
+\cline{2-5}  
+&\textbf{PID} & $\frac{1.2*T_g}{K_sT_u}$ & $2*T_u$ & $0.44*T_t$ \\ 
 \hline 
-\textbf{Regler} & \textbf{$K_R$} & \textbf{$T_n$} & \textbf{$T_v$} \\ 
-\hline 
-\textbf{P} & $\frac{T_g}{K_sT_u}$ &  &  \\ 
-\hline 
-\textbf{PI} & $\frac{0.91*T_g}{K_sT_u}$ & $3.3*T_u$ &  \\ 
-\hline 
-\textbf{PID} & $\frac{1.2*T_g}{K_sT_u}$ & $2*T_u$ & $0.44*T_t$ \\ 
-\hline 
+
 \end{tabular} 
 \renewcommand*{\arraystretch}{1}
-\caption{Rosenberg}
+\caption{Fausformeln Ziegler/Nichols, Oppelt und Rosenberg}
 \end{table}
 
 \begin{table}
