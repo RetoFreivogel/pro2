@@ -5,6 +5,9 @@ public final class Regler implements RegelGlied {
 	private final double kr, tn, tv, tp;
 
 	public Regler(double kr) {
+		if(kr <= 0){
+			throw new IllegalArgumentException("kr muss positiv sein");
+		}
 		this.topo = ReglerTopologie.P;
 		this.kr = kr;
 		this.tn = Double.NaN;
@@ -13,6 +16,13 @@ public final class Regler implements RegelGlied {
 	}
 	
 	public Regler(double kr, double tn) {
+		if(kr <= 0){
+			throw new IllegalArgumentException("kr muss positiv sein");
+		}
+		if(tn <= 0){
+			throw new IllegalArgumentException("tn muss positiv sein");
+		}
+
 		this.topo = ReglerTopologie.PI;
 		this.kr = kr;
 		this.tn = tn;
@@ -21,6 +31,16 @@ public final class Regler implements RegelGlied {
 	}
 	
 	public Regler(double kr, double tn, double tv) {
+		if(kr <= 0){
+			throw new IllegalArgumentException("kr muss positiv sein");
+		}
+		if(tn <= 0){
+			throw new IllegalArgumentException("tn muss positiv sein");
+		}
+		if(tv <= 0){
+			throw new IllegalArgumentException("tv muss positiv sein");
+		}
+		
 		this.topo = ReglerTopologie.PID;
 		this.kr = kr;
 		this.tn = tn;
@@ -29,9 +49,21 @@ public final class Regler implements RegelGlied {
 	}
 
 	public Regler(double kr, double tn, double tv, double tp) {
+		if(kr <= 0){
+			throw new IllegalArgumentException("kr muss positiv sein");
+		}
+		if(tn <= 0){
+			throw new IllegalArgumentException("tn muss positiv sein");
+		}
+		if(tv <= 0){
+			throw new IllegalArgumentException("tv muss positiv sein");
+		}
+		if(tp <= 0){
+			throw new IllegalArgumentException("tp muss positiv sein");
+		}
 		if(tv < tp){
-			throw new IllegalArgumentException("tv darf nicht kleiner als tp sein!");
-		};
+			throw new IllegalArgumentException("tv darf nicht kleiner als tp sein");
+		}
 		this.topo = ReglerTopologie.PID;
 		this.kr = kr;
 		this.tn = tn;

@@ -20,12 +20,12 @@ public class RegelStrecke extends Observable implements RegelGlied {
 	}
 
 	public RegelStrecke(double ks, double tu, double tg) {
-		if (ks < 0)
-			throw new IllegalArgumentException("ks can't be negative");
-		if (tu < 0)
-			throw new IllegalArgumentException("tu can't be negative");
-		if (tg < 0)
-			throw new IllegalArgumentException("tg can't be negative");
+		if (ks <= 0)
+			throw new IllegalArgumentException("ks muss positiv sein");
+		if (tu <= 0)
+			throw new IllegalArgumentException("tu muss positiv sein");
+		if (tg <= 0)
+			throw new IllegalArgumentException("tg muss positiv sein");
 
 		this.ks = ks;
 		this.tu = tu;

@@ -31,7 +31,7 @@ public class ZellwegerDimTest {
 	public void testPID() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		ZellwegerDim dim = new ZellwegerDim(Math.PI / 4);
-
+		
 		Regler r = dim.calc(rs, ReglerTopologie.PID);
 
 		assertEquals(2.3034, r.getKr(), 0.05);

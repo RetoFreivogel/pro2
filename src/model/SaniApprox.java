@@ -191,7 +191,7 @@ public class SaniApprox {
 		double v = tu / tg;
 		
 		if (v < 0.001) {
-			throw new IllegalArgumentException("tu/tg zu klein");
+			throw new IllegalArgumentException("tu/tg ist zu klein");
 		}else if (v <= 0.103638) {
 			n = 2;
 		} else if (v <= 0.218017) {
@@ -207,7 +207,7 @@ public class SaniApprox {
 		} else if (v <= 0.64173) {
 			n = 8;
 		} else {
-			throw new IllegalArgumentException("tu/tg zu gross");
+			throw new IllegalArgumentException("tu/tg ist zu gross");
 		}
 		
 		return n;

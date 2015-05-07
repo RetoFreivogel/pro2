@@ -75,9 +75,6 @@ public class Controller {
 		case ROSENBERG:
 			kreis.setDim(new RosenbergDim());
 			break;
-		default:
-			view.setStatus("Interner Fehler");
-			break;
 		}
 	}
 
@@ -108,9 +105,9 @@ public class Controller {
 		try {
 			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setKs(ks);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -119,9 +116,9 @@ public class Controller {
 		try {
 			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTu(tu);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -130,9 +127,9 @@ public class Controller {
 		try {
 			modelChanged();
 			model.getRegelkreis().getRegelstrecke().setTg(tg);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -142,9 +139,9 @@ public class Controller {
 			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setKr(kr);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -154,9 +151,9 @@ public class Controller {
 			modelChanged();
 			ZellwegerDim dim = (ZellwegerDim) model.getRegelkreis().getDim();
 			dim.setPhasenrand(phasenrand);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -166,9 +163,9 @@ public class Controller {
 			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTn(tn);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -178,9 +175,9 @@ public class Controller {
 			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTv(tv);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -190,9 +187,9 @@ public class Controller {
 			modelChanged();
 			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
 			dim.setTp(tp);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -202,9 +199,9 @@ public class Controller {
 			modelChanged();
 			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
-			view.setStatus("Bereit");
+			view.clearError();
 		} catch (Exception e) {
-			view.setStatus(e.getMessage());
+			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}

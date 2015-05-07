@@ -14,7 +14,7 @@ public class ZellwegerDim extends AbstractDim {
 		}
 
 		double middle_freq = (low_freq + high_freq) / 2;
-		while (Math.abs(tf.phaseAt(middle_freq) - phase) >= 0.000001) {
+		while (Math.abs(tf.phaseAt(middle_freq) - phase) >= 0.00001) {
 			middle_freq = (low_freq + high_freq) / 2;
 			if (tf.phaseAt(middle_freq) < phase) {
 				high_freq = middle_freq;

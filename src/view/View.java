@@ -86,16 +86,24 @@ public class View extends JPanel implements Observer, ActionListener {
 		// ---------------------Status Row-------------------------------
 		JPanel pn_Status = new JPanel();
 		pn_Status.setLayout(new BorderLayout());
-		lblStatus = new JLabel("Status", JLabel.LEFT);
+		lblStatus = new JLabel("", JLabel.LEFT);
 		pn_Status.add(lblStatus, BorderLayout.WEST);
 		add(pn_Status, BorderLayout.SOUTH);
 
 		model.addObserver(this);
 	}
 
-	public void setStatus(String message) {
+	public void displayError(String message) {
 		lblStatus.setText(message);
+		lblStatus.setOpaque(true);
+		lblStatus.setBackground(new Color(240, 120, 120));
 	}
+	
+	public void clearError() {
+		lblStatus.setText("");
+		lblStatus.setBackground(new Color(240, 240, 240));
+	}
+
 
 	@Override
 	public void update(Observable o, Object arg) {

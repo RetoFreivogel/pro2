@@ -32,12 +32,40 @@ public class SchrittAntwort {
 	}
 
 	public double getYend() {
-		return getY(Double.MAX_VALUE);
+		return constant;
 	}
 
-	public double getYmax(double delta) {
-		return getY(Double.MAX_VALUE);
+	public double getTymax() {
+		//schrittgrösse für die Suche der Anfangswerte
+		double tstep = getTaus(0.001) / 100;
+		
+		//Suche nach Anfangswerten
+		double tmin = 0;
+		double tmax = tstep;
+		while(getY(tmax) < getY(tmax + tstep)){
+			tmin = tmax;
+			tmax += tstep;
+		}
+		tmax += tstep;
+		
+		//Golden Section Search (von Wikipedia)
+		final double gr = 0.618; //Golden Ratio
+		for(int i = 0; i < 100; i++){
+			double t1 = tmax - gr*(tmax-tmin);
+			double t2 = tmin + gr*(tmax-tmin);
+			if(getY(t1)<getY(t2)){
+				tmin = t1;
+			}else{
+				tmax = t2;
+			}
+		}
+		
+		return (tmin + tmax)/2;
 	}
+	
+	public double getYmax() {
+		return getY(getTymax());
+	}	
 	
 	public double getTaus(double delta) {
 		if(delta > 1 || delta <= 0){
