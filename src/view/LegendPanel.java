@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
@@ -20,24 +19,11 @@ import controller.Controller;
 public class LegendPanel extends JPanel implements Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
 
-	private static final AbstractButton dbKr = null;
 
 	public JPanel pn_legend;
 	public ChartPanel pn_chart;
 	public Model model;
 	public Controller controller;
-
-	
-	public double tf_Kr = Double.parseDouble(dbKr.getText());
-
-	private AbstractButton dbTn;
-	public double tf_Tn = Double.parseDouble(dbTn.getText());
-
-	private AbstractButton dbTv;
-	public double tf_Tv = Double.parseDouble(dbTv.getText());
-
-	private AbstractButton dbTp;
-	public double tf_Tp = Double.parseDouble(dbTp.getText());
 
 	private JCheckBox ckbx_Graph_1;
 	private JCheckBox ckbx_Graph_2;
@@ -58,7 +44,7 @@ public class LegendPanel extends JPanel implements Observer, ActionListener {
 		add(pn_legend);
 
 		ckbx_Graph_1 = new JCheckBox();
-		ckbx_Graph_1.setText(dbKr.getText());
+		ckbx_Graph_1.setText("Graph 1");
 		ckbx_Graph_1.setSelected(false); // checkbox.setEnabled(false);
 		ckbx_Graph_1.addActionListener(this);
 
