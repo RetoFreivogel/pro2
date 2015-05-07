@@ -1,7 +1,7 @@
 \documentclass{fhnwreport}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usepackage{amsmath}
@@ -9,6 +9,7 @@
 \usepackage[final]{pdfpages}
 \usepackage{graphicx}
 \usepackage{textcomp}
+\usepackage{multirow}
 
 \title{%
   \textsc{Projekt 2}\\[2ex]
@@ -30,7 +31,7 @@ Auftraggeber:  \>\>\>  Peter Niklaus \\[2ex]
 Betreuer:  \>\>\>  Pascal Buchschacher, Anita Gertiser \\[2ex]
 Experten:  \>\>\>  Peter Niklaus, Richard Gut \\[2ex]
 Team:  \>\>\> Alexander Stocker \\ 
-\>\>\> Claudius Jörg \\
+\>\>\> Claudius J"org \\
 \>\>\> Denis Stampfli \\
 \>\>\> Martin Moser \\
 \>\>\> Reto Freivogel \\
