@@ -1,36 +1,36 @@
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Einleitung}{4}{section.1}
 \contentsline {section}{\numberline {2}Theoretische Grundlagen}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Streckenanalyse}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Phasengangmethode}{5}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Grundwissen}{6}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Ablauf der Phasengangmethode}{7}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Dimensionierung mit Faustformeln}{8}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}\~A\IeC {\oe }bertragungsfunktion der Regler}{8}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{8}{subsection.2.5}
-\contentsline {section}{\numberline {3}Java Software}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{9}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{9}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Klassen}{9}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{9}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{9}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{9}{subsubsection.3.4.3}
-\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{9}{subsubsection.3.4.4}
-\contentsline {section}{\numberline {4}Test Matlabs}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Schrittantwort}{10}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}\~A\IeC {\oe }bertragungsfunktion}{10}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Wendetangent}{10}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Dimensionierung mit Faustformeln}{10}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Dimensionierung mit Phasengangmethode}{10}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Amplitudengang der Strecke}{10}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Phasengang der Strecke}{10}{subsubsection.4.3.2}
-\contentsline {section}{\numberline {5}Schlusswort}{11}{section.5}
-\contentsline {subsection}{\numberline {5.1}Schrittantwort}{11}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}\~A\IeC {\oe }bertragungsfunktion}{11}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}Wendetangent}{11}{subsubsection.5.1.2}
-\contentsline {subsection}{\numberline {5.2}Dimensionierung mit Faustformeln}{11}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Dimensionierung mit Phasengangmethode}{11}{subsection.5.3}
-\contentsline {subsubsection}{\numberline {5.3.1}Amplitudengang der Strecke}{11}{subsubsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.2}Phasengang der Strecke}{11}{subsubsection.5.3.2}
-\contentsline {section}{\numberline {6}Literaturvezeichnis}{12}{section.6}
+\contentsline {subsection}{\numberline {2.1}Streckenanalyse}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Phasengangmethode}{7}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Grundwissen}{7}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Ablauf der Phasengangmethode}{10}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}\~A\IeC {\oe }bertragungsfunktion der Regler}{11}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Dimensionierung mit Faustformeln}{12}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{13}{subsection.2.5}
+\contentsline {section}{\numberline {3}Java Software}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{14}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{14}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Klassen}{14}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{14}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{14}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{14}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{14}{subsubsection.3.4.4}
+\contentsline {section}{\numberline {4}Test Matlabs}{15}{section.4}
+\contentsline {subsection}{\numberline {4.1}Schrittantwort}{15}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}\~A\IeC {\oe }bertragungsfunktion}{15}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Wendetangent}{15}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Dimensionierung mit Faustformeln}{15}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Dimensionierung mit Phasengangmethode}{15}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Amplitudengang der Strecke}{15}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Phasengang der Strecke}{15}{subsubsection.4.3.2}
+\contentsline {section}{\numberline {5}Schlusswort}{16}{section.5}
+\contentsline {subsection}{\numberline {5.1}Schrittantwort}{16}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}\~A\IeC {\oe }bertragungsfunktion}{16}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Wendetangent}{16}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Dimensionierung mit Faustformeln}{16}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Dimensionierung mit Phasengangmethode}{16}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Amplitudengang der Strecke}{16}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Phasengang der Strecke}{16}{subsubsection.5.3.2}
+\contentsline {section}{\numberline {6}Literaturvezeichnis}{17}{section.6}
