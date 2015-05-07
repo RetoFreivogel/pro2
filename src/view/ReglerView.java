@@ -76,9 +76,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp = new JFormattedTextField(format);
 		tf_Tp.addPropertyChangeListener("value", this);
 
+		update(null, null);
 		init();
 		kreis.addObserver(this);
-		update(null, null);
 		eventsEnabled = true;
 	}
 

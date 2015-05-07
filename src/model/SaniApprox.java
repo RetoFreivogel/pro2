@@ -1,10 +1,6 @@
 package model;
 
-import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
-import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-
 public class SaniApprox {
-	private static final SplineInterpolator interpolator = new SplineInterpolator();
 	private static final double[][] T_Tg = {
 			{ 9.9925000e-01, 9.2210509e-01, 8.7273785e-01, 8.3346151e-01,
 					8.0034196e-01, 7.7154203e-01, 7.4599593e-01, 7.2301817e-01,
@@ -241,7 +237,16 @@ public class SaniApprox {
 	}
 
 	private static final double spline(double[] x, double[] y, double v) {
-		PolynomialSplineFunction f = interpolator.interpolate(x, y);
-		return f.value(v);
+		int n = x.length;
+		double[] b = new double[n], c = new double[n], d = new double[n];
+		SplineNAK.cubic_nak(n, x, y, b, c, d);	
+		return SplineNAK.spline_eval(n, x, y, b, c, d, v);
+		
+		//final SplineInterpolator interp = new SplineInterpolator();
+		//PolynomialSplineFunction f = interp.interpolate(x, y);
+		//return f.value(v);
 	}
 }
+
+
+
