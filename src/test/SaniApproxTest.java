@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import util.Matlab;
@@ -36,7 +35,6 @@ public class SaniApproxTest {
 		assertArrayEquals(Tcoeff_ref, Tcoeff, 0.001);
 	}
 	
-	@Ignore
 	@Test
 	public void testCalcSani3(){
 		Matlab.setMocked(false);		
