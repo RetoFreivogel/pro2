@@ -51,18 +51,27 @@ public class RegelStrecke extends Observable implements RegelGlied {
 	}
 
 	public void setKs(double ks) {
+		if (ks <= 0)
+			throw new IllegalArgumentException("ks muss positiv sein");
+
 		this.ks = ks;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTu(double tu) {
+		if (tu <= 0)
+			throw new IllegalArgumentException("tu muss positiv sein");
+
 		this.tu = tu;
 		setChanged();
 		notifyObservers();
 	}
 
 	public void setTg(double tg) {
+		if (tg <= 0)
+			throw new IllegalArgumentException("tg muss positiv sein");
+
 		this.tg = tg;
 		setChanged();
 		notifyObservers();
@@ -122,7 +131,7 @@ public class RegelStrecke extends Observable implements RegelGlied {
 
 		return new TransferFunction(new Polynom(new double[] { ks }), nenner);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\n";
