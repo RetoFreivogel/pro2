@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import model.Model;
-import util.Matlab;
 import view.View;
 
 public class PIDRechner extends JFrame {
@@ -35,7 +34,6 @@ public class PIDRechner extends JFrame {
 					@Override
 					public void windowClosing(WindowEvent e) {
 						super.windowClosing(e);
-						Matlab.closeProxy();
 					}
 				});
 				rechner.init();
