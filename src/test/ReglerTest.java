@@ -7,14 +7,6 @@ import org.junit.Test;
 import model.Regler;
 
 public class ReglerTest {
-
-	@Test
-	public void copyConstructorMakesAnEqualRegler() {
-		Regler regler = new Regler(1.0, 0.5, 0.0);
-		Regler reglercopy = new Regler(regler);
-		assertNotSame(regler, reglercopy);
-		assertEquals(regler, reglercopy);
-	}
 	
 	@Test
 	public void testEquals(){
@@ -28,13 +20,4 @@ public class ReglerTest {
 		assertNotEquals(regler, new Regler(1.0, 0.5, 1.0));
 		assertEquals(regler, new Regler(1.0, 0.5, 0.0));
 	}
-	
-	@Test
-	public void testHash(){
-		Regler regler = new Regler(1.0, 0.5, 0.0);
-		Regler reglercopy = new Regler(regler);
-		
-		assertEquals(regler.hashCode(), reglercopy.hashCode());
-	}
-
 }

@@ -19,13 +19,6 @@ public class ManuellDim extends AbstractDim {
 		tp = sc.nextDouble();
 
 	}
-
-	public ManuellDim(double kr, double tn, double tv) {
-		this.kr = kr;
-		this.tn = tn;
-		this.tv = tv;
-		this.tp = tv / 100;
-	}
 	
 	public ManuellDim(double kr, double tn, double tv, double tp) {
 		this.kr = kr;

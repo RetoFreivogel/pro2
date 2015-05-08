@@ -228,12 +228,4 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			eventsEnabled = true;
 		}
 	}
-
-	public void setReglerkreis(RegelKreis regelkreis) {
-		this.regelkreis.deleteObserver(this);
-		this.regelkreis = regelkreis;
-		this.regelkreis.addObserver(this);
-		update(null, null);
-	}
-
 }

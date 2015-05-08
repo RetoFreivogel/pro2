@@ -133,11 +133,5 @@ public final class Polynom {
 		if (!Arrays.equals(coeff, other.coeff))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Polynom [coeff=" + Arrays.toString(coeff) + "]";
-	}
-	
+	}	
 }

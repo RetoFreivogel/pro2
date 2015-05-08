@@ -11,7 +11,7 @@ public class ManuellDimTest {
 
 	@Test
 	public void testGets(){
-		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
+		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0, 0.03);
 		ManuellDim unmodified_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		
 		assertEquals(1.0, dim.getKr(), 0);
@@ -23,7 +23,7 @@ public class ManuellDimTest {
 	
 	@Test
 	public void testCalc() {
-		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
+		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0, 0.03);
 		Regler regler_ref = new Regler(1.0, 2.0, 3.0);
 		Regler regler = dim.calc(null, ReglerTopologie.PID);
 		assertEquals(regler_ref, regler);
@@ -43,7 +43,7 @@ public class ManuellDimTest {
 
 	@Test
 	public void testEquals(){
-		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
+		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0, 0.03);
 		
 		assertEquals(dim, dim);
 		assertNotEquals(dim, 1.0);
@@ -52,7 +52,7 @@ public class ManuellDimTest {
 	
 	@Test
 	public void testMakeCopy() {
-		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
+		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0, 0.03);
 		ManuellDim copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		assertEquals(dim, copy_dim);
 		
@@ -71,7 +71,7 @@ public class ManuellDimTest {
 	
 	@Test
 	public void testHash(){
-		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0);
+		ManuellDim dim = new ManuellDim(1.0, 2.0, 3.0, 0.03);
 		ManuellDim copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
 		
 		assertEquals(dim.hashCode(), copy_dim.hashCode());

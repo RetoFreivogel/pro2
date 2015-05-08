@@ -2,8 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
@@ -13,7 +11,7 @@ import model.Model;
 
 import controller.Controller;
 
-public class View extends JPanel implements ActionListener {
+public class View extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	private SidebarPanel sidebarPanel;
@@ -82,11 +80,5 @@ public class View extends JPanel implements ActionListener {
 	public void setModel(Model model) {
 		this.model = model;
 		sidebarPanel.setModel(model);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }

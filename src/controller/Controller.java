@@ -335,9 +335,4 @@ public class Controller {
 	public void simulation() {
 
 	}
-
-	public String setString(String[] str) {
-
-		return null;
-	}
 }

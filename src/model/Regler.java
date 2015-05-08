@@ -71,14 +71,6 @@ public final class Regler implements RegelGlied {
 		this.tp = tp;
 	}
 
-	public Regler(Regler other) {
-		topo = other.getTopo();
-		kr = other.getKr();
-		tn = other.getTn();
-		tv = other.getTv();
-		tp = other.getTp();
-	}
-
 	public ReglerTopologie getTopo() {
 		return topo;
 	}

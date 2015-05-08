@@ -99,11 +99,4 @@ public class TransferFunction {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "TransferFunction [zaehler=" + zaehler + ", nenner=" + nenner
-				+ "]";
-	}
-
 }
