@@ -8,6 +8,7 @@
 \contentsline {subsection}{\numberline {2.3}\IeC {\"U}bertragungsfunktion der Regler}{10}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Dimensionierung mit Faustformeln}{11}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{12}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Optimierungsm\IeC {\"o}glichkeiten}{12}{subsection.2.6}
 \contentsline {section}{\numberline {3}Java Software}{13}{section.3}
 \contentsline {subsection}{\numberline {3.1}Klassendiagramm}{13}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{13}{subsection.3.2}

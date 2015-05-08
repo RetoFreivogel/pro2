@@ -7,6 +7,7 @@ Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus ein
 \caption{Regelung bestehend aus Regler und Regelstrecke}
 \label{regelstrecke}
 \end{figure}
+\todo{Quelle einfügen}
 %Quelle: http://rn-wissen.de/wiki/index.php/Datei:Regelkreis4.png [Abrufdatum 6.5.15]
 
 
@@ -21,18 +22,16 @@ Die Kurve in Abbildung \ref{schrittantwort} stellt die Schrittantwort einer Rege
 \caption{Schrittantwort einer Regelstrecke}
 \label{schrittantwort}
 \end{figure}
+\todo{Quelle einfügen}
 %Quelle: http://de.wikipedia.org/wiki/Faustformelverfahren_%28Automatisierungstechnik%29#/media/File:Tutg.svg [Abrufdatum 6.5.15]
 
 Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte zu berechnen. Der PI-Regler hat die Kennwerte Nachstellzeit ($T_n$) und Reglerverstärkung ($K_R$), beim PID-Regler kommt noch die Vorhaltezeit ($T_v$) hinzu.
 
 
-
 \subsection{Streckenanalyse}
-Die Streckenidentifikation wird mittels der Sani-Methode durchgeführt. Aus dem Verhältnis von $T_u$ und $T_g$ werden die Ordnung der Strecke und die dazugehörigen Zeitkonstanten berechnet, die benötigt werden, um die Übertragungsfunktion der Regelstrecke darzustellen. \newline 
-
-
+Aus den gegebenen Kennwerten der Schrittantwort soll nun die Übertragungsfunktion der Strecke berechnet werden, das heisst die Strecke muss identifiziert werden. Die Streckenidentifikation, wird mittels der Sani-Methode durchgeführt. Aus dem Verhältnis von $T_u$ und $T_g$ werden die Ordnung der Strecke ($n$) und die dazugehörigen Zeitkonstanten ($T_1, T_2,..., T_n$) berechnet, die benötigt werden, um die Übertragungsfunktion der Regelstrecke darzustellen. Die Übertragungsfunktion der Strecke ist gemäss Formel \ref{ufunkstr} definiert: \newline
+\todo{Quelle einfügen}
 % Quelle Skript "Mathematisches Labor mlab", Soenicki/Bürgi
-Die Übertragungsfunktion der Strecke ist gemäss Formel \ref{ufunkstr} definiert:
 
 \begin{align}
 G_S(s)=\frac{K_S}{(1+sT_1)(1+sT_2)...(1+sT_n)}
@@ -45,18 +44,21 @@ Bei der Phasengangmethode handelt es sich eigentlich um eine grafische Dimension
 
 
 \subsubsection{Grundlagen}
-Durch Ersetzen von $s$ durch $j\omega$ in der Übertragungsfunktion der Strecke erhält man den Frequenzgang. Um die Phasengangmethode anwenden zu können, wird der Amplituden- und Phasengang der Regelstrecke benötigt.
+Durch Ersetzen von $s$ durch $j\omega$ in der Übertragungsfunktion der Strecke erhält man den Frequenzgang. Damit die Phasengangmethode angewendet werden kann, wird der Amplituden- sowie der Phasengang der Strecke benötigt (Formeln \ref{agangform}, \ref{phagangform1} und \ref{phagangform2}).
 % Vielleicht noch ein Satz zur Definition a-gang ph-gang, wie man auf die Formeln kommt
 
 
 \begin{align}
 A_S(\omega)=abs(G_S(j\omega))
+\label{agangform}
 \end{align}
 \begin{align}
 \varphi_S(\omega)=arg(G_S(j\omega))
+\label{phagangform1}
 \end{align}
 \begin{align}
 \varphi_S(\omega)=-arctan(\omega T_1)-arctan(\omega T_2)...-arctan(\omega T_n)
+\label{phagangform2}
 \end{align}\newline
 
 Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenhang mit dessen Amplitudengang. In den Abbildungen \ref{agangpi} und \ref{agangpid} sind die Amplitudengänge eines PI- und eines PID-Reglers dargestellt, wobei die x-Achsen logarithmisch skaliert sind. Wie die Kreisfrequenzen an den Knickstellen mit den Reglerparametern zusammenhängen sollen, ist in Tabelle \ref{amplitudengaenge} ersichtlich.\newline
@@ -67,6 +69,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung)}
 \label{agangpi}
 \end{figure}
+\todo{Quelle einfügen}
 %Quelle: Zellwegerskript
 
 \begin{figure}[h]
@@ -75,6 +78,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung)}
 \label{agangpid}
 \end{figure}
+\todo{Quelle einfügen}
 %Quelle: Zellwegerskript
 
 \begin{table}[h]
@@ -93,7 +97,7 @@ $\omega_{PI}=\frac{1}{T_n}$ & $\omega_{nk}=\frac{1}{T_{nk}}=\beta*\omega_{PID}$ 
 \end{table}
 
 \newpage
-Diese Knickkreisfrequenzen werden mithilfe des Phasengangs der Strecke berechnet. Je nach dem welcher Reglertyp dimensioniert werden soll, müssen andere Punkte im Phasengang gesucht werden (Tabelle \ref{phgangpunkte}).\newline
+Diese Knickkreisfrequenzen ($\omega_{PI}$ in Abb. \ref{agangpi} und $\omega_{PID}$ ind Abb. \ref{agangpid}) werden mithilfe des Phasengangs der Strecke berechnet. Je nachdem welcher Reglertyp dimensioniert werden soll, müssen andere Punkte im Phasengang gesucht werden (Tabelle \ref{phgangpunkte}).\newline
 
 \begin{table}[h]
 \centering
@@ -114,9 +118,7 @@ Diese Knickkreisfrequenzen werden mithilfe des Phasengangs der Strecke berechnet
 
 \newpage
 Der PI-Regler kann anhand dieser Dimensionierungskriterien bereits dimensioniert werden. Beim PID-Regler muss allerdings noch ein Parameter mehr bestimmt werden. Es handelt sich um den Faktor $\beta$ welcher benötigt wird um die Knickkreisfrequenzen des PID-Reglers berechnen zu können. Dieser Faktor $\beta$ hängt mit der Tangentensteigung des Phasengangs der offenen Regelung im Punkt $-135^\circ$ zusammen.\newline
-Ein Dimensionierungskriterium der Phasengangmethode lautet, dass die Steigung des Phasengangs der gesamten, offenen Regelung bei der Knickkreisfrequenz $\frac{-0.5}{\omega_{PID}}$ betragen soll. Dies hat damit zu tun, dass eine Steigung von -20dB/Dekade angestrebt wird. Die genaue Herleitung von $\beta$ befindet sich im Anhang. \newline
-
-Es gilt also die folgende Beziehung:\newline
+Ein Dimensionierungskriterium der Phasengangmethode lautet, dass die Steigung des Phasengangs der gesamten, offenen Regelung bei der Knickkreisfrequenz $\frac{-0.5}{\omega_{PID}}$ betragen soll. Dies hat damit zu tun, dass eine Steigung von -20dB/Dekade angestrebt wird. Die genaue Herleitung von $\beta$ befindet sich im Anhang. Es gilt die folgende Beziehung:\newline
 
 \begin{align}
 \frac{2\beta}{1+\beta^2} + \omega_{PID}\frac{d\varphi_{Strecke(\omega_{PID})}}{d\omega} = -0.5
@@ -148,14 +150,16 @@ $76.3^\circ$ & $-103.7^\circ$ & $0\%$ \\
 \renewcommand*{\arraystretch}{1}
 \end{table}
 
-\newpage
-Zur Berechnung der Verstärkung werden nun die Amplitudengänge der Strecke, sowie des Reglers benötigt. Die Werte dieser beiden Amplitudengänge an der Stelle wo der Phasenrand abgetragen wurde, werden miteinander multipliziert. Gemäss Phasengangmethode soll die Verstärkung an dieser Stelle eins sein. Dies führt zur Formel \ref{formelkr}:\newline
+
+Zur Berechnung der Verstärkung werden nun die Amplitudengänge der Strecke, sowie des Reglers benötigt. Dazu wird im Phasengang der offenen Regelung $\varphi_S$ der Phasenrand abgetragen. Dies liefert die Kreisfrequenz $\omega_D$. Die beiden Amplituden bei der Kreisfrequenz $\omega_D$, werden miteinander multipliziert. Gemäss Phasengangmethode soll die Verstärkung an dieser Stelle eins sein. Dies führt zur Formel \ref{formelkr}. $Go(\omega_D)$ entspricht dem Amplitudengang der offenen Regelung an der Stelle $\omega_D$. \newline
+\todo{Quelle einfügen}
+%Zellweger Skript
 \begin{align}
 K_R=\frac{1}{\vert{Go(\omega_D)}\vert{}}
 \label{formelkr}
 \end{align}
 
-
+\newpage
 \subsubsection{Ablauf der Phasengangmethode}
 Die Phasengangmethode der Strecke $\varphi_S$ wird nach dem folgenden Ablauf durchgeführt. Die Punkte 2. und 3. werden nur für PID-Regler benötigt. Eine numerische Beispielrechnung für einen PI-Regler ist im Anhang angefügt.
 \begin{enumerate}
@@ -168,7 +172,8 @@ Die Phasengangmethode der Strecke $\varphi_S$ wird nach dem folgenden Ablauf dur
 \end{enumerate}
 
 Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \newline
-
+\todo{Quelle einfügen}
+%Zellweger Skript
 
 \begin{align}
 K_R=K_{rk}\left(1+\frac{T_{vk}}{T_{nk}}-\frac{T_p}{T_{nk}}\right)
@@ -207,6 +212,8 @@ PID-Regler reglerkonform & $G_R(s)=K_R\left(1+\frac{1}{sT_n}+\frac{sT_v}{1+sT_p}
 \caption{Übertragungsfunktionen Regler}
 \label{ufunkregler}
 \end{table}
+\todo{Quelle einfügen}
+% Zellweger Skript "Regelkreise und Regelungen"
 
 \newpage
 \subsection{Dimensionierung mit Faustformeln}
@@ -244,6 +251,8 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \renewcommand*{\arraystretch}{1}
 \caption{Fausformeln Ziegler/Nichols, Oppelt und Rosenberg}
 \end{table}
+\todo{Quellen einfügen}
+% Boulent Bate Skript "Spezialgebiete der Steuer- und Regelungstechnik"
 
 \begin{table}
 \centering
@@ -268,10 +277,13 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \renewcommand*{\arraystretch}{1}
 \caption{Chien/Hrones und Reswick} 
 \end{table}
+\todo{Quelle einfügen}
+% Fachkundebuch Elektrotechnik
 
 
 \newpage
 \subsection{Schrittantwort der Regelung}
+\todo{Kapitel schreiben}
 - Übertragungsfunktion Regelung (Berechnung aus üfunk regler und üfunk regelung)\newline
 - Berechnung durch Residuen\newline
 
@@ -281,3 +293,8 @@ Um die Schrittantwort der geschlossenen Regelung berechnen zu können, wird die 
 G(s)=\frac{G_R(s)G_S(s)}{1+G_R(s)G_S(s)}
 \label{ufunkregelung}
 \end{align}
+
+\subsection{Optimierungsmöglichkeiten}
+\todo{gesamtes Kapitel schreiben}
+- über maximum der schrittantwort und phasenrand kann überschwingen genau berechnet werden\\
+- mit gesuchtem punkt im phasengang geschindigkeit der schrittantwort optimieren
