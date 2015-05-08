@@ -51,13 +51,7 @@ Studiengang: \>\>\> Elektro- und Informationstechnik
 
 \include{theoretischegrundlagen}
 
-%\include{reglertyp}
-
-%\include{loesungskonzept}
-
 \include{javasoftware}
-
-\include{testMatlab}
 
 \include{schlusswort}
 

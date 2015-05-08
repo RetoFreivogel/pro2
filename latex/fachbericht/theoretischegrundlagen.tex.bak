@@ -65,7 +65,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{agangpi.png}
-\caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung) \cite{zellweger1}}
+\caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpi}
 \end{figure}
 \todo{Quelle einfügen}
@@ -74,7 +74,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{agangpid.png}
-\caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung) \cite{zellweger1}}
+\caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpid}
 \end{figure}
 \todo{Quelle einfügen}
@@ -170,7 +170,7 @@ Die Phasengangmethode der Strecke $\varphi_S$ wird nach dem folgenden Ablauf dur
 \item Die Amplitudengänge der Strecke sowie des Reglers bei $\omega_D$ werden miteinander multipliziert. Damit wird die Reglerverstärkung $K_R$ festgelegt. 
 \end{enumerate}
 
-Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \cite{zellweger1}\newline
+Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \cite{zellwegerpha}\newline
 \todo{Quelle einfügen}
 %Zellweger Skript
 
@@ -208,7 +208,7 @@ PID-Regler reglerkonform & $G_R(s)=K_R\left(1+\frac{1}{sT_n}+\frac{sT_v}{1+sT_p}
 \hline 
 \end{tabular} 
 \renewcommand*{\arraystretch}{1}
-\caption{Übertragungsfunktionen Regler \cite{zellweger2}}
+\caption{Übertragungsfunktionen Regler \cite{zellwegerregel}}
 \label{ufunkregler}
 \end{table}
 \todo{Quelle einfügen}
@@ -274,10 +274,10 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \hline 
 \end{tabular}
 \renewcommand*{\arraystretch}{1}
-\caption{Chien/Hrones und Reswick} 
+\caption{Chien/Hrones und Reswick \cite{bate}} 
 \end{table}
 \todo{Quelle einfügen}
-% Fachkundebuch Elektrotechnik
+% Fachkundebuch bate
 
 
 \newpage

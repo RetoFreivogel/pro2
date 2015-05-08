@@ -4,10 +4,10 @@ Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus ein
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{Regelstrecke.png}
-\caption{Regelung bestehend aus Regler und Regelstrecke}
+\caption{Regelung bestehend aus Regler und Regelstrecke \cite{rnwissen}}
 \label{regelstrecke}
 \end{figure}
-\todo{Quelle einfügen}
+\todo{Quelle richtig einfügen (URL...)}
 %Quelle: http://rn-wissen.de/wiki/index.php/Datei:Regelkreis4.png [Abrufdatum 6.5.15]
 
 
@@ -19,17 +19,17 @@ Die Kurve in Abbildung \ref{schrittantwort} stellt die Schrittantwort einer Rege
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{Schrittantwort.png}
-\caption{Schrittantwort einer Regelstrecke}
+\caption{Schrittantwort einer Regelstrecke \cite{solenicki}}
 \label{schrittantwort}
 \end{figure}
-\todo{Quelle einfügen}
-%Quelle: http://de.wikipedia.org/wiki/Faustformelverfahren_%28Automatisierungstechnik%29#/media/File:Tutg.svg [Abrufdatum 6.5.15]
+\todo{Quellenangabe falsch (Gross- und Kleinschreibung!!)}
+%Quelle: Skript Mathematisches Labor mlab Bürgi Solenicki
 
 Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte zu berechnen. Der PI-Regler hat die Kennwerte Nachstellzeit ($T_n$) und Reglerverstärkung ($K_R$), beim PID-Regler kommt noch die Vorhaltezeit ($T_v$) hinzu.
 
 
 \subsection{Streckenanalyse}
-Aus den gegebenen Kennwerten der Schrittantwort soll nun die Übertragungsfunktion der Strecke berechnet werden, das heisst die Strecke muss identifiziert werden. Die Streckenidentifikation, wird mittels der Sani-Methode durchgeführt. Aus dem Verhältnis von $T_u$ und $T_g$ werden die Ordnung der Strecke ($n$) und die dazugehörigen Zeitkonstanten ($T_1, T_2,..., T_n$) berechnet, die benötigt werden, um die Übertragungsfunktion der Regelstrecke darzustellen. Die Übertragungsfunktion der Strecke ist gemäss Formel \ref{ufunkstr} definiert: \newline
+Aus den gegebenen Kennwerten der Schrittantwort soll nun die Übertragungsfunktion der Strecke berechnet werden, das heisst die Strecke muss identifiziert werden. Die Streckenidentifikation, wird mittels der Sani-Methode durchgeführt. Aus dem Verhältnis von $T_u$ und $T_g$ werden die Ordnung der Strecke ($n$) und die dazugehörigen Zeitkonstanten ($T_1, T_2,..., T_n$) berechnet, die benötigt werden, um die Übertragungsfunktion der Regelstrecke darzustellen. Die Übertragungsfunktion der Strecke ist gemäss Formel \ref{ufunkstr} definiert: \cite{solenicki} \newline
 \todo{Quelle einfügen}
 % Quelle Skript "Mathematisches Labor mlab", Soenicki/Bürgi
 
@@ -45,7 +45,6 @@ Bei der Phasengangmethode handelt es sich eigentlich um eine grafische Dimension
 
 \subsubsection{Grundlagen}
 Durch Ersetzen von $s$ durch $j\omega$ in der Übertragungsfunktion der Strecke erhält man den Frequenzgang. Damit die Phasengangmethode angewendet werden kann, wird der Amplituden- sowie der Phasengang der Strecke benötigt (Formeln \ref{agangform}, \ref{phagangform1} und \ref{phagangform2}).
-% Vielleicht noch ein Satz zur Definition a-gang ph-gang, wie man auf die Formeln kommt
 
 
 \begin{align}
@@ -66,7 +65,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{agangpi.png}
-\caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung)}
+\caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpi}
 \end{figure}
 \todo{Quelle einfügen}
@@ -75,7 +74,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{agangpid.png}
-\caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung)}
+\caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpid}
 \end{figure}
 \todo{Quelle einfügen}
@@ -171,7 +170,7 @@ Die Phasengangmethode der Strecke $\varphi_S$ wird nach dem folgenden Ablauf dur
 \item Die Amplitudengänge der Strecke sowie des Reglers bei $\omega_D$ werden miteinander multipliziert. Damit wird die Reglerverstärkung $K_R$ festgelegt. 
 \end{enumerate}
 
-Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \newline
+Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \cite{zellwegerpha}\newline
 \todo{Quelle einfügen}
 %Zellweger Skript
 
@@ -209,7 +208,7 @@ PID-Regler reglerkonform & $G_R(s)=K_R\left(1+\frac{1}{sT_n}+\frac{sT_v}{1+sT_p}
 \hline 
 \end{tabular} 
 \renewcommand*{\arraystretch}{1}
-\caption{Übertragungsfunktionen Regler}
+\caption{Übertragungsfunktionen Regler \cite{zellwegerregel}}
 \label{ufunkregler}
 \end{table}
 \todo{Quelle einfügen}
@@ -249,7 +248,7 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 
 \end{tabular} 
 \renewcommand*{\arraystretch}{1}
-\caption{Fausformeln Ziegler/Nichols, Oppelt und Rosenberg}
+\caption{Fausformeln Ziegler/Nichols, Oppelt und Rosenberg \cite{bate}}
 \end{table}
 \todo{Quellen einfügen}
 % Boulent Bate Skript "Spezialgebiete der Steuer- und Regelungstechnik"
@@ -275,10 +274,10 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \hline 
 \end{tabular}
 \renewcommand*{\arraystretch}{1}
-\caption{Chien/Hrones und Reswick} 
+\caption{Chien/Hrones und Reswick \cite{bate}} 
 \end{table}
 \todo{Quelle einfügen}
-% Fachkundebuch Elektrotechnik
+% Fachkundebuch bate
 
 
 \newpage

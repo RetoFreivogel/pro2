@@ -2,12 +2,12 @@
 % Encoding: UTF8
 
 
-@TechReport{bate,
-  Title                    = {Spezialgebiete der Steuer- und Regelungstechnik},
+@Booklet{bate,
+  Title                    = {Spezialgebiete der {Steuer}- und {Regelungstechnik}},
   Author                   = {B. Bate},
-  Institution              = {FH Dortmund},
   Year                     = {2009},
 
+  Institution              = {FH Dortmund},
   Owner                    = {Martin},
   Timestamp                = {2015.05.08}
 }
@@ -21,18 +21,6 @@
   Owner                    = {Denis Stampfli},
   Timestamp                = {03.03.2015},
   Url                      = {http://et-tutorials.de/7507/amplitudengang-und-phasengang-im-bode-diagramm/}
-}
-
-@Booklet{solenicki,
-  Title                    = {Mathematisches Labor mlab - Systemidentifikation mit Hilfe der Schrittantwort},
-  Author                   = {D. Solenicki, Y. Bürgi},
-  Month                    = {November},
-  Note                     = {FHNW Windisch},
-  Year                     = {2013},
-
-  Owner                    = {Claudius Jörg},
-  Pages                    = {10, 11},
-  Timestamp                = {04.03.2015}
 }
 
 @Booklet{jenniRegel,
@@ -78,6 +66,18 @@
   Timestamp                = {2015.05.08}
 }
 
+@Booklet{solenicki,
+  Title                    = {Mathematisches {Labor} mlab - {Systemidentifikation} mit {Hilfe} der {Schrittantwort}},
+  Author                   = {D. Solenicki and Y. Bürgi},
+  Month                    = {November},
+  Note                     = {{FHNW}},
+  Year                     = {2013},
+
+  Owner                    = {Claudius Jörg},
+  Pages                    = {10, 11},
+  Timestamp                = {04.03.2015}
+}
+
 @Book{unbehauen,
   Title                    = {Regelungstechnik I},
   Author                   = {Heinz Unbehauen},
@@ -103,18 +103,20 @@
   Timestamp                = {04.03.2015}
 }
 
-@Booklet{zellweger1,
-  Title                    = {Phasengang-Methode},
-  Author                   = {Prof. J. Zellweger},
+@Booklet{zellwegerpha,
+  Title                    = {Phasengang-{Methode}},
+  Author                   = {J. Zellweger},
+  Year                     = {{FHNW}},
 
-  Institution              = {FHNW},
+  Institution              = {{FHNW}},
   Owner                    = {Martin},
   Timestamp                = {2015.05.08}
 }
 
-@Booklet{zellweger2,
-  Title                    = {Regelkreise und Regelungen},
-  Author                   = {Prof. J. Zellweger},
+@Booklet{zellwegerregel,
+  Title                    = {Regelkreise und {Regelungen}},
+  Author                   = {J. Zellweger},
+  Year                     = {{FHNW}},
 
   Owner                    = {Martin},
   Timestamp                = {2015.05.08}

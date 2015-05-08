@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 MAY 2015 11:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 MAY 2015 14:30
 entering extended mode
 **main.tex
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.tex
@@ -1092,7 +1092,6 @@ Package: cite 2015/02/27  v 5.5
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
 lagen.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\testMatlab.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
@@ -1188,7 +1187,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=150, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=90, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
 Package pdftex.def Info: fhnwlogo.pdf used on input line 27.
@@ -1233,14 +1232,14 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 4.
- [2
-
-])
+)
 \tf@toc=\write5
 
-[3]
+[2
+
+]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.tex)
-[4
+[3
 
 ]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
@@ -1249,7 +1248,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-<Regelstrecke.png, id=225, 260.77425pt x 74.679pt>
+<Regelstrecke.png, id=146, 260.77425pt x 74.679pt>
 File: Regelstrecke.png Graphic file (type png)
  <use Regelstrecke.png>
 Package pdftex.def Info: Regelstrecke.png used on input line 6.
@@ -1261,7 +1260,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-[5
+[4
 
 
  <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Regelstrecke.png
@@ -1270,7 +1269,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-<Schrittantwort.png, id=238, 321.2pt x 260.975pt>
+<Schrittantwort.png, id=159, 321.2pt x 260.975pt>
 File: Schrittantwort.png Graphic file (type png)
  <use Schrittantwort.png>
 Package pdftex.def Info: Schrittantwort.png used on input line 21.
@@ -1295,7 +1294,7 @@ Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
 [][][][]\T1/lmr/m/n/10.95 Quellenangabe 
  []
 
-[6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
+[5 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
 .png>]
 Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
@@ -1306,7 +1305,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<agangpi.png, id=262, 334.24875pt x 262.73157pt>
+<agangpi.png, id=183, 334.24875pt x 262.73157pt>
 File: agangpi.png Graphic file (type png)
  <use agangpi.png>
 Package pdftex.def Info: agangpi.png used on input line 67.
@@ -1318,7 +1317,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 68.
 
-<agangpid.png, id=265, 418.56375pt x 274.77657pt>
+<agangpid.png, id=186, 418.56375pt x 274.77657pt>
 File: agangpid.png Graphic file (type png)
  <use agangpid.png>
 Package pdftex.def Info: agangpid.png used on input line 76.
@@ -1328,17 +1327,17 @@ Package pdftex.def Info: agangpid.png used on input line 76.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Marginpar on page 7 moved.
+LaTeX Warning: Marginpar on page 6 moved.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
+[6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-[8 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
+[7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
 
 Underfull \hbox (badness 10000) in paragraph at lines 119--121
 
@@ -1354,37 +1353,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
-[9]
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
-[10]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 
-LaTeX Warning: Marginpar on page 11 moved.
+LaTeX Warning: Marginpar on page 10 moved.
 
-[11]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 285--288
 
  []
 
-) [12]
+) [11]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.tex)
-[13
-
-
-]
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\testMatlab.tex)
-[14
+[12
 
 
 ]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.tex)
-[15
+[13
 
 
 ] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.bbl
@@ -1393,29 +1387,28 @@ Underfull \hbox (badness 1248) in paragraph at lines 25--27
 ndex.php/Datei:Regelkreis4.png
  []
 
-) [16
+) [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
  (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
 lagen.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\testMatlab.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B222F8AC15A7AB642973DCF34DE9CB6B;2776.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
+(rerunfilecheck)             Checksum: 71ACBD70E4FFA79F42C75AFBA8B7C436;1527.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 62.
  ) 
 Here is how much of TeX's memory you used:
- 20189 strings out of 493921
- 377061 string characters out of 3144874
- 447359 words of memory out of 3000000
- 22954 multiletter control sequences out of 15000+200000
+ 20149 strings out of 493921
+ 376066 string characters out of 3144874
+ 446965 words of memory out of 3000000
+ 22938 multiletter control sequences out of 15000+200000
  70593 words of font info for 52 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,12n,78p,971b,701s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1434,9 +1427,9 @@ blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (16 pages, 455044 bytes).
+Output written on main.pdf (14 pages, 446141 bytes).
 PDF statistics:
- 435 PDF objects out of 1000 (max. 8388607)
- 98 named destinations out of 1000 (max. 500000)
- 326 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

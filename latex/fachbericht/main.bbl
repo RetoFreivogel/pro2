@@ -26,17 +26,17 @@ RN-Wissen. Regelungstechnik.
   http://rn-wissen.de/wiki/index.php/Datei:Regelkreis4.png (08.05.2015).
 
 \bibitem{solenicki}
-Y.~B. D.~Solenicki, ``Mathematisches labor mlab - systemidentifikation mit
-  hilfe der schrittantwort,'' November 2013, fHNW Windisch.
+D.~Solenicki and Y.~Bürgi, ``Mathematisches {Labor} mlab -
+  {Systemidentifikation} mit {Hilfe} der {Schrittantwort},'' November 2013,
+  {FHNW}.
 
-\bibitem{zellweger1}
-P.~J. Zellweger, ``Phasengang-methode.''
+\bibitem{zellwegerpha}
+J.~Zellweger, ``Phasengang-{Methode},'' {FHNW}.
 
-\bibitem{zellweger2}
-------, ``Regelkreise und regelungen.''
+\bibitem{zellwegerregel}
+------, ``Regelkreise und {Regelungen},'' {FHNW}.
 
 \bibitem{bate}
-B.~Bate, ``Spezialgebiete der steuer- und regelungstechnik,'' FH Dortmund,
-  Tech. Rep., 2009.
+B.~Bate, ``Spezialgebiete der {Steuer}- und {Regelungstechnik},'' 2009.
 
 \end{thebibliography}
