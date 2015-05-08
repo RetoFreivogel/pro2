@@ -11,6 +11,8 @@
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{todonotes}
+\bibliographystyle{IEEEtran}
+\usepackage{cite}
 
 \title{%
   \textsc{Projekt 2}\\[2ex]
