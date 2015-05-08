@@ -36,7 +36,7 @@ public abstract class AbstractDim extends Observable {
 		}
 		
 	}
-	
+		
 	public abstract Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo);
 	public abstract AbstractDim makeCopy();	
 }

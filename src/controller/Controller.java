@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import model.AbstractDim;
 import model.ChiensDim;
 import model.ChiensRegelung;
 import model.Dimensionierung;
@@ -45,15 +46,13 @@ public class Controller {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"TEXT FILES", "txt", "text");
 		jfcLaden.setFileFilter(filter);
-
 	}
 
 	public void setView(View view) {
 		this.view = view;
 	}
 
-	public void selectDim(Dimensionierung dim) {
-		RegelKreis kreis = model.getRegelkreis();
+	public void selectDim(Dimensionierung dim, RegelKreis kreis) {
 		modelChanged();
 
 		switch (dim) {
@@ -78,7 +77,7 @@ public class Controller {
 		}
 	}
 
-	public void selectChiensRegelung(ChiensRegelung chiensReg) {
+	public void selectChiensRegelung(ChiensRegelung chiensReg, ChiensDim dim) {
 		int j = 0;
 		modelChanged();
 
@@ -96,7 +95,6 @@ public class Controller {
 			j = 3;
 			break;
 		}
-		ChiensDim dim = (ChiensDim) model.getRegelkreis().getDim();
 		dim.setJ(j);
 		return;
 	}
@@ -104,7 +102,7 @@ public class Controller {
 	public void setKs(double ks) {
 		try {
 			modelChanged();
-			model.getRegelkreis().getRegelstrecke().setKs(ks);
+			model.getRegelstrecke().setKs(ks);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -115,7 +113,7 @@ public class Controller {
 	public void setTu(double tu) {
 		try {
 			modelChanged();
-			model.getRegelkreis().getRegelstrecke().setTu(tu);
+			model.getRegelstrecke().setTu(tu);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -126,7 +124,7 @@ public class Controller {
 	public void setTg(double tg) {
 		try {
 			modelChanged();
-			model.getRegelkreis().getRegelstrecke().setTg(tg);
+			model.getRegelstrecke().setTg(tg);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -134,11 +132,11 @@ public class Controller {
 		}
 	}
 
-	public void setKr(double kr) {
+	public void setKr(double kr, AbstractDim dim) {
 		try {
 			modelChanged();
-			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
-			dim.setKr(kr);
+			ManuellDim mdim = (ManuellDim) dim;
+			mdim.setKr(kr);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -146,11 +144,11 @@ public class Controller {
 		}
 	}
 	
-	public void setPhasenrand(double phasenrand) {
+	public void setPhasenrand(double phasenrand, AbstractDim dim) {
 		try {
 			modelChanged();
-			ZellwegerDim dim = (ZellwegerDim) model.getRegelkreis().getDim();
-			dim.setPhasenrand(phasenrand);
+			ZellwegerDim zdim = (ZellwegerDim) dim;
+			zdim.setPhasenrand(phasenrand);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -158,11 +156,11 @@ public class Controller {
 		}
 	}
 
-	public void setTn(double tn) {
+	public void setTn(double tn, AbstractDim dim) {
 		try {
 			modelChanged();
-			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
-			dim.setTn(tn);
+			ManuellDim mdim = (ManuellDim) dim;
+			mdim.setTn(tn);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -170,11 +168,11 @@ public class Controller {
 		}
 	}
 
-	public void setTv(double tv) {
+	public void setTv(double tv, AbstractDim dim) {
 		try {
 			modelChanged();
-			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
-			dim.setTv(tv);
+			ManuellDim mdim = (ManuellDim) dim;
+			mdim.setTv(tv);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -182,11 +180,11 @@ public class Controller {
 		}
 	}
 
-	public void setTp(double tp) {
+	public void setTp(double tp, AbstractDim dim) {
 		try {
 			modelChanged();
-			ManuellDim dim = (ManuellDim) model.getRegelkreis().getDim();
-			dim.setTp(tp);
+			ManuellDim mdim = (ManuellDim) dim;
+			mdim.setTp(tp);
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -194,10 +192,9 @@ public class Controller {
 		}
 	}
 
-	public void selectTopo(ReglerTopologie topo) {
+	public void selectTopo(ReglerTopologie topo, RegelKreis kreis) {
 		try {
 			modelChanged();
-			RegelKreis kreis = model.getRegelkreis();
 			kreis.setTopo(topo);
 			view.clearError();
 		} catch (Exception e) {
@@ -209,8 +206,7 @@ public class Controller {
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
 		jfcLaden.setCurrentDirectory(theDirectory);
-		view.setModel(new Model());
-		
+		view.setModel(new Model());	
 	}
 
 	public void speichern() {

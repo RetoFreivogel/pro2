@@ -17,20 +17,20 @@ public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
 	//TODO
-	//private Model model;
-	//private Controller controller;
+	private Model model;
+	private final Controller controller;
 	
-	
-	private final ReglerView pn_ERegler;
 	private final RegelStreckeView pn_ERegelstrecke;
 	private final AnalyseView pn_AAnalyse;
+
+	private JPanel pn_Eingabe;
 
 	public SidebarPanel(Model model, Controller controller){
 		super();
 		
 		//TODO
-		//this.model = model;
-		//this.controller = controller;
+		this.model = model;
+		this.controller = controller;
 
 		
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -41,20 +41,15 @@ public class SidebarPanel extends JScrollPane{
 		pn_left.setLayout(new BoxLayout(pn_left, BoxLayout.Y_AXIS));
 		
 		//---------------------Eingabe-------------------------------		
-		JPanel pn_Eingabe = new JPanel();
+		pn_Eingabe = new JPanel();
 		pn_Eingabe.setLayout(new BoxLayout(pn_Eingabe, BoxLayout.Y_AXIS));
 		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
 				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Eingabe);
 		//---------------------Eingabe_Regelstrecke-------------------------------
 		
-		//TODO
-		pn_ERegelstrecke = new RegelStreckeView(model.getRegelkreis().getRegelstrecke(), controller);
-		pn_Eingabe.add(pn_ERegelstrecke);
-		
-		//---------------------Eingabe_Regler-------------------------------
-		pn_ERegler = new ReglerView(model.getRegelkreis(), controller);
-		pn_Eingabe.add(pn_ERegler);
+		pn_ERegelstrecke = new RegelStreckeView(model.getRegelstrecke(), controller);
+		initEingabe();
 		
 		//---------------------Ausgabe-------------------------------
 		JPanel pn_Ausgabe = new JPanel();
@@ -63,22 +58,25 @@ public class SidebarPanel extends JScrollPane{
 				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pn_left.add(pn_Ausgabe);
 			
-		//---------------------Ausgabe_Regelstrecke-------------------------------
-		
-		//---------------------Ausgabe_Regler-------------------------------
-		
-		//---------------------Ausgabe_Analyse-------------------------------
-		pn_AAnalyse = new AnalyseView(model.getRegelkreis(), controller);
+		pn_AAnalyse = new AnalyseView(model.getAlleRegelkreise().get(0), controller);
 		pn_Ausgabe.add(pn_AAnalyse);
+		
 	}
 	
-	public void update(RegelKreis regelkreis) {
-	}
+	public void initEingabe(){
+		pn_Eingabe.removeAll();
+		pn_Eingabe.add(pn_ERegelstrecke);
+		
+		for(RegelKreis rk : model.getAlleRegelkreise()){	
+			pn_Eingabe.add(new ReglerView(rk, controller));
+		}
 
+	}
+	
 	public void setModel(Model model) {
-		//this.model = model;
-		pn_ERegelstrecke.setRegelstrecke(model.getRegelkreis().getRegelstrecke());
-		pn_ERegler.setReglerkreis(model.getRegelkreis());
-		pn_AAnalyse.setRegelkreis(model.getRegelkreis());
+		this.model = model;
+		pn_ERegelstrecke.setRegelstrecke(model.getRegelstrecke());
+		initEingabe();
+		pn_AAnalyse.setRegelkreis(model.getAlleRegelkreise().get(0));
 	}
 }

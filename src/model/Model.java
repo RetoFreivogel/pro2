@@ -5,39 +5,70 @@ import java.util.Observer;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class Model extends Observable implements Observer {
-	private Vector<RegelKreis> regelkreisArray;
+public class Model extends Observable implements Observer{
+	private final Vector<RegelKreis> alleRegelkreise = new Vector<>(0, 1);
+	private final Vector<AbstractDim> alleDim = new Vector<>(0, 1);
+	private final RegelStrecke regelstrecke;
 
 	public Model(Scanner sc) {
-		regelkreisArray = new Vector<>(1);
-		RegelStrecke rs = new RegelStrecke(sc);
-		AbstractDim dim = AbstractDim.fromScanner(sc);
-		RegelKreis regelkreis = new RegelKreis(dim, rs);
-		regelkreisArray.add(regelkreis);
-		regelkreis.addObserver(this);
+		regelstrecke = new RegelStrecke(sc);
+		alleDim.add(AbstractDim.fromScanner(sc));
+		alleRegelkreise.add(new RegelKreis(alleDim.get(0), regelstrecke));
+		regelstrecke.addObserver(this);
+		for(AbstractDim dim : alleDim){
+			dim.addObserver(this);
+		}
+
 	}
 
 	public Model() {
-		regelkreisArray = new Vector<>(1);
-		RegelKreis regelkreis = new RegelKreis(new OppeltDim(),
-				new RegelStrecke(1.0, 1.71, 7.6));
-		regelkreisArray.add(regelkreis);
-		regelkreis.addObserver(this);
+		regelstrecke = new RegelStrecke(new RegelStrecke(1.0, 1.71, 7.6));
+		alleDim.add(new ZellwegerDim(Math.PI/4));
+		alleDim.add(new OppeltDim());
+		for(AbstractDim rd : alleDim){
+			RegelKreis rk = new RegelKreis(rd, regelstrecke);
+			alleRegelkreise.add(rk);
+		}
+		regelstrecke.addObserver(this);
+		for(AbstractDim dim : alleDim){
+			dim.addObserver(this);
+		}
+
 	}
 	
 	public Model(Model other){
-		regelkreisArray = new Vector<>(1);
-		RegelKreis regelkreis = new RegelKreis(other.getRegelkreis());
-		regelkreisArray.add(regelkreis);
-		regelkreis.addObserver(this);
+		regelstrecke = new RegelStrecke(other.getRegelstrecke());
+		for(AbstractDim rd : other.getAlleDim()){
+			alleDim.add(rd);
+			RegelKreis rk = new RegelKreis(rd, regelstrecke);
+			alleRegelkreise.add(rk);
+		}
+		regelstrecke.addObserver(this);
+		for(AbstractDim dim : alleDim){
+			dim.addObserver(this);
+		}
+
+	}
+	
+	public Vector<RegelKreis> getAlleRegelkreise() {
+		return alleRegelkreise;
 	}
 
-	public RegelKreis getRegelkreis() {
-		return regelkreisArray.get(0);
+	public Vector<AbstractDim> getAlleDim() {
+		return alleDim;
 	}
 
-	public Vector<RegelKreis> getAll(){
-		return regelkreisArray;
+	public RegelStrecke getRegelstrecke() {
+		return regelstrecke;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (RegelKreis rk : alleRegelkreise) {
+			builder.append(rk).append('\n');
+		}
+		return builder.toString();
 	}
 	
 	@Override
@@ -45,14 +76,4 @@ public class Model extends Observable implements Observer {
 		setChanged();
 		notifyObservers();
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (RegelKreis rk : regelkreisArray) {
-			builder.append(rk).append('\n');
-		}
-		return builder.toString();
-	}
-
 }

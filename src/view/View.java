@@ -4,29 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import model.Model;
-import model.SchrittAntwort;
-
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
 
 import controller.Controller;
-import util.Chart;
 
-public class View extends JPanel implements Observer, ActionListener {
+public class View extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private SidebarPanel sidebarPanel;
 	private JLabel lblStatus;
-	private ChartPanel pn_chart;
-	private LegendPanel pn_legend;
 
 	private Model model;
 	private Controller controller;
@@ -36,12 +27,13 @@ public class View extends JPanel implements Observer, ActionListener {
 	public String Tv;
 	public String Tp;
 
+	private Graph pn_graph;
+
 	public View(Model model, Controller controller) {
 		super();
 		this.model = model;
 		this.controller = controller;
 		init();
-		model.addObserver(this);
 	}
 
 	private void init() {
@@ -67,30 +59,13 @@ public class View extends JPanel implements Observer, ActionListener {
 		add(sidebarPanel, BorderLayout.WEST);
 
 		// ---------------------Panel_Right-------------------------------
-		JPanel pn_Right = new JPanel();
-		pn_Right.setBackground(Color.WHITE);
-		add(pn_Right, BorderLayout.CENTER);
-		pn_Right.setLayout(new BorderLayout(0, 0));
-
-		// ---------------------Graph-------------------------------
-		double[] output = new double[] {};
-		pn_chart = Chart.makePanel(output, 1.0);
-		pn_chart.setBackground(Color.WHITE);
-		pn_Right.add(pn_chart, BorderLayout.CENTER);
-
-		// ---------------------Legend-------------------------------
-		pn_legend = new LegendPanel(model, controller);
-		pn_legend.setBackground(null);
-		pn_Right.add(pn_legend, BorderLayout.SOUTH);
+		pn_graph = new Graph(model);
+		add(pn_graph, BorderLayout.CENTER);
 
 		// ---------------------Status Row-------------------------------
-		JPanel pn_Status = new JPanel();
-		pn_Status.setLayout(new BorderLayout());
-		lblStatus = new JLabel("", JLabel.LEFT);
-		pn_Status.add(lblStatus, BorderLayout.WEST);
-		add(pn_Status, BorderLayout.SOUTH);
+		lblStatus = new JLabel("");
+		add(lblStatus, BorderLayout.SOUTH);
 
-		model.addObserver(this);
 	}
 
 	public void displayError(String message) {
@@ -104,28 +79,9 @@ public class View extends JPanel implements Observer, ActionListener {
 		lblStatus.setBackground(new Color(240, 240, 240));
 	}
 
-
-	@Override
-	public void update(Observable o, Object arg) {
-		SchrittAntwort sw = model.getRegelkreis().getTranferFunction()
-				.schrittantwort();
-		double maxX = sw.getTaus(0.001);
-
-		double[] x = new double[256];
-		for (int i = 0; i < x.length; i++) {
-			x[i] = sw.getY((double) i * maxX / 255);
-		}
-		JFreeChart chart = Chart.makeChart(x, maxX);
-		pn_chart.setChart(chart);
-		sidebarPanel.update(model.getRegelkreis());
-	}
-
 	public void setModel(Model model) {
-		this.model.deleteObserver(this);
 		this.model = model;
 		sidebarPanel.setModel(model);
-		this.model.addObserver(this);
-		update(null, null);
 	}
 
 	@Override

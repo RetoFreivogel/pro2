@@ -30,7 +30,6 @@ import model.RosenbergDim;
 import model.ZellwegerDim;
 import model.ZieglerDim;
 
-
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		Observer, ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -53,7 +52,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		super();
 		this.controller = controller;
 		this.regelkreis = kreis;
-			
+
 		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
 				ReglerTopologie.PID });
 		cbbx_Topo.setSelectedIndex(1);
@@ -146,15 +145,21 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public void propertyChange(PropertyChangeEvent event) {
 		if (eventsEnabled) {
 			if (event.getSource() == tf_Phrand) {
-				controller.setPhasenrand(((Number) tf_Phrand.getValue()).doubleValue());
+				Number phrand = (Number) tf_Phrand.getValue();
+				controller.setPhasenrand(phrand.doubleValue(),
+						regelkreis.getDim());
 			} else if (event.getSource() == tf_Kr) {
-				controller.setKr(((Number) tf_Kr.getValue()).doubleValue());
+				controller.setKr(((Number) tf_Kr.getValue()).doubleValue(),
+						regelkreis.getDim());
 			} else if (event.getSource() == tf_Tn) {
-				controller.setTn(((Number) tf_Tn.getValue()).doubleValue());
+				controller.setTn(((Number) tf_Tn.getValue()).doubleValue(),
+						regelkreis.getDim());
 			} else if (event.getSource() == tf_Tv) {
-				controller.setTv(((Number) tf_Tv.getValue()).doubleValue());
+				controller.setTv(((Number) tf_Tv.getValue()).doubleValue(),
+						regelkreis.getDim());
 			} else if (event.getSource() == tf_Tp) {
-				controller.setTp(((Number) tf_Tp.getValue()).doubleValue());
+				controller.setTp(((Number) tf_Tp.getValue()).doubleValue(),
+						regelkreis.getDim());
 			}
 		}
 	}
@@ -165,15 +170,16 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			if (event.getSource() == cbbx_defd_R) {
 				Dimensionierung dim = (Dimensionierung) cbbx_defd_R
 						.getSelectedItem();
-				controller.selectDim(dim);
+				controller.selectDim(dim, regelkreis);
 			} else if (event.getSource() == cbbx_Topo) {
 				ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
 						.getSelectedItem();
-				controller.selectTopo(topo);
+				controller.selectTopo(topo, regelkreis);
 			} else if (event.getSource() == cbbx_chiens) {
 				ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
 						.getSelectedItem();
-				controller.selectChiensRegelung(chiensReg);
+				controller.selectChiensRegelung(chiensReg,
+						(ChiensDim) regelkreis.getDim());
 			}
 			init();
 		}
@@ -210,9 +216,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			}
 
 			if (d == Dimensionierung.PHASENGANG) {
-				tf_Phrand.setValue(((ZellwegerDim) regelkreis.getDim()).getPhasenrand());			
+				tf_Phrand.setValue(((ZellwegerDim) regelkreis.getDim())
+						.getPhasenrand());
 			}
-			
+
 			tf_Kr.setValue(regler.getKr());
 			tf_Tn.setValue(regler.getTn());
 			tf_Tv.setValue(regler.getTv());
