@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import model.Model;
+import model.RegelKreis;
 import model.SchrittAntwort;
 
 import org.jfree.chart.ChartFactory;
@@ -65,6 +66,15 @@ public class Graph extends JPanel implements Observer, ActionListener {
 		JFreeChart chart = pn_chart.getChart();
 		XYPlot plot = (XYPlot) chart.getPlot();
 		
+		double tmax = 0;
+		for (RegelKreis rk : model.getAlleRegelkreise()) {
+			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
+			double taus = sa.getTaus(0.001);
+			if(tmax < taus){
+				tmax = taus;
+			}
+		}
+		
 		final int n = model.getAlleRegelkreise().size();
 		for (int i = 0; i < n; i++) {
 			JCheckBox cb = new JCheckBox();
@@ -79,10 +89,9 @@ public class Graph extends JPanel implements Observer, ActionListener {
 
 			SchrittAntwort sa = model.getAlleRegelkreise().get(i)
 					.getTranferFunction().schrittantwort();
-			double Tend = sa.getTaus(0.001);
 			XYSeries ser = new XYSeries(i);
-			for (int j = 0; j < 100; j++) {
-				double t = (double) j * Tend / 100;
+			for (int j = 0; j < 300; j++) {
+				double t = (double) j * tmax / 300;
 				double y = sa.getY(t);
 				ser.add(t, y);
 			}

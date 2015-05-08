@@ -15,10 +15,9 @@ public class Model extends Observable implements Observer{
 		alleDim.add(AbstractDim.fromScanner(sc));
 		alleRegelkreise.add(new RegelKreis(alleDim.get(0), regelstrecke));
 		regelstrecke.addObserver(this);
-		for(AbstractDim dim : alleDim){
-			dim.addObserver(this);
+		for(RegelKreis rk : alleRegelkreise){
+			rk.addObserver(this);
 		}
-
 	}
 
 	public Model() {
@@ -30,24 +29,23 @@ public class Model extends Observable implements Observer{
 			alleRegelkreise.add(rk);
 		}
 		regelstrecke.addObserver(this);
-		for(AbstractDim dim : alleDim){
-			dim.addObserver(this);
+		for(RegelKreis rk : alleRegelkreise){
+			rk.addObserver(this);
 		}
-
 	}
 	
 	public Model(Model other){
 		regelstrecke = new RegelStrecke(other.getRegelstrecke());
-		for(AbstractDim rd : other.getAlleDim()){
-			alleDim.add(rd);
-			RegelKreis rk = new RegelKreis(rd, regelstrecke);
+		for(AbstractDim ad : other.getAlleDim()){
+			AbstractDim copy_ad = ad.makeCopy();
+			alleDim.add(copy_ad);
+			RegelKreis rk = new RegelKreis(copy_ad, regelstrecke);
 			alleRegelkreise.add(rk);
 		}
 		regelstrecke.addObserver(this);
-		for(AbstractDim dim : alleDim){
-			dim.addObserver(this);
+		for(RegelKreis rk : alleRegelkreise){
+			rk.addObserver(this);
 		}
-
 	}
 	
 	public Vector<RegelKreis> getAlleRegelkreise() {
