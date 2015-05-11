@@ -99,6 +99,11 @@ public class Graph extends JPanel implements Observer, ActionListener {
 			renderer.setSeriesPaint(i, color);
 		}
 		plot.setDataset(dataset);
+		try {
+			getRootPane().revalidate();
+			getRootPane().repaint();
+		} catch (NullPointerException ex) {
+		}
 	}
 
 	@Override
@@ -113,6 +118,11 @@ public class Graph extends JPanel implements Observer, ActionListener {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		init();
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
 		init();
 	}
 

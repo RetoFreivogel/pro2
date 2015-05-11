@@ -70,13 +70,17 @@ public class SidebarPanel extends JScrollPane{
 		for(RegelKreis rk : model.getAlleRegelkreise()){	
 			pn_Eingabe.add(new ReglerView(rk, controller));
 		}
-
+		try {
+			getRootPane().revalidate();
+			getRootPane().repaint();
+		} catch (NullPointerException ex) {
+		}
 	}
 	
 	public void setModel(Model model) {
 		this.model = model;
 		pn_ERegelstrecke.setRegelstrecke(model.getRegelstrecke());
-		initEingabe();
 		pn_AAnalyse.setRegelkreis(model.getAlleRegelkreise().get(0));
+		initEingabe();
 	}
 }

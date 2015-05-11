@@ -63,7 +63,6 @@ public class View extends JPanel{
 		// ---------------------Status Row-------------------------------
 		lblStatus = new JLabel("");
 		add(lblStatus, BorderLayout.SOUTH);
-
 	}
 
 	public void displayError(String message) {
@@ -79,6 +78,7 @@ public class View extends JPanel{
 
 	public void setModel(Model model) {
 		this.model = model;
+		pn_graph.setModel(model);
 		sidebarPanel.setModel(model);
 	}
 }

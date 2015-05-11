@@ -57,16 +57,20 @@ public class ManuellDimTest {
 		assertEquals(dim, copy_dim);
 		
 		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
-		dim.setKr(0.0);	
+		dim.setKr(0.1);	
 		assertNotEquals(dim, copy_dim);
 		
 		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
-		dim.setTn(0.0);	
+		dim.setTn(0.1);	
 		assertNotEquals(dim, copy_dim);
 		
 		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
-		dim.setTv(0.0);	
+		dim.setTv(0.1);	
 		assertNotEquals(dim, copy_dim);
+		
+		//Tests that no references are kept
+		copy_dim = new ManuellDim(dim.calc(null, ReglerTopologie.PID));
+		
 	}
 	
 	@Test
