@@ -8,15 +8,16 @@
 \contentsline {subsection}{\numberline {2.3}\IeC {\"U}bertragungsfunktion der Regler}{9}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Dimensionierung mit Faustformeln}{10}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{11}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Optimierungsm\IeC {\"o}glichkeiten}{11}{subsection.2.6}
-\contentsline {section}{\numberline {3}Java Software}{12}{section.3}
-\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{12}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{12}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Klassen}{12}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{12}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{12}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{12}{subsubsection.3.4.3}
-\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{12}{subsubsection.3.4.4}
-\contentsline {section}{\numberline {4}Schlusswort}{13}{section.4}
-\contentsline {section}{\numberline {5}Literaturvezeichnis}{14}{section.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Berechnung}{11}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Optimierungsm\IeC {\"o}glichkeiten}{11}{subsubsection.2.5.2}
+\contentsline {section}{\numberline {3}Java Software}{13}{section.3}
+\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{13}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{13}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{13}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Klassen}{13}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{13}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{13}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{13}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{13}{subsubsection.3.4.4}
+\contentsline {section}{\numberline {4}Schlusswort}{14}{section.4}
+\contentsline {section}{\numberline {5}Literaturvezeichnis}{15}{section.5}

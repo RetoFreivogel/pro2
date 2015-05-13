@@ -7,7 +7,6 @@ Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus ein
 \caption{Regelung bestehend aus Regler und Regelstrecke \cite{rnwissen}}
 \label{regelstrecke}
 \end{figure}
-\todo{Quelle richtig einfügen (URL...)}
 %Quelle: http://rn-wissen.de/wiki/index.php/Datei:Regelkreis4.png [Abrufdatum 6.5.15]
 
 
@@ -22,7 +21,6 @@ Die Kurve in Abbildung \ref{schrittantwort} stellt die Schrittantwort einer Rege
 \caption{Schrittantwort einer Regelstrecke \cite{solenicki}}
 \label{schrittantwort}
 \end{figure}
-\todo{Quellenangabe falsch (Gross- und Kleinschreibung!!)}
 %Quelle: Skript Mathematisches Labor mlab Bürgi Solenicki
 
 Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte zu berechnen. Der PI-Regler hat die Kennwerte Nachstellzeit ($T_n$) und Reglerverstärkung ($K_R$), beim PID-Regler kommt noch die Vorhaltezeit ($T_v$) hinzu.
@@ -30,7 +28,6 @@ Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte 
 
 \subsection{Streckenanalyse}
 Aus den gegebenen Kennwerten der Schrittantwort soll nun die Übertragungsfunktion der Strecke berechnet werden, das heisst die Strecke muss identifiziert werden. Die Streckenidentifikation, wird mittels der Sani-Methode durchgeführt. Aus dem Verhältnis von $T_u$ und $T_g$ werden die Ordnung der Strecke ($n$) und die dazugehörigen Zeitkonstanten ($T_1, T_2,..., T_n$) berechnet, die benötigt werden, um die Übertragungsfunktion der Regelstrecke darzustellen. Die Übertragungsfunktion der Strecke ist gemäss Formel \ref{ufunkstr} definiert: \cite{solenicki} \newline
-\todo{Quelle einfügen}
 % Quelle Skript "Mathematisches Labor mlab", Soenicki/Bürgi
 
 \begin{align}
@@ -68,7 +65,6 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpi}
 \end{figure}
-\todo{Quelle einfügen}
 %Quelle: Zellwegerskript
 
 \begin{figure}[h]
@@ -77,7 +73,6 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpid}
 \end{figure}
-\todo{Quelle einfügen}
 %Quelle: Zellwegerskript
 
 \begin{table}[h]
@@ -151,7 +146,6 @@ $76.3^\circ$ & $-103.7^\circ$ & $0\%$ \\
 
 
 Zur Berechnung der Verstärkung werden nun die Amplitudengänge der Strecke, sowie des Reglers benötigt. Dazu wird im Phasengang der offenen Regelung $\varphi_S$ der Phasenrand abgetragen. Dies liefert die Kreisfrequenz $\omega_D$. Die beiden Amplituden bei der Kreisfrequenz $\omega_D$, werden miteinander multipliziert. Gemäss Phasengangmethode soll die Verstärkung an dieser Stelle eins sein. Dies führt zur Formel \ref{formelkr}. $Go(\omega_D)$ entspricht dem Amplitudengang der offenen Regelung an der Stelle $\omega_D$. \newline
-\todo{Quelle einfügen}
 %Zellweger Skript
 \begin{align}
 K_R=\frac{1}{\vert{Go(\omega_D)}\vert{}}
@@ -171,7 +165,6 @@ Die Phasengangmethode der Strecke $\varphi_S$ wird nach dem folgenden Ablauf dur
 \end{enumerate}
 
 Besondere Vorsicht ist bei den erhaltenen Kenngrössen des dimensionierten Reglers geboten. Es wird zwischen Regler- und Bodekonform unterschieden. Bodekonform bedeutet, dass die Parameter kaskadiert sind und die logarithmische Rechnung somit vereinfacht wird. Standardmässig wird in der Fachliteratur meist reglerkonform gerechnet. Die Parameter des PI-Reglers sind reglerkonform und können somit direkt weiterverwendet werden. Die Parameter des PID-Reglers, welche wir bei der Dimensionierung mittels Phasengangmethode erhalten, sind bodekonform. Sie können jedoch in die reglerkonforme Darstellung umgerechnet werden. Für die Umrechnung wurden die Formeln \ref{krherl}, \ref{tnherl} und \ref{tvherl} für PID-Regler hergeleitet (siehe Anhang): \cite{zellwegerpha}\newline
-\todo{Quelle einfügen}
 %Zellweger Skript
 
 \begin{align}
@@ -211,7 +204,6 @@ PID-Regler reglerkonform & $G_R(s)=K_R\left(1+\frac{1}{sT_n}+\frac{sT_v}{1+sT_p}
 \caption{Übertragungsfunktionen Regler \cite{zellwegerregel}}
 \label{ufunkregler}
 \end{table}
-\todo{Quelle einfügen}
 % Zellweger Skript "Regelkreise und Regelungen"
 
 \newpage
@@ -276,12 +268,12 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \renewcommand*{\arraystretch}{1}
 \caption{Chien/Hrones und Reswick \cite{bate}} 
 \end{table}
-\todo{Quelle einfügen}
-% Fachkundebuch bate
+% Skript bate
 
 
 \newpage
 \subsection{Schrittantwort der Regelung}
+\subsubsection{Berechnung}
 \todo{Kapitel schreiben}
 - Übertragungsfunktion Regelung (Berechnung aus üfunk regler und üfunk regelung)\newline
 - Berechnung durch Residuen\newline
@@ -293,7 +285,15 @@ G(s)=\frac{G_R(s)G_S(s)}{1+G_R(s)G_S(s)}
 \label{ufunkregelung}
 \end{align}
 
-\subsection{Optimierungsmöglichkeiten}
+\subsubsection{Optimierungsmöglichkeiten}
 \todo{gesamtes Kapitel schreiben}
-- über maximum der schrittantwort und phasenrand kann überschwingen genau berechnet werden\\
-- mit gesuchtem punkt im phasengang geschindigkeit der schrittantwort optimieren
+\todo{in der Software nicht erreichte Möglichkeiten herauslöschen!!}
+Falls die berechnete und dargestellte Schrittantwort der Regelung nicht der Vorstellung und den Ansprüchen des Nutzeres entspricht, soll dieser die Möglichkeiten haben, die Schrittantwort nach seinen Anforderungen zu optimieren. Dazu gibt es verschieden Möglichkeiten. 
+
+Einerseits kann der Regler durch seine Eigenschaften $K_R$, $T_n$ und $T_v$ modifiziert werden. Eine Schrittantwort durch die Veränderung dieser drei Eigenschaften zu optimieren ist äusserst schwierig. Dies erfordert grosses Wissen und viel Erfahrung in der Regelungstechnik, was einem weniger erfahrenen Nutzer die Optimierung nahezu verunmöglicht.
+
+Es besteht jedoch die Möglichkeit die Optimierungen durch verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich [Kapitel Grundlagen Phasengangmethode], dass das der gewählte Phasenrand auf das Überschwingen Einfluss hat. Aus der berechneten Schrittantwort kann das maximale Überschwingen einfach herausgefunden werden.\todo{Verweis auf Grundlagen Phasengangmethode Tabelle 3}\\
+Die Berechnung wird so angepasst, dass der Benutzer ein Überschwingen in Prozent auswählen kann. Dann wird der Phasenrand solange verändert, bis das Überschwingen der Schrittantwort mit dem gewählten Überschwingen übereinstimmt.\\
+
+\todo{falls nicht implementiert, löschen}
+Zusätzlich hat der Punkt der im Phasengang der Strecke gesucht wird und zur Knickkreisfrequenz führt, Einfluss auf die Anstiegsgeschwindigkeit der Schrittantwort.[gemäss Kapitel Grundlagen Phasengangmethode]. \todo{Verweis auf Grundlagen Phasengangmethode Tabelle 2}\\

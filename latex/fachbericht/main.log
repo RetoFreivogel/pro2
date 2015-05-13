@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 MAY 2015 14:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  13 MAY 2015 15:44
 entering extended mode
 **main.tex
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.tex
@@ -1253,10 +1253,8 @@ File: Regelstrecke.png Graphic file (type png)
  <use Regelstrecke.png>
 Package pdftex.def Info: Regelstrecke.png used on input line 6.
 (pdftex.def)             Requested size: 364.19664pt x 104.30487pt.
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 10.
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
@@ -1265,120 +1263,131 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Regelstrecke.png
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
-<Schrittantwort.png, id=159, 321.2pt x 260.975pt>
+<Schrittantwort.png, id=158, 321.2pt x 260.975pt>
 File: Schrittantwort.png Graphic file (type png)
  <use Schrittantwort.png>
-Package pdftex.def Info: Schrittantwort.png used on input line 21.
+Package pdftex.def Info: Schrittantwort.png used on input line 20.
 (pdftex.def)             Requested size: 273.14922pt x 221.9413pt.
 
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
  []
 
 [5 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
 .png>]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<agangpi.png, id=183, 334.24875pt x 262.73157pt>
+<agangpi.png, id=180, 334.24875pt x 262.73157pt>
 File: agangpi.png Graphic file (type png)
  <use agangpi.png>
-Package pdftex.def Info: agangpi.png used on input line 67.
+Package pdftex.def Info: agangpi.png used on input line 64.
 (pdftex.def)             Requested size: 227.62204pt x 178.92369pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 68.
+(Font)              <10> on input line 65.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 68.
+(Font)              <7> on input line 65.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 68.
+(Font)              <5> on input line 65.
 
-<agangpid.png, id=186, 418.56375pt x 274.77657pt>
+<agangpid.png, id=183, 418.56375pt x 274.77657pt>
 File: agangpid.png Graphic file (type png)
  <use agangpid.png>
-Package pdftex.def Info: agangpid.png used on input line 76.
+Package pdftex.def Info: agangpid.png used on input line 72.
 (pdftex.def)             Requested size: 273.14922pt x 179.3154pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Marginpar on page 6 moved.
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 [7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--121
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 167--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
-
-LaTeX Warning: Marginpar on page 10 moved.
-
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 245.
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 285--288
+Underfull \hbox (badness 10000) in paragraph at lines 277--280
 
  []
 
-) [11]
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--297
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 298--52
+
+ []
+
+[11]
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+[12]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.tex)
-[12
+[13
 
 
 ]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.tex)
-[13
+[14
 
 
 ] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.bbl
@@ -1387,28 +1396,37 @@ Underfull \hbox (badness 1248) in paragraph at lines 25--27
 ndex.php/Datei:Regelkreis4.png
  []
 
-) [14
+) [15
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
  (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
 lagen.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 71ACBD70E4FFA79F42C75AFBA8B7C436;1527.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 62.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 10E49A515E43749712658FAD13D05EA5;1539
+(rerunfilecheck)             After:  6775B39C9B87C56B0C06E8BECA5B4F8A;1616.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
  ) 
 Here is how much of TeX's memory you used:
- 20149 strings out of 493921
- 376066 string characters out of 3144874
- 446965 words of memory out of 3000000
- 22938 multiletter control sequences out of 15000+200000
+ 20127 strings out of 493921
+ 375498 string characters out of 3144874
+ 452650 words of memory out of 3000000
+ 22918 multiletter control sequences out of 15000+200000
  70593 words of font info for 52 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,12n,78p,971b,701s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1427,9 +1445,9 @@ blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (14 pages, 446141 bytes).
+Output written on main.pdf (15 pages, 446196 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
  206 words of extra memory for PDF output out of 10000 (max. 10000000)
 
