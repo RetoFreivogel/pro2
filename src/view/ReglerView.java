@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,9 +10,8 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -33,13 +33,14 @@ import model.ZellwegerDim;
 import model.ZieglerDim;
 
 public class ReglerView extends JPanel implements PropertyChangeListener,
-		Observer, ActionListener {
+		ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static final DecimalFormat format = new DecimalFormat("##0.000");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;
 
+	private JButton jb_close;
 	private JFormattedTextField tf_Phrand;
 	private JFormattedTextField tf_Kr;
 	private JFormattedTextField tf_Tn;
@@ -55,6 +56,11 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		this.controller = controller;
 		this.regelkreis = kreis;
 
+		jb_close = new JButton("");
+		jb_close.setBackground(new Color(255, 64, 64));
+		jb_close.setPreferredSize(new Dimension(15, 15));
+		jb_close.addActionListener(this);
+		
 		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
 				ReglerTopologie.PID });
 		cbbx_Topo.setSelectedIndex(1);
@@ -81,19 +87,23 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridBagLayout());
 
-		update(null, null);
+		update(kreis);
 		init();
-		kreis.addObserver(this);
 		eventsEnabled = true;
 	}
 
 	private void init() {
 		removeAll();
 
-		GridBagConstraints constraints = new GridBagConstraints(0, 0, 1, 1, 1,
-				1, GridBagConstraints.FIRST_LINE_START,
-				GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0);
+		GridBagConstraints constraints = new GridBagConstraints(1, 0, 1, 1, 1,
+				0, GridBagConstraints.NORTHEAST,
+				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 
+		add(jb_close, constraints);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.anchor = GridBagConstraints.CENTER;
+		constraints.gridy++;
+		constraints.gridx = 0;
 		JLabel lb_Topo = new JLabel("Topologie");
 		add(lb_Topo, constraints);
 		constraints.gridx = 1;
@@ -204,27 +214,29 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			if (event.getSource() == cbbx_defd_R) {
 				Dimensionierung dim = (Dimensionierung) cbbx_defd_R
 						.getSelectedItem();
-				controller.selectDim(dim, regelkreis);
+				controller.selectDim(dim, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_Topo) {
 				ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
 						.getSelectedItem();
-				controller.selectTopo(topo, regelkreis);
+				controller.selectTopo(topo, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_chiens) {
 				ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
 						.getSelectedItem();
 				controller.selectChiensRegelung(chiensReg,
 						(ChiensDim) regelkreis.getDim());
+			} else if (event.getSource() == jb_close) {
+				controller.closeRegler(regelkreis.getDim());
 			}
 			init();
 		}
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(RegelKreis kreis) {
+		this.regelkreis = kreis;
 		Regler regler = regelkreis.getRegler();
 		eventsEnabled = false;
 		try {
-			cbbx_Topo.setSelectedItem(regelkreis.getTopo());
+			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
 			Dimensionierung d;
 			if (regelkreis.getDim() instanceof ChiensDim) {

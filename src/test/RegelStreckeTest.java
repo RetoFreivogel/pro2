@@ -29,7 +29,7 @@ public class RegelStreckeTest {
 	@Test
 	public void testCopy() {
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);
-		RegelStrecke copy_rs = new RegelStrecke(rs);
+		RegelStrecke copy_rs = new RegelStrecke(1.0, 2.0, 10.0);
 
 		assertEquals(copy_rs, rs);
 		
@@ -40,7 +40,7 @@ public class RegelStreckeTest {
 	@Test
 	public void testHash(){
 		RegelStrecke rs = new RegelStrecke(1.0, 2.0, 10.0);
-		RegelStrecke copy_rs = new RegelStrecke(rs);
+		RegelStrecke copy_rs = new RegelStrecke(1.0, 2.0, 10.0);
 		
 		assertEquals(rs.hashCode(), copy_rs.hashCode());
 	}

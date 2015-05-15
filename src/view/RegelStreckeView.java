@@ -5,8 +5,6 @@ import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -17,11 +15,9 @@ import javax.swing.border.TitledBorder;
 import controller.Controller;
 import model.RegelStrecke;
 
-public class RegelStreckeView extends JPanel implements Observer,
-		PropertyChangeListener {
+public class RegelStreckeView extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 
-	private RegelStrecke regelstrecke;
 	private final Controller controller;
 
 	private JFormattedTextField tf_Ordn;
@@ -31,7 +27,6 @@ public class RegelStreckeView extends JPanel implements Observer,
 
 	public RegelStreckeView(RegelStrecke regelstrecke, Controller controller) {
 		super();
-		this.regelstrecke = regelstrecke;
 		this.controller = controller;
 
 		DecimalFormat format = new DecimalFormat("##0.000");
@@ -39,17 +34,6 @@ public class RegelStreckeView extends JPanel implements Observer,
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regelstrecke",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
-
-		/*
-		JLabel lb_defd_RS = new JLabel("Definiert durch:");
-		add(lb_defd_RS);
-		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
-		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] {
-				"KTuTg", "frequenzgang" }));
-		// TODO add definition through the Time coefficents
-		cbbx_defd_RS.setEnabled(false);
-		add(cbbx_defd_RS);
-		*/
 
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
@@ -74,17 +58,14 @@ public class RegelStreckeView extends JPanel implements Observer,
 		add(tf_Ordn);
 
 		/*
-		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
-		add(lb_Zeitkons);
-		JButton bt_Zeitkonst = new JButton("Lesen..");
-		// TODO enable reading of the Zeitkonstanten
-		bt_Zeitkonst.setEnabled(false);
-		add(bt_Zeitkonst);
-		*/
+		 * JLabel lb_Zeitkons = new JLabel("Zeitkonstanten"); add(lb_Zeitkons);
+		 * JButton bt_Zeitkonst = new JButton("Lesen.."); // TODO enable reading
+		 * of the Zeitkonstanten bt_Zeitkonst.setEnabled(false);
+		 * add(bt_Zeitkonst);
+		 */
 
-		regelstrecke.addObserver(this);
 		enableEvents();
-		update(null, null);
+		update(regelstrecke);
 	}
 
 	private void enableEvents() {
@@ -99,8 +80,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		tf_tg.removePropertyChangeListener("value", this);
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(RegelStrecke regelstrecke) {
 		disableEvents();
 		try {
 			tf_ks.setValue(regelstrecke.getKs());
@@ -121,12 +101,5 @@ public class RegelStreckeView extends JPanel implements Observer,
 		} else if (tf_tg == evt.getSource()) {
 			controller.setTg(((Number) tf_tg.getValue()).doubleValue());
 		}
-	}
-
-	public void setRegelstrecke(RegelStrecke regelstrecke) {
-		this.regelstrecke.deleteObserver(this);
-		this.regelstrecke = regelstrecke;
-		this.regelstrecke.addObserver(this);
-		update(null, null);
 	}
 }

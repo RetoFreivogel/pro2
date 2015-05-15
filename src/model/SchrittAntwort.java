@@ -37,7 +37,16 @@ public class SchrittAntwort {
 
 	public double getTymax() {
 		//schrittgrösse für die Suche der Anfangswerte
-		double tstep = getTaus(0.001) / 100;
+		double[] allw = new double[poles.length];
+		double wmax = 0;
+		for (int i = 0; i < poles.length; i++) {
+			double w = Math.abs(poles[i].getImaginary());
+			allw[i] = w;
+			if(wmax < w){
+				wmax = w;
+			}
+		}
+		double tstep = (Math.PI/2)/wmax;
 		
 		//Suche nach Anfangswerten
 		double tmin = 0;
@@ -73,17 +82,21 @@ public class SchrittAntwort {
 		}
 		
 		//Schätzwerte als Startwerte
-		double sumT = 0;
+		double maxT = 0;
 		for (int i = 0; i < poles.length; i++) {
-			sumT += 1/poles[i].abs();
+			double t =  -1/poles[i].getReal();
+			if(maxT < t){
+				maxT = t;
+			}
 		}		
-		double tmin = -Math.log(delta) * sumT;
-		double tmax = tmin * 1.2;
+		double tmin = -Math.log(delta) * maxT;
 		
 		//Überprüfen ob taus zwischen tmin und tmax liegt
 		while(Math.abs(getY(tmin)-getYend()) < delta){
 			tmin /= 1.2;
-		}	
+		}
+		
+		double tmax = tmin * 1.2;
 		while(Math.abs(getY(tmax)-getYend()) > delta){
 			tmax *= 1.2;
 		}

@@ -2,20 +2,25 @@ package model;
 
 
 public final class ZieglerDim extends AbstractDim {
+	private static final long serialVersionUID = 1L;
 
+	public ZieglerDim(ReglerTopologie topo){
+		super(topo);
+	}
+	
 	@Override
 	public String toString() {
 		return "ZieglerDim\n";
 	}
 
 	@Override
-	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 		
 		
-		switch (topo) {
+		switch (getTopo()) {
 		case P:
 			return new Regler((1 / Ks) * (Tg / Tu));
 		case PI:
@@ -29,8 +34,7 @@ public final class ZieglerDim extends AbstractDim {
 	}
 
 	@Override
-	public AbstractDim makeCopy() {
-		return new ZieglerDim();
+	public AbstractDim setTopo(ReglerTopologie topo) {
+		return new ZieglerDim(topo);
 	}
-	
 }

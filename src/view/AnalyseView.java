@@ -3,8 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -15,7 +13,7 @@ import javax.swing.border.TitledBorder;
 import controller.Controller;
 import model.RegelKreis;
 
-public class AnalyseView extends JPanel implements Observer {
+public class AnalyseView extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	private JFormattedTextField tf_Ymax;
@@ -26,12 +24,8 @@ public class AnalyseView extends JPanel implements Observer {
 	private JFormattedTextField tf_Et;
 	private JFormattedTextField tf_E2t;
 
-	private RegelKreis regelkreis;
-
 	public AnalyseView(RegelKreis regelkreis, Controller controller) {
 		super();
-		this.regelkreis = regelkreis;
-		regelkreis.addObserver(this);
 
 		DecimalFormat format = new DecimalFormat("###0.###");
 
@@ -82,18 +76,10 @@ public class AnalyseView extends JPanel implements Observer {
 		tf_E2t.setEditable(false);
 		add(tf_E2t);
 		
-		update(null, null);
+		update(regelkreis);
 	}
 
-	public void setRegelkreis(RegelKreis regelkreis) {
-		this.regelkreis.deleteObserver(this);
-		this.regelkreis = regelkreis;
-		this.regelkreis.addObserver(this);
-		update(null, null);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
+	public void update(RegelKreis regelkreis) {
 		double ymax = regelkreis.getTranferFunction().schrittantwort()
 				.getYmax();
 		this.tf_Ymax.setValue(ymax);

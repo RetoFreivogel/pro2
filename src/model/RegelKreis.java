@@ -1,67 +1,28 @@
 package model;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.Serializable;
 
-public class RegelKreis extends Observable implements RegelGlied, Observer {
-	public RegelStrecke regelstrecke;
-	private AbstractDim dim;
-	private ReglerTopologie topo;
+public final class RegelKreis implements RegelGlied, Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private final RegelStrecke regelstrecke;
+	private final AbstractDim dim;
 
 	public RegelKreis(AbstractDim dim, RegelStrecke regelstrecke) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
-		this.topo = ReglerTopologie.PID;
-
-		this.dim.addObserver(this);
-		this.regelstrecke.addObserver(this);
-	}
-
-	public RegelKreis(RegelKreis other) {
-		this.dim = other.getDim().makeCopy();
-		this.regelstrecke = new RegelStrecke(other.getRegelstrecke());
-		this.topo = other.getTopo();
-		this.dim.addObserver(this);
-		this.regelstrecke.addObserver(this);
 	}
 
 	public Regler getRegler() {
-		return dim.calc(regelstrecke, topo);
+		return dim.calc(regelstrecke);
 	}
 
 	public AbstractDim getDim() {
 		return dim;
 	}
 
-	public void setDim(AbstractDim dim) {
-		this.dim.deleteObserver(this);
-		this.dim = dim;
-		this.dim.addObserver(this);
-		setChanged();
-		notifyObservers();
-	}
-
 	public RegelStrecke getRegelstrecke() {
 		return regelstrecke;
-	}
-
-	public void setRegelstrecke(RegelStrecke regelstrecke) {
-		this.regelstrecke.deleteObserver(this);
-		this.regelstrecke = regelstrecke;
-		this.regelstrecke.addObserver(this);
-		setChanged();
-		notifyObservers();
-
-	}
-
-	public ReglerTopologie getTopo() {
-		return topo;
-	}
-
-	public void setTopo(ReglerTopologie topo) {
-		this.topo = topo;
-		setChanged();
-		notifyObservers();
 	}
 
 	@Override
@@ -76,18 +37,10 @@ public class RegelKreis extends Observable implements RegelGlied, Observer {
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		setChanged();
-		notifyObservers();
-	}
-
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(regelstrecke);
 		builder.append(dim);
-		builder.append("topo: ");
-		builder.append(topo);
 		builder.append('\n');
 		return builder.toString();
 	}

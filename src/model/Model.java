@@ -1,76 +1,73 @@
 package model;
 
+import java.io.Serializable;
+import java.util.Iterator;
 import java.util.Observable;
-import java.util.Observer;
-import java.util.Scanner;
 import java.util.Vector;
 
-public class Model extends Observable implements Observer{
-	private final Vector<RegelKreis> alleRegelkreise = new Vector<>(0, 1);
+public class Model extends Observable implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private final Vector<AbstractDim> alleDim = new Vector<>(0, 1);
-	private final RegelStrecke regelstrecke;
-
-	public Model(Scanner sc) {
-		regelstrecke = new RegelStrecke(sc);
-		alleDim.add(AbstractDim.fromScanner(sc));
-		alleRegelkreise.add(new RegelKreis(alleDim.get(0), regelstrecke));
-		regelstrecke.addObserver(this);
-		for(RegelKreis rk : alleRegelkreise){
-			rk.addObserver(this);
-		}
-	}
+	private RegelStrecke regelstrecke;
 
 	public Model() {
-		regelstrecke = new RegelStrecke(new RegelStrecke(1.0, 1.71, 7.6));
-		alleDim.add(new ZellwegerDim(Math.PI/4));
-		alleDim.add(new OppeltDim());
-		for(AbstractDim rd : alleDim){
-			RegelKreis rk = new RegelKreis(rd, regelstrecke);
-			alleRegelkreise.add(rk);
-		}
-		regelstrecke.addObserver(this);
-		for(RegelKreis rk : alleRegelkreise){
-			rk.addObserver(this);
-		}
+		regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
+		alleDim.add(new ZellwegerDim(45, ReglerTopologie.PID));
 	}
-	
-	public Model(Model other){
-		regelstrecke = new RegelStrecke(other.getRegelstrecke());
-		for(AbstractDim ad : other.getAlleDim()){
-			AbstractDim copy_ad = ad.makeCopy();
-			alleDim.add(copy_ad);
-			RegelKreis rk = new RegelKreis(copy_ad, regelstrecke);
-			alleRegelkreise.add(rk);
-		}
-		regelstrecke.addObserver(this);
-		for(RegelKreis rk : alleRegelkreise){
-			rk.addObserver(this);
-		}
-	}
-	
+		
 	public Vector<RegelKreis> getAlleRegelkreise() {
-		return alleRegelkreise;
+		Vector<RegelKreis> kreise = new Vector<>(alleDim.size());
+		for(AbstractDim dim : alleDim){
+			kreise.add(new RegelKreis(dim, regelstrecke));
+		}
+		return kreise;
+	}
+	
+	public Iterator<AbstractDim> getAlleDim(int index) {
+		return alleDim.iterator();
 	}
 
-	public Vector<AbstractDim> getAlleDim() {
-		return alleDim;
+	public void replaceDim(AbstractDim old_dim, AbstractDim new_dim) {
+		int index = alleDim.indexOf(old_dim);
+		alleDim.remove(index);
+		alleDim.insertElementAt(new_dim, index);
+		setChanged();
+		notifyObservers();
 	}
 
 	public RegelStrecke getRegelstrecke() {
 		return regelstrecke;
 	}
 
+	public void setRegelstrecke(RegelStrecke regelstrecke) {
+		this.regelstrecke = regelstrecke;
+		setChanged();
+		notifyObservers();
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		for (RegelKreis rk : alleRegelkreise) {
-			builder.append(rk).append('\n');
-		}
+		builder.append("Model\nalleDim: ");
+		builder.append(alleDim);
+		builder.append("\nregelstrecke: ");
+		builder.append(regelstrecke);
 		return builder.toString();
 	}
 	
-	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void removeDim(AbstractDim dim) {
+		if(alleDim.size() == 1){
+			throw new IllegalStateException("Letzter Regler kann nicht entfernt werden.");
+		}
+		alleDim.remove(dim);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void newDim() {
+		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PID);
+		alleDim.add(dim);
 		setChanged();
 		notifyObservers();
 	}

@@ -1,17 +1,17 @@
 package controller;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.AbstractDim;
@@ -21,7 +21,6 @@ import model.Dimensionierung;
 import model.ManuellDim;
 import model.Model;
 import model.OppeltDim;
-import model.RegelKreis;
 import model.ReglerTopologie;
 import model.RosenbergDim;
 import model.ZellwegerDim;
@@ -52,29 +51,31 @@ public class Controller {
 		this.view = view;
 	}
 
-	public void selectDim(Dimensionierung dim, RegelKreis kreis) {
+	public void selectDim(Dimensionierung dim, AbstractDim old_dim) {
 		modelChanged();
-
+		
+		AbstractDim new_dim = null;
 		switch (dim) {
 		case MANUELL:
-			kreis.setDim(new ManuellDim(kreis.getRegler()));
+			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()));
 			break;
 		case PHASENGANG:
-			kreis.setDim(new ZellwegerDim(Math.PI/4));
+			new_dim = new ZellwegerDim(45, old_dim.getTopo());
 			break;
 		case ZIEGLER:
-			kreis.setDim(new ZieglerDim());
+			new_dim = new ZieglerDim(old_dim.getTopo());
 			break;
 		case CHIENS:
-			kreis.setDim(new ChiensDim(ChiensDim.APERIODSTOER));
+			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo());
 			break;
 		case OPPELT:
-			kreis.setDim(new OppeltDim());
+			new_dim = new OppeltDim(old_dim.getTopo());
 			break;
 		case ROSENBERG:
-			kreis.setDim(new RosenbergDim());
+			new_dim = new RosenbergDim(old_dim.getTopo());
 			break;
 		}
+		model.replaceDim(old_dim, new_dim);
 	}
 
 	public void selectChiensRegelung(ChiensRegelung chiensReg, ChiensDim dim) {
@@ -94,15 +95,15 @@ public class Controller {
 		case ZWANZIGFUEHR:
 			j = 3;
 			break;
-		}
-		dim.setJ(j);
+		}	
+		model.replaceDim(dim, dim.setJ(j));
 		return;
 	}
 
 	public void setKs(double ks) {
 		try {
 			modelChanged();
-			model.getRegelstrecke().setKs(ks);
+			model.setRegelstrecke(model.getRegelstrecke().setKs(ks));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -113,7 +114,7 @@ public class Controller {
 	public void setTu(double tu) {
 		try {
 			modelChanged();
-			model.getRegelstrecke().setTu(tu);
+			model.setRegelstrecke(model.getRegelstrecke().setTu(tu));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -124,7 +125,7 @@ public class Controller {
 	public void setTg(double tg) {
 		try {
 			modelChanged();
-			model.getRegelstrecke().setTg(tg);
+			model.setRegelstrecke(model.getRegelstrecke().setTg(tg));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -136,19 +137,19 @@ public class Controller {
 		try {
 			modelChanged();
 			ManuellDim mdim = (ManuellDim) dim;
-			mdim.setKr(kr);
+			model.replaceDim(dim, mdim.setKr(kr));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void setPhasenrand(double phasenrand, AbstractDim dim) {
 		try {
 			modelChanged();
 			ZellwegerDim zdim = (ZellwegerDim) dim;
-			zdim.setPhasenrand(phasenrand);
+			model.replaceDim(dim, zdim.setPhasenrand(phasenrand));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -160,7 +161,7 @@ public class Controller {
 		try {
 			modelChanged();
 			ManuellDim mdim = (ManuellDim) dim;
-			mdim.setTn(tn);
+			model.replaceDim(dim, mdim.setTn(tn));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -172,7 +173,7 @@ public class Controller {
 		try {
 			modelChanged();
 			ManuellDim mdim = (ManuellDim) dim;
-			mdim.setTv(tv);
+			model.replaceDim(dim, mdim.setTv(tv));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -184,7 +185,7 @@ public class Controller {
 		try {
 			modelChanged();
 			ManuellDim mdim = (ManuellDim) dim;
-			mdim.setTp(tp);
+			model.replaceDim(dim, mdim.setTp(tp));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -192,10 +193,10 @@ public class Controller {
 		}
 	}
 
-	public void selectTopo(ReglerTopologie topo, RegelKreis kreis) {
+	public void selectTopo(ReglerTopologie topo, AbstractDim dim) {
 		try {
 			modelChanged();
-			kreis.setTopo(topo);
+			model.replaceDim(dim, dim.setTopo(topo));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -206,102 +207,87 @@ public class Controller {
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
 		jfcLaden.setCurrentDirectory(theDirectory);
-		view.setModel(new Model());	
+		view.setModel(new Model());
 	}
 
 	public void speichern() {
-		System.out.println(model);
-		file = jfcLaden.getSelectedFile();
-		String txt = model.toString();
-		
-		if (file != null && file.exists() == true) {
-			String[] zeilen = txt.split("[\n]+");
-			try {
-				PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(file,
-						false));
-				for (int i = 0; i < zeilen.length; i++) {
-					ausgabeDatei.println(zeilen[i]);
-				}
+		File file = jfcLaden.getSelectedFile();
 
-				ausgabeDatei.close();
-			} catch (IOException exc) {
-				System.err.println("Dateifehler: " + exc.toString());
-
-			}
-		} else {
+		if (file == null || !file.exists()) {
 			speichernals();
+			return;
 		}
+
+		try {
+			FileOutputStream stream = new FileOutputStream(file);
+			ObjectOutputStream ausgabe = new ObjectOutputStream(stream);
+
+			ausgabe.writeObject(model);
+			ausgabe.close();
+			stream.close();
+		} catch (IOException exc) {
+			System.err.println("Dateifehler: " + exc.toString());
+		}
+
 	}
 
 	public void speichernals() {
 		int returnVal = jfcLaden.showSaveDialog(frame);
 
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			file = jfcLaden.getSelectedFile();
-			String txt = model.toString();
-
-			if (file.exists() == true) {
-				System.out.println(txt);
-				String[] zeilen = txt.split("[\n]+");
-				try {
-					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
-							file, false));
-					for (int i = 0; i < zeilen.length; i++) {
-						ausgabeDatei.println(zeilen[i]);
-					}
-
-					ausgabeDatei.close();
-				} catch (IOException exc) {
-					System.err.println("Dateifehler: " + exc.toString());
-
-				}
-				
-			} else {
-				String[] zeilen = txt.split("[\n]+");
-				try {
-					PrintWriter ausgabeDatei = new PrintWriter(new FileWriter(
-							file, false));
-					for (int i = 0; i < zeilen.length; i++) {
-						ausgabeDatei.println(zeilen[i]);
-
-					}
-
-					ausgabeDatei.close();
-				} catch (IOException exc) {
-					System.err.println("Dateifehler: " + exc.toString());
-
-				}
-			}
-
+		if (returnVal != JFileChooser.APPROVE_OPTION) {
+			return;
 		}
 
+		file = jfcLaden.getSelectedFile();
+		if (file == null) {
+			return;
+		}
+
+		try {
+			FileOutputStream stream = new FileOutputStream(file);
+			ObjectOutputStream ausgabe = new ObjectOutputStream(stream);
+
+			ausgabe.writeObject(model);
+			ausgabe.close();
+			stream.close();
+		} catch (IOException exc) {
+			System.err.println("Dateifehler: " + exc.toString());
+		}
 	}
 
 	public void oeffnen() {
 
 		int returnVal = jfcLaden.showOpenDialog(frame);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			file = jfcLaden.getSelectedFile();
-			System.out.println(file.getAbsolutePath());
+		if (returnVal != JFileChooser.APPROVE_OPTION) {
+			return;
+		}
+		file = jfcLaden.getSelectedFile();
+		if(file == null || !file.exists()){
+			return;
+		}
+		
+		try {
+			FileInputStream stream = new FileInputStream(file);
+			ObjectInputStream ausgabe = new ObjectInputStream(stream);
 
-			Scanner sc;
-
-			try {
-				sc = new Scanner(file);
-				view.setModel(new Model(sc));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException | NoSuchElementException e) {
-				JOptionPane.showMessageDialog(frame,
-						"Datei konnte nicht gelesen werden");
-			}
+			Model temp_model = (Model) ausgabe.readObject();
+			modelChanged();
+			model = temp_model;
+			view.setModel(model);
+			ausgabe.close();
+			stream.close();
+		} catch (IOException exc) {
+			System.err.println("Dateifehler: " + exc.toString());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 
 	}
 
 	private void modelChanged() {
 		undone_changes.clear();
-		changes.addElement(new Model(model));
+		Model copy = SerializationUtils.roundtrip(model);
+		changes.addElement(copy);
 	}
 
 	public void beenden() {
@@ -334,5 +320,19 @@ public class Controller {
 
 	public void simulation() {
 
+	}
+
+	public void closeRegler(AbstractDim dim) {
+		modelChanged();
+		try {
+			model.removeDim(dim);
+		} catch (IllegalStateException e) {
+			changes.remove(changes.lastElement());
+		}
+	}
+
+	public void newKreis() {
+		modelChanged();
+		model.newDim();
 	}
 }

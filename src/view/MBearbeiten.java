@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 import controller.Controller;
 
@@ -23,8 +24,8 @@ public class MBearbeiten extends JMenu implements ActionListener {
 			mntmBearbeiten[i] = new JMenuItem(this.bearbeiten[i]);
 			add(mntmBearbeiten[i]);
 			mntmBearbeiten[i].addActionListener(this);
-
 		}
+		mntmBearbeiten[0].setAccelerator(KeyStroke.getKeyStroke("control typed z"));
 	}
 
 	public void actionPerformed(ActionEvent e) {

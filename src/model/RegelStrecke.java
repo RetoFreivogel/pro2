@@ -1,23 +1,10 @@
 package model;
 
-import java.util.Observable;
-import java.util.Scanner;
+import java.io.Serializable;
 
-public class RegelStrecke extends Observable implements RegelGlied {
-
-	private double ks, tu, tg;
-
-	public RegelStrecke(Scanner sc) {
-		sc.skip("ks: ");
-		ks = sc.nextDouble();
-		sc.nextLine();
-		sc.skip("tu: ");
-		tu = sc.nextDouble();
-		sc.nextLine();
-		sc.skip("tg: ");
-		tg = sc.nextDouble();
-		sc.nextLine();
-	}
+public final class RegelStrecke implements RegelGlied, Serializable {
+	private static final long serialVersionUID = 1L;
+	private final double ks, tu, tg;
 
 	public RegelStrecke(double ks, double tu, double tg) {
 		if (ks <= 0)
@@ -32,12 +19,6 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		this.tg = tg;
 	}
 
-	public RegelStrecke(RegelStrecke other) {
-		ks = other.getKs();
-		tu = other.getTu();
-		tg = other.getTg();
-	}
-
 	public double getKs() {
 		return ks;
 	}
@@ -50,31 +31,16 @@ public class RegelStrecke extends Observable implements RegelGlied {
 		return tg;
 	}
 
-	public void setKs(double ks) {
-		if (ks <= 0)
-			throw new IllegalArgumentException("ks muss positiv sein");
-
-		this.ks = ks;
-		setChanged();
-		notifyObservers();
+	public RegelStrecke setKs(double ks) {
+		return new RegelStrecke(ks, tu, tg);
 	}
 
-	public void setTu(double tu) {
-		if (tu <= 0)
-			throw new IllegalArgumentException("tu muss positiv sein");
-
-		this.tu = tu;
-		setChanged();
-		notifyObservers();
+	public RegelStrecke setTu(double tu) {
+		return new RegelStrecke(ks, tu, tg);
 	}
 
-	public void setTg(double tg) {
-		if (tg <= 0)
-			throw new IllegalArgumentException("tg muss positiv sein");
-
-		this.tg = tg;
-		setChanged();
-		notifyObservers();
+	public RegelStrecke setTg(double tg) {
+		return new RegelStrecke(ks, tu, tg);
 	}
 
 	@Override
