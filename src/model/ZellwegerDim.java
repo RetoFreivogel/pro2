@@ -131,7 +131,7 @@ public class ZellwegerDim extends AbstractDim {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ZellwegerDim\nphasenrand: ");
-		builder.append(phasenrand);
+		builder.append(phasenrand * 180 / Math.PI);
 		builder.append("\n");
 		return builder.toString();
 	}
@@ -142,6 +142,6 @@ public class ZellwegerDim extends AbstractDim {
 
 	@Override
 	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ZellwegerDim(phasenrand, topo);
+		return new ZellwegerDim(phasenrand * 180 / Math.PI, topo);
 	}
 }

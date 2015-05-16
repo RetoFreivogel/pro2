@@ -4,13 +4,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -24,7 +19,6 @@ import model.RegelKreis;
 public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
-	//TODO
 	//private Model model;
 	private final Controller controller;
 	
@@ -37,7 +31,6 @@ public class SidebarPanel extends JScrollPane{
 	public SidebarPanel(Model model, Controller controller){
 		super();
 		
-		//TODO
 		this.controller = controller;
 					
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
