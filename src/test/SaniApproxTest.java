@@ -46,6 +46,4 @@ public class SaniApproxTest {
 		
 		assertArrayEquals(Tcoeff_ref, Tcoeff, 0.001);
 	}
-	
-
 }

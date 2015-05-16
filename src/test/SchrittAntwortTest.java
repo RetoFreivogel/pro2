@@ -1,7 +1,13 @@
 package test;
 
 import static org.junit.Assert.*;
-import model.ManuellDim;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import model.OppeltDim;
 import model.RegelKreis;
 import model.RegelStrecke;
@@ -18,37 +24,32 @@ public class SchrittAntwortTest {
 	@Test
 	public void testPID() {
 		Matlab.setMocked(false);
-		OppeltDim dim = new OppeltDim();
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		RegelKreis kreis = new RegelKreis(dim, rs);
 		SchrittAntwort sw = kreis.getTranferFunction().schrittantwort();
 		
-		double[][] output = Matlab.calcStep(kreis);
-		double[] y_ref = output[0];
-		double[] t = output[1];
- 		
-		double[] y = new double[t.length];
-		for (int i = 0; i < y.length; i++) {
-			y[i] = sw.getY(t[i]);
-		}
-		assertArrayEquals(y_ref, y, 0.001);
-	}
+		double[][] output;
+ 
+		try{
+			FileInputStream stream = new FileInputStream("schrittantwort1.dat");
+			ObjectInputStream ausgabe = new ObjectInputStream(stream);
 
-	
-	@Test
-	public void testP() {
-		Matlab.setMocked(false);
-		OppeltDim dim = new OppeltDim();
-		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
-		RegelKreis kreis = new RegelKreis(dim, rs);
-		kreis.setTopo(ReglerTopologie.P);
-		ManuellDim dim2 = new ManuellDim(kreis.getRegler());
-		dim2.setKr(2);
-		kreis.setDim(dim2);
-		
-		SchrittAntwort sw = kreis.getTranferFunction().schrittantwort();
-		
-		double[][] output = Matlab.calcStep(kreis);
+			output = (double[][]) ausgabe.readObject();
+			ausgabe.close();
+			stream.close();
+		}catch(Exception e){
+			output = Matlab.calcStep(kreis);		
+			try {
+				FileOutputStream stream = new FileOutputStream("schrittantwort1.dat");
+				ObjectOutputStream ausgabe = new ObjectOutputStream(stream);
+				ausgabe.writeObject(output);
+				ausgabe.close();
+				stream.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}		
+		}	
 		double[] y_ref = output[0];
 		double[] t = output[1];
  		
@@ -56,7 +57,6 @@ public class SchrittAntwortTest {
 		for (int i = 0; i < y.length; i++) {
 			y[i] = sw.getY(t[i]);
 		}
-		
 		assertArrayEquals(y_ref, y, 0.001);
 	}
 }
