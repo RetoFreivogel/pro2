@@ -65,8 +65,7 @@ public class Model extends Observable implements Serializable{
 		notifyObservers();
 	}
 
-	public void newDim() {
-		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PID);
+	public void copyDim(AbstractDim dim) {
 		alleDim.add(dim);
 		setChanged();
 		notifyObservers();

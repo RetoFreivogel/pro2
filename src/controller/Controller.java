@@ -21,6 +21,7 @@ import model.Dimensionierung;
 import model.ManuellDim;
 import model.Model;
 import model.OppeltDim;
+import model.RegelKreis;
 import model.ReglerTopologie;
 import model.RosenbergDim;
 import model.ZellwegerDim;
@@ -328,8 +329,8 @@ public class Controller {
 		}
 	}
 
-	public void newKreis() {
+	public void copyKreis(RegelKreis kreis) {
 		modelChanged();
-		model.newDim();
+		model.copyDim(kreis.getDim());
 	}
 }

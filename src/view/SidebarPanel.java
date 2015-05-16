@@ -1,12 +1,16 @@
 package view;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -17,63 +21,69 @@ import controller.Controller;
 import model.Model;
 import model.RegelKreis;
 
-public class SidebarPanel extends JScrollPane implements ActionListener{
+public class SidebarPanel extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 		
 	//TODO
 	//private Model model;
 	private final Controller controller;
 	
-	private final JButton jb_Add = new JButton("+");
 	private final RegelStreckeView pn_ERegelstrecke;
 	private final AnalyseView pn_AAnalyse;
 	private ReglerView[] alleRegler = new ReglerView[]{};
 
-	private JPanel pn_Eingabe;
+	private JPanel pn_Regler;
 
 	public SidebarPanel(Model model, Controller controller){
 		super();
 		
 		//TODO
 		this.controller = controller;
-				
-		jb_Add.addActionListener(this);
-		
+					
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
+		setAlignmentY(TOP_ALIGNMENT);
+		
 		JPanel pn_left = new  JPanel();
 		setViewportView(pn_left);
-		pn_left.setLayout(new BoxLayout(pn_left, BoxLayout.Y_AXIS));
+		pn_left.setLayout(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints(0, 0, 1, 1, 0,
+				0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0);
+
+		pn_ERegelstrecke = new RegelStreckeView(model.getRegelstrecke(), controller);
+		pn_left.add(pn_ERegelstrecke, constraints);		
+		constraints.gridy++;
 		
-		//---------------------Eingabe-------------------------------		
-		pn_Eingabe = new JPanel();
-		pn_Eingabe.setLayout(new BoxLayout(pn_Eingabe, BoxLayout.Y_AXIS));
-		pn_Eingabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
-				"Eingabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pn_left.add(pn_Eingabe);
+		//---------------------Regler-------------------------------		
+		pn_Regler = new JPanel();
+		pn_Regler.setLayout(new GridBagLayout());
+		pn_Regler.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
+				"Regler", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pn_left.add(pn_Regler, constraints);
+		constraints.gridy++;
 		//---------------------Eingabe_Regelstrecke-------------------------------
 		
-		pn_ERegelstrecke = new RegelStreckeView(model.getRegelstrecke(), controller);
+
 		initEingabe(model);
 		
-		//---------------------Ausgabe-------------------------------
-		JPanel pn_Ausgabe = new JPanel();
-		pn_Ausgabe.setLayout(new BoxLayout(pn_Ausgabe, BoxLayout.Y_AXIS));
-		pn_Ausgabe.setBorder(new TitledBorder(new LineBorder(Color.GRAY),
-				"Ausgabe", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pn_left.add(pn_Ausgabe);
-			
+		//---------------------Ausgabe-------------------------------	
 		pn_AAnalyse = new AnalyseView(model.getAlleRegelkreise().get(0), controller);
-		pn_Ausgabe.add(pn_AAnalyse);
-		
+		pn_left.add(pn_AAnalyse, constraints);
+		constraints.gridy++;
+		constraints.weighty = 1.0;
+		pn_left.add(new JPanel(), constraints);
+		constraints.gridy++;
 	}
 	
 	public void initEingabe(Model model){
-		pn_Eingabe.removeAll();
-		pn_Eingabe.add(pn_ERegelstrecke);
-		pn_Eingabe.add(jb_Add);
+		pn_Regler.removeAll();
 		
+		GridBagConstraints constraints = new GridBagConstraints(0, 0, 1, 1, 1,
+				0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0);
+
 		Vector<RegelKreis> alleKreise = model.getAlleRegelkreise();
 		
 		if(alleRegler.length != alleKreise.size()){
@@ -84,13 +94,15 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 				ReglerView rv = new ReglerView(rk, controller);
 				alleRegler[i] = rv;
 				i++;
-				pn_Eingabe.add(rv);
+				pn_Regler.add(rv, constraints);
+				constraints.gridy++;
 			}
 		}else{
 			int i = 0;
 			for (RegelKreis regelKreis : alleKreise) {
 				alleRegler[i].update(regelKreis);
-				pn_Eingabe.add(alleRegler[i]);
+				pn_Regler.add(alleRegler[i], constraints);
+				constraints.gridy++;
 				i++;
 			}
 		}
@@ -106,11 +118,5 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 	public void update(Model model) {
 		pn_ERegelstrecke.update(model.getRegelstrecke());
 		initEingabe(model);	
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		controller.newKreis();
-		
 	}
 }
