@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
@@ -16,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -33,7 +36,7 @@ import model.ZellwegerDim;
 import model.ZieglerDim;
 
 public class ReglerView extends JPanel implements PropertyChangeListener,
-		ActionListener {
+		ActionListener, FocusListener {
 	private static final long serialVersionUID = 1L;
 	private static final DecimalFormat format = new DecimalFormat("##0.000");
 
@@ -74,14 +77,19 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 
 		tf_Phrand = new JFormattedTextField(format);
 		tf_Phrand.addPropertyChangeListener("value", this);
+		tf_Phrand.addFocusListener(this);
 		tf_Kr = new JFormattedTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
+		tf_Kr.addFocusListener(this);
 		tf_Tn = new JFormattedTextField(format);
 		tf_Tn.addPropertyChangeListener("value", this);
+		tf_Tn.addFocusListener(this);
 		tf_Tv = new JFormattedTextField(format);
 		tf_Tv.addPropertyChangeListener("value", this);
+		tf_Tv.addFocusListener(this);
 		tf_Tp = new JFormattedTextField(format);
 		tf_Tp.addPropertyChangeListener("value", this);
+		tf_Tp.addFocusListener(this);
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regler",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -273,5 +281,30 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		} finally {
 			eventsEnabled = true;
 		}
+	}
+	
+	@Override
+	public void focusGained(FocusEvent e) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				if (e.getSource() == tf_Phrand) {
+					tf_Phrand.selectAll();
+				} else if (e.getSource() == tf_Kr) {
+					tf_Kr.selectAll();
+				} else if (e.getSource() == tf_Tn) {
+					tf_Tn.selectAll();
+				} else if (e.getSource() == tf_Tv) {
+					tf_Tv.selectAll();
+				} else if (e.getSource() == tf_Tp) {
+					tf_Tp.selectAll();
+				}
+			}
+		});
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// Do Nothing
 	}
 }

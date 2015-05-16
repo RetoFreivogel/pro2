@@ -35,9 +35,7 @@ public class Controller {
 	private Vector<Model> changes = new Vector<Model>(0, 1);
 	private Vector<Model> undone_changes = new Vector<Model>(0, 1);
 
-	private final JFileChooser jfcLaden = new JFileChooser(new File(".//"));
-	private File file;
-	private File theDirectory = new File(".//");
+	private final JFileChooser jfcLaden = new JFileChooser();
 
 	public Controller(Model model, JFrame frame) {
 		this.model = model;
@@ -206,7 +204,6 @@ public class Controller {
 
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
-		jfcLaden.setCurrentDirectory(theDirectory);
 		view.setModel(new Model());
 	}
 
@@ -238,7 +235,7 @@ public class Controller {
 			return;
 		}
 
-		file = jfcLaden.getSelectedFile();
+		File file = jfcLaden.getSelectedFile();
 		if (file == null) {
 			return;
 		}
@@ -261,7 +258,7 @@ public class Controller {
 		if (returnVal != JFileChooser.APPROVE_OPTION) {
 			return;
 		}
-		file = jfcLaden.getSelectedFile();
+		File file = jfcLaden.getSelectedFile();
 		if(file == null || !file.exists()){
 			return;
 		}

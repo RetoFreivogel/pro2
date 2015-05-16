@@ -5,7 +5,7 @@ public class ManuellDim extends AbstractDim {
 	
 	private final double kr, tn, tv, tp;
 		
-	public ManuellDim(double kr, double tn, double tv, double tp, ReglerTopologie topo) {
+	public ManuellDim(double kr, double tn, double tv, double tp, ReglerTopologie topo) {		
 		super(topo);
 		this.kr = kr;
 		this.tn = tn;

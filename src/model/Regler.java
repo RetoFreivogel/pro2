@@ -10,9 +10,9 @@ public final class Regler implements RegelGlied {
 		}
 		this.topo = ReglerTopologie.P;
 		this.kr = kr;
-		this.tn = Double.NaN;
-		this.tv = Double.NaN;
-		this.tp = Double.NaN;
+		this.tn = 1.0;
+		this.tv = 1.0;
+		this.tp = 0.1;
 	}
 	
 	public Regler(double kr, double tn) {
@@ -26,8 +26,8 @@ public final class Regler implements RegelGlied {
 		this.topo = ReglerTopologie.PI;
 		this.kr = kr;
 		this.tn = tn;
-		this.tv = Double.NaN;
-		this.tp = Double.NaN;
+		this.tv = 1.0;
+		this.tp = 0.1;
 	}
 	
 	public Regler(double kr, double tn, double tv) {
