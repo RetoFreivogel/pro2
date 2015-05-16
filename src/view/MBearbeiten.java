@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,9 @@ public class MBearbeiten extends JMenu implements ActionListener {
 			add(mntmBearbeiten[i]);
 			mntmBearbeiten[i].addActionListener(this);
 		}
-		mntmBearbeiten[0].setAccelerator(KeyStroke.getKeyStroke("control typed z"));
+		int mask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+		mntmBearbeiten[0].setAccelerator(KeyStroke.getKeyStroke('Z', mask));
+		mntmBearbeiten[1].setAccelerator(KeyStroke.getKeyStroke('Y', mask));
 	}
 
 	public void actionPerformed(ActionEvent e) {

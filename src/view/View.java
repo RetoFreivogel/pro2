@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -22,20 +23,18 @@ public class View extends JPanel implements Observer{
 
 	private Controller controller;
 	
-	public View(Model model, Controller controller) {
+	public View(Model model, Controller controller, JFrame frame) {
 		super();
 		this.controller = controller;
 		this.model = model;
-		init();
+		init(frame);
 	}
 
-	private void init() {
-		this.setLayout(new BorderLayout());
-		setLayout(new BorderLayout(0, 0));
+	private void init(JFrame frame) {
+		setLayout(new BorderLayout());
 
 		// Menuleiste
 		JMenuBar menuBar = new JMenuBar();
-		add(menuBar, BorderLayout.NORTH);
 		// Untermenu Datei
 		MDatei mnDatei = new MDatei(controller);
 		menuBar.add(mnDatei);
@@ -61,28 +60,8 @@ public class View extends JPanel implements Observer{
 		
 		model.addObserver(this);
 		
-		/*
-		InputMap inputmap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
-		ActionMap actionmap = getActionMap();
-		
-		inputmap.put(KeyStroke.getKeyStroke("ctrl typed z") , "undo");
-		actionmap.put("undo", new AbstractAction(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.rueckgaengig();	
-			}		
-		});
-		
-		inputmap.put(KeyStroke.getKeyStroke("ctrl typed y") , "redo");
-		actionmap.put("redo", new AbstractAction(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.wiederholen();	
-			}		
-		});
-		*/
+		frame.setContentPane(this);
+		frame.setJMenuBar(menuBar);
 	}
 
 	public void displayError(String message) {

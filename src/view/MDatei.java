@@ -1,10 +1,13 @@
 package view;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.KeyStroke;
 
 import controller.Controller;
 
@@ -30,6 +33,11 @@ public class MDatei extends JMenu implements ActionListener {
 				add(separator);
 			}
 		}
+		int mask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+		mntmDatei[0].setAccelerator(KeyStroke.getKeyStroke('N', mask));
+		mntmDatei[1].setAccelerator(KeyStroke.getKeyStroke('S', mask));
+		mntmDatei[3].setAccelerator(KeyStroke.getKeyStroke('O', mask));
+		mntmDatei[4].setAccelerator(KeyStroke.getKeyStroke('Q', mask));		
 	}
 	
 	public void actionPerformed(ActionEvent e) {

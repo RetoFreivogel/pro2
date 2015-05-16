@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -15,12 +16,11 @@ public class PIDRechner extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public void init() {
-		setSize(800, 600);
+		setPreferredSize(new Dimension(800, 600));
 		Model model = new Model();
 		Controller controller = new Controller(model, this);
-		View view = new View(model, controller);
+		View view = new View(model, controller, this);
 		controller.setView(view);
-		add(view);
 	}
 
 	public static void main(String args[]) {
@@ -37,8 +37,9 @@ public class PIDRechner extends JFrame {
 					}
 				});
 				rechner.init();
+				rechner.setTitle("Regler Dimensionierungs Tool ONE");
+				rechner.pack();
 				rechner.setVisible(true);
-				rechner.setTitle("ReglerDim_Pro");
 			}
 		});
 	}
