@@ -30,7 +30,7 @@ public class BenchmarkStepResponse {
 			start = System.nanoTime();
 			rs.setTu(rs.getTu() + 0.001);
 			SchrittAntwort sa = regelkreis.getTranferFunction().schrittantwort();
-			double taus = sa.getTaus(0.001);
+			double taus = sa.getTaus();
 			for (int j = 0; j < 1000; j++) {
 				sa.getY(taus * j / 999);
 			}

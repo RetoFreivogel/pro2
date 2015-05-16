@@ -3,21 +3,60 @@ package model;
 import org.apache.commons.math3.complex.Complex;
 
 public class SchrittAntwort {
-	private final double constant;
 	private final Complex[] poles;
 	private final Complex[] residues;
+	private final double constant;
+	private final boolean stabil;
+	private final boolean asymptotisch;
+	private final double Taus;
+	private final double Tymax;
+	private final double Tan;
+	private final double Ymax;
 
 	public SchrittAntwort(Complex[] poles, Complex[] residues) {
 		super();
 		this.poles = poles;
 		this.residues = residues;
 		
-		double constant = 0;
+		constant = -getY(0);
+		stabil = calcStabil();
+		Taus = calcTaus(0.001);
 		
-		for (int i = 0; i < residues.length; i++) {
-			constant += residues[i].divide(poles[i]).getReal();
+		
+		Tymax = calcTymax();
+		if(getY(Tymax) < getYend()){
+			asymptotisch = true;
+			Ymax = getYend();
+			Tan = Taus;
+		}else{
+			asymptotisch = false;
+			Ymax = getY(Tymax);
+			Tan = calcTan();
 		}
-		this.constant = -constant;
+	}
+
+	public boolean isStabil() {
+		return stabil;
+	}
+	
+	public boolean isAsymptotisch() {
+		return asymptotisch;
+	}
+
+	public double getTaus() {
+		return Taus;
+	}
+
+	public double getTymax() {
+		return Tymax;
+	}
+
+	public double getTan() {
+		return Tan;
+	}
+
+	public double getYmax() {
+		return Ymax;
 	}
 
 	public double getY(double x) {
@@ -35,7 +74,31 @@ public class SchrittAntwort {
 		return constant;
 	}
 
-	public double getTymax() {
+	private boolean calcStabil(){
+		boolean stabil = true;
+		for(Complex pole : poles){
+			stabil &= pole.getReal() < 0;
+		}
+		return stabil;
+	}
+	
+	private double calcTan(){
+		double tmin = 0;
+		double tmax = Tymax;
+		
+		for(int i = 0; i < 100; i++){
+			double tmiddle = (tmin + tmax)/2;
+			if(getY(tmiddle) < constant){
+				tmin = tmiddle;
+			}else{
+				tmax = tmiddle;
+			}
+		}
+		
+		return (tmax + tmin)/2;
+	}
+	
+	private double calcTymax() {
 		//schrittgrösse für die Suche der Anfangswerte
 		double[] allw = new double[poles.length];
 		double wmax = 0;
@@ -71,12 +134,8 @@ public class SchrittAntwort {
 		
 		return (tmin + tmax)/2;
 	}
-	
-	public double getYmax() {
-		return getY(getTymax());
-	}	
-	
-	public double getTaus(double delta) {
+		
+	private double calcTaus(double delta) {
 		if(delta > 1 || delta <= 0){
 			throw new IllegalArgumentException("delta muss zwischen 0 und 1 sein");
 		}
@@ -91,11 +150,15 @@ public class SchrittAntwort {
 		}		
 		double tmin = -Math.log(delta) * maxT;
 		
+		//Beende Suche falls Schrittantwort nicht stabil ist.
+		if(!stabil){
+			return tmin;
+		}
+		
 		//Überprüfen ob taus zwischen tmin und tmax liegt
 		while(Math.abs(getY(tmin)-getYend()) < delta){
 			tmin /= 1.2;
 		}
-		
 		double tmax = tmin * 1.2;
 		while(Math.abs(getY(tmax)-getYend()) > delta){
 			tmax *= 1.2;

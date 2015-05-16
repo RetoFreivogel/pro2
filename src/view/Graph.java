@@ -65,7 +65,7 @@ public class Graph extends JPanel implements ActionListener {
 		double tmax = 0;
 		for (RegelKreis rk : model.getAlleRegelkreise()) {
 			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
-			double taus = sa.getTaus(0.001);
+			double taus = sa.getTaus();
 			if(tmax < taus){
 				tmax = taus;
 			}
