@@ -10,7 +10,7 @@ public final class OppeltDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
 	public OppeltDim(ReglerTopologie topo){
-		super(topo);
+		super(topo, "Oppelt");
 	}
 	
 	@Override

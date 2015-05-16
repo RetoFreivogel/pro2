@@ -5,7 +5,7 @@ public final class ZieglerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
 	public ZieglerDim(ReglerTopologie topo){
-		super(topo);
+		super(topo, "Ziegler");
 	}
 	
 	@Override

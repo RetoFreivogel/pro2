@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -91,7 +92,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp.addPropertyChangeListener("value", this);
 		tf_Tp.addFocusListener(this);
 
-		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regler",
+		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim().getName(),
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridBagLayout());
 
@@ -246,6 +247,8 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
+			((TitledBorder) getBorder()).setTitle(kreis.getDim().getName());
+			
 			Dimensionierung d;
 			if (regelkreis.getDim() instanceof ChiensDim) {
 				d = Dimensionierung.CHIENS;

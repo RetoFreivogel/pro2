@@ -114,7 +114,7 @@ public class ZellwegerDim extends AbstractDim {
 	}
 
 	public ZellwegerDim(double phasenrand, ReglerTopologie topo) {
-		super(topo);
+		super(topo, "Phasengang");
 		phasenrand *= Math.PI / 180;
 		if (phasenrand > Math.PI / 2 || phasenrand < 0) {
 			throw new IllegalArgumentException(

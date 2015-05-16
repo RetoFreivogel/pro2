@@ -9,7 +9,7 @@ public final class ChiensDim extends AbstractDim {
 	private final int j;
 
 	public ChiensDim(int j, ReglerTopologie topo) {
-		super(topo);
+		super(topo, "Chiens");
 
 		if (j < 0 || j > 3) {
 			throw new IllegalArgumentException("j must be between 0 and 3");

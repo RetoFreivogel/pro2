@@ -73,8 +73,10 @@ public class Graph extends JPanel implements ActionListener {
 		
 		final int n = model.getAlleRegelkreise().size();
 		for (int i = 0; i < n; i++) {
+			RegelKreis rk = model.getAlleRegelkreise().get(i);
+			
 			JCheckBox cb = new JCheckBox();
-			cb.setText("Graph " + (i+1));
+			cb.setText(rk.getDim().getName());
 			cb.setSelected(true);
 			Color color = Color.getHSBColor((float) i * 3 / 29, 1, 1);
 			cb.setBackground(color);
@@ -83,7 +85,7 @@ public class Graph extends JPanel implements ActionListener {
 			pn_legend.add(cb);
 			ckbx_Graph.add(cb);
 
-			SchrittAntwort sa = model.getAlleRegelkreise().get(i)
+			SchrittAntwort sa = rk
 					.getTranferFunction().schrittantwort();
 			XYSeries ser = new XYSeries(i);
 			for (int j = 0; j < 300; j++) {

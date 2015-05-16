@@ -4,7 +4,7 @@ public final class RosenbergDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
 	public RosenbergDim(ReglerTopologie topo){
-		super(topo);
+		super(topo, "Rosenberg");
 	}
 
 	
