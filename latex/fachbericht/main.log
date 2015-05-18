@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 MAY 2015 14:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  18 MAY 2015 12:15
 entering extended mode
 **main.tex
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.tex
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\fhnwreport.cls
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\fhnwreport.cls
 Document Class: fhnwreport 2013/10/07 v2.0 PDF-LaTeX class for FHNW reports
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
@@ -1087,12 +1087,12 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
-lagen.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.aux
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
+en.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
@@ -1109,6 +1109,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -1180,8 +1181,8 @@ LaTeX Info: Redefining \ref on input line 25.
 LaTeX Info: Redefining \pageref on input line 25.
 LaTeX Info: Redefining \nameref on input line 25.
 
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.out)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.out)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.out)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.out)
 \@outlinefile=\write4
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -1222,28 +1223,27 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 27.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Martin/FHNW/Seme
-ster_2/pro2E/pro2/latex/fachbericht/fhnwlogo.pdf>]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Claudius/Documen
+ts/GitHub/pro2/latex/fachbericht/fhnwlogo.pdf>]
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 47.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.toc
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 4.
 )
 \tf@toc=\write5
-
-[2
+ [2
 
 ]
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.tex)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.tex)
 [3
 
 ]
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
-lagen.tex
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
+en.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
@@ -1263,8 +1263,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 [4
 
 
- <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Regelstrecke.png
->]
+ <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/Regelstrecke.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
@@ -1294,8 +1293,8 @@ Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
 [][][][]\T1/lmr/m/n/10.95 Quellenangabe 
  []
 
-[5 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
-.png>]
+[5 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/Schrittantwort.pn
+g>]
 Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
@@ -1332,13 +1331,12 @@ LaTeX Warning: Marginpar on page 6 moved.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
+[6 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/agangpi.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-[7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
-
+[7 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/agangpid.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 119--121
 
  []
@@ -1372,16 +1370,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 285--288
  []
 
 ) [11]
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.tex)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.tex)
 [12
 
 
-]
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.tex)
-[13
+] (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.tex) [
+13
 
 
-] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.bbl
+] (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.bbl
 Underfull \hbox (badness 1248) in paragraph at lines 25--27
 []\T1/lmr/m/n/10.95 RN-Wissen. Re-ge-lungs-tech-nik. http://rn-wissen.de/wiki/i
 ndex.php/Datei:Regelkreis4.png
@@ -1392,12 +1389,12 @@ ndex.php/Datei:Regelkreis4.png
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
- (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
-lagen.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
+ (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.aux
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
+en.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.aux)
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
 Package rerunfilecheck Info: File `main.out' has not changed.
@@ -1406,7 +1403,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 62.
  ) 
 Here is how much of TeX's memory you used:
  20149 strings out of 493921
- 376066 string characters out of 3144874
+ 375943 string characters out of 3144866
  446965 words of memory out of 3000000
  22938 multiletter control sequences out of 15000+200000
  70593 words of font info for 52 fonts, out of 3000000 for 9000
@@ -1427,7 +1424,7 @@ blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (14 pages, 446141 bytes).
+Output written on main.pdf (14 pages, 446138 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  81 named destinations out of 1000 (max. 500000)

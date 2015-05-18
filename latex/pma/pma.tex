@@ -4,7 +4,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{tikz}
 \usepackage{amsmath}
-\usetikzlibrary{arrows}
+\usetikzlibrary{arrows,trees,shapes.geometric}
 \usepackage{lmodern}
 \usepackage[final]{pdfpages}
 \usepackage{graphicx}
@@ -65,9 +65,41 @@ Studiengang: \> Elektro- und Informationstechnik
 
 \input{pma_schlusswort}
 
-\cite{frequenzgang}
-
 \section{Literaturverzeichnis}
+
+\font\figfont="Myriad Pro" at 8pt
+\font\tinyfigfont="Myriad Pro" at 6pt
+
+\begin{tikzpicture}[>=latex,font=\figfont,lbl/.style={draw=black,very thin,fill=#1,ellipse}]
+  \coordinate
+    child [grow=right] {
+      child {
+        child [grow=125] {
+          child [grow=left] {node {\tinyfigfont Cost of Transport} edge from parent[<-,thin]}
+          child {
+            child [grow=left] {node {\tinyfigfont Access to premises} edge from parent[<-,thin]}
+            child {node [lbl=yellow!20] {Transport}}
+            child [missing]
+          }
+          child [missing] edge from parent[<-,thick]
+        }
+        child [xshift=1cm] {
+          child [grow=125] {
+            child [grow=left] {node {\tinyfigfont Security} edge from parent[<-,thin]}
+            child {node [lbl=green!20!yellow] {Premises}}
+            child [missing] edge from parent[<-,thick]
+          }
+          child
+          child [grow=-125]
+        }
+        child [grow=-125] {
+          child [grow=left] {node {\tinyfigfont Consultation} edge from parent[<-,thin]}
+          child {node [lbl=purple!20] {Clients}}
+          child [missing] edge from parent[<-,thick]
+        }
+      }
+    };
+\end{tikzpicture}
 
 \bibliography{literaturverzeichnis}
 
