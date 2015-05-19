@@ -80,7 +80,6 @@ public class Graph extends JPanel implements ActionListener {
 			cb.setSelected(true);
 			Color color = Color.getHSBColor((float) i * 3 / 29, 1, 1);
 			cb.setBackground(color);
-			//cb.setOpaque(false);
 			cb.addActionListener(this);
 			pn_legend.add(cb);
 			ckbx_Graph.add(cb);

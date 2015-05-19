@@ -59,6 +59,46 @@ public class SchrittAntwort {
 		return Ymax;
 	}
 
+	public double getE() {
+		int N = 1000;
+		double error = 0;
+		for(int i = 0; i<N;i++){
+			double t = Taus * i / N;
+			error += Math.abs(constant - getY(t))*Taus/N;
+		}
+		return error;
+	}
+
+	public double getEquad() {
+		int N = 1000;
+		double error = 0;
+		for(int i = 0; i<N;i++){
+			double t = Taus * i / N;
+			error += Math.pow(constant - getY(t), 2)*Taus/N;
+		}
+		return error;
+	}
+
+	public double getEtime() {
+		int N = 1000;
+		double error = 0;
+		for(int i = 0; i<N;i++){
+			double t = Taus * i / N;
+			error += Math.abs(constant - getY(t))*t*Taus/N;
+		}
+		return error;
+	}
+
+	public double getEquadtime() {
+		int N = 1000;
+		double error = 0;
+		for(int i = 0; i<N;i++){
+			double t = Taus * i / N;
+			error += Math.pow(constant - getY(t), 2)*t*Taus/N;
+		}
+		return error;
+	}
+
 	public double getY(double x) {
 		double y = 0;
 

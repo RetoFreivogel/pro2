@@ -12,10 +12,12 @@ import javax.swing.border.TitledBorder;
 
 import controller.Controller;
 import model.RegelKreis;
+import model.SchrittAntwort;
 
 public class AnalyseView extends JPanel{
 	private static final long serialVersionUID = 1L;
 
+	private JFormattedTextField tf_Tymax;
 	private JFormattedTextField tf_Ymax;
 	private JFormattedTextField tf_Tan;
 	private JFormattedTextField tf_Taus;
@@ -34,6 +36,12 @@ public class AnalyseView extends JPanel{
 
 		setLayout(new GridLayout(0, 2, 0, 0));
 
+		JLabel lb_Tymax = new JLabel("Tymax");
+		add(lb_Tymax);
+		tf_Tymax = new JFormattedTextField(format);
+		tf_Tymax.setEditable(false);
+		add(tf_Tymax);
+		
 		JLabel lb_Ymax = new JLabel("Ymax");
 		add(lb_Ymax);
 		tf_Ymax = new JFormattedTextField(format);
@@ -80,10 +88,15 @@ public class AnalyseView extends JPanel{
 	}
 
 	public void update(RegelKreis regelkreis) {
-		double ymax = regelkreis.getTranferFunction().schrittantwort()
-				.getYmax();
-		this.tf_Ymax.setValue(ymax);
-
+		SchrittAntwort sa = regelkreis.getTranferFunction().schrittantwort();
+		tf_Tymax.setValue(sa.getTymax());		
+		tf_Taus.setValue(sa.getTaus());
+		tf_Tan.setValue(sa.getTan());
+		tf_Ymax.setValue(sa.getYmax());
+		tf_E.setValue(sa.getE());
+		tf_E2.setValue(sa.getEquad());
+		tf_Et.setValue(sa.getEtime());
+		tf_E2t.setValue(sa.getEquadtime());
 	}
 
 }

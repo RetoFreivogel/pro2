@@ -110,6 +110,7 @@ public class SidebarPanel extends JScrollPane{
 	
 	public void update(Model model) {
 		pn_ERegelstrecke.update(model.getRegelstrecke());
+		pn_AAnalyse.update(model.getAlleRegelkreise().firstElement());
 		initEingabe(model);	
 	}
 }
