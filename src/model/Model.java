@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 public class Model extends Observable implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -66,7 +68,7 @@ public class Model extends Observable implements Serializable{
 	}
 
 	public void copyDim(AbstractDim dim) {
-		alleDim.add(dim);
+		alleDim.add(SerializationUtils.roundtrip(dim));
 		setChanged();
 		notifyObservers();
 	}
