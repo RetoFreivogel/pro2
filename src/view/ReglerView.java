@@ -313,7 +313,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	}
 
 	@Override
-	public void focusGained(FocusEvent e) {
+	public void focusGained(final FocusEvent e) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
