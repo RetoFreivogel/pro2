@@ -42,10 +42,6 @@ public class View extends JPanel implements Observer{
 		MBearbeiten mnBearbeiten = new MBearbeiten(controller);
 		menuBar.add(mnBearbeiten);
 
-		// Untermenu Optionen
-		MOptionen mnOptionen = new MOptionen(controller);
-		menuBar.add(mnOptionen);
-
 		// ---------------------Panel_Left-------------------------------
 		sidebarPanel = new SidebarPanel(model, controller);
 		add(sidebarPanel, BorderLayout.WEST);
