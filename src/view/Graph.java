@@ -46,7 +46,9 @@ public class Graph extends JPanel implements ActionListener {
 				PlotOrientation.VERTICAL, false, false, false);
 		XYPlot plot = (XYPlot) chart.getPlot();
 		renderer = plot.getRenderer();
-		plot.setBackgroundPaint(new Color(0, 0, 0));
+		plot.setBackgroundPaint(new Color(255, 255, 255));
+		plot.setDomainGridlinePaint(new Color(196, 196, 196));
+		plot.setRangeGridlinePaint(new Color(196, 196, 196));
 
 		pn_chart = new ChartPanel(chart);
 		add(pn_chart);
