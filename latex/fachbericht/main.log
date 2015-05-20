@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  13 MAY 2015 15:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  20 MAY 2015 16:40
 entering extended mode
 **main.tex
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.tex
@@ -1187,7 +1187,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=90, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=94, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
 Package pdftex.def Info: fhnwlogo.pdf used on input line 27.
@@ -1223,8 +1223,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Martin/FHNW/Seme
-ster_2/pro2E/pro2/latex/fachbericht/fhnwlogo.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 47.
+ster_2/pro2E/pro2/latex/fachbericht/fhnwlogo.pdf>] [2
+
+]
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 50.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1235,11 +1237,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 )
 \tf@toc=\write5
 
-[2
-
-]
+[3]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.tex)
-[3
+[4
 
 ]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
@@ -1248,7 +1248,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-<Regelstrecke.png, id=146, 260.77425pt x 74.679pt>
+<Regelstrecke.png, id=156, 260.77425pt x 74.679pt>
 File: Regelstrecke.png Graphic file (type png)
  <use Regelstrecke.png>
 Package pdftex.def Info: Regelstrecke.png used on input line 6.
@@ -1258,7 +1258,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[4
+[5
 
 
  <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Regelstrecke.png
@@ -1267,7 +1267,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
-<Schrittantwort.png, id=158, 321.2pt x 260.975pt>
+<Schrittantwort.png, id=168, 321.2pt x 260.975pt>
 File: Schrittantwort.png Graphic file (type png)
  <use Schrittantwort.png>
 Package pdftex.def Info: Schrittantwort.png used on input line 20.
@@ -1277,7 +1277,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
-[5 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
+[6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
 .png>]
 Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
@@ -1288,7 +1288,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<agangpi.png, id=180, 334.24875pt x 262.73157pt>
+<agangpi.png, id=190, 334.24875pt x 262.73157pt>
 File: agangpi.png Graphic file (type png)
  <use agangpi.png>
 Package pdftex.def Info: agangpi.png used on input line 64.
@@ -1300,7 +1300,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 65.
 
-<agangpid.png, id=183, 418.56375pt x 274.77657pt>
+<agangpid.png, id=193, 418.56375pt x 274.77657pt>
 File: agangpid.png Graphic file (type png)
  <use agangpid.png>
 Package pdftex.def Info: agangpid.png used on input line 72.
@@ -1312,12 +1312,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
+[7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-[7 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
+[8 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>]
 
 Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
@@ -1338,7 +1338,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
  []
 
-[8]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 167--169
 
  []
@@ -1348,46 +1348,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
-[9]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 245.
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 277--280
-
- []
-
-
-LaTeX Warning: Marginpar on page 11 moved.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--297
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 298--52
-
- []
-
 [11]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 276.
+ [12]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 309.
 
-LaTeX Warning: Marginpar on page 12 moved.
-
-
-LaTeX Warning: Marginpar on page 12 moved.
-
-[12]
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+[13]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.tex)
-[13
+[14
 
 
 ]
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.tex)
-[14
+[15
 
 
 ] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.bbl
@@ -1396,58 +1378,51 @@ Underfull \hbox (badness 1248) in paragraph at lines 25--27
 ndex.php/Datei:Regelkreis4.png
  []
 
-) [15
+) [16
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
  (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
 lagen.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 10E49A515E43749712658FAD13D05EA5;1539
-(rerunfilecheck)             After:  6775B39C9B87C56B0C06E8BECA5B4F8A;1616.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 6775B39C9B87C56B0C06E8BECA5B4F8A;1616.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
  ) 
 Here is how much of TeX's memory you used:
- 20127 strings out of 493921
- 375498 string characters out of 3144874
- 452650 words of memory out of 3000000
- 22918 multiletter control sequences out of 15000+200000
- 70593 words of font info for 52 fonts, out of 3000000 for 9000
+ 20142 strings out of 493921
+ 375797 string characters out of 3144874
+ 439439 words of memory out of 3000000
+ 22929 multiletter control sequences out of 15000+200000
+ 76955 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,12n,78p,971b,701s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x
-86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 
-2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
-vips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx
-10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (15 pages, 446196 bytes).
+ 55i,12n,78p,1206b,701s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)
+/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9
+/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
+dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.
+enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/lm/lmsy8.pfb>
+Output written on main.pdf (16 pages, 476577 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 365 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 214 words of extra memory for PDF output out of 10000 (max. 10000000)
 

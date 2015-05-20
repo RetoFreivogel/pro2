@@ -242,7 +242,6 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \renewcommand*{\arraystretch}{1}
 \caption{Fausformeln Ziegler/Nichols, Oppelt und Rosenberg \cite{bate}}
 \end{table}
-\todo{Quellen einfügen}
 % Boulent Bate Skript "Spezialgebiete der Steuer- und Regelungstechnik"
 
 \begin{table}
@@ -274,10 +273,7 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \newpage
 \subsection{Schrittantwort der Regelung}
 \subsubsection{Berechnung}
-\todo{Kapitel schreiben}
-- Übertragungsfunktion Regelung (Berechnung aus üfunk regler und üfunk regelung)\newline
-- Berechnung durch Residuen\newline
-
+\todo{evtl. Analyse genauer beschreiben}
 Um die Schrittantwort der geschlossenen Regelung berechnen zu können, wird die Übertragungsfunktion der Regelung benötigt. Diese wird aus den Übertragungsfunktionen des Reglers und der Strecke gemässe Formel \ref{ufunkregelung} berechnet.
 
 \begin{align}
@@ -285,15 +281,41 @@ G(s)=\frac{G_R(s)G_S(s)}{1+G_R(s)G_S(s)}
 \label{ufunkregelung}
 \end{align}
 
+Die Berechnung der Schrittantwort wird mittels Residuenrechnung durchgeführt. Erstes Teilziel ist es die Übertragungsfunktion in die Form von Formel \ref{residue1} zu bringen, wo $B(s)$ das Zählerpolynom der Übertragungsfunktion, $A(s)$ das Nennerpolynom, $R(n)$ die Residuen, $P(n)$ die Polstellen und $K$ den Direktterm darstellen.
+
+\begin{align}
+\frac{B(s)}{A(s)}=\frac{R(1)}{s-P(1)}+\frac{R(2)}{s-P(2)}+...+ K
+\label{residue1}
+\end{align}
+
+Dafür werden als erstes die Polstellen der Übertragungsfunktion gesucht. Die geschieht mit Hilfe des Laguerresolvers, der in Java bereits vorhanden ist. Die Residuen erhält man durch die Partialbruchzerlegung mittels Residuenkalkül gemäss Formel \ref{residue2}.
+
+\begin{align}
+R(n)=\lim_{s \to P(n)}(s-P(n))\frac{B(s)}{A(s)}
+\label{residue2}
+\end{align}
+
+Durch die inverse Laplactransformation, unter Verwendung der Korrespondenztabellen erhält man die Impulsantwort $h(t)$ (Formel \ref{residue3} mit $t\geq0$ ).
+
+\begin{align}
+h(t)=K\delta(t)+\sum_{i=1}^n R(i)*e^{P(i)t}
+\label{residue3}
+\end{align}
+
+Aus der erhaltenen Implusantwort muss nun noch die Schrittantwort berechnet werden, was mittels Integration gemacht wird. Beachtung muss hier der richtigen Wahl der Integrationskonstanten geschenkt werden.
+
+Die Schrittantwort wird zusätzlich noch analysiert. Folgende Werte werden ausgewertet:
+\begin{itemize}
+\item Anregelzeit $T_{an}$:   Die Zeit, welche die Strecke benätigt bis der Sollwert das erste mal erreicht wird.
+\item Ausregelzeit $T_{aus}$:   Die zeit, welche die Strecke benötigt bis die Strecke in einem gewissen Toleranzbereich einmündet, und diesen nicht wieder verlässt.
+\item Max. Überschwingen $Y_{max}$:   Der Wert an der Stelle, wo die Schrittantwort an meisten vom Sollwert abweicht.
+\end{itemize}
+
+
 \subsubsection{Optimierungsmöglichkeiten}
-\todo{gesamtes Kapitel schreiben}
-\todo{in der Software nicht erreichte Möglichkeiten herauslöschen!!}
-Falls die berechnete und dargestellte Schrittantwort der Regelung nicht der Vorstellung und den Ansprüchen des Nutzeres entspricht, soll dieser die Möglichkeiten haben, die Schrittantwort nach seinen Anforderungen zu optimieren. Dazu gibt es verschieden Möglichkeiten. 
+Falls die berechnete und dargestellte Schrittantwort der Regelung nicht der Vorstellung und den Ansprüchen des Nutzers entspricht, soll dieser die Möglichkeiten haben, die Schrittantwort nach seinen Anforderungen zu optimieren. Dazu gibt es verschiedene Möglichkeiten. 
 
 Einerseits kann der Regler durch seine Eigenschaften $K_R$, $T_n$ und $T_v$ modifiziert werden. Eine Schrittantwort durch die Veränderung dieser drei Eigenschaften zu optimieren ist äusserst schwierig. Dies erfordert grosses Wissen und viel Erfahrung in der Regelungstechnik, was einem weniger erfahrenen Nutzer die Optimierung nahezu verunmöglicht.
 
-Es besteht jedoch die Möglichkeit die Optimierungen durch verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich [Kapitel Grundlagen Phasengangmethode], dass das der gewählte Phasenrand auf das Überschwingen Einfluss hat. Aus der berechneten Schrittantwort kann das maximale Überschwingen einfach herausgefunden werden.\todo{Verweis auf Grundlagen Phasengangmethode Tabelle 3}\\
-Die Berechnung wird so angepasst, dass der Benutzer ein Überschwingen in Prozent auswählen kann. Dann wird der Phasenrand solange verändert, bis das Überschwingen der Schrittantwort mit dem gewählten Überschwingen übereinstimmt.\\
-
-\todo{falls nicht implementiert, löschen}
-Zusätzlich hat der Punkt der im Phasengang der Strecke gesucht wird und zur Knickkreisfrequenz führt, Einfluss auf die Anstiegsgeschwindigkeit der Schrittantwort.[gemäss Kapitel Grundlagen Phasengangmethode]. \todo{Verweis auf Grundlagen Phasengangmethode Tabelle 2}\\
+Es besteht jedoch die Möglichkeit die Optimierungen durch Verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich [Kapitel Grundlagen Phasengangmethode], dass das der gewählte Phasenrand auf das Überschwingen Einfluss hat. Die Berechnung kann also mittels gewähltem Phasenrand solange optimiert werden, bis das Überschwingen der Schrittantwort den Anforderungen entspricht.
+\todo{Verweis auf Grundlagen Phasengangmethode Tabelle 3}
