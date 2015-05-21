@@ -2,3 +2,6 @@ bin/
 latex/fachbericht/fachbericht.pdf
 *.aux
 latex/fachbericht/fachbericht_theoretischegrundlagen.log
+latex/fachbericht/main.log
+.classpath
+.classpath

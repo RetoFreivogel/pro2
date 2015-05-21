@@ -3,8 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -14,24 +12,18 @@ import javax.swing.border.TitledBorder;
 
 import controller.Controller;
 import model.RegelKreis;
+import model.SchrittAntwort;
 
-public class AnalyseView extends JPanel implements Observer {
+public class AnalyseView extends JPanel{
 	private static final long serialVersionUID = 1L;
 
+	private JFormattedTextField tf_Tymax;
 	private JFormattedTextField tf_Ymax;
 	private JFormattedTextField tf_Tan;
 	private JFormattedTextField tf_Taus;
-	private JFormattedTextField tf_E;
-	private JFormattedTextField tf_E2;
-	private JFormattedTextField tf_Et;
-	private JFormattedTextField tf_E2t;
-
-	private RegelKreis regelkreis;
 
 	public AnalyseView(RegelKreis regelkreis, Controller controller) {
 		super();
-		this.regelkreis = regelkreis;
-		regelkreis.addObserver(this);
 
 		DecimalFormat format = new DecimalFormat("###0.###");
 
@@ -40,6 +32,12 @@ public class AnalyseView extends JPanel implements Observer {
 
 		setLayout(new GridLayout(0, 2, 0, 0));
 
+		JLabel lb_Tymax = new JLabel("Tymax");
+		add(lb_Tymax);
+		tf_Tymax = new JFormattedTextField(format);
+		tf_Tymax.setEditable(false);
+		add(tf_Tymax);
+		
 		JLabel lb_Ymax = new JLabel("Ymax");
 		add(lb_Ymax);
 		tf_Ymax = new JFormattedTextField(format);
@@ -57,47 +55,16 @@ public class AnalyseView extends JPanel implements Observer {
 		tf_Taus = new JFormattedTextField(format);
 		tf_Taus.setEditable(false);
 		add(tf_Taus);
-
-		JLabel lb_1 = new JLabel("S |e(t)| dt");
-		add(lb_1);
-		tf_E = new JFormattedTextField(format);
-		tf_E.setEditable(false);
-		add(tf_E);
-
-		JLabel lb_2 = new JLabel("S e(t)^2 dt");
-		add(lb_2);
-		tf_E2 = new JFormattedTextField(format);
-		tf_E2.setEditable(false);
-		add(tf_E2);
-
-		JLabel lb_3 = new JLabel("S |e(t)|*t dt");
-		add(lb_3);
-		tf_Et = new JFormattedTextField(format);
-		tf_Et.setEditable(false);
-		add(tf_Et);
-
-		JLabel lb_4 = new JLabel("S e(t)^2*t dt");
-		add(lb_4);
-		tf_E2t = new JFormattedTextField(format);
-		tf_E2t.setEditable(false);
-		add(tf_E2t);
 		
-		update(null, null);
+		update(regelkreis);
 	}
 
-	public void setRegelkreis(RegelKreis regelkreis) {
-		this.regelkreis.deleteObserver(this);
-		this.regelkreis = regelkreis;
-		this.regelkreis.addObserver(this);
-		update(null, null);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		double ymax = regelkreis.getTranferFunction().schrittantwort()
-				.getYmax();
-		this.tf_Ymax.setValue(ymax);
-
+	public void update(RegelKreis regelkreis) {
+		SchrittAntwort sa = regelkreis.getTranferFunction().schrittantwort();
+		tf_Tymax.setValue(sa.getTymax());		
+		tf_Taus.setValue(sa.getTaus());
+		tf_Tan.setValue(sa.getTan());
+		tf_Ymax.setValue(sa.getYmax());
 	}
 
 }

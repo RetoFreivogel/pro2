@@ -2,26 +2,26 @@ package view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.Controller;
 import model.RegelStrecke;
 
-public class RegelStreckeView extends JPanel implements Observer,
-		PropertyChangeListener {
+public class RegelStreckeView extends JPanel implements PropertyChangeListener,
+		FocusListener {
 	private static final long serialVersionUID = 1L;
 
-	private RegelStrecke regelstrecke;
 	private final Controller controller;
 
 	private JFormattedTextField tf_Ordn;
@@ -31,7 +31,6 @@ public class RegelStreckeView extends JPanel implements Observer,
 
 	public RegelStreckeView(RegelStrecke regelstrecke, Controller controller) {
 		super();
-		this.regelstrecke = regelstrecke;
 		this.controller = controller;
 
 		DecimalFormat format = new DecimalFormat("##0.000");
@@ -40,51 +39,42 @@ public class RegelStreckeView extends JPanel implements Observer,
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
 
-		/*
-		JLabel lb_defd_RS = new JLabel("Definiert durch:");
-		add(lb_defd_RS);
-		JComboBox<String> cbbx_defd_RS = new JComboBox<>();
-		cbbx_defd_RS.setModel(new DefaultComboBoxModel<>(new String[] {
-				"KTuTg", "frequenzgang" }));
-		// TODO add definition through the Time coefficents
-		cbbx_defd_RS.setEnabled(false);
-		add(cbbx_defd_RS);
-		*/
-
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
 		tf_ks = new JFormattedTextField(format);
+		tf_ks.addFocusListener(this);
 		add(tf_ks);
 
 		JLabel lb_Tu = new JLabel("Tu");
 		add(lb_Tu);
 		tf_tu = new JFormattedTextField(format);
+		tf_tu.addFocusListener(this);
 		add(tf_tu);
 
 		JLabel lb_Tg = new JLabel("Tg");
 		add(lb_Tg);
 		tf_tg = new JFormattedTextField(format);
+		tf_tg.addFocusListener(this);
 		add(tf_tg);
 
 		JLabel lb_Ordn = new JLabel("Ordnung");
 		add(lb_Ordn);
 		DecimalFormat Ordnung_format = new DecimalFormat("#0");
 		tf_Ordn = new JFormattedTextField(Ordnung_format);
+		tf_Ordn.addFocusListener(this);
+
 		tf_Ordn.setEditable(false);
 		add(tf_Ordn);
 
 		/*
-		JLabel lb_Zeitkons = new JLabel("Zeitkonstanten");
-		add(lb_Zeitkons);
-		JButton bt_Zeitkonst = new JButton("Lesen..");
-		// TODO enable reading of the Zeitkonstanten
-		bt_Zeitkonst.setEnabled(false);
-		add(bt_Zeitkonst);
-		*/
+		 * JLabel lb_Zeitkons = new JLabel("Zeitkonstanten"); add(lb_Zeitkons);
+		 * JButton bt_Zeitkonst = new JButton("Lesen.."); // TODO enable reading
+		 * of the Zeitkonstanten bt_Zeitkonst.setEnabled(false);
+		 * add(bt_Zeitkonst);
+		 */
 
-		regelstrecke.addObserver(this);
 		enableEvents();
-		update(null, null);
+		update(regelstrecke);
 	}
 
 	private void enableEvents() {
@@ -99,8 +89,7 @@ public class RegelStreckeView extends JPanel implements Observer,
 		tf_tg.removePropertyChangeListener("value", this);
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(RegelStrecke regelstrecke) {
 		disableEvents();
 		try {
 			tf_ks.setValue(regelstrecke.getKs());
@@ -123,10 +112,26 @@ public class RegelStreckeView extends JPanel implements Observer,
 		}
 	}
 
-	public void setRegelstrecke(RegelStrecke regelstrecke) {
-		this.regelstrecke.deleteObserver(this);
-		this.regelstrecke = regelstrecke;
-		this.regelstrecke.addObserver(this);
-		update(null, null);
+	@Override
+	public void focusGained(final FocusEvent e) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				if (e.getSource() == tf_ks) {
+					tf_ks.selectAll();
+				} else if (e.getSource() == tf_tu) {
+					tf_tu.selectAll();
+				} else if (e.getSource() == tf_tg) {
+					tf_tg.selectAll();
+				} else if (e.getSource() == tf_Ordn) {
+					tf_Ordn.selectAll();
+				}
+			}
+		});
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// Do Nothing
 	}
 }

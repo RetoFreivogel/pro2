@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -24,10 +22,8 @@ import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class Graph extends JPanel implements Observer, ActionListener {
+public class Graph extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-
-	private Model model;
 
 	private final Vector<JCheckBox> ckbx_Graph;
 	private final JPanel pn_legend;
@@ -36,7 +32,6 @@ public class Graph extends JPanel implements Observer, ActionListener {
 
 	public Graph(Model model) {
 		super();
-		this.model = model;
 
 		setLayout(new BorderLayout());
 
@@ -49,16 +44,19 @@ public class Graph extends JPanel implements Observer, ActionListener {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset,
 				PlotOrientation.VERTICAL, false, false, false);
-		renderer = ((XYPlot) chart.getPlot()).getRenderer();
+		XYPlot plot = (XYPlot) chart.getPlot();
+		renderer = plot.getRenderer();
+		plot.setBackgroundPaint(new Color(255, 255, 255));
+		plot.setDomainGridlinePaint(new Color(196, 196, 196));
+		plot.setRangeGridlinePaint(new Color(196, 196, 196));
 
 		pn_chart = new ChartPanel(chart);
 		add(pn_chart);
 		
-		model.addObserver(this);
-		update(null, null);
+		update(model);
 	}
 
-	private void init() {
+	private void init(Model model) {
 		pn_legend.removeAll();
 		ckbx_Graph.clear();
 		XYSeriesCollection dataset = new XYSeriesCollection();
@@ -69,7 +67,7 @@ public class Graph extends JPanel implements Observer, ActionListener {
 		double tmax = 0;
 		for (RegelKreis rk : model.getAlleRegelkreise()) {
 			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
-			double taus = sa.getTaus(0.001);
+			double taus = sa.getTaus();
 			if(tmax < taus){
 				tmax = taus;
 			}
@@ -77,17 +75,18 @@ public class Graph extends JPanel implements Observer, ActionListener {
 		
 		final int n = model.getAlleRegelkreise().size();
 		for (int i = 0; i < n; i++) {
+			RegelKreis rk = model.getAlleRegelkreise().get(i);
+			
 			JCheckBox cb = new JCheckBox();
-			cb.setText("Graph " + (i+1));
+			cb.setText(rk.getDim().getName());
 			cb.setSelected(true);
-			Color color = Color.getHSBColor((float) i * 37 / 256, 1, 1);
+			Color color = Color.getHSBColor((float) i * 3 / 29, 1, 1);
 			cb.setBackground(color);
-			//cb.setOpaque(false);
 			cb.addActionListener(this);
 			pn_legend.add(cb);
 			ckbx_Graph.add(cb);
 
-			SchrittAntwort sa = model.getAlleRegelkreise().get(i)
+			SchrittAntwort sa = rk
 					.getTranferFunction().schrittantwort();
 			XYSeries ser = new XYSeries(i);
 			for (int j = 0; j < 300; j++) {
@@ -116,14 +115,7 @@ public class Graph extends JPanel implements Observer, ActionListener {
 		}
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		init();
+	public void update(Model model) {
+		init(model);
 	}
-
-	public void setModel(Model model) {
-		this.model = model;
-		init();
-	}
-
 }

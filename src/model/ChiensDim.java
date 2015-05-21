@@ -1,20 +1,30 @@
 package model;
 
-import java.util.Scanner;
-
 public final class ChiensDim extends AbstractDim {
+	private static final long serialVersionUID = 1L;
+
 	public static final int APERIODSTOER = 0, APERIODFUEHR = 1,
 			ZWANZIGSTOER = 2, ZWANZIGFUEHR = 3;
 
-	public int j;
+	private final int j;
 
+	public ChiensDim(int j, ReglerTopologie topo) {
+		super(topo, "Chiens");
+
+		if (j < 0 || j > 3) {
+			throw new IllegalArgumentException("j must be between 0 and 3");
+		}
+
+		this.j = j;
+	}
+	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 
-		switch (topo) {
+		switch (getTopo()) {
 		case P:
 			switch (j) {
 			case APERIODSTOER:
@@ -62,38 +72,8 @@ public final class ChiensDim extends AbstractDim {
 		}
 	}
 
-	public ChiensDim(int j) {
-		super();
-
-		if (j < 0 || j > 3) {
-			throw new IllegalArgumentException("j must be between 0 and 3");
-		}
-
-		this.j = j;
-	}
-	public ChiensDim(Scanner sc) {
-		super();
-
-		if (j < 0 || j > 3) {
-			throw new IllegalArgumentException("j must be between 0 and 3");
-		}
-
-		sc.skip("j: ");
-		j = sc.nextInt();
-
-	}
-
 	public int getJ() {
 		return j;
-	}
-
-	public void setJ(int j) {
-		if (j < 0 || j > 3) {
-			throw new IllegalArgumentException("j must be between 0 and 3");
-		}
-		this.j = j;
-		setChanged();
-		notifyObservers();
 	}
 
 	@Override
@@ -105,9 +85,12 @@ public final class ChiensDim extends AbstractDim {
 		return builder.toString();
 	}
 
-	@Override
-	public AbstractDim makeCopy() {
-		return new ChiensDim(j);
+	public ChiensDim setJ(int j) {
+		return new ChiensDim(j, getTopo());
 	}
 
+	@Override
+	public AbstractDim setTopo(ReglerTopologie topo) {
+		return new ChiensDim(j, topo);
+	}
 }

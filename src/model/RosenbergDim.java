@@ -1,7 +1,13 @@
 package model;
 
 public final class RosenbergDim extends AbstractDim {
+	private static final long serialVersionUID = 1L;
 
+	public RosenbergDim(ReglerTopologie topo){
+		super(topo, "Rosenberg");
+	}
+
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -10,12 +16,12 @@ public final class RosenbergDim extends AbstractDim {
 	}
 
 	@Override
-	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 		
-		switch (topo) {
+		switch (getTopo()) {
 		case P:
 			return new Regler((1.0 / Ks) * (Tg / Tu));
 		case PI:
@@ -28,8 +34,7 @@ public final class RosenbergDim extends AbstractDim {
 	}
 
 	@Override
-	public AbstractDim makeCopy() {
-		return new RosenbergDim();
+	public AbstractDim setTopo(ReglerTopologie topo) {
+		return new RosenbergDim(topo);
 	}
-
 }

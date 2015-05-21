@@ -1,26 +1,12 @@
 package model;
 
-import java.util.Scanner;
-
 public class ManuellDim extends AbstractDim {
-	private double kr, tn, tv, tp;
+	private static final long serialVersionUID = 1L;
 	
-	public ManuellDim(Scanner sc) {
-		sc.skip("kr: ");
-		kr = sc.nextDouble();
-		sc.nextLine();
-		sc.skip("tn: ");
-		tn = sc.nextDouble();
-		sc.nextLine();
-		sc.skip("tv: ");
-		tv = sc.nextDouble();
-		sc.nextLine();
-		sc.skip("tp: ");
-		tp = sc.nextDouble();
-
-	}
-	
-	public ManuellDim(double kr, double tn, double tv, double tp) {
+	private final double kr, tn, tv, tp;
+		
+	public ManuellDim(double kr, double tn, double tv, double tp, ReglerTopologie topo) {		
+		super(topo, "Manuell");
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
@@ -28,6 +14,7 @@ public class ManuellDim extends AbstractDim {
 	}
 
 	public ManuellDim(Regler regler) {
+		super(regler.getTopo(), "Manuell");
 		kr = regler.getKr();
 		tn = regler.getTn();
 		tv = regler.getTv();
@@ -35,8 +22,8 @@ public class ManuellDim extends AbstractDim {
 	}
 
 	@Override
-	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
-		switch(topo){
+	public Regler calc(RegelStrecke regelstrecke) {
+		switch(getTopo()){
 		case P:
 			return new Regler(kr);
 		case PI:
@@ -52,40 +39,32 @@ public class ManuellDim extends AbstractDim {
 		return kr;
 	}
 	
-	public void setKr(double kr) {
-		this.kr = kr;
-		setChanged();
-		notifyObservers();
+	public ManuellDim setKr(double kr) {
+		return new ManuellDim(kr, tn, tv, tp, getTopo());
 	}
 	
 	public double getTn() {
 		return tn;
 	}
 	
-	public void setTn(double tn) {
-		this.tn = tn;
-		setChanged();
-		notifyObservers();
+	public ManuellDim setTn(double tn) {
+		return new ManuellDim(kr, tn, tv, tp, getTopo());
 	}
 	
 	public double getTv() {
 		return tv;
 	}
 	
-	public void setTv(double tv) {
-		this.tv = tv;
-		setChanged();
-		notifyObservers();
+	public ManuellDim setTv(double tv) {
+		return new ManuellDim(kr, tn, tv, tp, getTopo());
 	}
 
 	public double getTp() {
 		return tp;
 	}
 
-	public void setTp(double tp) {
-		this.tp = tp;
-		setChanged();
-		notifyObservers();
+	public ManuellDim setTp(double tp) {
+		return new ManuellDim(kr, tn, tv, tp, getTopo());
 	}
 	
 	@Override
@@ -136,7 +115,7 @@ public class ManuellDim extends AbstractDim {
 	}
 
 	@Override
-	public AbstractDim makeCopy() {
-		return new ManuellDim(kr, tn, tv, tp);
+	public AbstractDim setTopo(ReglerTopologie topo) {
+		return new ManuellDim(kr, tn, tv, tp, topo);
 	}
 }

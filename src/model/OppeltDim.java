@@ -7,14 +7,19 @@ package model;
  * Reglerdimensionierung nach Oppelt 
  */
 public final class OppeltDim extends AbstractDim {
+	private static final long serialVersionUID = 1L;
+
+	public OppeltDim(ReglerTopologie topo){
+		super(topo, "Oppelt");
+	}
 	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke, ReglerTopologie topo) {
+	public Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 
-		switch (topo) {
+		switch (getTopo()) {
 		case P:
 			return new Regler((1.0 / Ks) * (Tg / Tu));
 		case PI:
@@ -34,7 +39,7 @@ public final class OppeltDim extends AbstractDim {
 	}
 
 	@Override
-	public AbstractDim makeCopy() {
-		return new OppeltDim();
+	public AbstractDim setTopo(ReglerTopologie topo) {
+		return new OppeltDim(topo);
 	}
 }

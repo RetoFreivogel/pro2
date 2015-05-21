@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import model.OppeltDim;
 import model.RegelKreis;
 import model.RegelStrecke;
+import model.ReglerTopologie;
+import model.SchrittAntwort;
 
 import org.junit.Test;
 
@@ -13,7 +15,7 @@ public class BenchmarkStepResponse {
 
 	@Test
 	public void test() {
-		OppeltDim dim = new OppeltDim();
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.5, 7.6);
 		RegelKreis regelkreis = new RegelKreis(dim, rs);
 				
@@ -27,9 +29,12 @@ public class BenchmarkStepResponse {
 			
 			start = System.nanoTime();
 			rs.setTu(rs.getTu() + 0.001);
-			regelkreis.getTranferFunction().schrittantwort();
+			SchrittAntwort sa = regelkreis.getTranferFunction().schrittantwort();
+			double taus = sa.getTaus();
+			for (int j = 0; j < 1000; j++) {
+				sa.getY(taus * j / 999);
+			}
 			end = System.nanoTime();
-			
 			total += (end - start);
 			
 		}

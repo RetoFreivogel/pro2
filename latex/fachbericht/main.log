@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  18 MAY 2015 12:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  20 MAY 2015 22:08
 entering extended mode
 **main.tex
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.tex
@@ -1087,34 +1087,33 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.aux
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
-en.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
-
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
+lagen.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 26.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 25.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 26.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1168,7 +1167,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \everyMPtoPDFconversion=\toks39
 )
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring ON on input line 25.
+Package hyperref Info: Link coloring ON on input line 26.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1177,9 +1176,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
 
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.out)
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.out)
@@ -1188,44 +1187,101 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=90, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=98, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
-Package pdftex.def Info: fhnwlogo.pdf used on input line 27.
+Package pdftex.def Info: fhnwlogo.pdf used on input line 28.
 (pdftex.def)             Requested size: 220.57736pt x 34.1433pt.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 27.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 27.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 27.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 28.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 27.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 28.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 27.
+(Font)              <12> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 27.
+(Font)              <8> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 27.
+(Font)              <6> on input line 28.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Claudius/Documen
-ts/GitHub/pro2/latex/fachbericht/fhnwlogo.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 47.
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Martin/FHNW/Seme
+ster_2/pro2E/pro2/latex/fachbericht/fhnwlogo.pdf>] [2
+
+]
+<aufgabenstellung.pdf, id=125, 597.55246pt x 845.07718pt>
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf>
+Package pdftex.def Info: aufgabenstellung.pdf used on input line 53.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+ <use aufgabenstellung.pdf>
+Package pdftex.def Info: aufgabenstellung.pdf used on input line 53.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+
+<aufgabenstellung.pdf, id=128, page=1, 597.55246pt x 845.07718pt>
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf, page 1>
+Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 53.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+ <use aufgabenstellung.pdf, page 1>
+Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf, page 1>
+Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+ <use aufgabenstellung.pdf, page 1>
+Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf, page 1>
+Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [3 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/aufgabenstell
+ung.pdf>]
+<aufgabenstellung.pdf, id=152, page=2, 597.55246pt x 845.07718pt>
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf, page 2>
+Package pdftex.def Info: aufgabenstellung.pdf, page2 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+ <use aufgabenstellung.pdf, page 2>
+Package pdftex.def Info: aufgabenstellung.pdf, page2 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: aufgabenstellung.pdf Graphic file (type pdf)
+
+<use aufgabenstellung.pdf, page 2>
+Package pdftex.def Info: aufgabenstellung.pdf, page2 used on input line 53.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [4 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/aufgabenstell
+ung.pdf>]
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 56.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1235,11 +1291,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 4.
 )
 \tf@toc=\write5
- [2
 
-]
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.tex)
-[3
+[5]
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.tex)
+[6
 
 ]
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
@@ -1248,134 +1303,135 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-<Regelstrecke.png, id=146, 260.77425pt x 74.679pt>
+<Regelstrecke.png, id=205, 260.77425pt x 74.679pt>
 File: Regelstrecke.png Graphic file (type png)
  <use Regelstrecke.png>
 Package pdftex.def Info: Regelstrecke.png used on input line 6.
 (pdftex.def)             Requested size: 364.19664pt x 104.30487pt.
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 10.
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[4
+[7
 
 
- <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/Regelstrecke.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+<C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Regelstrecke.png
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
 
  []
 
-<Schrittantwort.png, id=159, 321.2pt x 260.975pt>
+<Schrittantwort.png, id=218, 321.2pt x 260.975pt>
 File: Schrittantwort.png Graphic file (type png)
  <use Schrittantwort.png>
-Package pdftex.def Info: Schrittantwort.png used on input line 21.
+Package pdftex.def Info: Schrittantwort.png used on input line 20.
 (pdftex.def)             Requested size: 273.14922pt x 221.9413pt.
 
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-
-Overfull \hbox (13.80574pt too wide) in paragraph at lines 25--25
-[][][][]\T1/lmr/m/n/10.95 Quellenangabe 
- []
-
-[5 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/Schrittantwort.pn
-g>]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+[8 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Schrittantwort
+.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+
 
  []
 
-<agangpi.png, id=183, 334.24875pt x 262.73157pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+<agangpi.png, id=240, 334.24875pt x 262.73157pt>
 File: agangpi.png Graphic file (type png)
  <use agangpi.png>
-Package pdftex.def Info: agangpi.png used on input line 67.
+Package pdftex.def Info: agangpi.png used on input line 64.
 (pdftex.def)             Requested size: 227.62204pt x 178.92369pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 68.
+(Font)              <10> on input line 65.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 68.
+(Font)              <7> on input line 65.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 68.
+(Font)              <5> on input line 65.
 
-<agangpid.png, id=186, 418.56375pt x 274.77657pt>
+<agangpid.png, id=243, 418.56375pt x 274.77657pt>
 File: agangpid.png Graphic file (type png)
  <use agangpid.png>
-Package pdftex.def Info: agangpid.png used on input line 76.
+Package pdftex.def Info: agangpid.png used on input line 72.
 (pdftex.def)             Requested size: 273.14922pt x 179.3154pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Marginpar on page 6 moved.
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/agangpi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+[9 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpi.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-[7 <C:/Users/Claudius/Documents/GitHub/pro2/latex/fachbericht/agangpid.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 119--121
+[10 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/agangpid.png>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 
-LaTeX Warning: Marginpar on page 10 moved.
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 285--288
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
-) [11]
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.tex)
-[12
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
 
 
-] (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.tex) [
-13
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 167--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+
+[13]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 276.
+ [14]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 309.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+[15]
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.tex)
+[16
+
+
+]
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.tex)
+[17
+
 
 
 ] (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.bbl
@@ -1384,49 +1440,197 @@ Underfull \hbox (badness 1248) in paragraph at lines 25--27
 ndex.php/Datei:Regelkreis4.png
  []
 
-) [14
+) [18
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
- (C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\main.aux
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\einleitung.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\theoretischegrundlag
-en.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\javasoftware.aux)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\fachbericht\schlusswort.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
+] <Herleitungen_Anhang.pdf, id=346, 597.432pt x 844.5954pt>
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf>
+Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 78.
+(pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+ <use Herleitungen_Anhang.pdf>
+Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 78.
+(pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
+ [19]
+<Herleitungen_Anhang.pdf, id=355, page=1, 597.432pt x 844.5954pt>
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 1>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 78.
+(pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+ <use Herleitungen_Anhang.pdf, page 1>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 1>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+ <use Herleitungen_Anhang.pdf, page 1>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 1>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+ [20 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Herleitungen
+_Anhang.pdf>]
+<Herleitungen_Anhang.pdf, id=424, page=2, 597.432pt x 844.5954pt>
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+ <use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 78.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+ [21 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Herleitungen
+_Anhang.pdf>]
+<Matlab_bsp_berechnung_Anhang.pdf, id=482, 597.55246pt x 845.07718pt>
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 79
+.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+ <use Matlab_bsp_berechnung_Anhang.pdf>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 79
+.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+
+<Matlab_bsp_berechnung_Anhang.pdf, id=485, page=1, 597.55246pt x 845.07718pt>
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 1>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 1>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 1>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 1>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 1>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [22 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
+erechnung_Anhang.pdf>]
+<Matlab_bsp_berechnung_Anhang.pdf, id=568, page=2, 597.55246pt x 845.07718pt>
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [23 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
+erechnung_Anhang.pdf>]
+<Matlab_bsp_berechnung_Anhang.pdf, id=573, page=3, 597.55246pt x 845.07718pt>
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 79.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [24 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
+erechnung_Anhang.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
+
+
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
+lagen.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 81.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 81.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 71ACBD70E4FFA79F42C75AFBA8B7C436;1527.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 62.
+(rerunfilecheck)             Checksum: 65EA59524A50DA5BF9200F357DF2E5AE;1661.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
  ) 
 Here is how much of TeX's memory you used:
- 20149 strings out of 493921
- 375943 string characters out of 3144866
- 446965 words of memory out of 3000000
- 22938 multiletter control sequences out of 15000+200000
- 70593 words of font info for 52 fonts, out of 3000000 for 9000
+
+ 20194 strings out of 493921
+ 377189 string characters out of 3144874
+ 439364 words of memory out of 3000000
+ 22965 multiletter control sequences out of 15000+200000
+ 76955 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,12n,78p,971b,701s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x
-86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 
-2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
-vips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx
-10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (14 pages, 446138 bytes).
+ 55i,18n,78p,1206b,857s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)
+/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9
+/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/
+dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.
+enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi8
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/lm/lmsy8.pfb>
+Output written on main.pdf (24 pages, 1184796 bytes).
+
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 648 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
+ 302 words of extra memory for PDF output out of 10000 (max. 10000000)
 

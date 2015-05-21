@@ -1,22 +1,24 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
-\contentsline {section}{\numberline {2}Theoretische Grundlagen}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Streckenanalyse}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Phasengangmethode}{6}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Grundlagen}{6}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Ablauf der Phasengangmethode}{9}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}\IeC {\"U}bertragungsfunktion der Regler}{9}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Dimensionierung mit Faustformeln}{10}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{11}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Optimierungsm\IeC {\"o}glichkeiten}{11}{subsection.2.6}
-\contentsline {section}{\numberline {3}Java Software}{12}{section.3}
-\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{12}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{12}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Klassen}{12}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{12}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{12}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{12}{subsubsection.3.4.3}
-\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{12}{subsubsection.3.4.4}
-\contentsline {section}{\numberline {4}Schlusswort}{13}{section.4}
-\contentsline {section}{\numberline {5}Literaturvezeichnis}{14}{section.5}
+\contentsline {section}{\numberline {1}Einleitung}{6}{section.1}
+\contentsline {section}{\numberline {2}Theoretische Grundlagen}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Streckenanalyse}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Phasengangmethode}{9}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Grundlagen}{9}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Ablauf der Phasengangmethode}{12}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}\IeC {\"U}bertragungsfunktion der Regler}{12}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Dimensionierung mit Faustformeln}{13}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Schrittantwort der Regelung}{14}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Berechnung}{14}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Optimierungsm\IeC {\"o}glichkeiten}{15}{subsubsection.2.5.2}
+\contentsline {section}{\numberline {3}Java Software}{16}{section.3}
+\contentsline {subsection}{\numberline {3.1}Klassendiagramm}{16}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Beschreibung der Software}{16}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Benutzerschnittstelle}{16}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Klassen}{16}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}GUI Klassen}{16}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Model Klassen}{16}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{16}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{16}{subsubsection.3.4.4}
+\contentsline {section}{\numberline {4}Schlusswort}{17}{section.4}
+\contentsline {section}{\numberline {5}Literaturvezeichnis}{18}{section.5}
+\contentsline {section}{\numberline {6}Anhang}{19}{section.6}
