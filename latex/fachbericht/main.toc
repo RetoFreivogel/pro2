@@ -20,5 +20,5 @@
 \contentsline {subsubsection}{\numberline {3.4.3}View Klassen}{16}{subsubsection.3.4.3}
 \contentsline {subsubsection}{\numberline {3.4.4}Controller Klassen}{16}{subsubsection.3.4.4}
 \contentsline {section}{\numberline {4}Schlusswort}{17}{section.4}
-\contentsline {section}{\numberline {5}Literaturvezeichnis}{18}{section.5}
+\contentsline {section}{\numberline {5}Literatur}{18}{section.5}
 \contentsline {section}{\numberline {6}Anhang}{19}{section.6}

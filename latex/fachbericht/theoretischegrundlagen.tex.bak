@@ -40,7 +40,7 @@ G_S(s)=\frac{K_S}{(1+sT_1)(1+sT_2)...(1+sT_n)}
 Bei der Phasengangmethode handelt es sich eigentlich um eine grafische Dimensionierungsmethode, welche früher noch von Hand mit logarithmischem Papier durchgeführt wurde. Anstelle der grafischen Dimensionierung wird die Methode in diesem Fall komplett rechnerisch gelöst. Um die Methode zu verstehen wird ein theoretisches Grundwissen benötigt, welches in folgenden Unterkapiteln erklärt wird.
 
 
-\subsubsection{Grundlagen}
+\subsubsection{Grundlagen}\label{phasenganggrundlagen}
 Durch Ersetzen von $s$ durch $j\omega$ in der Übertragungsfunktion der Strecke erhält man den Frequenzgang. Damit die Phasengangmethode angewendet werden kann, wird der Amplituden- sowie der Phasengang der Strecke benötigt (Formeln \ref{agangform}, \ref{phagangform1} und \ref{phagangform2}).
 
 
@@ -273,7 +273,6 @@ Die Dimensionierung mittels Faustformeln wird durchgeführt, um die Dimensionier
 \newpage
 \subsection{Schrittantwort der Regelung}
 \subsubsection{Berechnung}
-\todo{evtl. Analyse genauer beschreiben}
 Um die Schrittantwort der geschlossenen Regelung berechnen zu können, wird die Übertragungsfunktion der Regelung benötigt. Diese wird aus den Übertragungsfunktionen des Reglers und der Strecke gemässe Formel \ref{ufunkregelung} berechnet.
 
 \begin{align}
@@ -288,7 +287,7 @@ Die Berechnung der Schrittantwort wird mittels Residuenrechnung durchgeführt. E
 \label{residue1}
 \end{align}
 
-Dafür werden als erstes die Polstellen der Übertragungsfunktion gesucht. Die geschieht mit Hilfe des Laguerresolvers, der in Java bereits vorhanden ist. Die Residuen erhält man durch die Partialbruchzerlegung mittels Residuenkalkül gemäss Formel \ref{residue2}.
+Dafür werden als erstes die Polstellen der Übertragungsfunktion gesucht. Diese befinden sich bei den Nullstellen des Nennerpolynoms. Die Residuen erhält man durch die Partialbruchzerlegung mittels Residuenkalkül gemäss Formel \ref{residue2}, welche aber nur Gültigkeit hat, wenn ausschliesslich einfache Nullstellen vorkommen.
 
 \begin{align}
 R(n)=\lim_{s \to P(n)}(s-P(n))\frac{B(s)}{A(s)}
@@ -298,11 +297,16 @@ R(n)=\lim_{s \to P(n)}(s-P(n))\frac{B(s)}{A(s)}
 Durch die inverse Laplactransformation, unter Verwendung der Korrespondenztabellen erhält man die Impulsantwort $h(t)$ (Formel \ref{residue3} mit $t\geq0$ ).
 
 \begin{align}
-h(t)=K\delta(t)+\sum_{k=0}^n R(k)*e^{P(k)t}
+h(t)=K\delta(t)+\sum_{i=1}^n R(i)*e^{P(i)t}
 \label{residue3}
 \end{align}
 
-Aus der erhaltenen Implusantwort muss nun noch die Schrittantwort berechnet werden, was mittels Integration gemacht wird. Beachtung muss hier der richtigen Wahl der Integrationskonstanten geschenkt werden.
+Aus der erhaltenen Implusantwort $h(t)$ muss nun noch die Schrittantwort berechnet werden, was mittels Integration gemacht wird (Formel \ref{intimpantwort}).
+
+\begin{align}
+s(\tau)=\int_0^t K\delta(\tau) d\tau + \sum_{i=1}^n \int_0^t R(i)*e^{P(i)\tau} d\tau
+\label{intimpantwort}
+\end{align}
 
 Die Schrittantwort wird zusätzlich noch analysiert. Folgende Werte werden ausgewertet:
 \begin{itemize}
@@ -317,5 +321,4 @@ Falls die berechnete und dargestellte Schrittantwort der Regelung nicht der Vors
 
 Einerseits kann der Regler durch seine Eigenschaften $K_R$, $T_n$ und $T_v$ modifiziert werden. Eine Schrittantwort durch die Veränderung dieser drei Eigenschaften zu optimieren ist äusserst schwierig. Dies erfordert grosses Wissen und viel Erfahrung in der Regelungstechnik, was einem weniger erfahrenen Nutzer die Optimierung nahezu verunmöglicht.
 
-Es besteht jedoch die Möglichkeit die Optimierungen durch Verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich [Kapitel Grundlagen Phasengangmethode], dass das der gewählte Phasenrand auf das Überschwingen Einfluss hat. Die Berechnung kann also mittels gewähltem Phasenrand solange optimiert werden, bis das Überschwingen der Schrittantwort den Anforderungen entspricht.
-\todo{Verweis auf Grundlagen Phasengangmethode Tabelle 3}
+Es besteht jedoch die Möglichkeit die Optimierungen durch Verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich, dass der gewählte Phasenrand auf das Überschwingen Einfluss hat (siehe Kapitel \ref{phasenganggrundlagen}, S. \pageref{phasenrand}, Tabelle \ref{phasenrand}). Die Berechnung kann also mittels gewähltem Phasenrand solange optimiert werden, bis das Überschwingen der Schrittantwort den Anforderungen entspricht.

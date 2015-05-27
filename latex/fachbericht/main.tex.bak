@@ -14,6 +14,7 @@
 \usepackage{pdfpages}
 \bibliographystyle{IEEEtran}
 \usepackage{cite}
+\usepackage[nottoc,numbib]{tocbibind}
 
 \title{%
   \textsc{Projekt 2}\\[2ex]
@@ -52,7 +53,6 @@ Regler werden heutzutage oft mit grosszügigen Faustformeln dimensioniert. Für 
 \newpage
 \includepdf[pages=1-2]{aufgabenstellung.pdf}
 
-
 \newpage
 \tableofcontents
 \newpage
@@ -65,15 +65,15 @@ Regler werden heutzutage oft mit grosszügigen Faustformeln dimensioniert. Für 
 
 \include{schlusswort}
 
-\section{Literaturvezeichnis}
-\todo{Quellen auf Fehler überprüfen, korrigieren}
 \bibliography{literaturverzeichnis}
+
 
 \newpage
 \section{Anhang}
 \begin{itemize}
 \item Herleitungen Formeln
-\item Beispielberechnung mit Matlab
+\item Beispielberechnung Phasengangmethode mithilfe von Matlab
+\todo{Alle Anhänge aufführen!!!}
 \end{itemize}
 \includepdf[pages=1-2]{Herleitungen_Anhang.pdf}
 \includepdf[pages=1-3]{Matlab_bsp_berechnung_Anhang.pdf}
