@@ -13,7 +13,7 @@ public abstract class AbstractDim implements Serializable {
 
 	protected AbstractDim(ReglerTopologie topo, String name){
 		this.topo = topo;
-		this.name = name + " " + topo.toString();
+		this.name = name;
 	}
 	
 	public String getName(){
@@ -24,6 +24,7 @@ public abstract class AbstractDim implements Serializable {
 		return topo;
 	}
 	
+	public abstract AbstractDim setName(String Name);
 	public abstract AbstractDim setTopo(ReglerTopologie topo);
 	public abstract Regler calc(RegelStrecke regelstrecke);
 }

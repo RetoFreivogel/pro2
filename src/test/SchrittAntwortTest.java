@@ -24,7 +24,7 @@ public class SchrittAntwortTest {
 	@Test
 	public void testPID() {
 		Matlab.setMocked(false);
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID, null);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		RegelKreis kreis = new RegelKreis(dim, rs);
 		SchrittAntwort sw = kreis.getTranferFunction().schrittantwort();

@@ -5,16 +5,16 @@ public class ManuellDim extends AbstractDim {
 	
 	private final double kr, tn, tv, tp;
 		
-	public ManuellDim(double kr, double tn, double tv, double tp, ReglerTopologie topo) {		
-		super(topo, "Manuell");
+	public ManuellDim(double kr, double tn, double tv, double tp, ReglerTopologie topo, String name) {		
+		super(topo, name);
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
 		this.tp = tp;
 	}
-
-	public ManuellDim(Regler regler) {
-		super(regler.getTopo(), "Manuell");
+	
+	public ManuellDim(Regler regler, String name) {
+		super(regler.getTopo(), name);
 		kr = regler.getKr();
 		tn = regler.getTn();
 		tv = regler.getTv();
@@ -40,7 +40,7 @@ public class ManuellDim extends AbstractDim {
 	}
 	
 	public ManuellDim setKr(double kr) {
-		return new ManuellDim(kr, tn, tv, tp, getTopo());
+		return new ManuellDim(kr, tn, tv, tp, getTopo(), getName());
 	}
 	
 	public double getTn() {
@@ -48,7 +48,7 @@ public class ManuellDim extends AbstractDim {
 	}
 	
 	public ManuellDim setTn(double tn) {
-		return new ManuellDim(kr, tn, tv, tp, getTopo());
+		return new ManuellDim(kr, tn, tv, tp, getTopo(), getName());
 	}
 	
 	public double getTv() {
@@ -56,7 +56,7 @@ public class ManuellDim extends AbstractDim {
 	}
 	
 	public ManuellDim setTv(double tv) {
-		return new ManuellDim(kr, tn, tv, tp, getTopo());
+		return new ManuellDim(kr, tn, tv, tp, getTopo(), getName());
 	}
 
 	public double getTp() {
@@ -64,7 +64,7 @@ public class ManuellDim extends AbstractDim {
 	}
 
 	public ManuellDim setTp(double tp) {
-		return new ManuellDim(kr, tn, tv, tp, getTopo());
+		return new ManuellDim(kr, tn, tv, tp, getTopo(), getName());
 	}
 	
 	@Override
@@ -116,6 +116,11 @@ public class ManuellDim extends AbstractDim {
 
 	@Override
 	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ManuellDim(kr, tn, tv, tp, topo);
+		return new ManuellDim(kr, tn, tv, tp, topo, getName());
+	}
+
+	@Override
+	public AbstractDim setName(String name) {
+		return new ManuellDim(kr, tn, tv, tp, getTopo(), name);
 	}
 }

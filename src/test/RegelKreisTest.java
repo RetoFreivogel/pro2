@@ -14,7 +14,7 @@ public class RegelKreisTest {
 	@Test
 	public void makeOppeltKreis() {
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 0.1, 0.5);
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID, null);
 		RegelKreis regelkreis = new RegelKreis(dim, regelstrecke);
 		Regler regler = regelkreis.getRegler();
 		assertFalse(regler == null);
@@ -26,7 +26,7 @@ public class RegelKreisTest {
 		// modification of internal regler must change dim to a ManuellDim
 
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 0.1, 0.5);
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID, null);
 		RegelKreis regelkreis = new RegelKreis(dim, regelstrecke);
 		Regler regler = regelkreis.getRegler();
 		// assertTrue(dim != regelkreis.getDim());

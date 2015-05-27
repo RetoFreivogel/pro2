@@ -18,6 +18,6 @@ public class ReglerTest {
 		assertNotEquals(regler, new Regler(2.0, 0.5, 0.1));
 		assertNotEquals(regler, new Regler(1.0, 1.5, 0.1));
 		assertNotEquals(regler, new Regler(1.0, 0.5, 1.0));
-		assertEquals(regler, new Regler(1.0, 0.5, 0.0));
+		assertEquals(regler, new Regler(1.0, 0.5, 0.1));
 	}
 }

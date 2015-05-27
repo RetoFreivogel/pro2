@@ -113,8 +113,8 @@ public class ZellwegerDim extends AbstractDim {
 
 	}
 
-	public ZellwegerDim(double phasenrand, ReglerTopologie topo) {
-		super(topo, "Phasengang");
+	public ZellwegerDim(double phasenrand, ReglerTopologie topo, String name) {
+		super(topo, name);
 		phasenrand *= Math.PI / 180;
 		if (phasenrand > Math.PI / 2 || phasenrand < 0) {
 			throw new IllegalArgumentException(
@@ -137,11 +137,16 @@ public class ZellwegerDim extends AbstractDim {
 	}
 
 	public ZellwegerDim setPhasenrand(double phasenrand) {
-		return new ZellwegerDim(phasenrand, getTopo());
+		return new ZellwegerDim(phasenrand, getTopo(), getName());
 	}
 
 	@Override
 	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ZellwegerDim(phasenrand * 180 / Math.PI, topo);
+		return new ZellwegerDim(phasenrand * 180 / Math.PI, topo, getName());
+	}
+
+	@Override
+	public AbstractDim setName(String name) {
+		return new ZellwegerDim(phasenrand * 180 / Math.PI, getTopo(), name);
 	}
 }

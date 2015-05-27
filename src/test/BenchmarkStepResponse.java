@@ -15,7 +15,7 @@ public class BenchmarkStepResponse {
 
 	@Test
 	public void test() {
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		OppeltDim dim = new OppeltDim(ReglerTopologie.PID, null);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.5, 7.6);
 		RegelKreis regelkreis = new RegelKreis(dim, rs);
 				

@@ -33,7 +33,7 @@ public class RegelStreckeTest {
 
 		assertEquals(copy_rs, rs);
 		
-		copy_rs.setKs(0.5);
+		copy_rs = copy_rs.setKs(0.5);
 		assertNotEquals(copy_rs, rs);	
 	}
 		

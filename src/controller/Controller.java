@@ -56,22 +56,22 @@ public class Controller {
 		AbstractDim new_dim = null;
 		switch (dim) {
 		case MANUELL:
-			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()));
+			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()), "Manuell");
 			break;
 		case PHASENGANG:
-			new_dim = new ZellwegerDim(45, old_dim.getTopo());
+			new_dim = new ZellwegerDim(45, old_dim.getTopo(), "Zellweger");
 			break;
 		case ZIEGLER:
-			new_dim = new ZieglerDim(old_dim.getTopo());
+			new_dim = new ZieglerDim(old_dim.getTopo(), "Ziegler");
 			break;
 		case CHIENS:
-			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo());
+			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo(), "Chiens");
 			break;
 		case OPPELT:
-			new_dim = new OppeltDim(old_dim.getTopo());
+			new_dim = new OppeltDim(old_dim.getTopo(), "Oppelt");
 			break;
 		case ROSENBERG:
-			new_dim = new RosenbergDim(old_dim.getTopo());
+			new_dim = new RosenbergDim(old_dim.getTopo(), "Rosenberg");
 			break;
 		}
 		model.replaceDim(old_dim, new_dim);

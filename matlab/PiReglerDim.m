@@ -40,34 +40,4 @@ grpi=sqrt(1+(wdpi*tnpi)^2)./(wdpi*tnpi);    %Amplitude des PI Reglers an Stelle 
 gopi=gspi*grpi;                         %Amplitude der Reglung an Stelle wdpi
 krpi=1/gopi;                        %Verstärkungsfaktor krpi
 
-
-%-------------------------------------------------------------------------
-%Folgendes nur für Darstellung, nicht benötigt für Reglerdimensionierung!!
-%-------------------------------------------------------------------------
-
-% Berechnung Amplitudengang Strecke
-ampgs = 20*log10(abs(gs));
-% Berechnung Amplitudengang Regler
-grpi_ganz=(1+i*w*tnpi)./(i*w*tnpi);     %kompletter Amplitudengang des PI Reglers 
-ampgrpi_ganz=20*log10(abs(grpi_ganz));       %nur für darstellung
-
-%Darstellung berechnungsresultate
-figure(2);
-subplot(212)                    %plot für phasengang
-semilogx(w, pg_gs, w, pg_go), grid on
-legend('Phaseng. Strecke', 'Phaseng. offene Regelung')
-title('Phasengang');
-xlabel('variable Frequenz w')
-ylabel('Phase °')
-axis([1e-2 1e2 -270 0])
-
-subplot(211)                    %plot für amplitudengang
-semilogx(w, ampgs,w, ampgrpi_ganz), grid on
-legend('Amp.g. Strecke', 'Amp.-g. Regler')
-title('amplitudengang');
-xlabel('variable Frequenz w')
-ylabel('Amplitude [dB]')
-axis([1e-2 1e2 -150 30])
-
 end
-

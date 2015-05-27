@@ -8,13 +8,11 @@ public final class ChiensDim extends AbstractDim {
 
 	private final int j;
 
-	public ChiensDim(int j, ReglerTopologie topo) {
-		super(topo, "Chiens");
-
+	public ChiensDim(int j, ReglerTopologie topo, String name) {
+		super(topo, name);
 		if (j < 0 || j > 3) {
 			throw new IllegalArgumentException("j must be between 0 and 3");
 		}
-
 		this.j = j;
 	}
 	
@@ -86,11 +84,16 @@ public final class ChiensDim extends AbstractDim {
 	}
 
 	public ChiensDim setJ(int j) {
-		return new ChiensDim(j, getTopo());
+		return new ChiensDim(j, getTopo(), getName());
 	}
 
 	@Override
 	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ChiensDim(j, topo);
+		return new ChiensDim(j, topo, getName());
+	}
+
+	@Override
+	public AbstractDim setName(String name) {
+		return new ChiensDim(j, getTopo(), name);
 	}
 }

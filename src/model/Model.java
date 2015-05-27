@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
 
-import org.apache.commons.lang3.SerializationUtils;
-
 public class Model extends Observable implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -15,7 +13,7 @@ public class Model extends Observable implements Serializable{
 
 	public Model() {
 		regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
-		alleDim.add(new ZellwegerDim(45, ReglerTopologie.PID));
+		alleDim.add(new ZellwegerDim(45, ReglerTopologie.PID, "Zellweger"));
 	}
 		
 	public Vector<RegelKreis> getAlleRegelkreise() {
@@ -68,7 +66,7 @@ public class Model extends Observable implements Serializable{
 	}
 
 	public void copyDim(AbstractDim dim) {
-		alleDim.add(SerializationUtils.roundtrip(dim));
+		alleDim.add(dim.setName(dim.getName()+ " Kopie"));
 		setChanged();
 		notifyObservers();
 	}
