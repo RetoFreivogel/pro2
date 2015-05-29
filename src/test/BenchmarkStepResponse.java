@@ -1,11 +1,12 @@
 package test;
 
 import static org.junit.Assert.*;
-import model.OppeltDim;
 import model.RegelKreis;
 import model.RegelStrecke;
-import model.ReglerTopologie;
 import model.SchrittAntwort;
+import model.dimensionierung.DimEnum;
+import model.dimensionierung.Dimensionierung;
+import model.dimensionierung.TopoEnum;
 
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class BenchmarkStepResponse {
 
 	@Test
 	public void test() {
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		Dimensionierung dim = new Dimensionierung(DimEnum.OPPELT, TopoEnum.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.5, 7.6);
 		RegelKreis regelkreis = new RegelKreis(dim, rs);
 				

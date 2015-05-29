@@ -1,30 +1,27 @@
-package model;
+package model.dimensionierung;
 
-public final class ChiensDim extends AbstractDim{
+import model.RegelStrecke;
+import model.Regler;
+
+final class ChiensDim extends AbstractDim{
 	private static final long serialVersionUID = 1L;
 
-	public static final int APERIODSTOER = 0, APERIODFUEHR = 1,
-			ZWANZIGSTOER = 2, ZWANZIGFUEHR = 3;
+	private final ChiensEnum verhalten;
 
-	private final int j;
-
-	public ChiensDim(int j, ReglerTopologie topo) {
+	ChiensDim(ChiensEnum verhalten, TopoEnum topo) {
 		super(topo);
-		if (j < 0 || j > 3) {
-			throw new IllegalArgumentException("j must be between 0 and 3");
-		}
-		this.j = j;
+		this.verhalten = verhalten;
 	}
 	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
 
 		switch (getTopo()) {
 		case P:
-			switch (j) {
+			switch (verhalten) {
 			case APERIODSTOER:
 				return new Regler((0.3 / Ks) * (Tg / Tu));
 			case APERIODFUEHR:
@@ -38,7 +35,7 @@ public final class ChiensDim extends AbstractDim{
 				return null;
 			}
 		case PI:
-			switch (j) {
+			switch (verhalten) {
 			case APERIODSTOER:
 				return new Regler((0.6 / Ks) * (Tg / Tu), 4 * Tu);
 			case APERIODFUEHR:
@@ -52,7 +49,7 @@ public final class ChiensDim extends AbstractDim{
 				return null;
 			}
 		case PID:
-			switch (j) {
+			switch (verhalten) {
 			case APERIODSTOER:
 				return new Regler((0.95 / Ks) * (Tg / Tu), 2.4 * Tu, 0.42 * Tu);
 			case APERIODFUEHR:
@@ -70,35 +67,26 @@ public final class ChiensDim extends AbstractDim{
 		}
 	}
 
-	public int getJ() {
-		return j;
+	ChiensEnum getVerhalten() {
+		return verhalten;
+	}
+
+	ChiensDim setVerhalten(ChiensEnum verhalten) {
+		return new ChiensDim(verhalten, getTopo());
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ChiensDim\nj: ");
-		builder.append(j);
-		builder.append("\n");
-		return builder.toString();
-	}
-
-	public ChiensDim setJ(int j) {
-		return new ChiensDim(j, getTopo());
+	 ChiensDim setTopo(TopoEnum topo) {
+		return new ChiensDim(verhalten, topo);
 	}
 
 	@Override
-	public ChiensDim setTopo(ReglerTopologie topo) {
-		return new ChiensDim(j, topo);
-	}
-
-	@Override
-	public Dimensionierung getDimensionierung() {
-		return Dimensionierung.CHIENS;
+	 DimEnum getTyp() {
+		return DimEnum.CHIENS;
 	}
 	
 	@Override
 	public ChiensDim copy(){
-		return new ChiensDim(j, getTopo());
+		return new ChiensDim(verhalten, getTopo());
 	}
 }

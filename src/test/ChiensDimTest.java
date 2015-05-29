@@ -1,10 +1,12 @@
 package test;
 
 import static org.junit.Assert.*;
-import model.ChiensDim;
 import model.RegelStrecke;
 import model.Regler;
-import model.ReglerTopologie;
+import model.dimensionierung.ChiensEnum;
+import model.dimensionierung.DimEnum;
+import model.dimensionierung.Dimensionierung;
+import model.dimensionierung.TopoEnum;
 
 import org.junit.Test;
 
@@ -12,17 +14,14 @@ public class ChiensDimTest {
 
 	@Test
 	public void testCalc() {
-		int j = 0;
-
 		RegelStrecke rs = new RegelStrecke(0.9999, 2.862, 20.24);
-		ChiensDim p_dim;
-		ChiensDim pi_dim;
-		ChiensDim pid_dim;
-		j = 0; // APERIODSTOER
+		Dimensionierung p_dim = new Dimensionierung(DimEnum.CHIENS, TopoEnum.P);
+		Dimensionierung pi_dim = new Dimensionierung(DimEnum.CHIENS, TopoEnum.PI);
+		Dimensionierung pid_dim = new Dimensionierung(DimEnum.CHIENS, TopoEnum.PID);
 
-		p_dim = new ChiensDim(j, ReglerTopologie.P);
-		pi_dim = new ChiensDim(j, ReglerTopologie.PI);
-		pid_dim = new ChiensDim(j, ReglerTopologie.PID);
+		p_dim = p_dim.setVerhalten(ChiensEnum.APERIODSTOER);
+		pi_dim = pi_dim.setVerhalten(ChiensEnum.APERIODSTOER);
+		pid_dim = pid_dim.setVerhalten(ChiensEnum.APERIODSTOER);
 
 		Regler regler = p_dim.calc(rs);
 		Regler regler_referenz = new Regler(2.121805472);
@@ -39,10 +38,9 @@ public class ChiensDimTest {
 		assertEquals(regler_referenz.getTn(), regler.getTn(), 0.0001);
 		assertEquals(regler_referenz.getTv(), regler.getTv(), 0.0001);
 
-		j = 1;
-		p_dim = new ChiensDim(j, ReglerTopologie.P);
-		pi_dim = new ChiensDim(j, ReglerTopologie.PI);
-		pid_dim = new ChiensDim(j, ReglerTopologie.PID);
+		p_dim = p_dim.setVerhalten(ChiensEnum.APERIODFUEHR);
+		pi_dim = pi_dim.setVerhalten(ChiensEnum.APERIODFUEHR);
+		pid_dim = pid_dim.setVerhalten(ChiensEnum.APERIODFUEHR);
 
 		regler = p_dim.calc(rs);
 		regler_referenz = new Regler(2.121805472);
@@ -59,11 +57,9 @@ public class ChiensDimTest {
 		assertEquals(regler_referenz.getTn(), regler.getTn(), 0.0001);
 		assertEquals(regler_referenz.getTv(), regler.getTv(), 0.0001);
 
-		j = 2;// ZWANZIGSTOER
-
-		p_dim = new ChiensDim(j, ReglerTopologie.P);
-		pi_dim = new ChiensDim(j, ReglerTopologie.PI);
-		pid_dim = new ChiensDim(j, ReglerTopologie.PID);
+		p_dim = p_dim.setVerhalten(ChiensEnum.ZWANZIGSTOER);
+		pi_dim = pi_dim.setVerhalten(ChiensEnum.ZWANZIGSTOER);
+		pid_dim = pid_dim.setVerhalten(ChiensEnum.ZWANZIGSTOER);
 
 		regler = p_dim.calc(rs);
 		regler_referenz = new Regler(4.950879435);
@@ -80,11 +76,9 @@ public class ChiensDimTest {
 		assertEquals(regler_referenz.getTn(), regler.getTn(), 0.0001);
 		assertEquals(regler_referenz.getTv(), regler.getTv(), 0.0001);
 
-		j = 3;// ZWANZIGFUEHR
-
-		p_dim = new ChiensDim(j, ReglerTopologie.P);
-		pi_dim = new ChiensDim(j, ReglerTopologie.PI);
-		pid_dim = new ChiensDim(j, ReglerTopologie.PID);
+		p_dim = p_dim.setVerhalten(ChiensEnum.ZWANZIGFUEHR);
+		pi_dim = pi_dim.setVerhalten(ChiensEnum.ZWANZIGFUEHR);
+		pid_dim = pid_dim.setVerhalten(ChiensEnum.ZWANZIGFUEHR);
 
 		regler = p_dim.calc(rs);
 		regler_referenz = new Regler(4.950879435);

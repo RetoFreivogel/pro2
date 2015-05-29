@@ -1,4 +1,7 @@
-package model;
+package model.dimensionierung;
+
+import model.RegelStrecke;
+import model.Regler;
 
 
 /**
@@ -6,15 +9,15 @@ package model;
  * @author Reto
  * Reglerdimensionierung nach Oppelt 
  */
-public final class OppeltDim extends AbstractDim {
+final class OppeltDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public OppeltDim(ReglerTopologie topo){
+	OppeltDim(TopoEnum topo){
 		super(topo);
 	}
 	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
@@ -32,20 +35,13 @@ public final class OppeltDim extends AbstractDim {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("OppeltDim\n");
-		return builder.toString();
-	}
-
-	@Override
-	public OppeltDim setTopo(ReglerTopologie topo) {
+	OppeltDim setTopo(TopoEnum topo) {
 		return new OppeltDim(topo);
 	}
 
 	@Override
-	public Dimensionierung getDimensionierung() {
-		return Dimensionierung.OPPELT;
+	DimEnum getTyp() {
+		return DimEnum.OPPELT;
 	}
 
 	@Override

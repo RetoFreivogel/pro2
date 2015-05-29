@@ -2,13 +2,16 @@ package model;
 
 import java.io.Serializable;
 
+import model.dimensionierung.Dimensionierung;
+
+
 public final class RegelKreis implements RegelGlied, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private final RegelStrecke regelstrecke;
-	private final AbstractDim dim;
+	private final Dimensionierung dim;
 
-	public RegelKreis(AbstractDim dim, RegelStrecke regelstrecke) {
+	public RegelKreis(Dimensionierung dim, RegelStrecke regelstrecke) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
 	}
@@ -17,7 +20,7 @@ public final class RegelKreis implements RegelGlied, Serializable {
 		return dim.calc(regelstrecke);
 	}
 
-	public AbstractDim getDim() {
+	public Dimensionierung getDim() {
 		return dim;
 	}
 

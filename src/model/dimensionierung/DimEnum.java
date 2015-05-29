@@ -1,6 +1,6 @@
-package model;
+package model.dimensionierung;
 
-public enum Dimensionierung {
+public enum DimEnum {
 	MANUELL("Manuell"), 
 	PHASENGANG("Phasengang"),
 	ZIEGLER("Ziegler"),
@@ -10,7 +10,7 @@ public enum Dimensionierung {
 	
 	private final String text;
 	
-	private Dimensionierung(String text) {
+	private DimEnum(String text) {
 		this.text = text;
 	}
 	

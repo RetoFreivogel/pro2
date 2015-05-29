@@ -1,21 +1,17 @@
-package model;
+package model.dimensionierung;
 
-public final class RosenbergDim extends AbstractDim {
+import model.RegelStrecke;
+import model.Regler;
+
+final class RosenbergDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public RosenbergDim(ReglerTopologie topo){
+	RosenbergDim(TopoEnum topo){
 		super(topo);
 	}
 	
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("RosenbergDim\n");
-		return builder.toString();
-	}
-
-	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
@@ -33,13 +29,13 @@ public final class RosenbergDim extends AbstractDim {
 	}
 
 	@Override
-	public RosenbergDim setTopo(ReglerTopologie topo) {
+	RosenbergDim setTopo(TopoEnum topo) {
 		return new RosenbergDim(topo);
 	}
 
 	@Override
-	public Dimensionierung getDimensionierung() {
-		return Dimensionierung.ROSENBERG;
+	DimEnum getTyp() {
+		return DimEnum.ROSENBERG;
 	}
 
 	@Override

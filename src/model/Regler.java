@@ -1,14 +1,16 @@
 package model;
 
+import model.dimensionierung.TopoEnum;
+
 public final class Regler implements RegelGlied {
-	private final ReglerTopologie topo;
+	private final TopoEnum topo;
 	private final double kr, tn, tv, tp;
 
 	public Regler(double kr) {
 		if(kr <= 0){
 			throw new IllegalArgumentException("kr muss positiv sein");
 		}
-		this.topo = ReglerTopologie.P;
+		this.topo = TopoEnum.P;
 		this.kr = kr;
 		this.tn = 1.0;
 		this.tv = 1.0;
@@ -23,7 +25,7 @@ public final class Regler implements RegelGlied {
 			throw new IllegalArgumentException("tn muss positiv sein");
 		}
 
-		this.topo = ReglerTopologie.PI;
+		this.topo = TopoEnum.PI;
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = 1.0;
@@ -41,7 +43,7 @@ public final class Regler implements RegelGlied {
 			throw new IllegalArgumentException("tv muss positiv sein");
 		}
 		
-		this.topo = ReglerTopologie.PID;
+		this.topo = TopoEnum.PID;
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
@@ -64,14 +66,14 @@ public final class Regler implements RegelGlied {
 		if(tv < tp){
 			throw new IllegalArgumentException("tv darf nicht kleiner als tp sein");
 		}
-		this.topo = ReglerTopologie.PID;
+		this.topo = TopoEnum.PID;
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
 		this.tp = tp;
 	}
 
-	public ReglerTopologie getTopo() {
+	public TopoEnum getTopo() {
 		return topo;
 	}
 

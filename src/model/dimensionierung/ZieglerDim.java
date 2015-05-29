@@ -1,20 +1,18 @@
-package model;
+package model.dimensionierung;
+
+import model.RegelStrecke;
+import model.Regler;
 
 
-public final class ZieglerDim extends AbstractDim {
+final class ZieglerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public ZieglerDim(ReglerTopologie topo){
+	ZieglerDim(TopoEnum topo){
 		super(topo);
 	}
 	
 	@Override
-	public String toString() {
-		return "ZieglerDim\n";
-	}
-
-	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	Regler calc(RegelStrecke regelstrecke) {
 		double Ks = regelstrecke.getKs();
 		double Tu = regelstrecke.getTu();
 		double Tg = regelstrecke.getTg();
@@ -34,13 +32,13 @@ public final class ZieglerDim extends AbstractDim {
 	}
 
 	@Override
-	public ZieglerDim setTopo(ReglerTopologie topo) {
+	ZieglerDim setTopo(TopoEnum topo) {
 		return new ZieglerDim(topo);
 	}
 
 	@Override
-	public Dimensionierung getDimensionierung() {
-		return Dimensionierung.ZIEGLER;
+	DimEnum getTyp() {
+		return DimEnum.ZIEGLER;
 	}
 
 	@Override

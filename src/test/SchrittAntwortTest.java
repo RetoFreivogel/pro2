@@ -8,11 +8,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import model.OppeltDim;
 import model.RegelKreis;
 import model.RegelStrecke;
-import model.ReglerTopologie;
 import model.SchrittAntwort;
+import model.dimensionierung.DimEnum;
+import model.dimensionierung.Dimensionierung;
+import model.dimensionierung.TopoEnum;
 
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class SchrittAntwortTest {
 	@Test
 	public void testPID() {
 		Matlab.setMocked(false);
-		OppeltDim dim = new OppeltDim(ReglerTopologie.PID);
+		Dimensionierung dim = new Dimensionierung(DimEnum.OPPELT, TopoEnum.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
 		RegelKreis kreis = new RegelKreis(dim, rs);
 		SchrittAntwort sw = kreis.getTranferFunction().schrittantwort();

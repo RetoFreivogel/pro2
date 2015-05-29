@@ -23,17 +23,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.Controller;
-import model.ChiensDim;
-import model.ChiensRegelung;
-import model.Dimensionierung;
-import model.ManuellDim;
-import model.OppeltDim;
 import model.RegelKreis;
 import model.Regler;
-import model.ReglerTopologie;
-import model.RosenbergDim;
-import model.ZellwegerDim;
-import model.ZieglerDim;
+import model.dimensionierung.ChiensEnum;
+import model.dimensionierung.DimEnum;
+import model.dimensionierung.TopoEnum;
 
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		ActionListener, FocusListener {
@@ -49,9 +43,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private JFormattedTextField tf_Tn;
 	private JFormattedTextField tf_Tv;
 	private JFormattedTextField tf_Tp;
-	private JComboBox<Dimensionierung> cbbx_defd_R;
-	private JComboBox<ReglerTopologie> cbbx_Topo;
-	private JComboBox<ChiensRegelung> cbbx_chiens;
+	private JComboBox<DimEnum> cbbx_defd_R;
+	private JComboBox<TopoEnum> cbbx_Topo;
+	private JComboBox<ChiensEnum> cbbx_chiens;
 	private boolean eventsEnabled = false;
 
 	public ReglerView(RegelKreis kreis, Controller controller) {
@@ -69,15 +63,15 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		jb_close.setPreferredSize(new Dimension(20, 20));
 		jb_close.addActionListener(this);
 
-		cbbx_Topo = new JComboBox<>(new ReglerTopologie[] { ReglerTopologie.PI,
-				ReglerTopologie.PID });
+		cbbx_Topo = new JComboBox<>(new TopoEnum[] { TopoEnum.PI,
+				TopoEnum.PID });
 		cbbx_Topo.setSelectedIndex(1);
 		cbbx_Topo.addActionListener(this);
 
-		cbbx_defd_R = new JComboBox<>(Dimensionierung.values());
+		cbbx_defd_R = new JComboBox<>(DimEnum.values());
 		cbbx_defd_R.addActionListener(this);
 
-		cbbx_chiens = new JComboBox<>(ChiensRegelung.values());
+		cbbx_chiens = new JComboBox<>(ChiensEnum.values());
 		cbbx_chiens.addActionListener(this);
 
 		tf_Phrand = new JFormattedTextField(format);
@@ -97,7 +91,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp.addFocusListener(this);
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim()
-				.getDimensionierung().toString(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				.getTyp().toString(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridBagLayout());
 
 		update(kreis);
@@ -139,7 +133,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		constraints.gridwidth = 1;
 		constraints.gridy++;
 
-		if (Dimensionierung.PHASENGANG == cbbx_defd_R.getSelectedItem()) {
+		if (DimEnum.PHASENGANG == cbbx_defd_R.getSelectedItem()) {
 			JLabel lb_Phrand = new JLabel("Phasenrand");
 			add(lb_Phrand, constraints);
 			constraints.gridx = 1;
@@ -150,7 +144,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			constraints.gridy++;
 		}
 
-		if (Dimensionierung.CHIENS == cbbx_defd_R.getSelectedItem()) {
+		if (DimEnum.CHIENS == cbbx_defd_R.getSelectedItem()) {
 			JLabel lb_chiens = new JLabel("Regelung: ");
 			add(lb_chiens, constraints);
 			constraints.gridx = 1;
@@ -179,7 +173,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		constraints.gridwidth = 1;
 		constraints.gridy++;
 
-		if (ReglerTopologie.PID == cbbx_Topo.getSelectedItem()) {
+		if (TopoEnum.PID == cbbx_Topo.getSelectedItem()) {
 			JLabel lb_Tv = new JLabel("Tv");
 			add(lb_Tv, constraints);
 			constraints.gridx = 1;
@@ -199,7 +193,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			constraints.gridy++;
 		}
 
-		if (Dimensionierung.MANUELL == cbbx_defd_R.getSelectedItem()) {
+		if (DimEnum.MANUELL == cbbx_defd_R.getSelectedItem()) {
 			tf_Kr.setEditable(true);
 			tf_Tn.setEditable(true);
 			tf_Tv.setEditable(true);
@@ -245,18 +239,18 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public void actionPerformed(ActionEvent event) {
 		if (eventsEnabled) {
 			if (event.getSource() == cbbx_defd_R) {
-				Dimensionierung dim = (Dimensionierung) cbbx_defd_R
+				DimEnum dim = (DimEnum) cbbx_defd_R
 						.getSelectedItem();
-				controller.selectDim(dim, regelkreis.getDim());
+				controller.setTyp(dim, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_Topo) {
-				ReglerTopologie topo = (ReglerTopologie) cbbx_Topo
+				TopoEnum topo = (TopoEnum) cbbx_Topo
 						.getSelectedItem();
 				controller.selectTopo(topo, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_chiens) {
-				ChiensRegelung chiensReg = (ChiensRegelung) cbbx_chiens
+				ChiensEnum chiensReg = (ChiensEnum) cbbx_chiens
 						.getSelectedItem();
-				controller.selectChiensRegelung(chiensReg,
-						(ChiensDim) regelkreis.getDim());
+				controller.setVerhalten(chiensReg,
+						regelkreis.getDim());
 			} else if (event.getSource() == jb_copy) {
 				controller.copyKreis(regelkreis);
 			} else if (event.getSource() == jb_close) {
@@ -273,33 +267,18 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
-			((TitledBorder) getBorder()).setTitle(kreis.getDim().getDimensionierung().toString());
+			((TitledBorder) getBorder()).setTitle(kreis.getDim().getTyp().toString());
 
-			Dimensionierung d;
-			if (regelkreis.getDim() instanceof ChiensDim) {
-				d = Dimensionierung.CHIENS;
-			} else if (regelkreis.getDim() instanceof ManuellDim) {
-				d = Dimensionierung.MANUELL;
-			} else if (regelkreis.getDim() instanceof OppeltDim) {
-				d = Dimensionierung.OPPELT;
-			} else if (regelkreis.getDim() instanceof RosenbergDim) {
-				d = Dimensionierung.ROSENBERG;
-			} else if (regelkreis.getDim() instanceof ZellwegerDim) {
-				d = Dimensionierung.PHASENGANG;
-			} else if (regelkreis.getDim() instanceof ZieglerDim) {
-				d = Dimensionierung.ZIEGLER;
-			} else {
-				throw new RuntimeException("Internal Error");
-			}
+			DimEnum d = regelkreis.getDim().getTyp();
 			cbbx_defd_R.setSelectedItem(d);
 
-			if (d == Dimensionierung.CHIENS) {
-				cbbx_chiens.setSelectedItem(((ChiensDim) regelkreis.getDim())
-						.getJ());
+			if (d == DimEnum.CHIENS) {
+				cbbx_chiens.setSelectedItem(regelkreis.getDim()
+						.getVerhalten());
 			}
 
-			if (d == Dimensionierung.PHASENGANG) {
-				tf_Phrand.setValue(((ZellwegerDim) regelkreis.getDim())
+			if (d == DimEnum.PHASENGANG) {
+				tf_Phrand.setValue(regelkreis.getDim()
 						.getPhasenrand());
 			}
 

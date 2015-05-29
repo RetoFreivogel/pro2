@@ -1,13 +1,13 @@
-package model;
+package model.dimensionierung;
 
-public enum ReglerTopologie {
+public enum TopoEnum {
 	P("P"),
 	PI("PI"),
 	PID("PID");
 	
 	private final String text;
 	
-	ReglerTopologie(String text){
+	TopoEnum(String text){
 		this.text = text;
 	}
 	

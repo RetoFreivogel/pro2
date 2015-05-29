@@ -1,10 +1,15 @@
-package model;
+package model.dimensionierung;
 
-public class ZellwegerDim extends AbstractDim {
+import model.RegelStrecke;
+import model.Regler;
+import model.SaniApprox;
+import model.TransferFunction;
+
+class ZellwegerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 	private final double phasenrand;
 
-	public double searchPhase(TransferFunction tf, double phase) {
+	private double searchPhase(TransferFunction tf, double phase) {
 		double low_freq = 0, high_freq = 1;
 
 		while (tf.phaseAt(high_freq) >= phase) {
@@ -101,7 +106,7 @@ public class ZellwegerDim extends AbstractDim {
 
 	
 	@Override
-	public Regler calc(RegelStrecke regelstrecke) {
+	Regler calc(RegelStrecke regelstrecke) {
 		switch (getTopo()) {
 		case PID:
 			return calcPID(regelstrecke);
@@ -113,7 +118,7 @@ public class ZellwegerDim extends AbstractDim {
 
 	}
 
-	public ZellwegerDim(double phasenrand, ReglerTopologie topo) {
+	ZellwegerDim(double phasenrand, TopoEnum topo) {
 		super(topo);
 		if (phasenrand < 0 || phasenrand > 90) {
 			throw new IllegalArgumentException(
@@ -122,31 +127,22 @@ public class ZellwegerDim extends AbstractDim {
 		this.phasenrand = phasenrand;
 	}
 
-	public double getPhasenrand() {
+	double getPhasenrand() {
 		return phasenrand;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ZellwegerDim\nphasenrand: ");
-		builder.append(phasenrand);
-		builder.append("\n");
-		return builder.toString();
-	}
-
-	public ZellwegerDim setPhasenrand(double phasenrand) {
+	ZellwegerDim setPhasenrand(double phasenrand) {
 		return new ZellwegerDim(phasenrand, getTopo());
 	}
 
 	@Override
-	public AbstractDim setTopo(ReglerTopologie topo) {
+	AbstractDim setTopo(TopoEnum topo) {
 		return new ZellwegerDim(phasenrand, topo);
 	}
 
 	@Override
-	public Dimensionierung getDimensionierung() {
-		return Dimensionierung.PHASENGANG;
+	DimEnum getTyp() {
+		return DimEnum.PHASENGANG;
 	}
 
 	@Override

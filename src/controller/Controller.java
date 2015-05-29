@@ -12,19 +12,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.AbstractDim;
-import model.ChiensDim;
-import model.ChiensRegelung;
-import model.Dimensionierung;
-import model.ManuellDim;
 import model.Model;
-import model.OppeltDim;
 import model.RegelKreis;
 import model.RegelStrecke;
-import model.ReglerTopologie;
-import model.RosenbergDim;
-import model.ZellwegerDim;
-import model.ZieglerDim;
+import model.dimensionierung.ChiensEnum;
+import model.dimensionierung.DimEnum;
+import model.dimensionierung.Dimensionierung;
+import model.dimensionierung.TopoEnum;
 import view.View;
 
 public class Controller {
@@ -49,53 +43,20 @@ public class Controller {
 		this.view = view;
 	}
 
-	public void selectDim(Dimensionierung dim, AbstractDim old_dim) {
+	public void setTyp(DimEnum typ, Dimensionierung old_dim) {
 		modelChanged();
 		
-		AbstractDim new_dim = null;
-		switch (dim) {
-		case MANUELL:
-			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()));
-			break;
-		case PHASENGANG:
-			new_dim = new ZellwegerDim(45, old_dim.getTopo());
-			break;
-		case ZIEGLER:
-			new_dim = new ZieglerDim(old_dim.getTopo());
-			break;
-		case CHIENS:
-			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo());
-			break;
-		case OPPELT:
-			new_dim = new OppeltDim(old_dim.getTopo());
-			break;
-		case ROSENBERG:
-			new_dim = new RosenbergDim(old_dim.getTopo());
-			break;
-		}
+		Dimensionierung new_dim = old_dim.setTyp(typ, model.getRegelstrecke());
+		
 		model.replaceDim(old_dim, new_dim);
 	}
 
-	public void selectChiensRegelung(ChiensRegelung chiensReg, ChiensDim dim) {
-		int j = 0;
+	public void setVerhalten(ChiensEnum verhalten, Dimensionierung old_dim) {
 		modelChanged();
 
-		switch (chiensReg) {
-		case APERIODSTOER:
-			j = 0;
-			break;
-		case APERIODFUEHR:
-			j = 1;
-			break;
-		case ZWANZIGSTOER:
-			j = 2;
-			break;
-		case ZWANZIGFUEHR:
-			j = 3;
-			break;
-		}	
-		model.replaceDim(dim, dim.setJ(j));
-		return;
+		Dimensionierung new_dim = old_dim.setVerhalten(verhalten);
+		
+		model.replaceDim(old_dim, new_dim);
 	}
 
 	public void setKs(double ks) {
@@ -130,12 +91,11 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-
-	public void setKr(double kr, AbstractDim dim) {
+	
+	public void setPhasenrand(double phasenrand, Dimensionierung dim) {
 		try {
 			modelChanged();
-			ManuellDim mdim = (ManuellDim) dim;
-			model.replaceDim(dim, mdim.setKr(kr));
+			model.replaceDim(dim, dim.setPhasenrand(phasenrand));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -143,11 +103,10 @@ public class Controller {
 		}
 	}
 
-	public void setPhasenrand(double phasenrand, AbstractDim dim) {
+	public void setKr(double kr, Dimensionierung dim) {
 		try {
 			modelChanged();
-			ZellwegerDim zdim = (ZellwegerDim) dim;
-			model.replaceDim(dim, zdim.setPhasenrand(phasenrand));
+			model.replaceDim(dim, dim.setKr(kr));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -155,11 +114,11 @@ public class Controller {
 		}
 	}
 
-	public void setTn(double tn, AbstractDim dim) {
+
+	public void setTn(double tn, Dimensionierung dim) {
 		try {
 			modelChanged();
-			ManuellDim mdim = (ManuellDim) dim;
-			model.replaceDim(dim, mdim.setTn(tn));
+			model.replaceDim(dim, dim.setTn(tn));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -167,11 +126,10 @@ public class Controller {
 		}
 	}
 
-	public void setTv(double tv, AbstractDim dim) {
+	public void setTv(double tv, Dimensionierung dim) {
 		try {
 			modelChanged();
-			ManuellDim mdim = (ManuellDim) dim;
-			model.replaceDim(dim, mdim.setTv(tv));
+			model.replaceDim(dim, dim.setTv(tv));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -179,11 +137,10 @@ public class Controller {
 		}
 	}
 
-	public void setTp(double tp, AbstractDim dim) {
+	public void setTp(double tp, Dimensionierung dim) {
 		try {
 			modelChanged();
-			ManuellDim mdim = (ManuellDim) dim;
-			model.replaceDim(dim, mdim.setTp(tp));
+			model.replaceDim(dim, dim.setTp(tp));
 			view.clearError();
 		} catch (Exception e) {
 			view.displayError(e.getMessage());
@@ -191,7 +148,7 @@ public class Controller {
 		}
 	}
 
-	public void selectTopo(ReglerTopologie topo, AbstractDim dim) {
+	public void selectTopo(TopoEnum topo, Dimensionierung dim) {
 		try {
 			modelChanged();
 			model.replaceDim(dim, dim.setTopo(topo));
@@ -205,7 +162,7 @@ public class Controller {
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
-		AbstractDim[] dim = new AbstractDim[]{new ZellwegerDim(45, ReglerTopologie.PID)};
+		Dimensionierung[] dim = new Dimensionierung[]{new Dimensionierung(DimEnum.PHASENGANG, TopoEnum.PID)};
 
 		view.setModel(new Model(regelstrecke, dim));
 	}
@@ -314,7 +271,7 @@ public class Controller {
 		view.setModel(model);
 	}
 
-	public void closeRegler(AbstractDim dim) {
+	public void closeRegler(Dimensionierung dim) {
 		modelChanged();
 		try {
 			model.removeDim(dim);

@@ -1,6 +1,6 @@
-package model;
+package model.dimensionierung;
 
-public enum ChiensRegelung {
+public enum ChiensEnum {
 	APERIODSTOER("<html>Aperiodisches<br>Störverhalten</html>"), 
 	APERIODFUEHR("<html>Aperiodisches<br>Führungsverhalten</html>"),
 	ZWANZIGSTOER("<html>Periodisches<br>Störverhalten</html>"),
@@ -8,7 +8,7 @@ public enum ChiensRegelung {
 	
 	private final String text;
 	
-	private ChiensRegelung(String text) {
+	private ChiensEnum(String text) {
 		this.text = text;
 	}
 	

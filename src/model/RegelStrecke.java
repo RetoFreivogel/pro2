@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 
+import util.Copyable;
+
 public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 	private static final long serialVersionUID = 1L;
 	private final double ks, tu, tg;

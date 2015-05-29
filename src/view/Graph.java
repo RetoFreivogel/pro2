@@ -79,7 +79,7 @@ public class Graph extends JPanel implements ActionListener {
 			RegelKreis rk = model.getAlleRegelkreise().get(i);
 
 			JCheckBox cb = new JCheckBox();
-			cb.setText(rk.getDim().getDimensionierung().toString());
+			cb.setText(rk.getDim().getTyp().toString());
 			cb.setSelected(true);
 			Color color = Color.getHSBColor((float) i * 3 / 20, (float) 0.8,
 					(float) 0.9);
