@@ -13,7 +13,7 @@ public class ZieglerDimTest {
 	@Test
 	public void testCalc() {
 		RegelStrecke rs = new RegelStrecke(0.9999, 4.082, 13.24);
-		ZieglerDim dim = new ZieglerDim(ReglerTopologie.P, null);
+		ZieglerDim dim = new ZieglerDim(ReglerTopologie.P);
 		
 		Regler regler = dim.calc(rs);
 		Regler regler_referenz = new Regler(3.243832468);

@@ -13,7 +13,7 @@ public class RosenbergDimTest {
 	@Test
 	public void testCalc() {
 		RegelStrecke rs = new RegelStrecke(0.9999, 2.862, 20.24);
-		RosenbergDim dim = new RosenbergDim(ReglerTopologie.P, null);
+		RosenbergDim dim = new RosenbergDim(ReglerTopologie.P);
 
 		Regler regler = dim.calc(rs);
 		Regler regler_referenz = new Regler(7.072684907);

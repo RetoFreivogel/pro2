@@ -5,17 +5,22 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
 
-public class Model extends Observable implements Serializable{
+public class Model extends Observable implements Serializable, Copyable{
 	private static final long serialVersionUID = 1L;
 	
 	private final Vector<AbstractDim> alleDim = new Vector<>(0, 1);
 	private RegelStrecke regelstrecke;
-
-	public Model() {
-		regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
-		alleDim.add(new ZellwegerDim(45, ReglerTopologie.PID, "Zellweger"));
-	}
 		
+	public Model(RegelStrecke regelstrecke, AbstractDim[] dims){
+		if(dims.length == 0){
+			throw new IllegalArgumentException();
+		}
+		this.regelstrecke = (RegelStrecke) regelstrecke.copy();
+		for (int i = 0; i < dims.length; i++) {
+			alleDim.addElement((AbstractDim) dims[i].copy());
+		}
+	}
+	
 	public Vector<RegelKreis> getAlleRegelkreise() {
 		Vector<RegelKreis> kreise = new Vector<>(alleDim.size());
 		for(AbstractDim dim : alleDim){
@@ -66,8 +71,15 @@ public class Model extends Observable implements Serializable{
 	}
 
 	public void copyDim(AbstractDim dim) {
-		alleDim.add(dim.setName(dim.getName()+ " Kopie"));
+		alleDim.add((AbstractDim) dim.copy());
 		setChanged();
 		notifyObservers();
+	}
+
+	@Override
+	public Object copy() {
+		AbstractDim[] dims = new AbstractDim[alleDim.size()];
+		alleDim.copyInto(dims);
+		return new Model(regelstrecke, dims);
 	}
 }

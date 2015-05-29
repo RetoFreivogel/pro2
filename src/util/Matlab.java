@@ -9,7 +9,7 @@ public class Matlab {
 	private static MatlabProxy proxy = null;
 	private static boolean mocked = false;
 
-	public static MatlabProxy getProxy() {
+	public synchronized static MatlabProxy getProxy() {
 		if(mocked){
 			return null;
 		}
@@ -30,11 +30,11 @@ public class Matlab {
 		return proxy;
 	}
 
-	public static void setMocked(boolean mocked){
+	public synchronized static void setMocked(boolean mocked){
 		Matlab.mocked = mocked;
 	}
 	
-	public static void closeProxy() {
+	public synchronized static void closeProxy() {
 		if (proxy != null) {
 			try {
 				proxy.exit();

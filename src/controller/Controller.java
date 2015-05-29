@@ -1,7 +1,5 @@
 package controller;
 
-import org.apache.commons.lang3.SerializationUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,6 +20,7 @@ import model.ManuellDim;
 import model.Model;
 import model.OppeltDim;
 import model.RegelKreis;
+import model.RegelStrecke;
 import model.ReglerTopologie;
 import model.RosenbergDim;
 import model.ZellwegerDim;
@@ -56,22 +55,22 @@ public class Controller {
 		AbstractDim new_dim = null;
 		switch (dim) {
 		case MANUELL:
-			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()), "Manuell");
+			new_dim =  new ManuellDim(old_dim.calc(model.getRegelstrecke()));
 			break;
 		case PHASENGANG:
-			new_dim = new ZellwegerDim(45, old_dim.getTopo(), "Zellweger");
+			new_dim = new ZellwegerDim(45, old_dim.getTopo());
 			break;
 		case ZIEGLER:
-			new_dim = new ZieglerDim(old_dim.getTopo(), "Ziegler");
+			new_dim = new ZieglerDim(old_dim.getTopo());
 			break;
 		case CHIENS:
-			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo(), "Chiens");
+			new_dim = new ChiensDim(ChiensDim.APERIODSTOER, old_dim.getTopo());
 			break;
 		case OPPELT:
-			new_dim = new OppeltDim(old_dim.getTopo(), "Oppelt");
+			new_dim = new OppeltDim(old_dim.getTopo());
 			break;
 		case ROSENBERG:
-			new_dim = new RosenbergDim(old_dim.getTopo(), "Rosenberg");
+			new_dim = new RosenbergDim(old_dim.getTopo());
 			break;
 		}
 		model.replaceDim(old_dim, new_dim);
@@ -205,7 +204,10 @@ public class Controller {
 
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
-		view.setModel(new Model());
+		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
+		AbstractDim[] dim = new AbstractDim[]{new ZellwegerDim(45, ReglerTopologie.PID)};
+
+		view.setModel(new Model(regelstrecke, dim));
 	}
 
 	public void speichern() {
@@ -284,8 +286,7 @@ public class Controller {
 
 	private void modelChanged() {
 		undone_changes.clear();
-		Model copy = SerializationUtils.roundtrip(model);
-		changes.addElement(copy);
+		changes.addElement((Model) model.copy());
 	}
 
 	public void beenden() {
@@ -293,31 +294,24 @@ public class Controller {
 	}
 
 	public void rueckgaengig() {
-		if (changes.isEmpty())
+		if (changes.isEmpty()){
 			return;
+		}
 		Model recall = changes.lastElement();
-		changes.removeElement(recall);
 		undone_changes.addElement(model);
+		changes.removeElement(recall);
 		model = recall;
-		view.setModel(model);
+		view.setModel(recall);
 	}
 
 	public void wiederholen() {
 		if (undone_changes.isEmpty())
 			return;
 		Model recall = undone_changes.lastElement();
-		undone_changes.removeElement(recall);
 		changes.addElement(model);
+		undone_changes.removeElement(recall);
 		model = recall;
 		view.setModel(model);
-	}
-
-	public void einstellung() {
-
-	}
-
-	public void simulation() {
-
 	}
 
 	public void closeRegler(AbstractDim dim) {

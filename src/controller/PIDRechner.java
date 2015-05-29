@@ -8,7 +8,11 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import model.AbstractDim;
 import model.Model;
+import model.RegelStrecke;
+import model.ReglerTopologie;
+import model.ZellwegerDim;
 import view.View;
 
 public class PIDRechner extends JFrame {
@@ -17,7 +21,9 @@ public class PIDRechner extends JFrame {
 
 	public void init() {
 		setPreferredSize(new Dimension(800, 600));
-		Model model = new Model();
+		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
+		AbstractDim[] dim = new AbstractDim[]{new ZellwegerDim(45, ReglerTopologie.PID)};
+		Model model = new Model(regelstrecke, dim);
 		Controller controller = new Controller(model, this);
 		View view = new View(model, controller, this);
 		controller.setView(view);

@@ -3,8 +3,8 @@ package model;
 public final class RosenbergDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public RosenbergDim(ReglerTopologie topo, String name){
-		super(topo, name);
+	public RosenbergDim(ReglerTopologie topo){
+		super(topo);
 	}
 	
 	@Override
@@ -34,11 +34,16 @@ public final class RosenbergDim extends AbstractDim {
 
 	@Override
 	public RosenbergDim setTopo(ReglerTopologie topo) {
-		return new RosenbergDim(topo, getName());
+		return new RosenbergDim(topo);
 	}
 
 	@Override
-	public RosenbergDim setName(String name) {
-		return new RosenbergDim(getTopo(), name);
+	public Dimensionierung getDimensionierung() {
+		return Dimensionierung.ROSENBERG;
+	}
+
+	@Override
+	public Object copy() {
+		return new RosenbergDim(getTopo());
 	}
 }

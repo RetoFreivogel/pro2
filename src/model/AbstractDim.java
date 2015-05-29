@@ -6,25 +6,19 @@ import java.io.Serializable;
  * Basisklasse für alle Reglerdimensionierungen.
  * @author Reto
  */
-public abstract class AbstractDim implements Serializable {
+public abstract class AbstractDim implements Serializable, Copyable {
 	private static final long serialVersionUID = 1L;
 	private final ReglerTopologie topo;
-	private final String name;
 
-	protected AbstractDim(ReglerTopologie topo, String name){
+	protected AbstractDim(ReglerTopologie topo){
 		this.topo = topo;
-		this.name = name;
-	}
-	
-	public String getName(){
-		return name;
 	}
 	
 	public ReglerTopologie getTopo(){
 		return topo;
 	}
 	
-	public abstract AbstractDim setName(String Name);
+	public abstract Dimensionierung getDimensionierung();
 	public abstract AbstractDim setTopo(ReglerTopologie topo);
 	public abstract Regler calc(RegelStrecke regelstrecke);
 }

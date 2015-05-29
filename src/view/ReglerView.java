@@ -97,7 +97,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp.addFocusListener(this);
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim()
-				.getName(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				.getDimensionierung().toString(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridBagLayout());
 
 		update(kreis);
@@ -273,7 +273,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
-			((TitledBorder) getBorder()).setTitle(kreis.getDim().getName());
+			((TitledBorder) getBorder()).setTitle(kreis.getDim().getDimensionierung().toString());
 
 			Dimensionierung d;
 			if (regelkreis.getDim() instanceof ChiensDim) {

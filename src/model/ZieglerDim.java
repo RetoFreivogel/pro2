@@ -4,8 +4,8 @@ package model;
 public final class ZieglerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public ZieglerDim(ReglerTopologie topo, String name){
-		super(topo, name);
+	public ZieglerDim(ReglerTopologie topo){
+		super(topo);
 	}
 	
 	@Override
@@ -35,10 +35,16 @@ public final class ZieglerDim extends AbstractDim {
 
 	@Override
 	public ZieglerDim setTopo(ReglerTopologie topo) {
-		return new ZieglerDim(topo, getName());
+		return new ZieglerDim(topo);
 	}
+
 	@Override
-	public ZieglerDim setName(String name) {
-		return new ZieglerDim(getTopo(), name);
+	public Dimensionierung getDimensionierung() {
+		return Dimensionierung.ZIEGLER;
+	}
+
+	@Override
+	public Object copy() {
+		return new ZieglerDim(getTopo());
 	}
 }

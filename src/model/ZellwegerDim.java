@@ -60,7 +60,7 @@ public class ZellwegerDim extends AbstractDim {
 		TransferFunction tf_regler = tempRegler.getTranferFunction();
 		TransferFunction tf_offener_kreis = tf_strecke.conv(tf_regler);
 
-		double wdpid = searchPhase(tf_offener_kreis, phasenrand - Math.PI);
+		double wdpid = searchPhase(tf_offener_kreis, phasenrand*Math.PI / 180 - Math.PI);
 		
 		double gspid = Math.abs(tf_strecke.amplitudeAt(wdpid)); 
 	
@@ -91,7 +91,7 @@ public class ZellwegerDim extends AbstractDim {
 		TransferFunction tf_regler = tempRegler.getTranferFunction();
 		TransferFunction tf_offener_kreis = tf_strecke.conv(tf_regler);
 
-		double wdpi = searchPhase(tf_offener_kreis, phasenrand - Math.PI);		
+		double wdpi = searchPhase(tf_offener_kreis, phasenrand*Math.PI / 180 - Math.PI);		
 		double gopi = tf_offener_kreis.amplitudeAt(wdpi);
 		double krpi = 1 / gopi;
 
@@ -113,10 +113,9 @@ public class ZellwegerDim extends AbstractDim {
 
 	}
 
-	public ZellwegerDim(double phasenrand, ReglerTopologie topo, String name) {
-		super(topo, name);
-		phasenrand *= Math.PI / 180;
-		if (phasenrand > Math.PI / 2 || phasenrand < 0) {
+	public ZellwegerDim(double phasenrand, ReglerTopologie topo) {
+		super(topo);
+		if (phasenrand < 0 || phasenrand > 90) {
 			throw new IllegalArgumentException(
 					"Der Phasenrand muss zwischen 0 und 90 Grad liegen");
 		}
@@ -124,29 +123,34 @@ public class ZellwegerDim extends AbstractDim {
 	}
 
 	public double getPhasenrand() {
-		return phasenrand * 180 / Math.PI;
+		return phasenrand;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ZellwegerDim\nphasenrand: ");
-		builder.append(phasenrand * 180 / Math.PI);
+		builder.append(phasenrand);
 		builder.append("\n");
 		return builder.toString();
 	}
 
 	public ZellwegerDim setPhasenrand(double phasenrand) {
-		return new ZellwegerDim(phasenrand, getTopo(), getName());
+		return new ZellwegerDim(phasenrand, getTopo());
 	}
 
 	@Override
 	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ZellwegerDim(phasenrand * 180 / Math.PI, topo, getName());
+		return new ZellwegerDim(phasenrand, topo);
 	}
 
 	@Override
-	public AbstractDim setName(String name) {
-		return new ZellwegerDim(phasenrand * 180 / Math.PI, getTopo(), name);
+	public Dimensionierung getDimensionierung() {
+		return Dimensionierung.PHASENGANG;
+	}
+
+	@Override
+	public Object copy() {		
+		return new ZellwegerDim(phasenrand, getTopo());
 	}
 }

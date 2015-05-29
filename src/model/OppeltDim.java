@@ -9,8 +9,8 @@ package model;
 public final class OppeltDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
-	public OppeltDim(ReglerTopologie topo, String name){
-		super(topo, name);
+	public OppeltDim(ReglerTopologie topo){
+		super(topo);
 	}
 	
 	@Override
@@ -40,11 +40,16 @@ public final class OppeltDim extends AbstractDim {
 
 	@Override
 	public OppeltDim setTopo(ReglerTopologie topo) {
-		return new OppeltDim(topo, getName());
+		return new OppeltDim(topo);
 	}
 
 	@Override
-	public OppeltDim setName(String name) {
-		return new OppeltDim(getTopo(), name);
+	public Dimensionierung getDimensionierung() {
+		return Dimensionierung.OPPELT;
+	}
+
+	@Override
+	public Object copy() {
+		return new OppeltDim(getTopo());
 	}
 }

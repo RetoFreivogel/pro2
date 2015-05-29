@@ -21,7 +21,7 @@ public class ZellwegerDimTest {
 		Polynom z = new Polynom(new double[] { 1 });
 		Polynom n = new Polynom(new double[] { 1, 1, 1 });
 		TransferFunction tf = new TransferFunction(z, n);
-		ZellwegerDim dim = new ZellwegerDim(0, ReglerTopologie.PID, null);
+		ZellwegerDim dim = new ZellwegerDim(0, ReglerTopologie.PID);
 
 		assertEquals(-Math.PI / 2, tf.phaseAt(1), 0.001);
 		assertEquals(1, dim.searchPhase(tf, -Math.PI / 2), 0.001);
@@ -30,7 +30,7 @@ public class ZellwegerDimTest {
 	@Test
 	public void testPID() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
-		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PID, null);
+		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PID);
 		
 		Regler r = dim.calc(rs);
 
@@ -43,7 +43,7 @@ public class ZellwegerDimTest {
 	@Test
 	public void testPI() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.11, 8.62);
-		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PI, null);
+		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PI);
 
 		Regler r = dim.calc(rs);
 
@@ -54,7 +54,7 @@ public class ZellwegerDimTest {
 	@Test
 	public void testPI2() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.0, 1.6);
-		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PI, null);
+		ZellwegerDim dim = new ZellwegerDim(45, ReglerTopologie.PI);
 
 		Regler r = dim.calc(rs);
 

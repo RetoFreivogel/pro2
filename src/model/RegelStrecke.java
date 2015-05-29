@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public final class RegelStrecke implements RegelGlied, Serializable {
+public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 	private static final long serialVersionUID = 1L;
 	private final double ks, tu, tg;
 
@@ -101,5 +101,10 @@ public final class RegelStrecke implements RegelGlied, Serializable {
 	@Override
 	public String toString() {
 		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\n";
+	}
+
+	@Override
+	public Object copy() {
+		return new RegelStrecke(ks, tu, tg);
 	}
 }

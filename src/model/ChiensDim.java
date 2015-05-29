@@ -1,6 +1,6 @@
 package model;
 
-public final class ChiensDim extends AbstractDim {
+public final class ChiensDim extends AbstractDim{
 	private static final long serialVersionUID = 1L;
 
 	public static final int APERIODSTOER = 0, APERIODFUEHR = 1,
@@ -8,8 +8,8 @@ public final class ChiensDim extends AbstractDim {
 
 	private final int j;
 
-	public ChiensDim(int j, ReglerTopologie topo, String name) {
-		super(topo, name);
+	public ChiensDim(int j, ReglerTopologie topo) {
+		super(topo);
 		if (j < 0 || j > 3) {
 			throw new IllegalArgumentException("j must be between 0 and 3");
 		}
@@ -84,16 +84,21 @@ public final class ChiensDim extends AbstractDim {
 	}
 
 	public ChiensDim setJ(int j) {
-		return new ChiensDim(j, getTopo(), getName());
+		return new ChiensDim(j, getTopo());
 	}
 
 	@Override
-	public AbstractDim setTopo(ReglerTopologie topo) {
-		return new ChiensDim(j, topo, getName());
+	public ChiensDim setTopo(ReglerTopologie topo) {
+		return new ChiensDim(j, topo);
 	}
 
 	@Override
-	public AbstractDim setName(String name) {
-		return new ChiensDim(j, getTopo(), name);
+	public Dimensionierung getDimensionierung() {
+		return Dimensionierung.CHIENS;
+	}
+	
+	@Override
+	public ChiensDim copy(){
+		return new ChiensDim(j, getTopo());
 	}
 }

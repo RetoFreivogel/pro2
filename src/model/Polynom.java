@@ -7,6 +7,7 @@ import org.apache.commons.math3.complex.Complex;
 
 public final class Polynom {
 	private final double[] coeff;
+	private Complex[] roots;
 	
 	public Polynom(double[] coeff){
 		int ordnung = coeff.length -1;
@@ -35,11 +36,21 @@ public final class Polynom {
 		return Arrays.copyOf(coeff, coeff.length);
 	}
 	
-	public Complex[] getRoots(){
+	private Complex[] calcRoots(){
 		if(coeff.length == 1)return new Complex[]{};
 		
 		LaguerreSolver solver = new LaguerreSolver();			
 		return solver.solveAllComplex(coeff, 0.0, 1000);
+	}
+
+	
+	public Complex[] getRoots(){
+		//Zwischenspeicher zur Optimierung
+		
+		if(roots == null){
+			roots = calcRoots();
+		}
+		return Arrays.copyOf(roots, roots.length);
 	}
 	
 	public Complex eval(Complex x){
