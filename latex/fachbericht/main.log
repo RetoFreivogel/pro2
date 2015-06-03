@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  3 JUN 2015 13:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  3 JUN 2015 14:43
 entering extended mode
 **main.tex
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.tex
@@ -1194,7 +1194,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=98, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=102, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
 Package pdftex.def Info: fhnwlogo.pdf used on input line 29.
@@ -1233,7 +1233,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ster_2/pro2E/pro2/latex/fachbericht/fhnwlogo.pdf>] [2
 
 ]
-<aufgabenstellung.pdf, id=125, 597.55246pt x 845.07718pt>
+<aufgabenstellung.pdf, id=129, 597.55246pt x 845.07718pt>
 File: aufgabenstellung.pdf Graphic file (type pdf)
 
 <use aufgabenstellung.pdf>
@@ -1244,7 +1244,7 @@ File: aufgabenstellung.pdf Graphic file (type pdf)
 Package pdftex.def Info: aufgabenstellung.pdf used on input line 54.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 
-<aufgabenstellung.pdf, id=128, page=1, 597.55246pt x 845.07718pt>
+<aufgabenstellung.pdf, id=132, page=1, 597.55246pt x 845.07718pt>
 File: aufgabenstellung.pdf Graphic file (type pdf)
 
 <use aufgabenstellung.pdf, page 1>
@@ -1270,7 +1270,7 @@ Package pdftex.def Info: aufgabenstellung.pdf, page1 used on input line 54.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
  [3 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/aufgabenstell
 ung.pdf>]
-<aufgabenstellung.pdf, id=152, page=2, 597.55246pt x 845.07718pt>
+<aufgabenstellung.pdf, id=156, page=2, 597.55246pt x 845.07718pt>
 File: aufgabenstellung.pdf Graphic file (type pdf)
 
 <use aufgabenstellung.pdf, page 2>
@@ -1309,7 +1309,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-<Regelstrecke.png, id=205, 260.77425pt x 74.679pt>
+<Regelstrecke.png, id=210, 260.77425pt x 74.679pt>
 File: Regelstrecke.png Graphic file (type png)
  <use Regelstrecke.png>
 Package pdftex.def Info: Regelstrecke.png used on input line 6.
@@ -1328,7 +1328,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
-<Schrittantwort.png, id=218, 321.2pt x 260.975pt>
+<Schrittantwort.png, id=223, 321.2pt x 260.975pt>
 File: Schrittantwort.png Graphic file (type png)
  <use Schrittantwort.png>
 Package pdftex.def Info: Schrittantwort.png used on input line 20.
@@ -1349,7 +1349,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<agangpi.png, id=240, 334.24875pt x 262.73157pt>
+<agangpi.png, id=245, 334.24875pt x 262.73157pt>
 File: agangpi.png Graphic file (type png)
  <use agangpi.png>
 Package pdftex.def Info: agangpi.png used on input line 64.
@@ -1361,7 +1361,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 65.
 
-<agangpid.png, id=243, 418.56375pt x 274.77657pt>
+<agangpid.png, id=248, 418.56375pt x 274.77657pt>
 File: agangpid.png Graphic file (type png)
  <use agangpid.png>
 Package pdftex.def Info: agangpid.png used on input line 72.
@@ -1430,232 +1430,242 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 [17
 
 
+]
+Underfull \hbox (badness 10000) in paragraph at lines 69--71
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--71
+
+ []
+
+[18
+
 ] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.bbl
 Underfull \hbox (badness 1248) in paragraph at lines 25--27
 []\T1/lmr/m/n/10.95 RN-Wissen. Re-ge-lungs-tech-nik. http://rn-wissen.de/wiki/i
 ndex.php/Datei:Regelkreis4.png
  []
 
-) [18
-
-]
+) [19]
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 77.
- <Herleitungen_Anhang.pdf, id=347, 597.432pt x 844.5954pt>
+ine 92.
+ <Herleitungen_Anhang.pdf, id=357, 597.432pt x 844.5954pt>
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
 
 <use Herleitungen_Anhang.pdf>
-Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 94.
 (pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
  <use Herleitungen_Anhang.pdf>
-Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf used on input line 94.
 (pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
- [19]
-<Herleitungen_Anhang.pdf, id=356, page=1, 597.432pt x 844.5954pt>
+ [20]
+<Herleitungen_Anhang.pdf, id=365, page=1, 597.432pt x 844.5954pt>
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
 
 <use Herleitungen_Anhang.pdf, page 1>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 94.
 (pdftex.def)             Requested size: 597.43054pt x 844.59334pt.
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
  <use Herleitungen_Anhang.pdf, page 1>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 94.
 (pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
 
 <use Herleitungen_Anhang.pdf, page 1>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 94.
 (pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
  <use Herleitungen_Anhang.pdf, page 1>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 94.
 (pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
 File: Herleitungen_Anhang.pdf Graphic file (type pdf)
 
 <use Herleitungen_Anhang.pdf, page 1>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 79.
-(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
- [20 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Herleitungen
-_Anhang.pdf>]
-<Herleitungen_Anhang.pdf, id=425, page=2, 597.432pt x 844.5954pt>
-File: Herleitungen_Anhang.pdf Graphic file (type pdf)
-
-<use Herleitungen_Anhang.pdf, page 2>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 79.
-(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
-File: Herleitungen_Anhang.pdf Graphic file (type pdf)
- <use Herleitungen_Anhang.pdf, page 2>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 79.
-(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
-File: Herleitungen_Anhang.pdf Graphic file (type pdf)
-
-<use Herleitungen_Anhang.pdf, page 2>
-Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 79.
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page1 used on input line 94.
 (pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
  [21 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Herleitungen
 _Anhang.pdf>]
-<Matlab_bsp_berechnung_Anhang.pdf, id=483, 597.55246pt x 845.07718pt>
+<Herleitungen_Anhang.pdf, id=434, page=2, 597.432pt x 844.5954pt>
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 94.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+ <use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 94.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+File: Herleitungen_Anhang.pdf Graphic file (type pdf)
+
+<use Herleitungen_Anhang.pdf, page 2>
+Package pdftex.def Info: Herleitungen_Anhang.pdf, page2 used on input line 94.
+(pdftex.def)             Requested size: 597.93192pt x 845.30214pt.
+ [22 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Herleitungen
+_Anhang.pdf>]
+<Matlab_bsp_berechnung_Anhang.pdf, id=492, 597.55246pt x 845.07718pt>
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 80
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 95
 .
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
  <use Matlab_bsp_berechnung_Anhang.pdf>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 80
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf used on input line 95
 .
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 
-<Matlab_bsp_berechnung_Anhang.pdf, id=486, page=1, 597.55246pt x 845.07718pt>
+<Matlab_bsp_berechnung_Anhang.pdf, id=495, page=1, 597.55246pt x 845.07718pt>
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf, page 1>
 Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
-line 80.
+line 95.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf, page 1>
 Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
-line 80.
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf, page 1>
 Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
-line 80.
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf, page 1>
 Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
-line 80.
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
 <use Matlab_bsp_berechnung_Anhang.pdf, page 1>
 Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page1 used on input 
-line 80.
-(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
- [22 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
-erechnung_Anhang.pdf>]
-<Matlab_bsp_berechnung_Anhang.pdf, id=569, page=2, 597.55246pt x 845.07718pt>
-File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
-
-<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
-line 80.
-(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
-File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
-
-<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
-line 80.
-(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
-File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
-
-<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
-line 80.
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
  [23 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
 erechnung_Anhang.pdf>]
-<Matlab_bsp_berechnung_Anhang.pdf, id=574, page=3, 597.55246pt x 845.07718pt>
+<Matlab_bsp_berechnung_Anhang.pdf, id=578, page=2, 597.55246pt x 845.07718pt>
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
-<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
-line 80.
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
-<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
-line 80.
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
 
-<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
-Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
-line 80.
+<use Matlab_bsp_berechnung_Anhang.pdf, page 2>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page2 used on input 
+line 95.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
  [24 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
 erechnung_Anhang.pdf>]
-<Bedienungsanleitung.pdf, id=579, 597.55246pt x 845.07718pt>
+<Matlab_bsp_berechnung_Anhang.pdf, id=583, page=3, 597.55246pt x 845.07718pt>
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 95.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 95.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+File: Matlab_bsp_berechnung_Anhang.pdf Graphic file (type pdf)
+
+<use Matlab_bsp_berechnung_Anhang.pdf, page 3>
+Package pdftex.def Info: Matlab_bsp_berechnung_Anhang.pdf, page3 used on input 
+line 95.
+(pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
+ [25 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Matlab_bsp_b
+erechnung_Anhang.pdf>]
+<Bedienungsanleitung.pdf, id=589, 597.55246pt x 845.07718pt>
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf>
-Package pdftex.def Info: Bedienungsanleitung.pdf used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf used on input line 96.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
  <use Bedienungsanleitung.pdf>
-Package pdftex.def Info: Bedienungsanleitung.pdf used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf used on input line 96.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 
-<Bedienungsanleitung.pdf, id=582, page=1, 597.55246pt x 845.07718pt>
+<Bedienungsanleitung.pdf, id=592, page=1, 597.55246pt x 845.07718pt>
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf, page 1>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
  <use Bedienungsanleitung.pdf, page 1>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf, page 1>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
  <use Bedienungsanleitung.pdf, page 1>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf, page 1>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page1 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
- [25 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Bedienungsan
-leitung.pdf, page is rotated 270 degrees>] <Bedienungsanleitung.pdf, id=608, pa
+ [26 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Bedienungsan
+leitung.pdf, page is rotated 270 degrees>] <Bedienungsanleitung.pdf, id=617, pa
 ge=2, 597.55246pt x 845.07718pt>
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf, page 2>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
  <use Bedienungsanleitung.pdf, page 2>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 File: Bedienungsanleitung.pdf Graphic file (type pdf)
 
 <use Bedienungsanleitung.pdf, page 2>
-Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 81.
+Package pdftex.def Info: Bedienungsanleitung.pdf, page2 used on input line 96.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
- [26 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Bedienungsan
+ [27 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/fachbericht/Bedienungsan
 leitung.pdf, page is rotated 270 degrees>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\main.aux
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\einleitung.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\theoretischegrund
 lagen.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\javasoftware.aux)
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\fachbericht\schlusswort.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 43DB13FAF078C27591EC07899D00C640;1651.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
+(rerunfilecheck)             Checksum: AC485161977EFBE5B117A1F8060EC5B1;1714.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
  ) 
 Here is how much of TeX's memory you used:
- 20275 strings out of 493921
- 378342 string characters out of 3144874
- 440236 words of memory out of 3000000
- 23041 multiletter control sequences out of 15000+200000
+ 20278 strings out of 493921
+ 378369 string characters out of 3144874
+ 440234 words of memory out of 3000000
+ 23042 multiletter control sequences out of 15000+200000
  76955 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,18n,77p,1206b,862s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1676,9 +1686,9 @@ gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x
 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
 /type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/lm/lmsy8.pfb>
-Output written on main.pdf (26 pages, 1370470 bytes).
+Output written on main.pdf (27 pages, 1373862 bytes).
 PDF statistics:
- 683 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 327 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 692 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 500000)
+ 335 words of extra memory for PDF output out of 10000 (max. 10000000)
 

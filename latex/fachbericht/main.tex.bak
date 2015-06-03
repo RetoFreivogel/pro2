@@ -65,6 +65,23 @@ Regler werden heutzutage oft mit grosszügigen Faustformeln dimensioniert. Für 
 
 \include{schlusswort}
 
+\section{Ehrlichkeitserklärung}
+Hiermit erklärt der Unterzeichnende (Projektleiter), dass die vorliegende Arbeit selbstständig, ohne Hilfe Dritter und nur unter Benutzung der angegebenen Quellen verfasst worden ist.\newline
+\\
+
+\begin{tabbing}
+tab1 \= tab2 \= tab3 \= tab4 \= tab5 \=tab6 \= tab7 \= tab8 \kill
+Alex Stocker (Projektleiter): \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_\\
+\\
+\\
+Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, 
+
+
+\end{tabbing}
+
+
+
+\newpage
 \bibliography{literaturverzeichnis}
 
 
