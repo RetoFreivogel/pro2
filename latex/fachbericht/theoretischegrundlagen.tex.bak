@@ -304,14 +304,14 @@ h(t)=K\delta(t)+\sum_{i=1}^n R(i)*e^{P(i)t}
 Aus der erhaltenen Implusantwort $h(t)$ muss nun noch die Schrittantwort berechnet werden, was mittels Integration gemacht wird (Formel \ref{intimpantwort}).
 
 \begin{align}
-s(\tau)=\int_0^t K\delta(\tau) d\tau + \sum_{i=1}^n \int_0^t R(i)*e^{P(i)\tau} d\tau
+s(t)=\int_0^t K\delta(\tau) d\tau + \sum_{i=1}^n \int_0^t R(i)*e^{P(i)\tau} d\tau
 \label{intimpantwort}
 \end{align}
 
 Die Schrittantwort wird zusätzlich noch analysiert. Folgende Werte werden ausgewertet:
 \begin{itemize}
 \item Anregelzeit $T_{an}$:   Die Zeit, welche die Strecke benätigt bis der Sollwert das erste mal erreicht wird.
-\item Ausregelzeit $T_{aus}$:   Die zeit, welche die Strecke benötigt bis die Strecke in einem gewissen Toleranzbereich einmündet, und diesen nicht wieder verlässt.
+\item Ausregelzeit $T_{aus}$:   Die Zeit, welche die Strecke benötigt bis die Strecke in einem gewissen Toleranzbereich einmündet, und diesen nicht wieder verlässt.
 \item Max. Überschwingen $Y_{max}$:   Der Wert an der Stelle, wo die Schrittantwort an meisten vom Sollwert abweicht.
 \end{itemize}
 

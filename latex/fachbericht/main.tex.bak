@@ -17,9 +17,11 @@
 \usepackage[nottoc,numbib]{tocbibind}
 
 \title{%
-  \textsc{Projekt 2}\\[2ex]
+  \textsc{Reglerdimensionierung mit Hilfe der Schrittantwort}\\[2ex]
+  \textsc{RDT One}\\[2ex]
   \textsc{Fachbericht}}
 \author{%
+  \textsc{Projekt 2}\\
   \textsc{Team 1}}
 \date{%
   \textsc{10.06.2015}}
@@ -74,9 +76,7 @@ tab1 \= tab2 \= tab3 \= tab4 \= tab5 \=tab6 \= tab7 \= tab8 \kill
 Alex Stocker (Projektleiter): \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_\\
 \\
 \\
-Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, 
-
-
+Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\\
 \end{tabbing}
 
 

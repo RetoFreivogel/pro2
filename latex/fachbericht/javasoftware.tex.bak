@@ -7,8 +7,8 @@ Zum Aufdatieren der Benutzerschnittstelle wird das Observable- Observer Entwurfs
 \subsection{Packages und seine Klassen}
 
 \subsubsection{Package Controller}
-Der Controller ist verantwortlich für die Steuerung der Applikation. Er stellt für alle Befehle die der Benutzer im GUI eine Methode zur Verfügung, mit der das Model modifiziert wird. Weiter erkennt er Fehleingaben und meldet diese dem Benutzer durch die Methode dispayError des Views. Bevor jeder Änderung des Models speichert sich der Controller eine Kopie des Modells, dadurch ist es möglich alte Zustände widerherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der Controller für das Speichern und Laden zuständig. Dies funktioniert da das Model das Serializable Interface implementiert und der Controller so die Daten mit einem ObjectOutputStream in eine Datei schreiben bzw. mit einem ObjectInputStream aus einer Datei laden kann. Der Controller ist nicht verantwortlich, dass das View die Daten des Models übernimmt, dies geschieht direkt durch die Klasse Observable (Observer Pattern).\\
-\textbf{PIDRechner}\\
+Der Controller ist verantwortlich für die Steuerung der Applikation. Er stellt für alle Befehle die der Benutzer im GUI eine Methode zur Verfügung, mit der das Model modifiziert wird. Weiter erkennt er Fehleingaben und meldet diese dem Benutzer durch die Methode dispayError des Views. Bevor jeder Änderung des Models speichert sich der Controller eine Kopie des Modells, dadurch ist es möglich alte Zustände widerherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der Controller für das Speichern und Laden zuständig. Dies funktioniert da das Model das Serializable Interface implementiert und der Controller so die Daten mit einem ObjectOutputStream in eine Datei schreiben bzw. mit einem ObjectInputStream aus einer Datei laden kann. Der Controller ist nicht verantwortlich, dass das View die Daten des Models übernimmt, dies geschieht direkt durch die Klasse Observable (Observer Pattern).
+PIDRechner
 Startpunkt der Applikation. Initialisiert Controller, View und Model
 
 \subsubsection{Package Model}
