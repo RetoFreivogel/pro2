@@ -25,8 +25,11 @@ public final class Dimensionierung extends AbstractDim{
 		case OPPELT:
 			dim = new OppeltDim(topo);
 			break;
-		case PHASENGANG:
+		case ZELLWEGER:
 			dim = new ZellwegerDim(45, topo);
+			break;
+		case ITERATIV:
+			dim = new IterativDim(23, topo);
 			break;
 		case ROSENBERG:
 			dim = new RosenbergDim(topo);
@@ -65,22 +68,11 @@ public final class Dimensionierung extends AbstractDim{
 	}
 
 	public Dimensionierung setTyp(DimEnum typ, RegelStrecke strecke) {
-		switch (typ) {
-		case MANUELL:
-			return new Dimensionierung(new ManuellDim(calc(strecke)));	
-		case PHASENGANG:
-			return new Dimensionierung(new ZellwegerDim(45, getTopo()));
-		case ZIEGLER:
-			return new Dimensionierung(new ZieglerDim(getTopo()));
-		case CHIENS:
-			return new Dimensionierung(new ChiensDim(ChiensEnum.APERIODSTOER, getTopo()));
-		case OPPELT:
-			return new Dimensionierung(new OppeltDim(getTopo()));
-		case ROSENBERG:
-			return new Dimensionierung(new RosenbergDim(getTopo()));
-		default:
-			throw new RuntimeException("Internal Error");
+		if(typ == DimEnum.MANUELL){
+			return new Dimensionierung(new ManuellDim(calc(strecke)));				
 		}
+		
+		return new Dimensionierung(typ, getTopo());	
 	}
 
 	public Dimensionierung setVerhalten(ChiensEnum verhalten) {
@@ -99,6 +91,14 @@ public final class Dimensionierung extends AbstractDim{
 		return ((ZellwegerDim)dim).getPhasenrand();
 	}
 
+	public Dimensionierung setUeberschwingen(double ueberschwingen){
+		return new Dimensionierung(((IterativDim) dim).setUeberschwingen(ueberschwingen));
+	}
+	
+	public double getUeberschwingen(){
+		return ((IterativDim)dim).getUeberschwingen();
+	}
+	
 	public double getKr() {
 		return ((ManuellDim)dim).getKr();
 	}

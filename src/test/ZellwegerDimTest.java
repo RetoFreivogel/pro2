@@ -18,7 +18,7 @@ public class ZellwegerDimTest {
 	@Test
 	public void testPID() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
-		Dimensionierung dim = new Dimensionierung(DimEnum.PHASENGANG, TopoEnum.PID);
+		Dimensionierung dim = new Dimensionierung(DimEnum.ZELLWEGER, TopoEnum.PID);
 		
 		Regler r = dim.calc(rs);
 
@@ -31,7 +31,7 @@ public class ZellwegerDimTest {
 	@Test
 	public void testPI() {
 		RegelStrecke rs = new RegelStrecke(1.0, 1.11, 8.62);
-		Dimensionierung dim = new Dimensionierung(DimEnum.PHASENGANG, TopoEnum.PI);
+		Dimensionierung dim = new Dimensionierung(DimEnum.ZELLWEGER, TopoEnum.PI);
 
 		Regler r = dim.calc(rs);
 

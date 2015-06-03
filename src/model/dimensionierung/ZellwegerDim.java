@@ -142,7 +142,7 @@ class ZellwegerDim extends AbstractDim {
 
 	@Override
 	DimEnum getTyp() {
-		return DimEnum.PHASENGANG;
+		return DimEnum.ZELLWEGER;
 	}
 
 	@Override

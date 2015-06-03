@@ -2,7 +2,8 @@ package model.dimensionierung;
 
 public enum DimEnum {
 	MANUELL("Manuell"), 
-	PHASENGANG("Phasengang"),
+	ZELLWEGER("Phasengang"),
+	ITERATIV("Iterativ "),
 	ZIEGLER("Ziegler"),
 	OPPELT("Oppelt"),
 	ROSENBERG("Rosenberg"),

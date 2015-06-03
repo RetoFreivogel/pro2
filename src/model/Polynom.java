@@ -39,8 +39,21 @@ public final class Polynom {
 	private Complex[] calcRoots(){
 		if(coeff.length == 1)return new Complex[]{};
 		
-		LaguerreSolver solver = new LaguerreSolver();			
-		return solver.solveAllComplex(coeff, 0.0, 1000);
+		double[] c = Arrays.copyOf(coeff, coeff.length);
+		int ordnung = c.length-1;
+		double faktor = Math.pow(c[ordnung], 1.0 / ordnung);
+		for (int i = 0; i < c.length; i++) {
+			c[i] /= Math.pow(faktor, i);
+		}
+				
+		LaguerreSolver solver = new LaguerreSolver();		
+		Complex[] roots = solver.solveAllComplex(c, 0.0, 1000);
+		
+		for (int i = 0; i < roots.length; i++) {
+			roots[i] = roots[i].divide(faktor);
+		}
+		
+		return roots;
 	}
 
 	

@@ -103,6 +103,17 @@ public class Controller {
 		}
 	}
 
+	public void setUeberschwingen(double ueberschwingen, Dimensionierung dim) {
+		try {
+			modelChanged();
+			model.replaceDim(dim, dim.setUeberschwingen(ueberschwingen));
+			view.clearError();
+		} catch (Exception e) {
+			view.displayError(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 	public void setKr(double kr, Dimensionierung dim) {
 		try {
 			modelChanged();
@@ -162,7 +173,7 @@ public class Controller {
 	public void neu() {
 		jfcLaden.setSelectedFile(null);
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
-		Dimensionierung[] dim = new Dimensionierung[]{new Dimensionierung(DimEnum.PHASENGANG, TopoEnum.PID)};
+		Dimensionierung[] dim = new Dimensionierung[]{new Dimensionierung(DimEnum.ZELLWEGER, TopoEnum.PID)};
 
 		view.setModel(new Model(regelstrecke, dim));
 	}

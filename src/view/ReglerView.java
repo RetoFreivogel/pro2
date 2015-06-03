@@ -39,6 +39,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 
 	private JButton jb_copy, jb_close;
 	private JFormattedTextField tf_Phrand;
+	private JFormattedTextField tf_Schwingen;
 	private JFormattedTextField tf_Kr;
 	private JFormattedTextField tf_Tn;
 	private JFormattedTextField tf_Tv;
@@ -63,8 +64,8 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		jb_close.setPreferredSize(new Dimension(20, 20));
 		jb_close.addActionListener(this);
 
-		cbbx_Topo = new JComboBox<>(new TopoEnum[] { TopoEnum.PI,
-				TopoEnum.PID });
+		cbbx_Topo = new JComboBox<>(
+				new TopoEnum[] { TopoEnum.PI, TopoEnum.PID });
 		cbbx_Topo.setSelectedIndex(1);
 		cbbx_Topo.addActionListener(this);
 
@@ -77,6 +78,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Phrand = new JFormattedTextField(format);
 		tf_Phrand.addPropertyChangeListener("value", this);
 		tf_Phrand.addFocusListener(this);
+		tf_Schwingen = new JFormattedTextField(format);
+		tf_Schwingen.addPropertyChangeListener("value", this);
+		tf_Schwingen.addFocusListener(this);
 		tf_Kr = new JFormattedTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
 		tf_Kr.addFocusListener(this);
@@ -91,7 +95,8 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp.addFocusListener(this);
 
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim()
-				.getTyp().toString(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				.getTyp().toString(), TitledBorder.LEADING, TitledBorder.TOP,
+				null, null));
 		setLayout(new GridBagLayout());
 
 		update(kreis);
@@ -112,7 +117,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		add(jb_close, constraints);
 		constraints.weightx = 1;
 		constraints.fill = GridBagConstraints.BOTH;
-		//constraints.anchor = GridBagConstraints.CENTER;
+		// constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridy++;
 		constraints.gridx = 0;
 		JLabel lb_Topo = new JLabel("Topologie");
@@ -133,12 +138,23 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		constraints.gridwidth = 1;
 		constraints.gridy++;
 
-		if (DimEnum.PHASENGANG == cbbx_defd_R.getSelectedItem()) {
+		if (DimEnum.ZELLWEGER == cbbx_defd_R.getSelectedItem()) {
 			JLabel lb_Phrand = new JLabel("Phasenrand");
 			add(lb_Phrand, constraints);
 			constraints.gridx = 1;
 			constraints.gridwidth = 2;
 			add(tf_Phrand, constraints);
+			constraints.gridx = 0;
+			constraints.gridwidth = 1;
+			constraints.gridy++;
+		}
+
+		if (DimEnum.ITERATIV == cbbx_defd_R.getSelectedItem()) {
+			JLabel lb_Schwingen = new JLabel("Ueberschwingen");
+			add(lb_Schwingen, constraints);
+			constraints.gridx = 1;
+			constraints.gridwidth = 2;
+			add(tf_Schwingen, constraints);
 			constraints.gridx = 0;
 			constraints.gridwidth = 1;
 			constraints.gridy++;
@@ -219,6 +235,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 				Number phrand = (Number) tf_Phrand.getValue();
 				controller.setPhasenrand(phrand.doubleValue(),
 						regelkreis.getDim());
+			} else if (event.getSource() == tf_Schwingen) {
+				Number schwingen = (Number) tf_Schwingen.getValue();
+				controller.setUeberschwingen(schwingen.doubleValue(),
+						regelkreis.getDim());
 			} else if (event.getSource() == tf_Kr) {
 				controller.setKr(((Number) tf_Kr.getValue()).doubleValue(),
 						regelkreis.getDim());
@@ -239,18 +259,15 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	public void actionPerformed(ActionEvent event) {
 		if (eventsEnabled) {
 			if (event.getSource() == cbbx_defd_R) {
-				DimEnum dim = (DimEnum) cbbx_defd_R
-						.getSelectedItem();
+				DimEnum dim = (DimEnum) cbbx_defd_R.getSelectedItem();
 				controller.setTyp(dim, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_Topo) {
-				TopoEnum topo = (TopoEnum) cbbx_Topo
-						.getSelectedItem();
+				TopoEnum topo = (TopoEnum) cbbx_Topo.getSelectedItem();
 				controller.selectTopo(topo, regelkreis.getDim());
 			} else if (event.getSource() == cbbx_chiens) {
 				ChiensEnum chiensReg = (ChiensEnum) cbbx_chiens
 						.getSelectedItem();
-				controller.setVerhalten(chiensReg,
-						regelkreis.getDim());
+				controller.setVerhalten(chiensReg, regelkreis.getDim());
 			} else if (event.getSource() == jb_copy) {
 				controller.copyKreis(regelkreis);
 			} else if (event.getSource() == jb_close) {
@@ -267,19 +284,22 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
-			((TitledBorder) getBorder()).setTitle(kreis.getDim().getTyp().toString());
+			((TitledBorder) getBorder()).setTitle(kreis.getDim().getTyp()
+					.toString());
 
 			DimEnum d = regelkreis.getDim().getTyp();
 			cbbx_defd_R.setSelectedItem(d);
 
 			if (d == DimEnum.CHIENS) {
-				cbbx_chiens.setSelectedItem(regelkreis.getDim()
-						.getVerhalten());
+				cbbx_chiens.setSelectedItem(regelkreis.getDim().getVerhalten());
 			}
 
-			if (d == DimEnum.PHASENGANG) {
-				tf_Phrand.setValue(regelkreis.getDim()
-						.getPhasenrand());
+			if (d == DimEnum.ZELLWEGER) {
+				tf_Phrand.setValue(regelkreis.getDim().getPhasenrand());
+			}
+			
+			if (d == DimEnum.ITERATIV) {
+				tf_Schwingen.setValue(regelkreis.getDim().getUeberschwingen());
 			}
 
 			tf_Kr.setValue(regler.getKr());
@@ -298,6 +318,8 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			public void run() {
 				if (e.getSource() == tf_Phrand) {
 					tf_Phrand.selectAll();
+				} else if (e.getSource() == tf_Schwingen) {
+					tf_Schwingen.selectAll();
 				} else if (e.getSource() == tf_Kr) {
 					tf_Kr.selectAll();
 				} else if (e.getSource() == tf_Tn) {
