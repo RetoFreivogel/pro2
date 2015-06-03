@@ -73,10 +73,12 @@ Regler werden heutzutage oft mit grosszügigen Faustformeln dimensioniert. Für 
 \begin{itemize}
 \item Herleitungen Formeln
 \item Beispielberechnung Phasengangmethode mithilfe von Matlab
+\item Bedienungsanleitung des Programmes
 \todo{Alle Anhänge aufführen!!!}
 \end{itemize}
 \includepdf[pages=1-2]{Herleitungen_Anhang.pdf}
 \includepdf[pages=1-3]{Matlab_bsp_berechnung_Anhang.pdf}
+\includepdf[pages=1-2]{Bedienungsanleitung.pdf}
 
 \end{document}
 
