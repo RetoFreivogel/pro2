@@ -11,6 +11,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -31,6 +32,7 @@ import model.dimensionierung.TopoEnum;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		ActionListener, FocusListener {
 	private static final long serialVersionUID = 1L;
+	private static final DecimalFormat format = new DecimalFormat("##0.000");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;
@@ -73,22 +75,22 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		cbbx_chiens = new JComboBox<>(ChiensEnum.values());
 		cbbx_chiens.addActionListener(this);
 
-		tf_Phrand = new JFormattedTextField(new DegreeFormatter());
+		tf_Phrand = new JFormattedTextField(format);
 		tf_Phrand.addPropertyChangeListener("value", this);
 		tf_Phrand.addFocusListener(this);
-		tf_Schwingen = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Schwingen = new JFormattedTextField(format);
 		tf_Schwingen.addPropertyChangeListener("value", this);
 		tf_Schwingen.addFocusListener(this);
-		tf_Kr = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Kr = new JFormattedTextField(format);
 		tf_Kr.addPropertyChangeListener("value", this);
 		tf_Kr.addFocusListener(this);
-		tf_Tn = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Tn = new JFormattedTextField(format);
 		tf_Tn.addPropertyChangeListener("value", this);
 		tf_Tn.addFocusListener(this);
-		tf_Tv = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Tv = new JFormattedTextField(format);
 		tf_Tv.addPropertyChangeListener("value", this);
 		tf_Tv.addFocusListener(this);
-		tf_Tp = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Tp = new JFormattedTextField(format);
 		tf_Tp.addPropertyChangeListener("value", this);
 		tf_Tp.addFocusListener(this);
 

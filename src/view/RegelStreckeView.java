@@ -32,27 +32,28 @@ public class RegelStreckeView extends JPanel implements PropertyChangeListener,
 	public RegelStreckeView(RegelStrecke regelstrecke, Controller controller) {
 		super();
 		this.controller = controller;
-		
-		
+
+		DecimalFormat format = new DecimalFormat("##0.000");
+
 		setBorder(new TitledBorder(new LineBorder(Color.GRAY), "Regelstrecke",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lb_Ks = new JLabel("Ks");
 		add(lb_Ks);
-		tf_ks = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_ks = new JFormattedTextField(format);
 		tf_ks.addFocusListener(this);
 		add(tf_ks);
 
 		JLabel lb_Tu = new JLabel("Tu");
 		add(lb_Tu);
-		tf_tu = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_tu = new JFormattedTextField(format);
 		tf_tu.addFocusListener(this);
 		add(tf_tu);
 
 		JLabel lb_Tg = new JLabel("Tg");
 		add(lb_Tg);
-		tf_tg = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_tg = new JFormattedTextField(format);
 		tf_tg.addFocusListener(this);
 		add(tf_tg);
 
