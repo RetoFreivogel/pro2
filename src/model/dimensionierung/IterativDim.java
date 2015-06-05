@@ -11,6 +11,9 @@ class IterativDim extends AbstractDim {
 	
 	IterativDim(double ueberschwingen, TopoEnum topo){
 		super(topo);
+		if(ueberschwingen < 0.2 || ueberschwingen > 80){
+			throw new IllegalArgumentException("ueberschwingen muss zwischen 0.2% und 80% liegen");
+		}
 		this.ueberschwingen = ueberschwingen;	
 	}
 	
