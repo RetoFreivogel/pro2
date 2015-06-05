@@ -125,7 +125,9 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 		
 		int lastIndex = cb_dim.getSelectedIndex();
 		cb_dim.setModel(new DefaultComboBoxModel<RegelKreis>(model.getAlleRegelkreise()));
-		cb_dim.setSelectedIndex(lastIndex);
+		try{
+			cb_dim.setSelectedIndex(lastIndex);
+		}catch (IllegalArgumentException e){}
 		
 		pn_AAnalyse.update((RegelKreis)cb_dim.getSelectedItem());
 	}

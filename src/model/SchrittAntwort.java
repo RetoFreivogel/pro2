@@ -25,14 +25,9 @@ public class SchrittAntwort {
 		asymptotisch = calcAsymp();
 		wmax = calcWmax();	
 		Tymax = calcTymax();
+		Ymax = getY(Tymax);
+		Tan = calcTan();
 		
-		if(getY(Tymax) < getYend()){
-			Ymax = getYend();
-			Tan = Taus;
-		}else{
-			Ymax = getY(Tymax);
-			Tan = calcTan();
-		}
 	}
 
 	public boolean isStabil() {
@@ -95,6 +90,10 @@ public class SchrittAntwort {
 		double tmin = 0;
 		double tmax = Tymax;
 		
+		if(Ymax < getYend()){
+			return Taus;
+		}
+
 		for(int i = 0; i < 100; i++){
 			double tmiddle = (tmin + tmax)/2;
 			if(getY(tmiddle) < constant){
@@ -138,7 +137,7 @@ public class SchrittAntwort {
 		//Suche nach Anfangswerten
 		double tmin = 0;
 		double tmax = tstep;
-		while(getY(tmax) <= getY(tmax + tstep)){
+		while(getY(tmax) < getY(tmax + tstep) && tmin < Taus){
 			tmin = tmax;
 			tmax += tstep;
 		}

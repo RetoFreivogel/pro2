@@ -12,6 +12,7 @@ import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -52,12 +53,12 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		this.controller = controller;
 		this.regelkreis = kreis;
 
-		jb_copy = new JButton("");
+		jb_copy = new JButton(new ImageIcon("icons/copy.png"));
 		jb_copy.setBackground(new Color(64, 255, 64));
 		jb_copy.setPreferredSize(new Dimension(20, 20));
 		jb_copy.addActionListener(this);
 
-		jb_close = new JButton("");
+		jb_close = new JButton(new ImageIcon("icons/close.png"));
 		jb_close.setBackground(new Color(255, 64, 64));
 		jb_close.setPreferredSize(new Dimension(20, 20));
 		jb_close.addActionListener(this);
