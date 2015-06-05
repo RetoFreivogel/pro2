@@ -76,7 +76,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Phrand = new JFormattedTextField(new DegreeFormatter());
 		tf_Phrand.addPropertyChangeListener("value", this);
 		tf_Phrand.addFocusListener(this);
-		tf_Schwingen = new JFormattedTextField(new LowercaseDecimalFormatter());
+		tf_Schwingen = new JFormattedTextField(new PercentFormatter());
 		tf_Schwingen.addPropertyChangeListener("value", this);
 		tf_Schwingen.addFocusListener(this);
 		tf_Kr = new JFormattedTextField(new LowercaseDecimalFormatter());
