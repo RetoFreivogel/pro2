@@ -26,8 +26,9 @@ public class Model extends Observable implements Serializable, Copyable{
 	
 	public Vector<RegelKreis> getAlleRegelkreise() {
 		Vector<RegelKreis> kreise = new Vector<>(alleDim.size());
-		for(Dimensionierung dim : alleDim){
-			kreise.add(new RegelKreis(dim, regelstrecke));
+		
+		for (int i = 0; i < alleDim.size(); i++) {
+			kreise.add(new RegelKreis(alleDim.get(i), regelstrecke, "" + (i+1)));
 		}
 		return kreise;
 	}

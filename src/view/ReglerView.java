@@ -92,9 +92,9 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		tf_Tp.addPropertyChangeListener("value", this);
 		tf_Tp.addFocusListener(this);
 
-		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim()
-				.getTyp().toString(), TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		setBorder(new TitledBorder(new LineBorder(Color.GRAY),
+				kreis.toString(), TitledBorder.LEADING, TitledBorder.TOP, null,
+				null));
 		setLayout(new GridBagLayout());
 
 		update(kreis);
@@ -282,8 +282,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
-			((TitledBorder) getBorder()).setTitle(kreis.getDim().getTyp()
-					.toString());
+			((TitledBorder) getBorder()).setTitle(kreis.toString());
 
 			DimEnum d = regelkreis.getDim().getTyp();
 			cbbx_defd_R.setSelectedItem(d);
@@ -295,7 +294,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			if (d == DimEnum.ZELLWEGER) {
 				tf_Phrand.setValue(regelkreis.getDim().getPhasenrand());
 			}
-			
+
 			if (d == DimEnum.ITERATIV) {
 				tf_Schwingen.setValue(regelkreis.getDim().getUeberschwingen());
 			}

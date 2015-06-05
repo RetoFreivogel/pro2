@@ -18,7 +18,7 @@ public class BenchmarkStepResponse {
 	public void test() {
 		Dimensionierung dim = new Dimensionierung(DimEnum.OPPELT, TopoEnum.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.5, 7.6);
-		RegelKreis regelkreis = new RegelKreis(dim, rs);
+		RegelKreis regelkreis = new RegelKreis(dim, rs, "");
 				
 		Matlab.setMocked(true);
 		

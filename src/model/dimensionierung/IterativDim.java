@@ -47,7 +47,7 @@ class IterativDim extends AbstractDim {
 		for(int i = 0; i < 100; i++){
 			phasenrand = (minPhasenrand + maxPhasenrand)/2;
 			dim = dim.setPhasenrand(phasenrand);
-			RegelKreis kreis = new RegelKreis(dim, regelstrecke);
+			RegelKreis kreis = new RegelKreis(dim, regelstrecke, "");
 			double ymax = kreis.getTranferFunction().schrittantwort().getYmax();
 			double schwingen = (ymax-1)*100;
 			
