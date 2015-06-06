@@ -11,8 +11,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.text.DecimalFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -32,7 +32,6 @@ import model.dimensionierung.TopoEnum;
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		ActionListener, FocusListener {
 	private static final long serialVersionUID = 1L;
-	private static final DecimalFormat format = new DecimalFormat("##0.000");
 
 	private final Controller controller;
 	private RegelKreis regelkreis;
@@ -54,12 +53,12 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		this.controller = controller;
 		this.regelkreis = kreis;
 
-		jb_copy = new JButton("");
+		jb_copy = new JButton(new ImageIcon("icons/copy.png"));
 		jb_copy.setBackground(new Color(64, 255, 64));
 		jb_copy.setPreferredSize(new Dimension(20, 20));
 		jb_copy.addActionListener(this);
 
-		jb_close = new JButton("");
+		jb_close = new JButton(new ImageIcon("icons/close.png"));
 		jb_close.setBackground(new Color(255, 64, 64));
 		jb_close.setPreferredSize(new Dimension(20, 20));
 		jb_close.addActionListener(this);
@@ -75,28 +74,28 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		cbbx_chiens = new JComboBox<>(ChiensEnum.values());
 		cbbx_chiens.addActionListener(this);
 
-		tf_Phrand = new JFormattedTextField(format);
+		tf_Phrand = new JFormattedTextField(new DegreeFormatter());
 		tf_Phrand.addPropertyChangeListener("value", this);
 		tf_Phrand.addFocusListener(this);
-		tf_Schwingen = new JFormattedTextField(format);
+		tf_Schwingen = new JFormattedTextField(new PercentFormatter());
 		tf_Schwingen.addPropertyChangeListener("value", this);
 		tf_Schwingen.addFocusListener(this);
-		tf_Kr = new JFormattedTextField(format);
+		tf_Kr = new JFormattedTextField(new LowercaseDecimalFormatter());
 		tf_Kr.addPropertyChangeListener("value", this);
 		tf_Kr.addFocusListener(this);
-		tf_Tn = new JFormattedTextField(format);
+		tf_Tn = new JFormattedTextField(new LowercaseDecimalFormatter());
 		tf_Tn.addPropertyChangeListener("value", this);
 		tf_Tn.addFocusListener(this);
-		tf_Tv = new JFormattedTextField(format);
+		tf_Tv = new JFormattedTextField(new LowercaseDecimalFormatter());
 		tf_Tv.addPropertyChangeListener("value", this);
 		tf_Tv.addFocusListener(this);
-		tf_Tp = new JFormattedTextField(format);
+		tf_Tp = new JFormattedTextField(new LowercaseDecimalFormatter());
 		tf_Tp.addPropertyChangeListener("value", this);
 		tf_Tp.addFocusListener(this);
 
-		setBorder(new TitledBorder(new LineBorder(Color.GRAY), kreis.getDim()
-				.getTyp().toString(), TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		setBorder(new TitledBorder(new LineBorder(Color.GRAY),
+				kreis.toString(), TitledBorder.LEADING, TitledBorder.TOP, null,
+				null));
 		setLayout(new GridBagLayout());
 
 		update(kreis);
@@ -284,8 +283,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		try {
 			cbbx_Topo.setSelectedItem(regelkreis.getDim().getTopo());
 
-			((TitledBorder) getBorder()).setTitle(kreis.getDim().getTyp()
-					.toString());
+			((TitledBorder) getBorder()).setTitle(kreis.toString());
 
 			DimEnum d = regelkreis.getDim().getTyp();
 			cbbx_defd_R.setSelectedItem(d);
@@ -297,7 +295,7 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 			if (d == DimEnum.ZELLWEGER) {
 				tf_Phrand.setValue(regelkreis.getDim().getPhasenrand());
 			}
-			
+
 			if (d == DimEnum.ITERATIV) {
 				tf_Schwingen.setValue(regelkreis.getDim().getUeberschwingen());
 			}

@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -16,17 +20,17 @@ import controller.Controller;
 import model.Model;
 import model.RegelKreis;
 
-public class SidebarPanel extends JScrollPane{
+public class SidebarPanel extends JScrollPane implements ActionListener{
 	private static final long serialVersionUID = 1L;
 		
 	//private Model model;
 	private final Controller controller;
 	
 	private final RegelStreckeView pn_ERegelstrecke;
-	private final AnalyseView pn_AAnalyse;
 	private ReglerView[] alleRegler = new ReglerView[]{};
-
 	private JPanel pn_Regler;
+	private final JComboBox<RegelKreis> cb_dim;
+	private final AnalyseView pn_AAnalyse;
 
 	public SidebarPanel(Model model, Controller controller){
 		super();
@@ -61,10 +65,17 @@ public class SidebarPanel extends JScrollPane{
 
 		initEingabe(model);
 		
-		//---------------------Ausgabe-------------------------------	
-		pn_AAnalyse = new AnalyseView(model.getAlleRegelkreise().get(0), controller);
+		//---------------------Ausgabe-------------------------------		
+		cb_dim = new JComboBox<RegelKreis>(model.getAlleRegelkreise());
+		cb_dim.setSelectedIndex(0);
+		cb_dim.addActionListener(this);
+		pn_left.add(cb_dim, constraints);
+		constraints.gridy++;
+		
+		pn_AAnalyse = new AnalyseView((RegelKreis) cb_dim.getSelectedItem(), controller);
 		pn_left.add(pn_AAnalyse, constraints);
 		constraints.gridy++;
+		
 		constraints.weighty = 1.0;
 		pn_left.add(new JPanel(), constraints);
 		constraints.gridy++;
@@ -110,7 +121,21 @@ public class SidebarPanel extends JScrollPane{
 	
 	public void update(Model model) {
 		pn_ERegelstrecke.update(model.getRegelstrecke());
-		pn_AAnalyse.update(model.getAlleRegelkreise().firstElement());
-		initEingabe(model);	
+		initEingabe(model);
+		
+		int lastIndex = cb_dim.getSelectedIndex();
+		cb_dim.setModel(new DefaultComboBoxModel<RegelKreis>(model.getAlleRegelkreise()));
+		try{
+			cb_dim.setSelectedIndex(lastIndex);
+		}catch (IllegalArgumentException e){}
+		
+		pn_AAnalyse.update((RegelKreis)cb_dim.getSelectedItem());
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == cb_dim){
+			pn_AAnalyse.update((RegelKreis)cb_dim.getSelectedItem());		
+		}
 	}
 }

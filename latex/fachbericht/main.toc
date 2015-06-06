@@ -11,12 +11,12 @@
 \contentsline {subsubsection}{\numberline {2.5.1}Berechnung}{14}{subsubsection.2.5.1}
 \contentsline {subsubsection}{\numberline {2.5.2}Optimierungsm\IeC {\"o}glichkeiten}{15}{subsubsection.2.5.2}
 \contentsline {section}{\numberline {3}Software}{16}{section.3}
-\contentsline {subsection}{\numberline {3.1}Packages und seine Klassen}{16}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Package Controller}{16}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Package Model}{16}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}Dimensionierung}{17}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}View}{17}{subsubsection.3.1.4}
-\contentsline {section}{\numberline {4}Schlusswort}{18}{section.4}
-\contentsline {section}{\numberline {5}Ehrlichkeitserkl\IeC {\"a}rung}{19}{section.5}
-\contentsline {section}{\numberline {6}Literatur}{20}{section.6}
-\contentsline {section}{\numberline {7}Anhang}{21}{section.7}
+\contentsline {subsection}{\numberline {3.1}Packages und seine Klassen}{17}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Klassen des Packages \textit {controller}}{17}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Ausgew\IeC {\"a}hlte Klassen des Packages \textit {model}}{19}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Ausgew\IeC {\"a}hlte Klassen des Packages \textit {dimensionierung}}{21}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Klassen des Packages \textit {view}}{23}{subsubsection.3.1.4}
+\contentsline {section}{\numberline {4}Schlusswort}{25}{section.4}
+\contentsline {section}{\numberline {5}Ehrlichkeitserkl\IeC {\"a}rung}{26}{section.5}
+\contentsline {section}{\numberline {6}Literatur}{27}{section.6}
+\contentsline {section}{\numberline {7}Anhang}{28}{section.7}

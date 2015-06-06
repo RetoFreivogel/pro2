@@ -12,6 +12,7 @@ public class SchrittAntwort {
 	private final double Tymax;
 	private final double Tan;
 	private final double Ymax;
+	private final double wmax;
 
 	public SchrittAntwort(Complex[] poles, Complex[] residues) {
 		super();
@@ -21,18 +22,12 @@ public class SchrittAntwort {
 		constant = -getY(0);
 		stabil = calcStabil();
 		Taus = calcTaus(0.001);
-		
-		
+		asymptotisch = calcAsymp();
+		wmax = calcWmax();	
 		Tymax = calcTymax();
-		if(getY(Tymax) < getYend()){
-			asymptotisch = true;
-			Ymax = getYend();
-			Tan = Taus;
-		}else{
-			asymptotisch = false;
-			Ymax = getY(Tymax);
-			Tan = calcTan();
-		}
+		Ymax = getY(Tymax);
+		Tan = calcTan();
+		
 	}
 
 	public boolean isStabil() {
@@ -82,10 +77,23 @@ public class SchrittAntwort {
 		return stabil;
 	}
 	
+	private boolean calcAsymp(){
+		for(Complex pole : poles){
+			if(Math.abs(pole.getImaginary()) > 0){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	private double calcTan(){
 		double tmin = 0;
 		double tmax = Tymax;
 		
+		if(Ymax < getYend()){
+			return Taus;
+		}
+
 		for(int i = 0; i < 100; i++){
 			double tmiddle = (tmin + tmax)/2;
 			if(getY(tmiddle) < constant){
@@ -98,8 +106,11 @@ public class SchrittAntwort {
 		return (tmax + tmin)/2;
 	}
 	
-	private double calcTymax() {
-		//schrittgrösse für die Suche der Anfangswerte
+	private double calcWmax(){
+		if(asymptotisch){
+			return 0;
+		}
+		
 		double[] allw = new double[poles.length];
 		double wmax = 0;
 		for (int i = 0; i < poles.length; i++) {
@@ -109,12 +120,24 @@ public class SchrittAntwort {
 				wmax = w;
 			}
 		}
+		return wmax;
+	}
+	
+	private double calcTymax() {
+		if(asymptotisch){
+			return Taus;
+		}
+		
+		//schrittgrösse für die Suche der Anfangswerte
 		double tstep = (Math.PI/2)/wmax;
+		if(tstep > Taus){
+			tstep = Taus;
+		}
 		
 		//Suche nach Anfangswerten
 		double tmin = 0;
 		double tmax = tstep;
-		while(getY(tmax) < getY(tmax + tstep)){
+		while(getY(tmax) < getY(tmax + tstep) && tmin < Taus){
 			tmin = tmax;
 			tmax += tstep;
 		}

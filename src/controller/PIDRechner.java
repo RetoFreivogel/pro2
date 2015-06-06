@@ -20,7 +20,7 @@ public class PIDRechner extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public void init() {
-		setPreferredSize(new Dimension(800, 600));
+		setPreferredSize(new Dimension(880, 660));
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
 		Dimensionierung[] dim = new Dimensionierung[]{new Dimensionierung(DimEnum.ZELLWEGER, TopoEnum.PID)};
 		Model model = new Model(regelstrecke, dim);

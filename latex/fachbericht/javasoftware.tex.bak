@@ -1,56 +1,127 @@
 \section{Software}
-Ziel der Applikation ist es, die Berechnung der Schrittantwort eines Regelkreises zu visualisieren.\\
-Die Applikation ist im Model-View-Controll Konzept aufgebaut. Die View erzeugt die Graphische Benutzeroberfläche. Dort können die spezifischen Werte zur Berechnung der Schrittantwort des Regelkreises eingegeben werden. Zudem wird diese Graphisch in einem Diagramm Festgehalten. Der Controller übernimmt die Steuerung der Applikation und übergibt die durchzuführenden Berechnungen an das Model weiter. Das Model führt alle Berechnungen zur Dimensionierung des Regelkreises durch, welche dann anschliessen in der View wieder visualisiert werden. Somit wäre der Kreislauf der Applikation geschlossen.\\
-Zum Aufdatieren der Benutzerschnittstelle wird das Observable- Observer Entwurfsmuster verwendet. Die View agiert als Observer und das Model als Observable.
+\textbf{Hinweise zur Benutzung}\\
+Der Fachbericht dient zur Erklärung des Aufbaus des Java Source Codes. Für eine Einführung in das Programm beachte man die Bedienungsanleitung im Anhang.\\
+\textit{JavaKlassenNamen} sind im Folgenden kursiv mit Grossbuchstaben geschrieben. Dagegen sind \textit{packages} kursiv und klein geschrieben. Die Klassen die im Text auf der rechten Seite besprochen werden sind in der Regel auf der linken Seite im in einem Ausschnitt vom Klassendiagramm vorhanden. Das gesamte Klassendiagramm findet sich im Anhang.\\
+Fett gedruckte Nummern (\textbf{1}) beziehen sich auf Elemente des GUIs. Eine Abbildung des GUIs mit Nummerierung findet sich am Ende der Bedienungsanleitung im Anhang.\\
+
+\textbf{Ziele}\\
+Ziel der Applikation ist die automatische Dimensionierung eines Reglers mit der Phasengangmethode von Prof. J. Zellweger. Weiter soll die Schrittantwort des gesamten Regelkreises ermittelt und visualisiert werden. Die Regelstrecke ist durch die Parameter $K_s$, $T_u$ und $T_g$ gegeben. Neben der Phasengangmethode sind auch Faustregeln zur Reglerdimensionierung anwendbar. Die berechneten Werte sowie die markanten Werte der Schrittantwort sollen als Text ausgegeben werden. Die Software verfügt weiter über die nützlichen Befehle Rückgängig und Wiederholen. Die eingegebenen Werte können gespeichert und geladen werden.\\
+
+\textbf{Aufbau und Packages}\\
+Die Applikation ist nach dem Model-View-Controller Architekturmuster aufgebaut. Wiedergespiegelt ist das in den drei Packages \textit{model}, \textit{view} und \textit{controller}.\\
+Das \textit{model} soll eine Repräsentation der mathematischen Objekte bieten. Die meisten enthaltenen Klassen sind für die Vermeidung von Aliasing-Problemen als unveränderlich gehalten.\\
+Die Klassen zur Reglerdimensionierung sind für die bessere Kapselung im separaten Package \textit{model.dimensionierung} enthalten. Alle Klassen dieses Packages sind als unveränderlich gehalten.\\
+Das \textit{view} erzeugt die graphische Benutzeroberfläche mit den Daten des \textit{models}. Die Kommunikation zwischen \textit{view} und \textit{model} erfolgt mittels dem Observer Entwurfsmuster.\\
+Der \textit{controller} übernimmt die Steuerung der Applikation und die Ausführung der Befehle des Benutzers. 
 
 
+\newpage
 \subsection{Packages und seine Klassen}
 
-\subsubsection{Package Controller}
-Der Controller ist verantwortlich für die Steuerung der Applikation. Er stellt für alle Befehle die der Benutzer im GUI eine Methode zur Verfügung, mit der das Model modifiziert wird. Weiter erkennt er Fehleingaben und meldet diese dem Benutzer durch die Methode dispayError des Views. Bevor jeder Änderung des Models speichert sich der Controller eine Kopie des Modells, dadurch ist es möglich alte Zustände widerherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der Controller für das Speichern und Laden zuständig. Dies funktioniert da das Model das Serializable Interface implementiert und der Controller so die Daten mit einem ObjectOutputStream in eine Datei schreiben bzw. mit einem ObjectInputStream aus einer Datei laden kann. Der Controller ist nicht verantwortlich, dass das View die Daten des Models übernimmt, dies geschieht direkt durch die Klasse Observable (Observer Pattern).
-PIDRechner
-Startpunkt der Applikation. Initialisiert Controller, View und Model
+\subsubsection{Klassen des Packages \textit{controller}}
+Der Aufbau des Packages Controller ist in Abbildung \ref{packcontrl} ersichtlich.\\
 
-\subsubsection{Package Model}
-Die Klasse Model verwaltet die Regelstecke und die verschiedenen Dimensionierungsmethoden. Es bietet Zugriffsmethoden um auf die Regelstrecke und Dimensionierungsmethoden zuzugreifen. Auch kann es Dimensionierungsmethoden kopieren oder löschen.
-Regelkreis
-Die Klasse Regelkreis dient zur Umwandlung der Übertragungsfunktionen von Regelstrecke und Regler in die Übertragungsfunktion des ganzen Kreises.
-Regelstrecke
-Die Klasse Regelstrecke bietet eine Abstraktion einer PTn-Strecke mit den Attributen Ks, Tu und Tg. Eine Regelstrecke ist ein Regelglied, das heisst sie kann als eine Übertragungsfunktion angesehen werden. Die Übertragungsfunktion wird durch die Sani-Approximation gebildet.
-Regler
-Diese Klasse dient zur Abstraktion eines PID-T Reglers mit den Parametern Kr, Tn, Tv, und Tp. Ein Regler wird normalerweise durch eine Dimensionierungsmethode gebildet.
-TransferFunction
-Eine Übertragungsfunktion besteht aus Zähler und Nenner. Sie bietet Methoden zur Faltung und Berechnung der Residuen. Weiter kann aus jeder Übertragungsfunktion eine Schrittantwort gebildet werden.
-Polynom
-Polynom abstrahiert reelle Polynome beliebigen Grades. Es bietet Methoden zur Addition und Multiplikation mit anderen Polynomen. Weiter können die Wurzeln und die Residuen (mit einem angenommenen Zähler von 1) ausgelesen werden. 
-Schrittantwort
-Die Klasse Schrittantwort stellt die Schrittantwort für ein lineares Regelglied ohne Durchgriff dar. Sie bietet zudem Methoden zur Analyse. So kann sie feststellen ob eine Schrittantwort ausschwingt und wie gross An- und Ausschwingzeit sind. Weiter sucht sie nach dem Maximalwert der Kurve und bietet die Möglichkeit dessen Zeitpunkt und Grösse auszulesen.
+\textit{\textbf{Controller}}\\
+Der \textit{Controller} ist verantwortlich für die Steuerung der Applikation. Er besitzt für alle Befehle die der Benutzer im GUI tätigen kann eine Methode zur Modifizierung des \textit{Models}. Meldet das \textit{Model} beim Modifizieren einen Fehler informiert er den Benutzer mit der Methode displayError des \textit{Views}. Vor jeder Änderung des \textit{Models} speichert sich der \textit{Controller} eine Kopie davon. Dadurch ist es möglich alte Zustände wiederherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der \textit{Controller} für das Speichern und Laden zuständig. Dies funktioniert da das \textit{Model} das \textit{Serializable} Interface implementiert und der \textit{Controller} so die Daten mit einem \textit{ObjectOutputStream} in eine Datei schreiben bzw. mit einem \textit{ObjectInputStream} aus einer Datei laden kann.\\
 
+\textit{\textbf{PIDRechner}}\\
+Startpunkt der Applikation. Initialisiert \textit{Controller}, \textit{View} und \textit{Model}
 
-\subsubsection{Dimensionierung}
-Diese Klasse ist ein tagged-Union der anderen Dimensionierungsarten. So bietet diese Klasse auch alle Methoden der anderen Dimensionierungsmethoden. Wird eine Methode bei einer falschen Variante verwendet, wirft die Klasse eine ClassCastException. Der Typ kann mit der Methode setTyp gewechselt werden. Beim Wechseln zu der Manuellen Dimensionierungsmethode, werden die Werte des dimensionierten Reglers übernommen.
-DimEnum
-Dieser Enum dient zur Aufzählung aller Dimensionierungstypen. Er ordnet jedem Typ auch einen Text zu.
-TopoEnum
-Zur Unterscheidung von PI und PID Reglern wird dieser Enum verwendet.
-AbstractDim
-AbstractDim ist die abstrakte Grundklasse aller Dimensionierungsmethoden. Die Methode calc berechnet für eine gegebene Regelstrecke einen Regler. Durch get- und setTopo lässt sich die Reglertopologie modifizieren. Die Methode getTyp() gibt den Typ des konkreten Reglers zurück.
-ZellwegerDim
-Hier steckt die Phasengangmethode zur Reglerdimensionierung. Die Beschreibung der Methode findet sich im theoretischen Teil.
-IterativDim
-Diese Methode führt die Phasengangmethode mehrmals nacheinander aus und sucht mit einer binären Suchmethode nach dem gewünschten Überschwingen der Schrittantwort.
+\begin{figure}[p]
+\centering
+\includegraphics[width=1\textwidth]{packcontrl.png}
+\caption{Package Controller}
+\label{packcontrl}
+\end{figure}
+
+\newpage
+\subsubsection{Ausgewählte Klassen des Packages \textit{model}}
+Der Aufbau des Packages \textit{model} ist in Abbildung \ref{packmodel} ersichtlich.\\
+
+\textit{\textbf{Model}}\\
+\textit{Model} verwaltet die \textit{Regelstecke} und die verschiedenen \textit{Dimensionierungen}. Es bietet Zugriffsmethoden um die \textit{Regelstrecke} und \textit{Dimensionierungen} zu modifizieren. Auch kann es Dimensionierungsmethoden kopieren oder löschen.\\
+
+\textit{\textbf{Regelkreis}}\\
+Die Klasse \textit{Regelkreis} dient zur Umwandlung der Übertragungsfunktionen (\textit{TransferFunction}) von Regelstrecke und Regler in die Übertragungsfunktion des ganzen Kreises.\\
+
+\textit{\textbf{Regelstrecke}}\\
+Die Klasse \textit{Regelstrecke} bietet eine Abstraktion einer PTn-Strecke mit den Attributen $K_s$, $T_u$ und $T_g$. Eine \textit{Regelstrecke} ist ein \textit{Regelglied}, das heisst sie kann als eine Übertragungsfunktion angesehen werden. Die Übertragungsfunktion wird durch die Sani-Approximation (\textit{SaniApprox}) gebildet.\\
+
+\textit{\textbf{Regler}}\\
+Diese Klasse dient zur Abstraktion eines PID-T Reglers mit den Parametern $K_R$, $T_n$, $T_v$ und $T_p$. Ein \textit{Regler} wird normalerweise durch eine Dimensionierungsmethode (\textit{Dimensionierung}) gebildet.\\
+
+\textit{\textbf{TransferFunction}}\\
+Eine Übertragungsfunktion besteht aus Zähler- und Nenner-\textit{Polynom}. Sie bietet Methoden zur Faltung und Berechnung der Residuen. Weiter kann aus jeder Übertragungsfunktion eine \textit{Schrittantwort} gebildet werden.\\
+
+\textit{\textbf{Polynom}}\\
+\textit{Polynom} abstrahiert reelle Polynome beliebigen Grades. Es bietet Methoden zur Addition und Multiplikation mit anderen \textit{Polynomen}. Weiter können die Wurzeln und die Residuen (mit einem angenommenen Zähler von 1) ausgelesen werden. \\
+ 
+\textit{\textbf{Schrittantwort}}\\
+Die Klasse \textit{Schrittantwort} stellt die Schrittantwort für ein lineares \textit{Regelglied} ohne Durchgriff dar. Sie bietet zudem Methoden zur Analyse. So kann sie feststellen ob eine Schrittantwort ausschwingt und wie gross An- und Ausschwingzeit sind. Weiter sucht sie nach dem Maximalwert der Kurve und bietet die Möglichkeit dessen Zeitpunkt und Grösse auszulesen.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=1\textwidth]{packmodel.png}
+\caption{Package Model}
+\label{packmodel}
+\end{figure}
+
+\newpage
+\subsubsection{Ausgewählte Klassen des Packages \textit{dimensionierung}}
+Der Aufbau des Packages \textit{dimensionierung} ist in Abbildung \ref{packdim} ersichtlich.\\
+
+\textit{\textbf{Dimensionierung}}\\
+Diese Klasse ist ein tagged-Union der anderen Dimensionierungsarten. So bietet diese Klasse auch alle Methoden der anderen Dimensionierungsmethoden. Wird eine Methode bei einer falschen Variante verwendet, wirft die Klasse eine \textit{ClassCastException}. Der Typ (\textit{DimEnum}) kann mit der Methode setTyp gewechselt werden. Beim Wechseln zu der Manuellen Dimensionierungsmethode, werden die Werte des dimensionierten Reglers übernommen.\\
+
+\textit{\textbf{DimEnum}}\\
+Dieser Enum dient zur Aufzählung aller Dimensionierungstypen. Er ordnet jedem Typ auch einen Text zu.\\
+
+\textit{\textbf{TopoEnum}}\\
+Zur Unterscheidung von PI- und PID-Reglern wird dieser Enum verwendet.\\
+
+\textit{\textbf{AbstractDim}}\\
+\textit{AbstractDim} ist die abstrakte Grundklasse aller Dimensionierungsmethoden. Die Methode calc berechnet für eine gegebene Regelstrecke einen Regler. Durch get- und setTopo lässt sich die Reglertopologie (\textit{TopoEnum}) modifizieren. Die Methode getTyp() gibt den Typ des konkreten \textit{Reglers} zurück.\\
+
+\textit{\textbf{ZellwegerDim}}\\
+Hier steckt die Phasengangmethode zur Reglerdimensionierung. Die Beschreibung der Methode findet sich im theoretischen Teil.\\
+
+\textit{\textbf{IterativDim}}\\
+Diese Methode führt die Phasengangmethode (\textit{ZellwegerDim}) mehrmals nacheinander aus und sucht mit einer binären Suchmethode nach dem gewünschten Überschwingen der Schrittantwort.\\
+
 Die anderen Klassen entsprechen den verschiedenen Faustregeln.
 
+\begin{figure}[p]
+\centering
+\includegraphics[width=1\textwidth]{packdim.png}
+\caption{Package Dimensionierung}
+\label{packdim}
+\end{figure}
 
-\subsubsection{View}
-View ist die oberste Ebene im GUI (abgesehen vom Frame). Es beheimatet die Sidebar, den Graph und die Statuszeile. Auch initialisiert es die Menübar vom JFrame.
-SidebarPanel
-SidebarPanel ordnet die einzelnen Panels von Regelstrecke, Regler und Analyse vertikal untereinander an.
-RegelstreckeView
-RegelstreckeView zeigt die Parameter der Regelstrecke sowie die berechnete Ordnung und die Zeitkonstanten an.
-ReglerView
-Dieses JPanel visualisiert den Typ der Dimensionierungsmethode, deren Parameter und die Werte des daraus resultierenden Reglers.
-AnalyseView
-Zeigt die Eigenschaften einer Schrittantwort.
-Graph 
-Zeichnet alle Schrittantworten mit dem ChartPanel von JFreeChart. Unter dem Graphen zeigt es weiter eine Legende. Die Zustände der Checkboxen werden nur vom Graph selbst verwendet und nicht dem Controller mitgeteilt.
+\newpage
+\subsubsection{Klassen des Packages \textit{view}}
+Der Aufbau des Packages \textit{view} ist in Abbildung \ref{packview} ersichtlich.\\
+
+\textit{\textbf{View}}\\
+\textit{View} ist die oberste Ebene im GUI (abgesehen vom \textit{JFrame}). Es beheimatet die \textit{Sidebar}, den \textit{Graph} und die Statuszeile. Auch initialisiert es die Menübar vom \textit{JFrame}.\\
+
+\textit{\textbf{SidebarPanel}}\\
+\textit{SidebarPanel} ordnet die einzelnen Panels von \textit{RegelstreckeView}, \textit{ReglerView} und \textit{AnalyseView} vertikal untereinander an. Es können mehrere Instanzen von \textit{ReglerView} angezeigt werden.\\
+
+\textit{\textbf{RegelstreckeView}}\\
+\textit{RegelstreckeView} zeigt die Parameter der \textit{Regelstrecke} sowie die berechnete Ordnung und die Zeitkonstanten an.\\
+
+\textit{\textbf{ReglerView}}\\
+Dieses \textit{JPanel} visualisiert den Typ der Dimensionierungsmethode, deren Parameter und die Werte des daraus resultierenden \textit{Reglers}.\\
+
+\textit{\textbf{AnalyseView}}\\
+Zeigt die Eigenschaften einer \textit{Schrittantwort}.\\
+
+\textit{\textbf{Graph}}\\
+Zeichnet alle \textit{Schrittantworten} mit dem \textit{ChartPanel} von JFreeChart. Unter dem Graphen zeigt es weiter eine Legende. Die Zustände der \textit{Checkboxen} werden nur vom Graph selbst verwendet und nicht dem \textit{Controller} mitgeteilt.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.9\textwidth]{packview.png}
+\caption{Package View}
+\label{packview}
+\end{figure}

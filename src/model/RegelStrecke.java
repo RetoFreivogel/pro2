@@ -81,6 +81,10 @@ public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 		return SaniApprox.getOrdnung(tu, tg);
 	}
 
+	public double[] getTcoeffs(){
+		return SaniApprox.calcSani(tu, tg);
+	}
+	
 	@Override
 	public TransferFunction getTranferFunction() {
 		double[] Tcoeffs = SaniApprox.calcSani(tu, tg);

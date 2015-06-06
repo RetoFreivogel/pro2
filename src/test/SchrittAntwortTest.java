@@ -27,7 +27,7 @@ public class SchrittAntwortTest {
 		Matlab.setMocked(false);
 		Dimensionierung dim = new Dimensionierung(DimEnum.OPPELT, TopoEnum.PID);
 		RegelStrecke rs = new RegelStrecke(1.0, 1.71, 7.6);
-		RegelKreis kreis = new RegelKreis(dim, rs);
+		RegelKreis kreis = new RegelKreis(dim, rs, "");
 		SchrittAntwort sw = kreis.getTranferFunction().schrittantwort();
 		
 		double[][] output;

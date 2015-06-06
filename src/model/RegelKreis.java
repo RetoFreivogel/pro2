@@ -10,10 +10,12 @@ public final class RegelKreis implements RegelGlied, Serializable {
 	
 	private final RegelStrecke regelstrecke;
 	private final Dimensionierung dim;
+	private final String name;
 
-	public RegelKreis(Dimensionierung dim, RegelStrecke regelstrecke) {
+	public RegelKreis(Dimensionierung dim, RegelStrecke regelstrecke, String name) {
 		this.dim = dim;
 		this.regelstrecke = regelstrecke;
+		this.name = name + ": " + dim.getTyp().toString();
 	}
 
 	public Regler getRegler() {
@@ -41,10 +43,6 @@ public final class RegelKreis implements RegelGlied, Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(regelstrecke);
-		builder.append(dim);
-		builder.append('\n');
-		return builder.toString();
+		return name;
 	}
 }
