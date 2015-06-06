@@ -45,7 +45,7 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 
 		setLayout(new BorderLayout());
 
-		ckbx_Graph = new Vector<>(model.getAlleRegelkreise().size(), 1);
+		ckbx_Graph = new Vector<>(0, 1);
 
 		pn_legend = new JPanel();
 		pn_legend.setBackground(null);
@@ -65,9 +65,11 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 		plot.setRangeGridlinePaint(new Color(196, 196, 196));
 
 		pn_chart = new ChartPanel(chart);
-		add(pn_chart);
+		add(pn_chart, BorderLayout.CENTER);
 
-		init();
+		initCheckboxes();
+		initRenderer();
+		initDataset();
 	}
 
 	private double calcTmax() {
@@ -82,104 +84,126 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 		return tmax;
 	}
 
-	private void init() {
+	private Color getSeriesColor(int num) {
+		return Color
+				.getHSBColor((float) num * 3 / 20, (float) 0.8, (float) 0.9);
+	}
+
+	private void initCheckboxes() {
+
+		Vector<RegelKreis> alleKreise = model.getAlleRegelkreise();
+		int n = alleKreise.size();
+		
+		while(ckbx_Graph.size() < n){
+			JCheckBox cb = new JCheckBox();
+			cb.setSelected(true);
+			Color color = getSeriesColor(ckbx_Graph.size());
+			cb.setBackground(color);
+			cb.addActionListener(this);
+			ckbx_Graph.add(cb);
+		}
+		
+		while(ckbx_Graph.size() > n){
+			ckbx_Graph.remove(ckbx_Graph.size() -1);
+		}
+					
 		pn_legend.removeAll();
-		ckbx_Graph.clear();
+		for(int i = 0; i < n; i++){
+			RegelKreis rk = alleKreise.get(i);
+			JCheckBox cb = ckbx_Graph.get(i);
+			cb.setText(rk.toString());
+			cb.setOpaque(cb.isSelected());
+			renderer.setSeriesVisible(3 * i + 0, cb.isSelected());
+			renderer.setSeriesVisible(3 * i + 1, cb.isSelected());
+			renderer.setSeriesVisible(3 * i + 2, cb.isSelected());
+			pn_legend.add(cb);			
+		}		
+		revalidate();
+		repaint();
+	}
+
+	private void initRenderer(){
+		
+		BasicStroke lineStroke = new BasicStroke(1.5f);
+		BasicStroke dashedStroke = new BasicStroke(1f,
+				BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f,
+				new float[] { 6.0f, 6.0f }, 0.0f);
+		
+		for (int i = 0; i < model.getAlleRegelkreise().size(); i++) {
+			Color color = getSeriesColor(i);
+			renderer.setSeriesPaint(3 * i, color);
+			renderer.setSeriesStroke(3 * i, lineStroke);
+			
+			renderer.setSeriesPaint(3 * i + 1, color);
+			renderer.setSeriesStroke(3 * i + 1, dashedStroke);
+
+			renderer.setSeriesPaint(3 * i + 2, color);
+			renderer.setSeriesStroke(3 * i + 2, dashedStroke);
+		}
+	}
+	
+	private void initDataset(){
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 
+		if (xAxis.isAutoRange()) {
+			xAxis.setRange(new Range(0, calcTmax()), false, false);
+		}
 		double tstart = xAxis.getRange().getLowerBound();
 		double tend = xAxis.getRange().getUpperBound();
-		double ymin = Double.MAX_VALUE;
-		double ymax = Double.MIN_VALUE;
 
-		int n = model.getAlleRegelkreise().size();
-		for (int i = 0; i < n; i++) {
-			RegelKreis rk = model.getAlleRegelkreise().get(i);
-
-			JCheckBox cb = new JCheckBox();
-			cb.setText(rk.toString());
-			cb.setSelected(true);
-			Color color = Color.getHSBColor((float) i * 3 / 20, (float) 0.8,
-					(float) 0.9);
-			cb.setBackground(color);
-			cb.addActionListener(this);
-			pn_legend.add(cb);
-			ckbx_Graph.add(cb);
+		int i = 0;
+		for (RegelKreis rk: model.getAlleRegelkreise()) {
 
 			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
 			XYSeries ser = new XYSeries(3 * i);
 			for (int j = 0; j < 300; j++) {
 				double t = tstart + (tend - tstart) * j / 299;
 				double y = sa.getY(t);
-				if (y < ymin)
-					ymin = y;
-				if (y > ymax)
-					ymax = y;
 				ser.add(t, y);
 			}
-			ser.add(0, sa.getY(0));
-			ser.add(sa.getTymax(), sa.getYmax());
-			ser.add(sa.getTaus(), sa.getYend());
 
 			dataset.addSeries(ser);
-			renderer.setSeriesPaint(3 * i, color);
-			renderer.setSeriesStroke(3 * i, new BasicStroke(1.5f));
 
 			XYSeries maxlabel = new XYSeries(3 * i + 1, false);
 			maxlabel.add(sa.getTymax(), 0);
 			maxlabel.add(sa.getTymax(), sa.getYmax());
 			maxlabel.add(0, sa.getYmax());
 			dataset.addSeries(maxlabel);
-			renderer.setSeriesPaint(3 * i + 1, color);
-			renderer.setSeriesStroke(3 * i + 1, new BasicStroke(1f,
-					BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f,
-					new float[] { 6.0f, 6.0f }, 0.0f));
 
 			XYSeries tauslabel = new XYSeries(3 * i + 2, false);
 			tauslabel.add(sa.getTaus(), 0);
 			tauslabel.add(sa.getTaus(), sa.getY(sa.getTaus()));
 			dataset.addSeries(tauslabel);
-			renderer.setSeriesPaint(3 * i + 2, color);
-			renderer.setSeriesStroke(3 * i + 2, new BasicStroke(1f,
-					BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f,
-					new float[] { 6.0f, 6.0f }, 0.0f));
+			
+			i++;
 		}
 
 		XYPlot plot = pn_chart.getChart().getXYPlot();
 		plot.setDataset(dataset);
-
-		try {
-			getRootPane().revalidate();
-			getRootPane().repaint();
-		} catch (NullPointerException ex) {
+		if (xAxis.isAutoRange()) {
+			xAxis.setRange(new Range(0, calcTmax()), false, false);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int n = ckbx_Graph.size();
-		for (int i = 0; i < n; i++) {
-			JCheckBox cb = ckbx_Graph.get(i);
-			cb.setOpaque(cb.isSelected());
-			renderer.setSeriesVisible(i, cb.isSelected());
-		}
+		initCheckboxes();
 	}
 
 	public void update(Model model) {
 		this.model = model;
-		init();
+		initCheckboxes();
+		initRenderer();
+		initDataset();
 	}
 
 	@Override
 	public void axisChanged(AxisChangeEvent e) {
-		if (xAxis.isAutoRange()) {
-			xAxis.setRange(new Range(0, calcTmax()), true, false);
-		}
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				init();
+				initDataset();
 			}
 		});
 
