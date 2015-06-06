@@ -4,5 +4,6 @@
 \contentsline {section}{\numberline {3}Reflexion}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Arbeit}{5}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Sitzung}{5}{subsection.3.2}
-\contentsline {section}{\numberline {4}Schlusswort}{6}{section.4}
-\contentsline {section}{\numberline {5}Literaturverzeichnis}{6}{section.5}
+\contentsline {subsection}{\numberline {3.3}Organisation}{6}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Auftragskl\IeC {\"a}rung}{6}{subsection.3.4}
+\contentsline {section}{\numberline {4}Schlusswort}{7}{section.4}
