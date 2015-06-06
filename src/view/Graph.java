@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import model.Model;
 import model.RegelKreis;
@@ -17,22 +18,30 @@ import model.SchrittAntwort;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.event.AxisChangeEvent;
+import org.jfree.chart.event.AxisChangeListener;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.Range;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class Graph extends JPanel implements ActionListener {
+public class Graph extends JPanel implements ActionListener, AxisChangeListener {
 	private static final long serialVersionUID = 1L;
+
+	private Model model;
 
 	private final Vector<JCheckBox> ckbx_Graph;
 	private final JPanel pn_legend;
 	private ChartPanel pn_chart;
 	private XYItemRenderer renderer;
+	private ValueAxis xAxis;
 
 	public Graph(Model model) {
 		super();
+		this.model = model;
 
 		setLayout(new BorderLayout());
 
@@ -45,8 +54,12 @@ public class Graph extends JPanel implements ActionListener {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset,
 				PlotOrientation.VERTICAL, false, false, false);
-		XYPlot plot = (XYPlot) chart.getPlot();
+		XYPlot plot = chart.getXYPlot();
 		renderer = plot.getRenderer();
+		xAxis = plot.getDomainAxis();
+		xAxis.setRange(new Range(0, calcTmax()), true, false);
+		xAxis.addChangeListener(this);
+
 		plot.setBackgroundPaint(new Color(255, 255, 255));
 		plot.setDomainGridlinePaint(new Color(196, 196, 196));
 		plot.setRangeGridlinePaint(new Color(196, 196, 196));
@@ -54,17 +67,10 @@ public class Graph extends JPanel implements ActionListener {
 		pn_chart = new ChartPanel(chart);
 		add(pn_chart);
 
-		update(model);
+		init();
 	}
 
-	private void init(Model model) {
-		pn_legend.removeAll();
-		ckbx_Graph.clear();
-		XYSeriesCollection dataset = new XYSeriesCollection();
-
-		JFreeChart chart = pn_chart.getChart();
-		XYPlot plot = (XYPlot) chart.getPlot();
-
+	private double calcTmax() {
 		double tmax = 0;
 		for (RegelKreis rk : model.getAlleRegelkreise()) {
 			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
@@ -73,8 +79,21 @@ public class Graph extends JPanel implements ActionListener {
 				tmax = taus;
 			}
 		}
+		return tmax;
+	}
 
-		final int n = model.getAlleRegelkreise().size();
+	private void init() {
+		pn_legend.removeAll();
+		ckbx_Graph.clear();
+
+		XYSeriesCollection dataset = new XYSeriesCollection();
+
+		double tstart = xAxis.getRange().getLowerBound();
+		double tend = xAxis.getRange().getUpperBound();
+		double ymin = Double.MAX_VALUE;
+		double ymax = Double.MIN_VALUE;
+
+		int n = model.getAlleRegelkreise().size();
 		for (int i = 0; i < n; i++) {
 			RegelKreis rk = model.getAlleRegelkreise().get(i);
 
@@ -91,16 +110,23 @@ public class Graph extends JPanel implements ActionListener {
 			SchrittAntwort sa = rk.getTranferFunction().schrittantwort();
 			XYSeries ser = new XYSeries(3 * i);
 			for (int j = 0; j < 300; j++) {
-				double t = (double) j * tmax / 299;
+				double t = tstart + (tend - tstart) * j / 299;
 				double y = sa.getY(t);
+				if (y < ymin)
+					ymin = y;
+				if (y > ymax)
+					ymax = y;
 				ser.add(t, y);
 			}
+			ser.add(0, sa.getY(0));
+			ser.add(sa.getTymax(), sa.getYmax());
+			ser.add(sa.getTaus(), sa.getYend());
+
 			dataset.addSeries(ser);
 			renderer.setSeriesPaint(3 * i, color);
 			renderer.setSeriesStroke(3 * i, new BasicStroke(1.5f));
 
-			
-			XYSeries maxlabel = new XYSeries(3*i + 1, false);
+			XYSeries maxlabel = new XYSeries(3 * i + 1, false);
 			maxlabel.add(sa.getTymax(), 0);
 			maxlabel.add(sa.getTymax(), sa.getYmax());
 			maxlabel.add(0, sa.getYmax());
@@ -109,8 +135,8 @@ public class Graph extends JPanel implements ActionListener {
 			renderer.setSeriesStroke(3 * i + 1, new BasicStroke(1f,
 					BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f,
 					new float[] { 6.0f, 6.0f }, 0.0f));
-			
-			XYSeries tauslabel = new XYSeries(3*i + 2, false);
+
+			XYSeries tauslabel = new XYSeries(3 * i + 2, false);
 			tauslabel.add(sa.getTaus(), 0);
 			tauslabel.add(sa.getTaus(), sa.getY(sa.getTaus()));
 			dataset.addSeries(tauslabel);
@@ -118,9 +144,11 @@ public class Graph extends JPanel implements ActionListener {
 			renderer.setSeriesStroke(3 * i + 2, new BasicStroke(1f,
 					BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1.0f,
 					new float[] { 6.0f, 6.0f }, 0.0f));
-
 		}
+
+		XYPlot plot = pn_chart.getChart().getXYPlot();
 		plot.setDataset(dataset);
+
 		try {
 			getRootPane().revalidate();
 			getRootPane().repaint();
@@ -139,6 +167,21 @@ public class Graph extends JPanel implements ActionListener {
 	}
 
 	public void update(Model model) {
-		init(model);
+		this.model = model;
+		init();
+	}
+
+	@Override
+	public void axisChanged(AxisChangeEvent e) {
+		if (xAxis.isAutoRange()) {
+			xAxis.setRange(new Range(0, calcTmax()), true, false);
+		}
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				init();
+			}
+		});
+
 	}
 }
