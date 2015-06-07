@@ -1,15 +1,15 @@
 \section{Software}
 \textbf{Hinweise zur Benutzung}\\
 Der Fachbericht dient zur Erklärung des Aufbaus des Java Source Codes. Für eine Einführung in das Programm beachte man die Bedienungsanleitung im Anhang.\\
-\textit{JavaKlassenNamen} sind im Folgenden kursiv mit Grossbuchstaben geschrieben. Dagegen sind \textit{packages} kursiv und klein geschrieben. Die Klassen die im Text auf der rechten Seite besprochen werden sind in der Regel auf der linken Seite im in einem Ausschnitt vom Klassendiagramm vorhanden. Das gesamte Klassendiagramm findet sich im Anhang.\\
+\textit{JavaKlassenNamen} sind im Folgenden kursiv mit Grossbuchstaben geschrieben. Dagegen sind \textit{packages} kursiv und klein geschrieben. Das gesamte Klassendiagramm befindet sich im Anhang.\\
 Fett gedruckte Nummern (\textbf{1}) beziehen sich auf Elemente des GUIs. Eine Abbildung des GUIs mit Nummerierung findet sich am Ende der Bedienungsanleitung im Anhang.\\
 
 \textbf{Ziele}\\
-Ziel der Applikation ist die automatische Dimensionierung eines Reglers mit der Phasengangmethode von Prof. J. Zellweger. Weiter soll die Schrittantwort des gesamten Regelkreises ermittelt und visualisiert werden. Die Regelstrecke ist durch die Parameter $K_s$, $T_u$ und $T_g$ gegeben. Neben der Phasengangmethode sind auch Faustregeln zur Reglerdimensionierung anwendbar. Die berechneten Werte sowie die markanten Werte der Schrittantwort sollen als Text ausgegeben werden. Die Software verfügt weiter über die nützlichen Befehle Rückgängig und Wiederholen. Die eingegebenen Werte können gespeichert und geladen werden.\\
+Ziel der Applikation ist die automatische Dimensionierung eines Reglers mit der Phasengangmethode von Prof. J. Zellweger. Weiter soll die Schrittantwort des gesamten Regelkreises ermittelt und visualisiert werden. Die Regelstrecke ist durch die Parameter $K_s$, $T_u$ und $T_g$ gegeben. Neben der Phasengangmethode sind auch Faustregeln zur Reglerdimensionierung anwendbar. Die berechneten Werte sowie die markanten Werte der Schrittantwort sollen als Text ausgegeben werden. Die Software verfügt weiter über die nützlichen Befehle Rückgängig und Wiederholen. Die eingegebenen Werte können zudem gespeichert und geladen werden.\\
 
 \textbf{Aufbau und Packages}\\
 Die Applikation ist nach dem Model-View-Controller Architekturmuster aufgebaut. Wiedergespiegelt ist das in den drei Packages \textit{model}, \textit{view} und \textit{controller}.\\
-Das \textit{model} soll eine Repräsentation der mathematischen Objekte bieten. Die meisten enthaltenen Klassen sind für die Vermeidung von Aliasing-Problemen als unveränderlich gehalten.\\
+Das \textit{model} soll eine Abstraktion der mathematischen Objekte bieten. Die meisten enthaltenen Klassen sind für die Vermeidung von Aliasing-Problemen (Zugriff zweier Klassen auf die gleiche Instanz) als unveränderlich gehalten.\\
 Die Klassen zur Reglerdimensionierung sind für die bessere Kapselung im separaten Package \textit{model.dimensionierung} enthalten. Alle Klassen dieses Packages sind als unveränderlich gehalten.\\
 Das \textit{view} erzeugt die graphische Benutzeroberfläche mit den Daten des \textit{models}. Die Kommunikation zwischen \textit{view} und \textit{model} erfolgt mittels dem Observer Entwurfsmuster.\\
 Der \textit{controller} übernimmt die Steuerung der Applikation und die Ausführung der Befehle des Benutzers. 
@@ -25,12 +25,12 @@ Der Aufbau des Packages \textit{controller} ist in Abbildung \ref{packcontrl} er
 Der \textit{Controller} ist verantwortlich für die Steuerung der Applikation. Er besitzt für alle Befehle die der Benutzer im GUI tätigen kann eine Methode zur Modifizierung des \textit{Models}. Meldet das \textit{Model} beim Modifizieren einen Fehler informiert er den Benutzer mit der Methode displayError des \textit{Views}. Vor jeder Änderung des \textit{Models} speichert sich der \textit{Controller} eine Kopie davon. Dadurch ist es möglich alte Zustände wiederherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der \textit{Controller} für das Speichern und Laden zuständig. Dies funktioniert da das \textit{Model} das \textit{Serializable} Interface implementiert und der \textit{Controller} so die Daten mit einem \textit{ObjectOutputStream} in eine Datei schreiben bzw. mit einem \textit{ObjectInputStream} aus einer Datei laden kann.\\
 
 \textit{\textbf{PIDRechner}}\\
-Startpunkt der Applikation. Initialisiert \textit{Controller}, \textit{View} und \textit{Model}
+Diese Klasse ist der Startpunkt (main) der Applikation. Sie initialisiert \textit{Controller}, \textit{View} und \textit{Model}.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=1\textwidth]{packcontrl.png}
-\caption{Package Controller}
+\caption{Package \textit{controller}}
 \label{packcontrl}
 \end{figure}
 
@@ -39,7 +39,7 @@ Startpunkt der Applikation. Initialisiert \textit{Controller}, \textit{View} und
 Der Aufbau des Packages \textit{model} ist in Abbildung \ref{packmodel} ersichtlich.\\
 
 \textit{\textbf{Model}}\\
-\textit{Model} verwaltet die \textit{Regelstecke} und die verschiedenen \textit{Dimensionierungen}. Es bietet Zugriffsmethoden um die \textit{Regelstrecke} und \textit{Dimensionierungen} zu modifizieren. Auch kann es Dimensionierungsmethoden kopieren oder löschen.\\
+Das \textit{Model} verwaltet die \textit{Regelstecke} und die verschiedenen \textit{Dimensionierungen}. Es bietet Zugriffsmethoden um die \textit{Regelstrecke} und \textit{Dimensionierungen} zu modifizieren. Auch kann es Dimensionierungsmethoden kopieren oder löschen.\\
 
 \textit{\textbf{Regelkreis}}\\
 Die Klasse \textit{Regelkreis} dient zur Umwandlung der Übertragungsfunktionen (\textit{TransferFunction}) von Regelstrecke und Regler in die Übertragungsfunktion des ganzen Kreises.\\
@@ -62,7 +62,7 @@ Die Klasse \textit{Schrittantwort} stellt die Schrittantwort für ein lineares \
 \begin{figure}[p]
 \centering
 \includegraphics[width=1\textwidth]{packmodel.png}
-\caption{Package Model}
+\caption{Package \textit{model}}
 \label{packmodel}
 \end{figure}
 
@@ -71,7 +71,7 @@ Die Klasse \textit{Schrittantwort} stellt die Schrittantwort für ein lineares \
 Der Aufbau des Packages \textit{dimensionierung} ist in Abbildung \ref{packdim} ersichtlich.\\
 
 \textit{\textbf{Dimensionierung}}\\
-Diese Klasse ist ein tagged-Union der anderen Dimensionierungsarten. So bietet diese Klasse auch alle Methoden der anderen Dimensionierungsmethoden. Wird eine Methode bei einer falschen Variante verwendet, wirft die Klasse eine \textit{ClassCastException}. Der Typ (\textit{DimEnum}) kann mit der Methode setTyp gewechselt werden. Beim Wechseln zu der Manuellen Dimensionierungsmethode, werden die Werte des dimensionierten Reglers übernommen.\\
+Diese Klasse ist eine Auswahl der anderen Dimensionierungsarten, wobei immer nur eine Dimensionierungsart aktiv ist. So bietet diese Klasse auch alle Methoden der anderen Dimensionierungsmethoden. Wird eine Methode bei einer falschen Variante verwendet, wirft die Klasse eine \textit{ClassCastException}. Der Typ (\textit{DimEnum}) kann mit der Methode setTyp gewechselt werden. Beim Wechseln zu der Manuellen Dimensionierungsmethode, werden die Werte des dimensionierten Reglers übernommen.\\
 
 \textit{\textbf{DimEnum}}\\
 Dieser Enum dient zur Aufzählung aller Dimensionierungstypen. Er ordnet jedem Typ auch einen Text zu.\\
@@ -88,12 +88,12 @@ Hier steckt die Phasengangmethode zur Reglerdimensionierung. Die Beschreibung de
 \textit{\textbf{IterativDim}}\\
 Diese Methode führt die Phasengangmethode (\textit{ZellwegerDim}) mehrmals nacheinander aus und sucht mit einer binären Suchmethode nach dem gewünschten Überschwingen der Schrittantwort.\\
 
-Die anderen Klassen entsprechen den verschiedenen Faustregeln.
+Die restlichen Klassen entsprechen den verschiedenen Faustregeln.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=1\textwidth]{packdim.png}
-\caption{Package Dimensionierung}
+\caption{Package \textit{dimensionierung}}
 \label{packdim}
 \end{figure}
 
@@ -114,14 +114,14 @@ Der Aufbau des Packages \textit{view} ist in Abbildung \ref{packview} ersichtlic
 Dieses \textit{JPanel} visualisiert den Typ der Dimensionierungsmethode, deren Parameter und die Werte des daraus resultierenden \textit{Reglers}.\\
 
 \textit{\textbf{AnalyseView}}\\
-Zeigt die Eigenschaften einer \textit{Schrittantwort}.\\
+Listet die Eigenschaften Anstiegszeit ($T_{an}$), Ausschwingzeit ($T_{aus}$), Maximalwert ($Y_{max}$) und Zeitpunkt des Maximalwertes ($T_{Ymax}$) der \textit{Schrittantwort} auf.\\
 
 \textit{\textbf{Graph}}\\
-Zeichnet alle \textit{Schrittantworten} mit dem \textit{ChartPanel} von JFreeChart. Unter dem Graphen zeigt es weiter eine Legende. Die Zustände der \textit{Checkboxen} werden nur vom Graph selbst verwendet und nicht dem \textit{Controller} mitgeteilt.
+Zeichnet alle \textit{Schrittantworten} mit der Klasse \textit{ChartPanel} von JFreeChart. Unter dem Graphen zeigt es weiter eine Legende. Die Zustände der \textit{Checkboxen} werden nur vom Graph selbst verwendet und nicht dem \textit{Controller} mitgeteilt.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.9\textwidth]{packview.png}
-\caption{Package View}
+\caption{Package \textit{view}}
 \label{packview}
 \end{figure}

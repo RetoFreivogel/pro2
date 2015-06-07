@@ -1,5 +1,5 @@
 \section{Theoretische Grundlagen}
-Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus einem Regler und einer Regelstrecke. Beispiele einer Regelung sind Raumheizungen, Lötkolben oder Geschwindigkeitsregelungen.\newline 
+Eine Regelung (auch Regelkreis genannt) besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus einem Regler und einer Regelstrecke. Beispiele einer Regelung sind Raumheizungen, Lötkolben oder Geschwindigkeitsregelungen.\newline 
 
 \begin{figure}[h]
 \centering
@@ -10,7 +10,7 @@ Eine Regelung besteht, wie in Abbildung \ref{regelstrecke} zu sehen ist, aus ein
 %Quelle: http://rn-wissen.de/wiki/index.php/Datei:Regelkreis4.png [Abrufdatum 6.5.15]
 
 
-Ist eine Regelstrecke gegeben, im Falle eines Lötkolbens wäre dies die Distanz vom Heizelement bis zur Lötspitze, so muss ein dazu passender Regler dimensioniert werden. Reglerdimensionierungen können über das Auswerten der Schrittantwort der Regelstrecke durchgeführt werden. Um die Schrittantwort zu erhalten wird das Verhalten der Strecke aufgrund eines Schrittes der Eingangsgrösse gemessen. Für die Berechnungen werden die aus der Schrittantwort der Strecke ausgelesenen Kenngrössen Verzugszeit ($T_u$), Anstiegszeit ($T_g$) und Streckenbeiwert ($K_s$) verwendet. Zur Dimensionierung eines passenden Reglers existieren verschiedenste Methoden. Im Folgenden werden nun zwei Möglichkeiten genauer erläutert, wobei das Hauptaugenmerk auf der ersten Methode, der Phasengangmethode, liegt und die zweite, die Dimensionierung mittels gängigen Faustformeln, lediglich zum Vergleich durchgeführt wird.\newline
+Ist eine Regelstrecke gegeben, im Falle eines Lötkolbens wäre dies zum Beispiel die Distanz vom Heizelement bis zur Lötspitze, so muss ein dazu kompatibler Regler dimensioniert werden. Reglerdimensionierungen können über das Auswerten der Schrittantwort der Regelstrecke durchgeführt werden. Um die Schrittantwort zu erhalten wird das Verhalten der Ausgangsgrösse der Strecke aufgrund eines Schrittes der Eingangsgrösse gemessen. Für die Berechnungen werden die aus der Schrittantwort der Strecke ausgelesenen Kenngrössen Verzugszeit ($T_u$), Anstiegszeit ($T_g$) und Streckenbeiwert ($K_s$) verwendet. Zur Dimensionierung eines kompatiblen Reglers existieren verschiedenste Methoden. Im Folgenden werden nun zwei Möglichkeiten genauer erläutert, wobei das Hauptaugenmerk auf der ersten Methode, der Phasengangmethode, liegt und die zweite, die Dimensionierung mittels gängigen Faustformeln, lediglich zum Vergleich durchgeführt wird.\newline
 
 \newpage
 Die Kurve in Abbildung \ref{schrittantwort} stellt die Schrittantwort einer Regelstrecke dar. Daran angelegt ist die Wendetangente, die benötigt wird, um die Verzugs- und die Anstiegszeit messen zu können.\newline
@@ -23,7 +23,7 @@ Die Kurve in Abbildung \ref{schrittantwort} stellt die Schrittantwort einer Rege
 \end{figure}
 %Quelle: Skript Mathematisches Labor mlab Bürgi Solenicki
 
-Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte zu berechnen. Der PI-Regler hat die Kennwerte Nachstellzeit ($T_n$) und Reglerverstärkung ($K_R$), beim PID-Regler kommt noch die Vorhaltezeit ($T_v$) hinzu.
+Ziel ist es, PI- sowie PID-Regler zu dimensionieren, das heisst deren Kennwerte zu berechnen. Der PI-Regler hat die Kennwerte Nachstellzeit ($T_n$) und Reglerverstärkung ($K_R$), beim PID-Regler kommt noch die Vorhaltezeit ($T_v$)  und die parasitäre Zeitkonstante ($T_p$) hinzu.
 
 
 \subsection{Streckenanalyse}
@@ -62,7 +62,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{agangpi.png}
-\caption{Amplitudengang PI-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
+\caption{Amplitudengang eines PI-Reglers in Abhängigkeit der Kreisfrequenz $\omega$ (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpi}
 \end{figure}
 %Quelle: Zellwegerskript
@@ -70,7 +70,7 @@ Die Zeitkonstanten des zu dimensionierenden Reglers stehen in direktem Zusammenh
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{agangpid.png}
-\caption{Amplitudengang PID-Regler Amp($\omega$) (log. Darstellung) \cite{zellwegerpha}}
+\caption{Amplitudengang eines PID-Reglers in Abhängigkeit der Kreisfrequenz $\omega$ (log. Darstellung) \cite{zellwegerpha}}
 \label{agangpid}
 \end{figure}
 %Quelle: Zellwegerskript
@@ -118,7 +118,7 @@ Ein Dimensionierungskriterium der Phasengangmethode lautet, dass die Steigung de
 \frac{2\beta}{1+\beta^2} + \omega_{PID}\frac{d\varphi_{Strecke(\omega_{PID})}}{d\omega} = -0.5
 \end{align}\newline
 
-Da der Phasengang der Strecke und somit dessen Ableitung gegeben ist, kann durch Auflösen nach $\beta$ nun auch dieser Parameter ermittelt werden. Ergibt sich ein Wert grösser als eins oder imaginär, so wird $\beta$ als eins angenommen.
+Da der Phasengang der Strecke und somit dessen Ableitung gegeben ist, kann durch Auflösen nach $\beta$ nun auch dieser Parameter ermittelt werden. Ergibt sich ein Wert der grösser als eins oder komplexwertig ist, so wird $\beta$ als eins angenommen.
 
 Die Verstärkung des Reglers wird mit Hilfe des Phasenrands bestimmt. Der Phasenrand ist die Differenz der Streckenphase zu $-180^\circ$. Bei unterschiedlichem Phasenrand ergeben sich unterschiedliche Verstärkungsfaktoren, was auch auf das Überschwingen des Reglers Einfluss hat. Tabelle \ref{phasenrand} zeigt den Zusammenhang zwischen dem gewählten Phasenrand und dem daraus resultierenden Überschwingen der Regelung.\newline
 
@@ -310,7 +310,7 @@ s(t)=\int_0^t K\delta(\tau) d\tau + \sum_{i=1}^n \int_0^t R(i)*e^{P(i)\tau} d\ta
 
 Die Schrittantwort wird zusätzlich noch analysiert. Folgende Werte werden ausgewertet:
 \begin{itemize}
-\item Anregelzeit $T_{an}$:   Die Zeit, welche die Strecke benätigt bis der Sollwert das erste mal erreicht wird.
+\item Anregelzeit $T_{an}$:   Die Zeit, welche die Strecke benötigt bis der Sollwert das erste mal erreicht wird.
 \item Ausregelzeit $T_{aus}$:   Die Zeit, welche die Strecke benötigt bis die Strecke in einem gewissen Toleranzbereich einmündet, und diesen nicht wieder verlässt.
 \item Max. Überschwingen $Y_{max}$:   Der Wert an der Stelle, wo die Schrittantwort an meisten vom Sollwert abweicht.
 \end{itemize}
@@ -319,6 +319,8 @@ Die Schrittantwort wird zusätzlich noch analysiert. Folgende Werte werden ausge
 \subsubsection{Optimierungsmöglichkeiten}
 Falls die berechnete und dargestellte Schrittantwort der Regelung nicht der Vorstellung und den Ansprüchen des Nutzers entspricht, soll dieser die Möglichkeiten haben, die Schrittantwort nach seinen Anforderungen zu optimieren. Dazu gibt es verschiedene Möglichkeiten. 
 
-Einerseits kann der Regler durch seine Eigenschaften $K_R$, $T_n$ und $T_v$ modifiziert werden. Eine Schrittantwort durch die Veränderung dieser drei Eigenschaften zu optimieren ist äusserst schwierig. Dies erfordert grosses Wissen und viel Erfahrung in der Regelungstechnik, was einem weniger erfahrenen Nutzer die Optimierung nahezu verunmöglicht.
+Einerseits kann der Regler durch seine Eigenschaften $K_R$, $T_n$, $T_v$ und $T_p$ modifiziert werden. Eine Schrittantwort durch die Veränderung dieser drei Eigenschaften zu optimieren ist äusserst schwierig. Dies erfordert grosses Wissen und viel Erfahrung in der Regelungstechnik, was einem weniger erfahrenen Nutzer die Optimierung nahezu verunmöglicht.
 
-Es besteht jedoch die Möglichkeit die Optimierungen durch Verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich, dass der gewählte Phasenrand auf das Überschwingen Einfluss hat (siehe Kapitel \ref{phasenganggrundlagen}, S. \pageref{phasenrand}, Tabelle \ref{phasenrand}). Die Berechnung kann also mittels gewähltem Phasenrand solange optimiert werden, bis das Überschwingen der Schrittantwort den Anforderungen entspricht.
+Es besteht jedoch die Möglichkeit die Optimierungen durch Verändern gewisser Parameter in der Phasengangmethode durchzuführen. So ist es aus der Theorie ersichtlich, dass der gewählte Phasenrand auf das Überschwingen Einfluss hat (siehe Kapitel \ref{phasenganggrundlagen}, S. \pageref{phasenrand}, Tabelle \ref{phasenrand}). Die Berechnung kann also mittels gewähltem Phasenrand solange optimiert werden, bis das Überschwingen der Schrittantwort den Anforderungen entspricht. Dies erlaubt eine iterative Berechnung, welche nach Eingabe des gewünschten Überschwingens in Prozent, solange den Phasenrand verändert bis die Schrittantwort den Anforderungen entspricht.
+
+

@@ -14,7 +14,8 @@
 \usepackage{pdfpages}
 \bibliographystyle{IEEEtran}
 \usepackage{cite}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[nottoc, numbib]{tocbibind}
+
 
 \title{%
   \textsc{Reglerdimensionierung mit Hilfe der Schrittantwort}\\[2ex]
@@ -24,7 +25,7 @@
   \textsc{Projekt 2}\\
   \textsc{Team 1}}
 \date{%
-  \textsc{10.06.2015}}
+  \textsc{Windisch, 10.06.2015}}
 
 \begin{document}
 \maketitle
@@ -49,7 +50,7 @@ Studiengang: \>\>\> Elektro- und Informationstechnik
 \clearpage
 {\Large \textbf{Abstract}}
 
-Regler werden heutzutage oft mit grosszügigen Faustformeln dimensioniert. Für stabilere Regelungen kann die aufwändige Phasengangmethode angewendet werden. Das Ziel dieser Arbeit ist es mit einem Programm die Phasengangmethode stark zu vereinfachen. Die Vereinfachung besteht aus der Eingabe von Werten der identifizierten Strecke und gibt dimensionierte Werte aus. Zusätzlich kann das Programm die Resultate mit verschiedenen Faustformeln vergleichen. Der Fachbericht setzt sich zusammen aus einem mathematischen und einem programmtechnischen Teil. Der mathematische Abschnitt behandelt die Streckenanalyse, die Phasengangmethode und ihr Ablauf, die Übertragungsfunktion der Regler, die Schrittantwort der Regelung und die Optimierungsmöglichkeiten. Er geht auch auf die Dimensionierung mit Faustformeln ein. Der programmtechnische Bericht erläutert die Software, die Benutzerschnittstelle und die Anwendung von Model-View-Controller.
+Regler werden heutzutage oft mit simplen Faustformeln dimensioniert. Für stabilere Regelungen kann die aufwändigere Phasengangmethode angewendet werden. Das Ziel dieser Arbeit ist es mit einem Programm die Phasengangmethode zu automatisieren. Diese Automatisierung wurde im Programm implementiert. Zusätzlich kann das Programm die Resultate mit verschiedenen Faustformeln vergleichen. Der Fachbericht setzt sich zusammen aus einem mathematischen und einem programmtechnischen Teil. Der mathematische Abschnitt behandelt die Streckenanalyse, die Phasengangmethode und ihr Ablauf, die Übertragungsfunktion der Regler, die Schrittantwort der Regelung und die Optimierungsmöglichkeiten. Er geht auch auf die Dimensionierung mit Faustformeln ein. Der programmtechnische Bericht erläutert die Software, die Benutzerschnittstelle und die Anwendung von Model-View-Controller.
 
 
 \newpage
@@ -84,10 +85,6 @@ Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 \newpage
 \bibliography{literaturverzeichnis}
 
-\listoffigures
-
-\listoftables
-
 
 \newpage
 \section{Anhang}
@@ -101,7 +98,7 @@ Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 \end{itemize}
 \includepdf[pages=1-2]{Herleitungen_Anhang.pdf}
 \includepdf[pages=1-3]{Matlab_bsp_berechnung_Anhang.pdf}
-\includepdf[pages=1-2]{Bedienungsanleitung.pdf} 
+\includepdf[pages=1-3]{Bedienungsanleitung.pdf} 
 
 
 \end{document}

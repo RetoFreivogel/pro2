@@ -1,9 +1,9 @@
 \select@language {ngerman}
 \contentsline {figure}{\numberline {1}{\ignorespaces Regelung bestehend aus Regler und Regelstrecke \cite {rnwissen}\relax }}{7}{figure.caption.2}
 \contentsline {figure}{\numberline {2}{\ignorespaces Schrittantwort einer Regelstrecke \cite {solenicki}\relax }}{8}{figure.caption.3}
-\contentsline {figure}{\numberline {3}{\ignorespaces Amplitudengang PI-Regler Amp($\omega $) (log. Darstellung) \cite {zellwegerpha}\relax }}{9}{figure.caption.4}
-\contentsline {figure}{\numberline {4}{\ignorespaces Amplitudengang PID-Regler Amp($\omega $) (log. Darstellung) \cite {zellwegerpha}\relax }}{10}{figure.caption.5}
-\contentsline {figure}{\numberline {5}{\ignorespaces Package Controller\relax }}{18}{figure.caption.12}
-\contentsline {figure}{\numberline {6}{\ignorespaces Package Model\relax }}{20}{figure.caption.13}
-\contentsline {figure}{\numberline {7}{\ignorespaces Package Dimensionierung\relax }}{22}{figure.caption.14}
-\contentsline {figure}{\numberline {8}{\ignorespaces Package View\relax }}{24}{figure.caption.15}
+\contentsline {figure}{\numberline {3}{\ignorespaces Amplitudengang eines PI-Reglers in Abh\IeC {\"a}ngigkeit der Kreisfrequenz $\omega $ (log. Darstellung) \cite {zellwegerpha}\relax }}{9}{figure.caption.4}
+\contentsline {figure}{\numberline {4}{\ignorespaces Amplitudengang eines PID-Reglers in Abh\IeC {\"a}ngigkeit der Kreisfrequenz $\omega $ (log. Darstellung) \cite {zellwegerpha}\relax }}{10}{figure.caption.5}
+\contentsline {figure}{\numberline {5}{\ignorespaces Package \textit {controller}\relax }}{18}{figure.caption.12}
+\contentsline {figure}{\numberline {6}{\ignorespaces Package \textit {model}\relax }}{20}{figure.caption.13}
+\contentsline {figure}{\numberline {7}{\ignorespaces Package \textit {dimensionierung}\relax }}{22}{figure.caption.14}
+\contentsline {figure}{\numberline {8}{\ignorespaces Package \textit {view}\relax }}{24}{figure.caption.15}
