@@ -19,7 +19,7 @@ Der \textit{controller} übernimmt die Steuerung der Applikation und die Ausfüh
 \subsection{Packages und seine Klassen}
 
 \subsubsection{Klassen des Packages \textit{controller}}
-Der Aufbau des Packages Controller ist in Abbildung \ref{packcontrl} ersichtlich.\\
+Der Aufbau des Packages \textit{controller} ist in Abbildung \ref{packcontrl} ersichtlich.\\
 
 \textit{\textbf{Controller}}\\
 Der \textit{Controller} ist verantwortlich für die Steuerung der Applikation. Er besitzt für alle Befehle die der Benutzer im GUI tätigen kann eine Methode zur Modifizierung des \textit{Models}. Meldet das \textit{Model} beim Modifizieren einen Fehler informiert er den Benutzer mit der Methode displayError des \textit{Views}. Vor jeder Änderung des \textit{Models} speichert sich der \textit{Controller} eine Kopie davon. Dadurch ist es möglich alte Zustände wiederherzustellen und die Befehle Rückgängig und Wiederholen zu unterstützen. Weiter ist der \textit{Controller} für das Speichern und Laden zuständig. Dies funktioniert da das \textit{Model} das \textit{Serializable} Interface implementiert und der \textit{Controller} so die Daten mit einem \textit{ObjectOutputStream} in eine Datei schreiben bzw. mit einem \textit{ObjectInputStream} aus einer Datei laden kann.\\

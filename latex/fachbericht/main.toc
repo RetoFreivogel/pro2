@@ -19,4 +19,6 @@
 \contentsline {section}{\numberline {4}Schlusswort}{25}{section.4}
 \contentsline {section}{\numberline {5}Ehrlichkeitserkl\IeC {\"a}rung}{26}{section.5}
 \contentsline {section}{\numberline {6}Literatur}{27}{section.6}
+\contentsline {section}{Abbildungsverzeichnis}{27}{section*.16}
+\contentsline {section}{Tabellenverzeichnis}{27}{section*.17}
 \contentsline {section}{\numberline {7}Anhang}{28}{section.7}
