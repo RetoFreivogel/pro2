@@ -57,7 +57,7 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 		XYPlot plot = chart.getXYPlot();
 		renderer = plot.getRenderer();
 		xAxis = plot.getDomainAxis();
-		xAxis.setRange(new Range(0, calcTmax()), true, false);
+		xAxis.setRange(new Range(0, calcTmax()), false, false);
 		xAxis.addChangeListener(this);
 
 		plot.setBackgroundPaint(new Color(255, 255, 255));
