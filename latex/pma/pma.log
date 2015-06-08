@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  7 JUN 2015 15:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 JUN 2015 10:57
 entering extended mode
 **pma.tex
 (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.tex
@@ -1271,12 +1271,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--12
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 15--18
+Underfull \hbox (badness 10000) in paragraph at lines 14--18
 
  []
 
-) [6] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma_schlusswort.tex
-) [7]
+[6]) (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\schlusswort.tex)
+[7]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
  (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.aux)
@@ -1288,12 +1288,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
  ) 
 Here is how much of TeX's memory you used:
  19314 strings out of 493921
- 358715 string characters out of 3144874
- 419825 words of memory out of 3000000
+ 358703 string characters out of 3144874
+ 418825 words of memory out of 3000000
  22217 multiletter control sequences out of 15000+200000
  58085 words of font info for 42 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,18n,54p,2256b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,18n,54p,1900b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
@@ -1301,7 +1301,7 @@ MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
 lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pf
 b>
-Output written on pma.pdf (7 pages, 457654 bytes).
+Output written on pma.pdf (7 pages, 457802 bytes).
 PDF statistics:
  125 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)
