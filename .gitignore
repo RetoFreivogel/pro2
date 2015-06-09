@@ -1,5 +1,4 @@
 bin/
-doc/
 latex/fachbericht/fachbericht.pdf
 *.aux
 *.log
