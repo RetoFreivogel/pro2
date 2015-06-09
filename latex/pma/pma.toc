@@ -1,9 +1,9 @@
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
-\contentsline {section}{\numberline {2}Analyse der Erfahrung}{3}{section.2}
+\contentsline {section}{\numberline {2}Analyse der Erfahrung}{4}{section.2}
 \contentsline {section}{\numberline {3}Reflexion}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Arbeit}{5}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Sitzung}{5}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Organisation}{6}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.2}Organisation}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Sitzung}{6}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Auftragskl\IeC {\"a}rung}{6}{subsection.3.4}
 \contentsline {section}{\numberline {4}Schlusswort}{7}{section.4}

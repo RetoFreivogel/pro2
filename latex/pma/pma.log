@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  5 JUN 2015 16:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  9 JUN 2015 16:14
 entering extended mode
 **pma.tex
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.tex
@@ -1156,7 +1156,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-<fhnwlogo.pdf, id=42, 183.81773pt x 28.4543pt>
+<fhnwlogo.pdf, id=38, 183.81773pt x 28.4543pt>
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
 Package pdftex.def Info: fhnwlogo.pdf used on input line 25.
@@ -1206,50 +1206,16 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [2
 
 ]
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_einleitung.tex
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 3.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-))
+(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_einleitung.tex)
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_analysedererfahrung.tex
-<Visio-pmaFishbone.pdf, id=81, 845.1575pt x 597.23125pt>
+<Visio-pmaFishbone.pdf, id=76, 597.432pt x 844.95674pt>
 File: Visio-pmaFishbone.pdf Graphic file (type pdf)
 
 <use Visio-pmaFishbone.pdf>
-Package pdftex.def Info: Visio-pmaFishbone.pdf used on input line 6.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
- <use Visio-pmaFishbone.pdf>
-Package pdftex.def Info: Visio-pmaFishbone.pdf used on input line 6.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
- [3]
-<Visio-pmaFishbone.pdf, id=89, page=1, 845.1575pt x 597.23125pt>
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
-
-<use Visio-pmaFishbone.pdf, page 1>
-Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
-(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
- <use Visio-pmaFishbone.pdf, page 1>
-Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
-
-<use Visio-pmaFishbone.pdf, page 1>
-Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
- <use Visio-pmaFishbone.pdf, page 1>
-Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
-File: Visio-pmaFishbone.pdf Graphic file (type pdf)
-
-<use Visio-pmaFishbone.pdf, page 1>
-Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
-(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
- [4 <C:/Users/Claudius/Documents/GitHub/pro2/latex/pma/Visio-pmaFishbone.pdf, p
-age is rotated 90 degrees>])
+Package pdftex.def Info: Visio-pmaFishbone.pdf used on input line 7.
+(pdftex.def)             Requested size: 448.0729pt x 633.716pt.
+ [3]) [4 <C:/Users/Claudius/Documents/GitHub/pro2/latex/pma/Visio-pmaFishbone.p
+df, page is rotated 270 degrees>]
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_reflexion.tex [5])
 [6] (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_schlusswort.tex)
 [7]
@@ -1258,37 +1224,28 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
  (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
-
-
-Package rerunfilecheck Warning: File `pma.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `pma.out':
-(rerunfilecheck)             Before: BD9D6C26941E4E74C1241DE1C750E4CC;520
-(rerunfilecheck)             After:  BF40760A8383ABFBB49EB2B5F3955C21;462.
+Package rerunfilecheck Info: File `pma.out' has not changed.
+(rerunfilecheck)             Checksum: 50B280D91C5D0D02AC608482B7AB1F4C;462.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
  ) 
 Here is how much of TeX's memory you used:
- 19349 strings out of 493921
- 359535 string characters out of 3144866
+ 19315 strings out of 493921
+ 358598 string characters out of 3144866
  420815 words of memory out of 3000000
- 22246 multiletter control sequences out of 15000+200000
- 54187 words of font info for 42 fonts, out of 3000000 for 9000
+ 22216 multiletter control sequences out of 15000+200000
+ 58085 words of font info for 42 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,18n,54p,2196b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section.5} has been referenced but does not exist
-, replaced by a fixed one
-
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro1
-0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on pma.pdf (7 pages, 443403 bytes).
+ 55i,7n,54p,2256b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
+lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pf
+b>
+Output written on pma.pdf (7 pages, 548366 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 134 PDF objects out of 1000 (max. 8388607)
+ 17 named destinations out of 1000 (max. 500000)
+ 87 words of extra memory for PDF output out of 10000 (max. 10000000)
 
