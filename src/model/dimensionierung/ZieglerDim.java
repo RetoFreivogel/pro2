@@ -3,7 +3,11 @@ package model.dimensionierung;
 import model.RegelStrecke;
 import model.Regler;
 
-
+/**
+ * Reglerdimensionierung nach Ziegler
+ * @author Claudius Jörg, Reto Freivogel
+ *
+ */
 final class ZieglerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 

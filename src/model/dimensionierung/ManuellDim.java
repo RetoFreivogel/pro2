@@ -3,6 +3,11 @@ package model.dimensionierung;
 import model.RegelStrecke;
 import model.Regler;
 
+/**
+ * Manuelle Dimensionierung die einfach Werte speichert um den Regler zu dimensionieren.
+ * @author Reto Freivogel
+ *
+ */
 class ManuellDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 	

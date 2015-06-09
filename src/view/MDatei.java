@@ -11,7 +11,11 @@ import javax.swing.KeyStroke;
 
 import controller.Controller;
 
-
+/**
+ * Menü Datei der Applikation
+ * @author Alex Stocker, Reto Freivogel
+ *
+ */
 public class MDatei extends JMenu implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;

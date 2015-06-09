@@ -16,6 +16,11 @@ import controller.Controller;
 import model.RegelKreis;
 import model.SchrittAntwort;
 
+/**
+ * Ansicht zur Darstellung der Eigenschaften einer Schrittantwort
+ * @author Reto Freivogel, Alex Stocker
+ *
+ */
 public class AnalyseView extends JPanel implements FocusListener{
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +29,11 @@ public class AnalyseView extends JPanel implements FocusListener{
 	private JFormattedTextField tf_Tan;
 	private JFormattedTextField tf_Taus;
 	
+	/**
+	 * Erstellt eine neue Ansicht
+	 * @param regelkreis Der Regelkreis von dem die Schrittantwort gebildet wird.
+	 * @param controller Referenz auf den Controller der Applikation
+	 */
 	public AnalyseView(RegelKreis regelkreis, Controller controller) {
 		super();
 		
@@ -53,7 +63,7 @@ public class AnalyseView extends JPanel implements FocusListener{
 		tf_Tan.addFocusListener(this);		
 		add(tf_Tan);
 
-		JLabel lb_Taus = new JLabel("Taus");
+		JLabel lb_Taus = new JLabel("Taus 0.1%");
 		add(lb_Taus);
 		tf_Taus = new JFormattedTextField(new LowercaseDecimalFormatter());
 		tf_Taus.setEditable(false);
@@ -63,6 +73,10 @@ public class AnalyseView extends JPanel implements FocusListener{
 		update(regelkreis);
 	}
 
+	/**
+	 * Aktualisiert die Ansicht
+	 * @param regelkreis Der Regelkreis mit den neuen Werten
+	 */
 	public void update(RegelKreis regelkreis) {
 		SchrittAntwort sa = regelkreis.getTranferFunction().schrittantwort();
 		tf_Tymax.setValue(sa.getTymax());		

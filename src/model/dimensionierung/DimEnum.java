@@ -1,5 +1,10 @@
 package model.dimensionierung;
 
+/**
+ * Enum zur Unterscheidung von Dimensionierungsarten
+ * @author Reto Freivogel
+ *
+ */
 public enum DimEnum {
 	MANUELL("Manuell"), 
 	ZELLWEGER("Phasengang"),

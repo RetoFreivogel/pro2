@@ -22,6 +22,11 @@ import javax.swing.text.JTextComponent;
 import controller.Controller;
 import model.RegelStrecke;
 
+/**
+ * Ansicht zur Darstellung der Parameter einer Regelstrecke
+ * @author Reto Freivogel, Alex Stocker
+ *
+ */
 public class RegelStreckeView extends JPanel implements PropertyChangeListener,
 		FocusListener, ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -36,6 +41,11 @@ public class RegelStreckeView extends JPanel implements PropertyChangeListener,
 	private final JCheckBox cb_show;
 	private final JFormattedTextField[] tf_T = new JFormattedTextField[8];
 
+	/**
+	 * Erstellt eine neue Ansicht
+	 * @param regelstrecke Die Regelstrecke die dargestellt werden soll.
+	 * @param controller Referenz auf den Controller.
+	 */
 	public RegelStreckeView(RegelStrecke regelstrecke, Controller controller) {
 		super();
 		this.controller = controller;
@@ -98,6 +108,10 @@ public class RegelStreckeView extends JPanel implements PropertyChangeListener,
 		tf_tg.removePropertyChangeListener("value", this);
 	}
 
+	/**
+	 * Aktualisiert die Anzeige
+	 * @param regelstrecke Die Regelstrecke mit den neuen Werten
+	 */
 	public void update(RegelStrecke regelstrecke) {
 		disableEvents();
 		this.regelstrecke = regelstrecke;

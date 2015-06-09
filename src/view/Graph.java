@@ -28,6 +28,11 @@ import org.jfree.data.Range;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+/**
+ * Ansicht zum plotten von mehreren Schrittantworten
+ * @author Reto Freivogel
+ *
+ */
 public class Graph extends JPanel implements ActionListener, AxisChangeListener {
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +44,10 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 	private XYItemRenderer renderer;
 	private ValueAxis xAxis;
 
+	/**
+	 * Erstellt eine neue Ansicht
+	 * @param model Das Model mit den Regelkreisen
+	 */
 	public Graph(Model model) {
 		super();
 		this.model = model;
@@ -191,6 +200,10 @@ public class Graph extends JPanel implements ActionListener, AxisChangeListener 
 		initCheckboxes();
 	}
 
+	/**
+	 * Aktualisiert die Ansicht
+	 * @param model Das Model mit den neuen Werten.
+	 */
 	public void update(Model model) {
 		this.model = model;
 		initCheckboxes();

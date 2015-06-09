@@ -3,6 +3,11 @@ package model.dimensionierung;
 import model.RegelStrecke;
 import model.Regler;
 
+/**
+ * Chiens - Dimensionierungsmethode
+ * @author Claudius Jörg, Reto Freivogel
+ *
+ */
 final class ChiensDim extends AbstractDim{
 	private static final long serialVersionUID = 1L;
 

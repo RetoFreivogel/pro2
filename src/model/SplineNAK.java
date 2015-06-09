@@ -1,6 +1,8 @@
 package model;
-// Source: http://www.pcs.cnu.edu/~bbradie/cpp/interp.C
 
+/**
+ * Source: http://www.pcs.cnu.edu/~bbradie/cpp/interp.C
+ */
 public class SplineNAK {
 
 	public static void tridiagonal(int n, double[] c, double[] a, double[] b,
@@ -22,54 +24,37 @@ public class SplineNAK {
 	}
 
 	/**
-	 * <pre>
-	 *     PURPOSE:
-	 *          determine the coefficients for the 'not-a-knot'
-	 *          cubic spline for a given set of data
+	 * PURPOSE: determine the coefficients for the 'not-a-knot' cubic spline for
+	 * a given set of data
 	 * 
 	 * 
-	 *     CALLING SEQUENCE:
-	 *          cubic_nak ( n, x, f, b, c, d );
+	 * CALLING SEQUENCE: cubic_nak ( n, x, f, b, c, d );
 	 * 
+	 * REMARK: remember that the constant terms in the cubic spline are given by
+	 * the function values being interpolated; i.e., the contents of the f array
+	 * are the constant terms
 	 * 
-	 *     INPUTS:
-	 *          n	number of interpolating points
-	 *          x	array containing interpolating points
-	 *          f	array containing function values to
-	 * 			    be interpolated;  f[i] is the function
-	 * 			    value corresponding to x[i]
-	 *          b	array of size at least n; contents will
-	 * 			    be overwritten
-	 *          c	array of size at least n; contents will
-	 * 			    be overwritten
-	 *          d	array of size at least n; contents will
-	 * 			    be overwritten
+	 * to evaluate the cubic spline, use the routine 'spline_eval'
 	 * 
-	 *     OUTPUTS:
-	 *          b	coefficients of linear terms in cubic 
-	 * 			    spline
-	 * 	  	    c	coefficients of quadratic terms in
-	 * 			    cubic spline
-	 * 	        d	coefficients of cubic terms in cubic
-	 * 			    spline
-	 * 
-	 *     REMARK:
-	 *          remember that the constant terms in the cubic spline
-	 *          are given by the function values being interpolated;
-	 *          i.e., the contents of the f array are the constant
-	 *          terms
-	 * 
-	 *          to evaluate the cubic spline, use the routine
-	 *          'spline_eval'
-	 * 
-	 * </pre>
 	 * 
 	 * @param n
+	 *            number of interpolating points
 	 * @param x
+	 *            array containing interpolating points
 	 * @param f
+	 *            array containing function values to be interpolated; f[i] is
+	 *            the function value corresponding to x[i]
 	 * @param b
+	 *            coefficients of linear terms in cubic spline. array of size at
+	 *            least n; contents will be overwritten
 	 * @param c
+	 *            coefficients of quadratic terms in cubic spline. array of size
+	 *            at least n; contents will be overwritten
 	 * @param d
+	 *            coefficients of cubic terms in cubic spline. array of size at
+	 *            least n; contents will be overwritten
+	 * 
+	 * 
 	 */
 	public static void cubic_nak(int n, double[] x, double[] f, double[] b,
 			double[] c, double[] d)
@@ -113,53 +98,47 @@ public class SplineNAK {
 	}
 
 	/**
-	 * <pre>
-	 * 	     PURPOSE:
-	 * 	          evaluate a cubic spline at a single value of 
-	 * 	          the independent variable given the coefficients of
-	 * 	          the cubic spline interpolant (obtained from 
-	 * 	          'cubic_nak' or 'cubic_clamped')
+	 * 
+	 * PURPOSE: evaluate a cubic spline at a single value of the independent
+	 * variable given the coefficients of the cubic spline interpolant (obtained
+	 * from 'cubic_nak' or 'cubic_clamped')
 	 * 
 	 * 
-	 * 	     CALLING SEQUENCE:
-	 * 	          y = spline_eval ( n, x, f, b, c, d, t );
-	 * 	          spline_eval ( n, x, f, b, c, d, t );
+	 * CALLING SEQUENCE: y = spline_eval ( n, x, f, b, c, d, t ); spline_eval (
+	 * n, x, f, b, c, d, t );
 	 * 
 	 * 
-	 * 	     INPUTS:
-	 * 	          n		number of interpolating points
-	 * 	          x		array containing interpolating points
-	 * 	          f		array containing the constant terms from 
-	 * 				the cubic spline (obtained from 'cubic_nak'
-	 * 				or 'cubic_clamped')
-	 * 	          b		array containing the coefficients of the
-	 * 				linear terms from the cubic spline 
-	 * 				(obtained from 'cubic_nak' or 'cubic_clamped')
-	 * 	          c		array containing the coefficients of the
-	 * 				quadratic terms from the cubic spline 
-	 * 				(obtained from 'cubic_nak' or 'cubic_clamped')
-	 * 	          d		array containing the coefficients of the
-	 * 				cubic terms from the cubic spline 
-	 * 				(obtained from 'cubic_nak' or 'cubic_clamped')
-	 * 	          t		value of independent variable at which
-	 * 				the interpolating polynomial is to be
-	 * 				evaluated
-	 * 
-	 * 
-	 * 	     OUTPUTS:
-	 * 	          y		value of cubic spline at the specified 
-	 * 				value of the independent variable
-	 * 
-	 * </pre>
 	 * 
 	 * @param n
+	 *            number of interpolating points
 	 * @param x
+	 *            array containing interpolating points
 	 * @param f
+	 *            array containing the constant terms from the cubic spline
+	 *            (obtained from 'cubic_nak' or 'cubic_clamped')
 	 * @param b
+	 *            array containing the coefficients of the linear terms from the
+	 *            cubic spline (obtained from 'cubic_nak' or 'cubic_clamped')
 	 * @param c
+	 *            array containing the coefficients of the quadratic terms from
+	 *            the cubic spline (obtained from 'cubic_nak' or
+	 *            'cubic_clamped')
 	 * @param d
+	 *            array containing the coefficients of the cubic terms from the
+	 *            cubic spline (obtained from 'cubic_nak' or 'cubic_clamped')
 	 * @param t
-	 * @return
+	 *            value of independent variable at which the interpolating
+	 *            polynomial is to be evaluated
+	 * 
+	 * 
+	 * 
+	 * @return value of cubic spline at the specified value of the independent
+	 *         variable
+	 * 
+	 *
+	 * 
+	 * 
+	 * 
 	 */
 	public static double spline_eval(int n, double[] x, double[] f, double[] b,
 			double[] c, double[] d, double t) {
@@ -181,4 +160,3 @@ public class SplineNAK {
 		return (t);
 	}
 }
-

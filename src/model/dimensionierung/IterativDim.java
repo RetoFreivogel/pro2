@@ -4,6 +4,11 @@ import model.RegelKreis;
 import model.RegelStrecke;
 import model.Regler;
 
+/**
+ * Iterative Dimensionierung bei der nach dem Überschwingen gesucht wird.
+ * @author Reto Freivogel
+ *
+ */
 class IterativDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 	

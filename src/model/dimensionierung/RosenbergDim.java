@@ -3,6 +3,11 @@ package model.dimensionierung;
 import model.RegelStrecke;
 import model.Regler;
 
+/**
+ * Reglerdimensionierung nach Rosenberg
+ * @author Dennis Stampfli, Reto Freivogel
+ *
+ */
 final class RosenbergDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 
