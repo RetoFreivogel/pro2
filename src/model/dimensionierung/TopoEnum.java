@@ -1,5 +1,10 @@
 package model.dimensionierung;
 
+/**
+ * Enum zur Unterscheidung von den Topologien
+ * @author Reto Freivogel
+ *
+ */
 public enum TopoEnum {
 	P("P"),
 	PI("PI"),

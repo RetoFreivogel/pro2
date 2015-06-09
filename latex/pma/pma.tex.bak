@@ -1,0 +1,64 @@
+\documentclass{fhnwreport}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\usepackage{lmodern}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{textcomp}
+
+\bibliographystyle{unsrt}
+
+\title{%
+  \textsc{Projekt 2}\\[2ex]
+  \textsc{Post-Mortum-Analyse}}
+\author{%
+  \textsc{Team 1}}
+\date{%
+  \textsc{Windisch, 10.06.2015}}
+
+\begin{document}
+\maketitle
+
+\vfill
+
+\textsc{%
+\begin{tabbing}
+Auftraggeber: \hspace{4em} \=  Peter Niklaus \\[2ex]
+Betreuer:  \>  Pascal Buchschacher, Anita Gertiser \\[2ex]
+Experten:  \>  Peter Niklaus, Richard Gut \\[2ex]
+Team:  \> Alexander Stocker \\ 
+\> Claudius Joerg \\
+\> Denis Stampfli \\
+\> Martin Moser \\
+\> Reto Freivogel \\
+\> Yohannes Measho \\ [2ex]
+Studiengang: \> Elektro- und Informationstechnik
+\end{tabbing}}
+
+\clearpage
+
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+
+\input{pma_einleitung}
+
+\section{Analyse der Erfahrung}
+
+\input{pma_analysedererfahrung}
+
+\section{Reflexion}
+
+\input{pma_reflexion}
+
+\section{Schlusswort}
+
+\input{schlusswort}
+
+\end{document}
+

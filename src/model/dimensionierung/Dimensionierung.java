@@ -3,6 +3,11 @@ package model.dimensionierung;
 import model.RegelStrecke;
 import model.Regler;
 
+/**
+ * Eine Art tagged-Union der anderen Dimensionierungsarten.
+ * @author Reto Freivogel
+ *
+ */
 public final class Dimensionierung extends AbstractDim{
 	private static final long serialVersionUID = 1L;
 	
@@ -13,6 +18,12 @@ public final class Dimensionierung extends AbstractDim{
 		this.dim = (AbstractDim) dim.copy();
 	}
 	
+	/**
+	 * Erstellt eine neue Dimensionierung
+	 * Die Werte der speziellen Dimensionierungen werden auf Standardwerte geladen
+	 * @param typ Der Typ der Dimesionierung 
+	 * @param topo Die Topologie des zu dimensionierenden Reglers
+	 */
 	public Dimensionierung(DimEnum typ, TopoEnum topo) {
 		super(topo);
 		switch(typ){

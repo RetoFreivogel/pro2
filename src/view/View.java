@@ -13,6 +13,11 @@ import javax.swing.JPanel;
 import model.Model;
 import controller.Controller;
 
+/**
+ * Das View der Applikation
+ * @author Reto Freivogel, Alex Stocker
+ *
+ */
 public class View extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +28,12 @@ public class View extends JPanel implements Observer{
 
 	private Controller controller;
 	
+	/**
+	 * Erstellt ein neues View
+	 * @param model Das Model mit den Werten
+	 * @param controller Referenz auf den Controller zur übergabe von Befehlen
+	 * @param frame Der umgebende Frame der das View enthalten soll.
+	 */
 	public View(Model model, Controller controller, JFrame frame) {
 		super();
 		this.controller = controller;
@@ -60,12 +71,19 @@ public class View extends JPanel implements Observer{
 		frame.setJMenuBar(menuBar);
 	}
 
+	/**
+	 * Zeigt eine Fehlermeldung in der Statuszeile
+	 * @param message Die Meldung
+	 */
 	public void displayError(String message) {
 		lblStatus.setText(message);
 		lblStatus.setOpaque(true);
 		lblStatus.setBackground(new Color(240, 120, 120));
 	}
 	
+	/**
+	 * Löscht die Fehlermeldung und versteckt die Statuszeile 
+	 */
 	public void clearError() {
 		lblStatus.setText("");
 		lblStatus.setBackground(new Color(240, 240, 240));
@@ -77,6 +95,10 @@ public class View extends JPanel implements Observer{
 		pn_graph.update(model);
 	}
 
+	/**
+	 * Wechselt das Model auf eine andere Instanz
+	 * @param model Das neue Model
+	 */
 	public void setModel(Model model) {
 		this.model.deleteObserver(this);
 		this.model = model;

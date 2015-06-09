@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Sani Methode zur Approximierung einer Regelstrecke mittels Schrittantwort
+ * @author Reto Freivogel, Dennis Stampfli, Richard Gut
+ *
+ */
 public class SaniApprox {
 	private static final double[][] T_Tg = {
 			{ 9.9925000e-01, 9.2210509e-01, 8.7273785e-01, 8.3346151e-01,

@@ -2,10 +2,19 @@ package model;
 
 import model.dimensionierung.TopoEnum;
 
+/**
+ * Ein P, PI oder PID-T Regler
+ * @author Reto Freivogel
+ *
+ */
 public final class Regler implements RegelGlied {
 	private final TopoEnum topo;
 	private final double kr, tn, tv, tp;
 
+	/**
+	 * Erzeugt einen neuen P Regler
+	 * @param kr Die Reglerverstärkung des Reglers
+	 */
 	public Regler(double kr) {
 		if(kr <= 0){
 			throw new IllegalArgumentException("kr muss positiv sein");
@@ -17,6 +26,11 @@ public final class Regler implements RegelGlied {
 		this.tp = 0.1;
 	}
 	
+	/**
+	 * Erzeugt einen neuen PI Regler
+	 * @param kr Die Reglerverstärkung des Reglers
+	 * @param tn Die Nachstellzeit des Reglers
+	 */
 	public Regler(double kr, double tn) {
 		if(kr <= 0){
 			throw new IllegalArgumentException("kr muss positiv sein");
@@ -32,6 +46,12 @@ public final class Regler implements RegelGlied {
 		this.tp = 0.1;
 	}
 	
+	/**
+	 * Erzeugt einen neuen PID-T Regler bei der tp = tv / 100 ist.
+	 * @param kr Die Reglerverstärkung des Reglers
+	 * @param tn Die Nachstellzeit des Reglers
+	 * @param tv Die Vorhaltezeit des Reglers
+	 */
 	public Regler(double kr, double tn, double tv) {
 		if(kr <= 0){
 			throw new IllegalArgumentException("kr muss positiv sein");
@@ -50,6 +70,13 @@ public final class Regler implements RegelGlied {
 		this.tp = tv / 100;
 	}
 
+	/**
+	 * Erzeugt einen neuen PID-T Regler.
+	 * @param kr Die Reglerverstärkung des Reglers
+	 * @param tn Die Nachstellzeit des Reglers
+	 * @param tv Die Vorhaltezeit des Reglers
+	 * @param tp Die parasitäre Zeitkonstante des Reglers
+	 */
 	public Regler(double kr, double tn, double tv, double tp) {
 		if(kr <= 0){
 			throw new IllegalArgumentException("kr muss positiv sein");
@@ -73,60 +100,44 @@ public final class Regler implements RegelGlied {
 		this.tp = tp;
 	}
 
+	/**
+	 * Gibt die Topologie des Reglers zurück
+	 * @return Die Topologie
+	 */
 	public TopoEnum getTopo() {
 		return topo;
 	}
 
+	/**
+	 * Gibt Kr zurück
+	 * @return Kr
+	 */
 	public double getKr() {
 		return kr;
 	}
 
+	/**
+	 * Gibt Tn zurück
+	 * @return Tn
+	 */
 	public double getTn() {
 		return tn;
 	}
 
+	/**
+	 * Gibt Tv zurück
+	 * @return Tv
+	 */
 	public double getTv() {
 		return tv;
 	}
 
+	/**
+	 * Gibt Tp zurück
+	 * @return Tp
+	 */
 	public double getTp() {
 		return tp;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(kr);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tn);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tp);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tv);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Regler other = (Regler) obj;
-		if (Double.doubleToLongBits(kr) != Double.doubleToLongBits(other.kr))
-			return false;
-		if (Double.doubleToLongBits(tn) != Double.doubleToLongBits(other.tn))
-			return false;
-		if (Double.doubleToLongBits(tp) != Double.doubleToLongBits(other.tp))
-			return false;
-		if (Double.doubleToLongBits(tv) != Double.doubleToLongBits(other.tv))
-			return false;
-		return true;
 	}
 
 	@Override
@@ -151,7 +162,5 @@ public final class Regler implements RegelGlied {
 		default:
 			throw new IllegalArgumentException("Internal Error");
 		}
-
 	}
-
 }

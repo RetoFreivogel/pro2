@@ -4,7 +4,11 @@ import model.RegelStrecke;
 import model.Regler;
 import model.SaniApprox;
 import model.TransferFunction;
-
+/**
+ * Dimensionierung mit der Phasengangmethode
+ * @author Dennis Stampfli, Reto Freivogel
+ *
+ */
 class ZellwegerDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;
 	private final double phasenrand;

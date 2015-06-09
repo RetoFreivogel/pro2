@@ -11,12 +11,13 @@
 \contentsline {subsubsection}{\numberline {2.5.1}Berechnung}{14}{subsubsection.2.5.1}
 \contentsline {subsubsection}{\numberline {2.5.2}Optimierungsm\IeC {\"o}glichkeiten}{15}{subsubsection.2.5.2}
 \contentsline {section}{\numberline {3}Software}{16}{section.3}
-\contentsline {subsection}{\numberline {3.1}Packages und seine Klassen}{17}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Packages und ihre Klassen}{17}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Klassen des Packages \textit {controller}}{17}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Ausgew\IeC {\"a}hlte Klassen des Packages \textit {model}}{19}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Ausgew\IeC {\"a}hlte Klassen des Packages \textit {dimensionierung}}{21}{subsubsection.3.1.3}
 \contentsline {subsubsection}{\numberline {3.1.4}Klassen des Packages \textit {view}}{23}{subsubsection.3.1.4}
-\contentsline {section}{\numberline {4}Schlusswort}{25}{section.4}
-\contentsline {section}{\numberline {5}Ehrlichkeitserkl\IeC {\"a}rung}{26}{section.5}
-\contentsline {section}{\numberline {6}Literatur}{27}{section.6}
-\contentsline {section}{\numberline {7}Anhang}{28}{section.7}
+\contentsline {subsection}{\numberline {3.2}Benutzerinteraktion}{25}{subsection.3.2}
+\contentsline {section}{\numberline {4}Schlusswort}{26}{section.4}
+\contentsline {section}{\numberline {5}Ehrlichkeitserkl\IeC {\"a}rung}{27}{section.5}
+\contentsline {section}{\numberline {6}Literatur}{28}{section.6}
+\contentsline {section}{\numberline {7}Anhang}{29}{section.7}

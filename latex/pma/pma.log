@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.25)  9 JUN 2015 16:14
+=======
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.1)  8 JUN 2015 16:24
+>>>>>>> origin/master
 entering extended mode
 **pma.tex
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.tex
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +17,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\fhnwreport.cls
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\fhnwreport.cls
 Document Class: fhnwreport 2013/10/07 v2.0 PDF-LaTeX class for FHNW reports
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
@@ -1060,7 +1064,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 )
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.aux)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
@@ -1149,14 +1153,18 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 LaTeX Info: Redefining \nameref on input line 23.
 
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.out)
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.out)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.out)
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.out)
 \@outlinefile=\write4
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
+<<<<<<< HEAD
 <fhnwlogo.pdf, id=38, 183.81773pt x 28.4543pt>
+=======
+<fhnwlogo.pdf, id=30, 183.81773pt x 28.4543pt>
+>>>>>>> origin/master
 File: fhnwlogo.pdf Graphic file (type pdf)
  <use fhnwlogo.pdf>
 Package pdftex.def Info: fhnwlogo.pdf used on input line 25.
@@ -1191,14 +1199,14 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 25.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Claudius/Documen
-ts/GitHub/pro2/latex/pma/fhnwlogo.pdf>]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Martin/FHNW/Seme
+ster_2/pro2E/pro2/latex/pma/fhnwlogo.pdf>]
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 44.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-(C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma.toc
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 5.
 )
@@ -1206,6 +1214,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [2
 
 ]
+<<<<<<< HEAD
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_einleitung.tex)
 (C:\Users\Claudius\Documents\GitHub\pro2\latex\pma\pma_analysedererfahrung.tex
 <Visio-pmaFishbone.pdf, id=76, 597.432pt x 844.95674pt>
@@ -1236,6 +1245,96 @@ Here is how much of TeX's memory you used:
  58085 words of font info for 42 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,7n,54p,2256b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
+=======
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma_einleitung.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+) [3]
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma_analysedererfahrung.t
+ex <Visio-pmaFishbone.pdf, id=71, 845.1575pt x 597.23125pt>
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+
+<use Visio-pmaFishbone.pdf>
+Package pdftex.def Info: Visio-pmaFishbone.pdf used on input line 6.
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+ <use Visio-pmaFishbone.pdf>
+Package pdftex.def Info: Visio-pmaFishbone.pdf used on input line 6.
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+ [4]
+<Visio-pmaFishbone.pdf, id=78, page=1, 845.1575pt x 597.23125pt>
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+
+<use Visio-pmaFishbone.pdf, page 1>
+Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
+(pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+ <use Visio-pmaFishbone.pdf, page 1>
+Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
+(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+
+<use Visio-pmaFishbone.pdf, page 1>
+Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
+(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+ <use Visio-pmaFishbone.pdf, page 1>
+Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
+(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+File: Visio-pmaFishbone.pdf Graphic file (type pdf)
+
+<use Visio-pmaFishbone.pdf, page 1>
+Package pdftex.def Info: Visio-pmaFishbone.pdf, page1 used on input line 6.
+(pdftex.def)             Requested size: 597.61578pt x 422.30568pt.
+ [5 <C:/Users/Martin/FHNW/Semester_2/pro2E/pro2/latex/pma/Visio-pmaFishbone.pdf
+, page is rotated 90 degrees>])
+(C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma_reflexion.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 14--18
+
+ []
+
+[7]) [8] (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\schlusswort.tex)
+[9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
+ (C:\Users\Martin\FHNW\Semester_2\pro2E\pro2\latex\pma\pma.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
+Package rerunfilecheck Info: File `pma.out' has not changed.
+(rerunfilecheck)             Checksum: 7B80E9FD1EA5ACD6C11FFAD42C8AE88A;353.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
+ ) 
+Here is how much of TeX's memory you used:
+ 19316 strings out of 493921
+ 358715 string characters out of 3144874
+ 418825 words of memory out of 3000000
+ 22217 multiletter control sequences out of 15000+200000
+ 58085 words of font info for 42 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 55i,18n,54p,1900b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
+>>>>>>> origin/master
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
@@ -1243,9 +1342,17 @@ MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
 lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pf
 b>
+<<<<<<< HEAD
 Output written on pma.pdf (7 pages, 548366 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  17 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+Output written on pma.pdf (9 pages, 464284 bytes).
+PDF statistics:
+ 133 PDF objects out of 1000 (max. 8388607)
+ 17 named destinations out of 1000 (max. 500000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> origin/master
 

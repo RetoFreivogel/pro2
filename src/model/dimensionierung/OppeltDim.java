@@ -5,9 +5,9 @@ import model.Regler;
 
 
 /**
- * 
- * @author Reto
  * Reglerdimensionierung nach Oppelt 
+ * @author Reto Freivogel
+ * 
  */
 final class OppeltDim extends AbstractDim {
 	private static final long serialVersionUID = 1L;

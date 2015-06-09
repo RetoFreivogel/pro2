@@ -20,6 +20,11 @@ import controller.Controller;
 import model.Model;
 import model.RegelKreis;
 
+/**
+ * Die Sidebar mit ihren Elementen
+ * @author Reto Freivogel, Alex Stocker
+ *
+ */
 public class SidebarPanel extends JScrollPane implements ActionListener{
 	private static final long serialVersionUID = 1L;
 		
@@ -32,6 +37,11 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 	private final JComboBox<RegelKreis> cb_dim;
 	private final AnalyseView pn_AAnalyse;
 
+	/**
+	 * Erstellt eine neue Sidebar
+	 * @param model Das Model mit den Werten
+	 * @param controller Referenz auf den Controller
+	 */
 	public SidebarPanel(Model model, Controller controller){
 		super();
 		
@@ -81,7 +91,7 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 		constraints.gridy++;
 	}
 	
-	public void initEingabe(Model model){
+	private void initEingabe(Model model){
 		pn_Regler.removeAll();
 		
 		GridBagConstraints constraints = new GridBagConstraints(0, 0, 1, 1, 1,
@@ -119,6 +129,10 @@ public class SidebarPanel extends JScrollPane implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Aktualisiert die Sidebar
+	 * @param model Das Model mit den neuen Werten
+	 */
 	public void update(Model model) {
 		pn_ERegelstrecke.update(model.getRegelstrecke());
 		initEingabe(model);

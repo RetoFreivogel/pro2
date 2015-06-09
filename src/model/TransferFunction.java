@@ -2,11 +2,21 @@ package model;
 
 import org.apache.commons.math3.complex.Complex;
 
+/**
+ * Eine Uebertragungsfunktion in der Form (Polynom zähler)/(Polynom nenner).
+ * @author Reto Freivogel, Richard Gut
+ *
+ */
 public class TransferFunction {
 
 	private final Polynom zaehler;
 	private final Polynom nenner;
 
+	/**
+	 * 
+	 * @param zaehler Zählerpolynom der Funktion
+	 * @param nenner Nennerpolynom der Funktion
+	 */
 	public TransferFunction(Polynom zaehler, Polynom nenner) {
 		super();
 		this.zaehler = zaehler;

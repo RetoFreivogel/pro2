@@ -29,6 +29,11 @@ import model.dimensionierung.ChiensEnum;
 import model.dimensionierung.DimEnum;
 import model.dimensionierung.TopoEnum;
 
+/**
+ * Ansicht zur Darstellung einer Dimesionierungsmethode und des dimensionierten Reglers.
+ * @author Reto Freivogel, Alex Stocker
+ *
+ */
 public class ReglerView extends JPanel implements PropertyChangeListener,
 		ActionListener, FocusListener {
 	private static final long serialVersionUID = 1L;
@@ -48,6 +53,11 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 	private JComboBox<ChiensEnum> cbbx_chiens;
 	private boolean eventsEnabled = false;
 
+	/**
+	 * Erstellt eine neue Ansicht.
+	 * @param kreis Der Regelkreis mit der Dimensionierungsmethode 
+	 * @param controller Referenz auf den Kontroller
+	 */
 	public ReglerView(RegelKreis kreis, Controller controller) {
 		super();
 		this.controller = controller;
@@ -276,6 +286,10 @@ public class ReglerView extends JPanel implements PropertyChangeListener,
 		}
 	}
 
+	/**
+	 * Aktualisiert die Ansicht
+	 * @param kreis Der Regelkreis mit den neuen Werten
+	 */
 	public void update(RegelKreis kreis) {
 		this.regelkreis = kreis;
 		Regler regler = regelkreis.getRegler();

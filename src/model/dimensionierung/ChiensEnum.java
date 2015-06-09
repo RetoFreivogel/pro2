@@ -1,5 +1,10 @@
 package model.dimensionierung;
 
+/**
+ * Enum zur Unterscheidung von Verhalten der Chiens Dimensionierung
+ * @author Claudius Jörg, Reto Freivogel
+ *
+ */
 public enum ChiensEnum {
 	APERIODSTOER("<html>Aperiodisches<br>Störverhalten</html>"), 
 	APERIODFUEHR("<html>Aperiodisches<br>Führungsverhalten</html>"),

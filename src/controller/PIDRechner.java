@@ -15,10 +15,18 @@ import model.dimensionierung.Dimensionierung;
 import model.dimensionierung.TopoEnum;
 import view.View;
 
+/**
+ * PIDRechner ist der Startpunkt der Desktop-Applikation. 
+ * @author Reto Freivogel
+ *
+ */
 public class PIDRechner extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Erstellt und initialisiert Model, View und Controller
+	 */
 	public void init() {
 		setPreferredSize(new Dimension(880, 660));
 		RegelStrecke regelstrecke = new RegelStrecke(1.0, 1.71, 7.6);
@@ -29,6 +37,10 @@ public class PIDRechner extends JFrame {
 		controller.setView(view);
 	}
 
+	/**
+	 * Startpunkt der Applikation
+	 * @param args Die Commandline arguments werden nicht genutzt. 
+	 */
 	public static void main(String args[]) {
 
 		SwingUtilities.invokeLater(new Runnable() {

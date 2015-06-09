@@ -16,7 +16,7 @@ Der \textit{controller} übernimmt die Steuerung der Applikation und die Ausfüh
 
 
 \newpage
-\subsection{Packages und seine Klassen}
+\subsection{Packages und ihre Klassen}
 
 \subsubsection{Klassen des Packages \textit{controller}}
 Der Aufbau des Packages \textit{controller} ist in Abbildung \ref{packcontrl} ersichtlich.\\
@@ -107,16 +107,16 @@ Der Aufbau des Packages \textit{view} ist in Abbildung \ref{packview} ersichtlic
 \textit{\textbf{SidebarPanel}}\\
 \textit{SidebarPanel} ordnet die einzelnen Panels von \textit{RegelstreckeView}, \textit{ReglerView} und \textit{AnalyseView} vertikal untereinander an. Es können mehrere Instanzen von \textit{ReglerView} angezeigt werden.\\
 
-\textit{\textbf{RegelstreckeView}}\\
-\textit{RegelstreckeView} zeigt die Parameter der \textit{Regelstrecke} sowie die berechnete Ordnung und die Zeitkonstanten an.\\
+\textit{\textbf{RegelstreckeView}} (\textbf{1})\\
+\textit{RegelstreckeView}  zeigt die Parameter der \textit{Regelstrecke} sowie die berechnete Ordnung und die Zeitkonstanten an.\\
 
-\textit{\textbf{ReglerView}}\\
+\textit{\textbf{ReglerView}} (\textbf{2})\\
 Dieses \textit{JPanel} visualisiert den Typ der Dimensionierungsmethode, deren Parameter und die Werte des daraus resultierenden \textit{Reglers}.\\
 
-\textit{\textbf{AnalyseView}}\\
+\textit{\textbf{AnalyseView}} (\textbf{3})\\
 Listet die Eigenschaften Anstiegszeit ($T_{an}$), Ausschwingzeit ($T_{aus}$), Maximalwert ($Y_{max}$) und Zeitpunkt des Maximalwertes ($T_{Ymax}$) der \textit{Schrittantwort} auf.\\
 
-\textit{\textbf{Graph}}\\
+\textit{\textbf{Graph}} (\textbf{4})\\
 Zeichnet alle \textit{Schrittantworten} mit der Klasse \textit{ChartPanel} von JFreeChart. Unter dem Graphen zeigt es weiter eine Legende. Die Zustände der \textit{Checkboxen} werden nur vom Graph selbst verwendet und nicht dem \textit{Controller} mitgeteilt.
 
 \begin{figure}[p]
@@ -125,3 +125,20 @@ Zeichnet alle \textit{Schrittantworten} mit der Klasse \textit{ChartPanel} von J
 \caption{Package \textit{view}}
 \label{packview}
 \end{figure}
+
+\newpage
+\subsection{Benutzerinteraktion}
+Vorgaben: Das Programm wurde gestartet und im Eingabefeld $T_u$ wurde der Wert 1.0 eingegeben. Weiter wurde als Dimensionierungsart Iterativ ausgewählt. Nun gibt man im Eingabefeld $T_g$ den Wert 1.6 ein. Dadurch wird folgender Ablauf gestartet:\\
+\begin{itemize}
+\item In der Klasse \textit{RegelStreckeView} wird durch das System die Methode propertyChange des \textit{PropertyChangeListeners} aufgerufen. Es wird die Quelle des Events überprüft und festgestellt, dass es von dem Textfeld für $T_g$ kommt. Danach wird der Zahlenwert des Textfeldes eingelesen und an die Methode setTg vom \textit{Controller} weitergeleitet.\\
+\item Der \textit{Controller} macht sich eine Kopie des \textit{Models} und speichert sich diese auf einem Stack. Danach bildet er sich eine neue \textit{Regelstrecke} mit der Methode setTg von der alten \textit{Regelstrecke}. Nun setzt der \textit{Controller} mit der Methode setRegelstrecke die Regelstrecke des \textit{Models} auf die neue Instanz, dabei wird als Nebeneffekt die Methode update vom \textit{View}, welches ein Observer ist, aufgerufen. \\ 
+\item Das \textit{View} ruft nun die Methode update von den beiden Klassen \textit{SideBarPanel} und \textit{Graph} auf.\\
+\item Die update Methode vom \textit{SideBarPanel} ruft update von \textit{RegelStreckeView}, von allen \textit{ReglerViews} und von \textit{AnalyseView} auf.\\
+\item \textit{RegelStreckeView} setzt die Werte seiner Textfelder auf die Werte im \textit{Model}. Ist die Checkbox „zeige T“ angewählt, zeigt es zusätzlich die Textfelder für die Streckenzeiten der Sani-Approximation.\\
+\item Jedes \textit{ReglerView} setzt nun in seiner update Routine die Werte seiner Textfelder auf die Werte der \textit{Dimensionierung} bzw. auf die Werte des dimensionierten \textit{Reglers}.\\
+\item Die update Methode von \textit{AnalyseView} holt sich mit getTransferFunction() vom \textit{Regelkreis} die \textit{Übertragungsfunktion} und berechnet mittels schrittantwort() deren \textit{Schrittantwort}. Danach setzt es die Werte seiner Textfelder auf die Eigenschaften der \textit{Schrittantwort}.\\
+\item Der Kontrollfluss springt zurück ins update vom \textit{View}. Dieses ruft nun update vom \textit{Graphen} auf.\\
+\item Der \textit{Graph} erstellt wie das \textit{AnalyseView} die \textit{Schrittantwort} des \textit{Regelkreises} für jeden \textit{Regler}. Aus der \textit{Schrittantwort} werden 300 Punkte gelesen, die dann in den Datensatz vom JFreeChart eingefügt werden.\\
+\item Nun springt der Kontrollfluss zurück in den \textit{Controller}. Hat sich bis jetzt kein Fehler ereignet, wird die Methode clearError des \textit{Views} aufgerufen, ansonsten wird displayError mit der Fehlermeldung aufgerufen.
+\end{itemize}
+

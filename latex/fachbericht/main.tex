@@ -14,7 +14,9 @@
 \usepackage{pdfpages}
 \bibliographystyle{IEEEtran}
 \usepackage{cite}
-\usepackage[nottoc, numbib]{tocbibind}
+\usepackage[nottoc,notlof,notlot,numbib]{tocbibind}
+%\usepackage[nottoc, numbib]{tocbibind}
+
 
 
 \title{%
@@ -84,6 +86,8 @@ Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 \newpage
 \bibliography{literaturverzeichnis}
+\listoffigures
+\listoftables
 
 
 \newpage
@@ -91,10 +95,10 @@ Datum, Ort: \>\>\>\>\>\>\_\_\_\_\_\_\_\_\_\_\_\_, \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 \begin{itemize}
 \item Herleitungen Formeln
 \item Beispielberechnung Phasengangmethode mithilfe von Matlab
-\item Bedienungsanleitung des Programmes \todo{neuste Version der Bedienungsanleitung includen}
-\item Klassendiagramm\todo{Klassendiagramm??}
+\item Bedienungsanleitung des Programmes 
+\item Klassendiagramm
 \item CD-ROM
-\todo{Alle Anhänge aufführen!!!}
+
 \end{itemize}
 \includepdf[pages=1-2]{Herleitungen_Anhang.pdf}
 \includepdf[pages=1-3]{Matlab_bsp_berechnung_Anhang.pdf}

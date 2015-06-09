@@ -10,6 +10,11 @@ import javax.swing.KeyStroke;
 
 import controller.Controller;
 
+/**
+ * Menü Berarbeiten der Applikation
+ * @author Alex Stocker, Reto Freivogel
+ *
+ */
 public class MBearbeiten extends JMenu implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
@@ -17,6 +22,10 @@ public class MBearbeiten extends JMenu implements ActionListener {
 	private JMenuItem [] mntmBearbeiten = new JMenuItem[2];
 	private Controller controller;
 	
+	/**
+	 * Erstellt ein neues Menü.
+	 * @param controller Referenz auf den Controller
+	 */
 	public MBearbeiten(Controller controller){
 		this.controller = controller;
 		setText("Bearbeiten");
@@ -31,6 +40,7 @@ public class MBearbeiten extends JMenu implements ActionListener {
 		mntmBearbeiten[1].setAccelerator(KeyStroke.getKeyStroke('Y', mask));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()== mntmBearbeiten[0]) {
 			controller.rueckgaengig();

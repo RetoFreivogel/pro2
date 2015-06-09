@@ -4,10 +4,27 @@ import java.io.Serializable;
 
 import util.Copyable;
 
+/**
+ * Regelstrecke die durch die Eigenschaten Streckenbeiwert (Ks), Verzugszeit
+ * (Tu) und Anstiegszeit(Tg) definiert ist.
+ * 
+ * @author Reto Freivogel
+ *
+ */
 public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 	private static final long serialVersionUID = 1L;
 	private final double ks, tu, tg;
 
+	/**
+	 * Erzeugt eine neue Regelstrecke
+	 * 
+	 * @param ks
+	 *            Ks der Strecke
+	 * @param tu
+	 *            Tu der Strecke
+	 * @param tg
+	 *            Tg der Strecke
+	 */
 	public RegelStrecke(double ks, double tu, double tg) {
 		if (ks <= 0)
 			throw new IllegalArgumentException("ks muss positiv sein");
@@ -21,70 +38,73 @@ public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 		this.tg = tg;
 	}
 
+	/**
+	 * Gibt Ks zurück
+	 * @return Ks
+	 */
 	public double getKs() {
 		return ks;
 	}
 
+	/**
+	 * Gibt Tu zurück
+	 * @return Tu
+	 */
 	public double getTu() {
 		return tu;
 	}
 
+	/**
+	 * Gibt Tg zurück
+	 * @return Tg
+	 */
 	public double getTg() {
 		return tg;
 	}
 
+	/**
+	 * Erzeugt eine neue Regelstrecke bei der Ks auf einen neuen Wert gesetzt wurde.
+	 * @param ks Das neue Ks
+	 * @return Die erzeugte Regelstrecke
+	 */
 	public RegelStrecke setKs(double ks) {
 		return new RegelStrecke(ks, tu, tg);
 	}
 
+	/**
+	 * Erzeugt eine neue Regelstrecke bei der Tu auf einen neuen Wert gesetzt wurde.
+	 * @param tu Das neue Tu
+	 * @return Die erzeugte Regelstrecke
+	 */
 	public RegelStrecke setTu(double tu) {
 		return new RegelStrecke(ks, tu, tg);
 	}
 
+	/**
+	 * Erzeugt eine neue Regelstrecke bei der Tg auf einen neuen Wert gesetzt wurde.
+	 * @param tg Das neue Tg
+	 * @return Die erzeugte Regelstrecke
+	 */
 	public RegelStrecke setTg(double tg) {
 		return new RegelStrecke(ks, tu, tg);
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(ks);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tg);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(tu);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		RegelStrecke other = (RegelStrecke) obj;
-		if (Double.doubleToLongBits(ks) != Double.doubleToLongBits(other.ks))
-			return false;
-		if (Double.doubleToLongBits(tg) != Double.doubleToLongBits(other.tg))
-			return false;
-		if (Double.doubleToLongBits(tu) != Double.doubleToLongBits(other.tu))
-			return false;
-		return true;
-	}
-
+	/**
+	 * Gibt die Ordnung der Identifikation mit der Sani-Methode zurück
+	 * @return Die Ordnung der Identifizierten Strecke
+	 */
 	public int getOrdnung() {
 		return SaniApprox.getOrdnung(tu, tg);
 	}
 
-	public double[] getTcoeffs(){
+	/**
+	 * Gibt die Streckenzeiten der Identifikation mit der Sani-Methode zurück.
+	 * @return Die Streckenzeiten aufsteigend geordnet
+	 */
+	public double[] getTcoeffs() {
 		return SaniApprox.calcSani(tu, tg);
 	}
-	
+
 	@Override
 	public TransferFunction getTranferFunction() {
 		double[] Tcoeffs = SaniApprox.calcSani(tu, tg);
@@ -102,11 +122,6 @@ public final class RegelStrecke implements RegelGlied, Serializable, Copyable {
 		nenner = nenner.mul(Tprodukt);
 
 		return new TransferFunction(new Polynom(new double[] { ks }), nenner);
-	}
-	
-	@Override
-	public String toString() {
-		return "ks: " + ks + "\ntu: " + tu + "\ntg: " + tg + "\n";
 	}
 
 	@Override
