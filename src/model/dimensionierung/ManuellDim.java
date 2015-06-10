@@ -15,6 +15,23 @@ class ManuellDim extends AbstractDim {
 		
 	ManuellDim(double kr, double tn, double tv, double tp, TopoEnum topo) {		
 		super(topo);
+		
+		if(kr <= 0){
+			throw new IllegalArgumentException("kr muss positiv sein");
+		}
+		if(tn <= 0){
+			throw new IllegalArgumentException("tn muss positiv sein");
+		}
+		if(tv <= 0){
+			throw new IllegalArgumentException("tv muss positiv sein");
+		}
+		if(tp <= 0){
+			throw new IllegalArgumentException("tp muss positiv sein");
+		}
+		if(tv < tp){
+			throw new IllegalArgumentException("tv darf nicht kleiner als tp sein");
+		}
+		
 		this.kr = kr;
 		this.tn = tn;
 		this.tv = tv;
