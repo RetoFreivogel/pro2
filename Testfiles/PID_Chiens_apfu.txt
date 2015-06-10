@@ -1,6 +1,0 @@
-ks: 1.0
-tu: 1.762
-tg: 7.661
-ChiensDim
-j: 1
-topo: PID

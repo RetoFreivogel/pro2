@@ -1,5 +1,0 @@
-ks: 1.0
-tu: 1.79
-tg: 7.69
-ZieglerDim
-topo: PI

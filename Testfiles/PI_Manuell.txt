@@ -1,9 +1,0 @@
-ks: 1.0
-tu: 1.77
-tg: 7.67
-ManuellDim
-kr: 2.6068027210884352
-tn: 7.056
-tv: NaN
-tp: NaN
-topo: PI

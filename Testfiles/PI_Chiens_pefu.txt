@@ -1,6 +1,0 @@
-ks: 5.0
-tu: 33.0
-tg: 99.0
-ChiensDim
-j: 3
-topo: PI
